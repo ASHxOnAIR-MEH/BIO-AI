@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-sora);
+  
+  --color-bio-green: #6FAE24;
+  --color-deep-green: #315C2B;
+  --color-soft-green: #E5F0D8;
+  --color-offwhite: #F4F4F1;
+  
+  --color-text-primary: #101010;
+  --color-text-secondary: #777777;
+}
+
+:root {
+  --background: #F4F4F1;
+  --foreground: #101010;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .editorial-card {
+    @apply bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100;
+  }
+}
