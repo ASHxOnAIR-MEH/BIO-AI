@@ -18,12 +18,25 @@
   --foreground: #101010;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  /* Safe area insets for notched devices */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Smooth touch scrolling on iOS */
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 @layer utilities {
