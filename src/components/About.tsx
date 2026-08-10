@@ -59,19 +59,7 @@ export default function About() {
               </motion.p>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="mt-12 pt-8 border-t border-gray-100"
-            >
-              <h3 className="text-sm font-semibold text-text-primary uppercase tracking-widest mb-2">Location</h3>
-              <p className="text-text-secondary">
-                3rd Floor, Digital Hub,<br />
-                Kerala Startup Mission, Kochi
-              </p>
-            </motion.div>
+
           </div>
           
           {/* Right Column: Image */}

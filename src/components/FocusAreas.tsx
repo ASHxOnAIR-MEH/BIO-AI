@@ -43,7 +43,7 @@ const domains = [
 
 export default function FocusAreas() {
   return (
-    <section id="focus-areas" className="py-24 lg:py-32 px-6 sm:px-10 lg:px-12 bg-offwhite overflow-hidden">
+    <section id="domains" className="py-24 lg:py-32 px-6 sm:px-10 lg:px-12 bg-offwhite overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         <motion.div 
@@ -51,76 +51,48 @@ export default function FocusAreas() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="mb-20 md:mb-32"
+          className="mb-16 md:mb-20 text-center"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-semibold text-text-primary tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-semibold text-text-primary tracking-tight mb-6">
             Five domains.<br />One intelligence layer.
           </h2>
+          <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+            Uniting deep technologies with Kerala's core ecosystem strengths.
+          </p>
         </motion.div>
 
-        <div className="space-y-24 md:space-y-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[320px] sm:auto-rows-[380px] lg:auto-rows-[420px]">
           {domains.map((domain, index) => (
-            <div 
-              key={domain.id} 
-              className={`flex flex-col ${index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-10 md:gap-16 lg:gap-24`}
+            <motion.div 
+              key={domain.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className={`relative group overflow-hidden rounded-[2rem] shadow-lg ${index === 0 ? 'md:col-span-2' : 'col-span-1'}`}
             >
+              <Image 
+                src={domain.image!} 
+                alt={domain.title} 
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
               
-              {/* Visual Side */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 1, delay: 0.1 }}
-                className="w-full md:w-1/2 relative aspect-square md:aspect-[4/5] lg:aspect-square rounded-[2rem] overflow-hidden shadow-xl"
-              >
-                {domain.hasImage ? (
-                  <Image 
-                    src={domain.image!} 
-                    alt={domain.title} 
-                    fill
-                    className="object-cover hover:scale-105 transition-transform duration-1000"
-                  />
-                ) : (
-                  <div className={`w-full h-full ${domain.color} p-12 flex flex-col justify-between`}>
-                    <div className="w-16 h-16 rounded-full border-2 border-white/20 flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-white animate-ping"></div>
-                    </div>
-                    <div className="space-y-4">
-                      <div className="h-px w-full bg-white/20"></div>
-                      <div className="h-px w-3/4 bg-white/20"></div>
-                      <div className="h-px w-1/2 bg-white/20"></div>
-                    </div>
-                  </div>
-                )}
-                
-                {/* ID Badge overlapping the image */}
-                <div className={`absolute top-6 ${index % 2 !== 0 ? 'right-6' : 'left-6'} bg-white px-4 py-2 rounded-full shadow-sm`}>
-                  <span className="text-xs font-bold text-text-primary">DOMAIN {domain.id}</span>
+              <div className="absolute inset-0 p-8 flex flex-col justify-between text-white">
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-sm font-bold border border-white/30">
+                  {domain.id}
                 </div>
-              </motion.div>
-
-              {/* Text Side */}
-              <motion.div 
-                initial={{ opacity: 0, x: index % 2 !== 0 ? 20 : -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="w-full md:w-1/2 flex flex-col justify-center"
-              >
-                <div className="mb-4">
-                  <span className="text-sm font-semibold tracking-widest text-text-secondary uppercase">
-                    {domain.id}
-                  </span>
+                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <h3 className="text-2xl sm:text-3xl font-heading font-semibold mb-3">
+                    {domain.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    {domain.description}
+                  </p>
                 </div>
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-heading font-semibold text-text-primary mb-6 tracking-tight">
-                  {domain.title}
-                </h3>
-                <p className="text-lg text-text-secondary leading-relaxed max-w-lg">
-                  {domain.description}
-                </p>
-              </motion.div>
-
-            </div>
+              </div>
+            </motion.div>
           ))}
         </div>
 

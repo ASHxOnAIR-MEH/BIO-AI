@@ -13,7 +13,17 @@ export default function Hero() {
           {/* Left Column: Text & CTA */}
           <div className="lg:col-span-7 flex flex-col justify-center relative z-10">
             
-            {/* Removed subtitle to avoid repetition with Navbar */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="mb-6 flex items-center space-x-3"
+            >
+              <div className="w-8 h-[2px] bg-bio-green"></div>
+              <span className="text-xs md:text-sm font-semibold tracking-widest text-bio-green uppercase">
+                BIO-AI CENTRE OF EXCELLENCE
+              </span>
+            </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -94,31 +104,7 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* Credibility Strip */}
-      <section className="border-y border-gray-200 bg-white py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
-          <p className="text-center text-xs font-semibold text-text-secondary uppercase tracking-widest mb-10">
-            An Ecosystem Initiative Backed By
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-12 md:gap-20 lg:gap-24">
-            <div className="relative w-48 h-24">
-              <Image src="/ksum-logo.png" alt="Kerala Startup Mission" fill className="object-contain" />
-            </div>
-            <div className="relative w-40 h-16">
-              <Image src="/kerala-it.png" alt="Kerala IT" fill className="object-contain" />
-            </div>
-            <div className="relative w-40 h-16">
-              <Image src="/meity.png" alt="MeitY" fill className="object-contain" />
-            </div>
-            <div className="relative w-40 h-16">
-              <Image src="/india-ai.png" alt="IndiaAI" fill className="object-contain" />
-            </div>
-            <div className="relative w-40 h-16">
-              <Image src="/digital-india.png" alt="Digital India" fill className="object-contain" />
-            </div>
-          </div>
-        </div>
-      </section>
+          
     </>
   );
 }
