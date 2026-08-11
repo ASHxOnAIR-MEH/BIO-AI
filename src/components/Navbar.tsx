@@ -46,7 +46,7 @@ export default function Navbar() {
 
             {/* Kerala Ecosystem */}
             <div className="flex items-center gap-1.5 sm:gap-3 md:gap-4 lg:gap-5">
-              <Image src="/ksum-logo.png" alt="Kerala Startup Mission" width={160} height={60} style={{ width: 'auto' }} className="object-contain h-6 sm:h-8 md:h-10 lg:h-14 shrink-0" priority />
+              <Image src="/ksum-logo.png" alt="Kerala Startup Mission" width={256} height={104} style={{ width: 'auto' }} className="object-contain h-10 sm:h-12 md:h-16 lg:h-20 shrink-0" priority />
               <Image src="/kerala-it.png" alt="Kerala IT" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-3.5 sm:h-5 md:h-6 lg:h-8" />
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function Navbar() {
               
               <div className="h-8 w-px bg-gray-300 shrink-0 mx-1"></div>
               
-              <Image src="/ksum-logo.png" alt="Kerala Startup Mission" width={120} height={48} style={{ width: 'auto' }} className="object-contain h-10 sm:h-12 w-auto shrink-0" />
+              <Image src="/ksum-logo.png" alt="Kerala Startup Mission" width={200} height={80} style={{ width: 'auto' }} className="object-contain h-14 sm:h-16 w-auto shrink-0" />
               <Image src="/kerala-it.png" alt="Kerala IT" width={80} height={32} style={{ width: 'auto' }} className="object-contain h-6 sm:h-7 w-auto shrink-0" />
             </div>
           </div>

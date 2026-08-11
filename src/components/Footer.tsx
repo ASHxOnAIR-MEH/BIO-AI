@@ -15,7 +15,11 @@ export default function Footer() {
             <span className="font-heading font-bold text-base text-text-primary leading-tight tracking-tight block">BIO-AI CoE</span>
             <span className="text-[10px] sm:text-xs font-medium text-text-secondary uppercase tracking-widest mt-1 block">Kerala Startup Mission</span>
             <p className="mt-4 sm:mt-6 text-xs sm:text-sm text-text-secondary leading-relaxed">
-              Accelerating deep-tech innovation at the intersection of AI, biodiversity, and life sciences.
+              3rd Floor, Digital Hub,<br />
+              Kinfra Hi-Tech Park,<br />
+              HMT Colony P.O.,<br />
+              North Kalamassery,<br />
+              Kochi, Kerala - 683503
             </p>
           </div>
 
@@ -24,9 +28,9 @@ export default function Footer() {
             <h4 className="text-xs sm:text-sm font-semibold text-text-primary uppercase tracking-widest mb-4 sm:mb-6">Quick Links</h4>
             <ul className="space-y-3 sm:space-y-4">
               <li><Link href="/" className="text-xs sm:text-sm text-text-secondary hover:text-bio-green transition-colors">Home</Link></li>
-              <li><Link href="#about" className="text-xs sm:text-sm text-text-secondary hover:text-bio-green transition-colors">About the CoE</Link></li>
-              <li><Link href="#domains" className="text-xs sm:text-sm text-text-secondary hover:text-bio-green transition-colors">Focus Areas</Link></li>
-              <li><Link href="#opportunity" className="text-xs sm:text-sm text-text-secondary hover:text-bio-green transition-colors">Incubation</Link></li>
+              <li><Link href="/#about" className="text-xs sm:text-sm text-text-secondary hover:text-bio-green transition-colors">About</Link></li>
+              <li><Link href="/#opportunity" className="text-xs sm:text-sm text-text-secondary hover:text-bio-green transition-colors">Incubation</Link></li>
+              <li><Link href="/#contact" className="text-xs sm:text-sm text-text-secondary hover:text-bio-green transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -34,19 +38,30 @@ export default function Footer() {
           <div className="col-span-1 lg:col-span-1">
             <h4 className="text-xs sm:text-sm font-semibold text-text-primary uppercase tracking-widest mb-4 sm:mb-6">Connect</h4>
             <ul className="space-y-3 sm:space-y-4">
-              <li>
-                <a
-                  href="https://zfrmz.com/Ene770rEwgTw2cP7chBH"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs sm:text-sm text-bio-green font-semibold hover:text-deep-green transition-colors"
-                >
-                  Apply for Incubation ↗
+              <li className="flex flex-col">
+                <span className="font-medium text-text-primary text-xs sm:text-sm mb-0.5">Website:</span>
+                <a href="https://startupmission.kerala.gov.in/" target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm text-text-secondary hover:text-bio-green transition-colors">
+                  startupmission.kerala.gov.in
                 </a>
               </li>
-              <li><a href="#" className="text-xs sm:text-sm text-text-secondary hover:text-bio-green transition-colors">Contact Us</a></li>
-              <li><a href="#" className="text-xs sm:text-sm text-text-secondary hover:text-bio-green transition-colors">LinkedIn</a></li>
-              <li><a href="#" className="text-xs sm:text-sm text-text-secondary hover:text-bio-green transition-colors">Twitter</a></li>
+              <li className="flex flex-col">
+                <span className="font-medium text-text-primary text-xs sm:text-sm mb-0.5">Instagram:</span>
+                <a href="https://www.instagram.com/keralastartupmission/" target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm text-text-secondary hover:text-bio-green transition-colors">
+                  @keralastartupmission
+                </a>
+              </li>
+              <li className="flex flex-col">
+                <span className="font-medium text-text-primary text-xs sm:text-sm mb-0.5">LinkedIn:</span>
+                <a href="https://www.linkedin.com/company/kerala-startup-mission" target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm text-text-secondary hover:text-bio-green transition-colors">
+                  Kerala Startup Mission
+                </a>
+              </li>
+              <li className="flex flex-col">
+                <span className="font-medium text-text-primary text-xs sm:text-sm mb-0.5">Facebook:</span>
+                <a href="https://www.facebook.com/keralastartupmission/" target="_blank" rel="noopener noreferrer" className="text-xs sm:text-sm text-text-secondary hover:text-bio-green transition-colors">
+                  Kerala Startup Mission
+                </a>
+              </li>
             </ul>
           </div>
 

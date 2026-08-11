@@ -4,18 +4,32 @@ import { motion } from "framer-motion";
 
 const steps = [
   {
+    label: "Phase 01",
     title: "Discover",
-    description: "Identify high-impact use cases intersecting AI, Ayurveda, biodiversity, and life sciences.",
+    description: (
+      <>
+        <span className="font-semibold text-text-primary block mb-1">Pre-Incubation</span>
+        Identify high-impact use cases intersecting AI, Ayurveda, biodiversity, and life sciences.
+      </>
+    ),
   },
   {
+    label: "Phase 02",
     title: "Develop",
-    description: "Build deep-tech solutions with access to high-performance computing, GPUs, and expert mentoring.",
+    description: (
+      <>
+        <span className="font-semibold text-text-primary block mb-1">Incubation</span>
+        Build deep-tech solutions with access to high-performance computing, GPUs, and expert mentoring.
+      </>
+    ),
   },
   {
+    label: "Phase 03",
     title: "Validate",
     description: "Test and validate your solutions with institutional partners, research labs, and industry experts.",
   },
   {
+    label: "Phase 04",
     title: "Commercialise",
     description: "Scale your Bio-AI venture with funding opportunities, market access, and ecosystem support.",
   },
@@ -51,7 +65,7 @@ export default function Opportunity() {
             >
               <div className="mb-4 sm:mb-8">
                 <span className="text-[10px] sm:text-xs font-bold text-bio-green tracking-widest uppercase">
-                  Phase 0{index + 1}
+                  {step.label}
                 </span>
               </div>
               <h3 className="text-lg sm:text-2xl font-heading font-semibold text-text-primary mb-2 sm:mb-4">

@@ -21,7 +21,7 @@ const benefits = [
   {
     id: "04",
     title: "Incubation",
-    description: "Specialized incubation support and guidance tailored for Bio-AI startups.",
+    description: "Incubation at Bio-AI CoE, Digital Hub, Kochi",
   },
   {
     id: "05",
