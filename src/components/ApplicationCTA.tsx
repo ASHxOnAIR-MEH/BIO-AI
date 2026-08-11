@@ -1,13 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
-
-const criteria = [
-  "Startups innovating in Bio-AI (across Ayurveda, Spices, Biodiversity, Life Sciences, etc.).",
-  "Deep-tech ventures leveraging AI for biological and healthcare solutions.",
-  "Researchers and entrepreneurs with scalable Bio-AI ideas.",
-];
 
 export default function ApplicationCTA() {
   return (
@@ -44,21 +37,15 @@ export default function ApplicationCTA() {
               Bio-AI CoE invites applications from:
             </motion.p>
 
-            <ul className="space-y-4 sm:space-y-6">
-              {criteria.map((item, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
-                  className="flex items-start gap-3 sm:gap-4"
-                >
-                  <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-bio-green shrink-0 mt-0.5" />
-                  <span className="text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed">{item}</span>
-                </motion.li>
-              ))}
-            </ul>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-white/90 text-base sm:text-lg lg:text-xl leading-relaxed"
+            >
+              Startups working on innovative solutions in the Bio-AI domain, particularly those leveraging AI and deep technologies for applications in Ayurveda, spices, biodiversity, biotechnology, and life sciences.
+            </motion.p>
           </div>
 
           {/* Right: CTA — separated by top border on mobile */}

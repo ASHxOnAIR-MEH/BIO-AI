@@ -50,14 +50,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Location */}
+          {/* Contact */}
           <div className="col-span-2 sm:col-span-1 lg:col-span-1">
-            <h4 className="text-xs sm:text-sm font-semibold text-text-primary uppercase tracking-widest mb-4 sm:mb-6">Location</h4>
-            <address className="not-italic text-xs sm:text-sm text-text-secondary leading-relaxed">
-              3rd Floor, Digital Hub,<br />
-              Kerala Startup Mission,<br />
-              Kalamassery, Kochi,<br />
-              Kerala, India.
+            <h4 className="text-xs sm:text-sm font-semibold text-text-primary uppercase tracking-widest mb-4 sm:mb-6">Contact</h4>
+            <address className="not-italic text-xs sm:text-sm text-text-secondary leading-relaxed flex flex-col space-y-2">
+              <a href="tel:08047180470" className="hover:text-bio-green transition-colors">
+                08047180470
+              </a>
+              <span>8:00 AM - 8:00 PM</span>
+              <a href="mailto:info@startupmission.in" className="hover:text-bio-green transition-colors">
+                info@startupmission.in
+              </a>
             </address>
           </div>
 

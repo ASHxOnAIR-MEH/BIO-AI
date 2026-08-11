@@ -6,12 +6,12 @@ const benefits = [
   {
     id: "01",
     title: "Infrastructure",
-    description: "Access to India's first Bio-AI CoE compute & GPU infrastructure.",
+    description: "Compute & GPU Infrastructure through KSUM and partner institutions",
   },
   {
     id: "02",
     title: "Expertise",
-    description: "Expert domain mentoring bridging Life Sciences and Artificial Intelligence.",
+    description: "Specialised mentoring and technical guidance",
   },
   {
     id: "03",
@@ -20,8 +20,8 @@ const benefits = [
   },
   {
     id: "04",
-    title: "Acceleration",
-    description: "Specialized incubation and acceleration programs tailored for Bio-AI startups.",
+    title: "Incubation",
+    description: "Specialized incubation support and guidance tailored for Bio-AI startups.",
   },
   {
     id: "05",

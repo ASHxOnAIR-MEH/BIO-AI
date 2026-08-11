@@ -32,23 +32,22 @@ export default function Navbar() {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-offwhite/95 backdrop-blur-md border-b border-gray-200 py-3 sm:py-4" : "bg-transparent py-4 sm:py-6"}`}>
         <div className="max-w-[1400px] w-full mx-auto px-5 sm:px-10 lg:px-12 flex items-center justify-between">
 
-          {/* Logo */}
-          <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-6">
-            <Image
-              src="/ksum-logo.png"
-              alt="Kerala Startup Mission"
-              width={140}
-              height={56}
-              style={{ width: 'auto' }}
-              className="object-contain h-8 sm:h-10 md:h-12 shrink-0"
-              priority
-            />
-            {/* Partner logos — only shown on very wide screens */}
-            <div className="hidden xl:flex items-center space-x-5 border-l border-gray-300 pl-5 ml-2">
-              <Image src="/kerala-it.png" alt="Kerala IT" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-8 w-auto md:h-10" />
-              <Image src="/meity.png" alt="MeitY" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-8 w-auto md:h-10" />
-              <Image src="/india-ai.png" alt="IndiaAI" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-8 w-auto md:h-10" />
-              <Image src="/digital-india.png" alt="Digital India" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-8 w-auto md:h-10" />
+          {/* Logo Group */}
+          <div className="flex items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+            {/* National Ecosystem */}
+            <div className="flex items-center gap-1.5 sm:gap-3 md:gap-4 lg:gap-5">
+              <Image src="/meity.png" alt="MeitY" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-3.5 sm:h-5 md:h-6 lg:h-8" />
+              <Image src="/india-ai.png" alt="IndiaAI" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-3.5 sm:h-5 md:h-6 lg:h-8" />
+              <Image src="/digital-india.png" alt="Digital India" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-3.5 sm:h-5 md:h-6 lg:h-8" />
+            </div>
+
+            {/* Separator */}
+            <div className="h-5 sm:h-7 md:h-9 lg:h-12 w-px bg-gray-300 shrink-0"></div>
+
+            {/* Kerala Ecosystem */}
+            <div className="flex items-center gap-1.5 sm:gap-3 md:gap-4 lg:gap-5">
+              <Image src="/ksum-logo.png" alt="Kerala Startup Mission" width={160} height={60} style={{ width: 'auto' }} className="object-contain h-6 sm:h-8 md:h-10 lg:h-14 shrink-0" priority />
+              <Image src="/kerala-it.png" alt="Kerala IT" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-3.5 sm:h-5 md:h-6 lg:h-8" />
             </div>
           </div>
 
@@ -56,7 +55,7 @@ export default function Navbar() {
           <div className="hidden xl:flex items-center space-x-8 ml-10">
             <Link href="/" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Home</Link>
             <Link href="#about" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">About</Link>
-            <Link href="#domains" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Domains</Link>
+            <Link href="#opportunity" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Incubation</Link>
             <Link href="#contact" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Contact</Link>
             <a
               href="https://zfrmz.com/Ene770rEwgTw2cP7chBH"
@@ -96,18 +95,22 @@ export default function Navbar() {
           <nav className="flex flex-col space-y-6 text-3xl font-heading font-semibold text-text-primary">
             <Link href="/" onClick={() => setIsOpen(false)} className="border-b border-gray-100 pb-6 hover:text-bio-green transition-colors">Home</Link>
             <Link href="#about" onClick={() => setIsOpen(false)} className="border-b border-gray-100 pb-6 hover:text-bio-green transition-colors">About</Link>
-            <Link href="#domains" onClick={() => setIsOpen(false)} className="border-b border-gray-100 pb-6 hover:text-bio-green transition-colors">Domains</Link>
+            <Link href="#opportunity" onClick={() => setIsOpen(false)} className="border-b border-gray-100 pb-6 hover:text-bio-green transition-colors">Incubation</Link>
             <Link href="#contact" onClick={() => setIsOpen(false)} className="border-b border-gray-100 pb-6 hover:text-bio-green transition-colors">Contact</Link>
           </nav>
 
           {/* Partner logos in mobile menu */}
           <div className="mt-8 pt-6 border-t border-gray-100">
             <p className="text-[10px] font-semibold text-text-secondary uppercase tracking-widest mb-5">Backed by</p>
-            <div className="flex flex-wrap items-center gap-6">
-              <Image src="/ksum-logo.png" alt="KSUM" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-8 w-auto" />
-              <Image src="/kerala-it.png" alt="Kerala IT" width={80} height={32} style={{ width: 'auto' }} className="object-contain h-7 w-auto" />
-              <Image src="/meity.png" alt="MeitY" width={80} height={32} style={{ width: 'auto' }} className="object-contain h-7 w-auto" />
-              <Image src="/india-ai.png" alt="IndiaAI" width={80} height={32} style={{ width: 'auto' }} className="object-contain h-7 w-auto" />
+            <div className="flex items-center gap-3 sm:gap-4 overflow-x-auto pb-4">
+              <Image src="/meity.png" alt="MeitY" width={80} height={32} style={{ width: 'auto' }} className="object-contain h-6 sm:h-7 w-auto shrink-0" />
+              <Image src="/india-ai.png" alt="IndiaAI" width={80} height={32} style={{ width: 'auto' }} className="object-contain h-6 sm:h-7 w-auto shrink-0" />
+              <Image src="/digital-india.png" alt="Digital India" width={80} height={32} style={{ width: 'auto' }} className="object-contain h-6 sm:h-7 w-auto shrink-0" />
+              
+              <div className="h-8 w-px bg-gray-300 shrink-0 mx-1"></div>
+              
+              <Image src="/ksum-logo.png" alt="Kerala Startup Mission" width={120} height={48} style={{ width: 'auto' }} className="object-contain h-10 sm:h-12 w-auto shrink-0" />
+              <Image src="/kerala-it.png" alt="Kerala IT" width={80} height={32} style={{ width: 'auto' }} className="object-contain h-6 sm:h-7 w-auto shrink-0" />
             </div>
           </div>
 
