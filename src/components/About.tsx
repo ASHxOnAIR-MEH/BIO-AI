@@ -9,13 +9,13 @@ export default function About() {
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-24 items-center">
 
-          {/* Image — shows first on mobile for visual impact */}
+          {/* Image — displays after text on mobile */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="order-1 lg:order-2 relative h-[260px] sm:h-[380px] md:h-[500px] lg:h-[700px] w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.08)]"
+            className="order-2 lg:order-2 relative h-[260px] sm:h-[380px] md:h-[500px] lg:h-[700px] w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.08)]"
           >
             <Image
               src="/images/image4.jpg"
@@ -27,7 +27,7 @@ export default function About() {
           </motion.div>
 
           {/* Text Content */}
-          <div className="order-2 lg:order-1 flex flex-col justify-center">
+          <div className="order-1 lg:order-1 flex flex-col justify-center">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

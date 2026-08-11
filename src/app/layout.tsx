@@ -27,7 +27,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${sora.variable} scroll-smooth antialiased`}
     >
-      <body className="min-h-screen flex flex-col font-sans bg-[#F4F4F1] text-[#101010]">{children}</body>
+      <body className="min-h-screen flex flex-col font-sans bg-[#F4F4F1] text-[#101010] overflow-x-hidden">{children}</body>
     </html>
   );
 }

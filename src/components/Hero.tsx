@@ -29,7 +29,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-heading font-semibold text-text-primary leading-[1.05] mb-5 sm:mb-6 tracking-tight uppercase"
+              className="text-[clamp(2.5rem,6vw,4.5rem)] font-heading font-semibold text-text-primary leading-[1.05] mb-5 sm:mb-6 tracking-tight uppercase"
             >
               BIO-AI CENTRE OF EXCELLENCE
             </motion.h1>
@@ -60,14 +60,14 @@ export default function Hero() {
 
           </div>
 
-          {/* Right Column: Image — hidden on small screens to keep hero clean */}
+          {/* Right Column: Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, x: 20 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
-            className="lg:col-span-5 relative lg:-mr-12 xl:-mr-24 z-0 hidden sm:block mt-8 lg:mt-0"
+            className="lg:col-span-5 relative lg:-mr-12 xl:-mr-24 z-0 mt-10 lg:mt-0"
           >
-            <div className="relative w-full aspect-[4/5] rounded-[2.5rem] sm:rounded-[3rem] rounded-tr-none overflow-hidden shadow-2xl">
+            <div className="relative w-full aspect-[4/5] sm:aspect-[4/5] rounded-[2rem] sm:rounded-[3rem] rounded-tr-none overflow-hidden shadow-2xl">
               <Image
                 src="/images/new_hero.jpg"
                 alt="Bio-AI Neural Network"

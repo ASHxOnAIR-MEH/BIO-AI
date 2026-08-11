@@ -52,8 +52,8 @@ export default function Opportunity() {
           </h2>
         </motion.div>
 
-        {/* 2-col on mobile for compact display, 4-col on desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-16 sm:mb-24 lg:mb-32">
+        {/* 1-col on mobile, 2-col on tablet, 4-col on desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-16 sm:mb-24 lg:mb-32">
           {steps.map((step, index) => (
             <motion.div
               key={step.title}
