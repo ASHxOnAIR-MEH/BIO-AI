@@ -7,36 +7,61 @@ export default function CredibilityStrip() {
         <p className="text-center text-[10px] sm:text-xs font-semibold text-text-secondary uppercase tracking-widest mb-8 sm:mb-10">
           An Ecosystem Initiative Backed By
         </p>
-        {/* 3-col on mobile, 5-col on desktop */}
         <div className="grid grid-cols-3 sm:grid-cols-5 gap-6 sm:gap-10 md:gap-16 lg:gap-20 items-center justify-items-center">
           <div className="flex flex-col items-center gap-2 sm:gap-4">
-            <div className="relative w-20 sm:w-36 md:w-48 h-10 sm:h-16 sm:h-20">
-              <Image src="/ksum-logo.png" alt="Kerala Startup Mission" fill className="object-contain" />
-            </div>
+            <Image
+              src="/ksum-logo.png"
+              alt="Kerala Startup Mission"
+              width={192}
+              height={80}
+              style={{ width: "auto" }}
+              className="object-contain h-10 sm:h-16 sm:h-20"
+            />
             <span className="hidden sm:block text-[10px] md:text-xs font-bold text-text-secondary uppercase tracking-widest text-center">Kerala Startup Mission</span>
           </div>
           <div className="flex flex-col items-center gap-2 sm:gap-4">
-            <div className="relative w-16 sm:w-24 md:w-32 h-8 sm:h-12 md:h-16">
-              <Image src="/kerala-it.png" alt="Kerala IT" fill className="object-contain" />
-            </div>
+            <Image
+              src="/kerala-it.png"
+              alt="Kerala IT"
+              width={128}
+              height={64}
+              style={{ width: "auto" }}
+              className="object-contain h-8 sm:h-12 md:h-16"
+            />
             <span className="hidden sm:block text-[10px] md:text-xs font-bold text-text-secondary uppercase tracking-widest text-center">Kerala IT</span>
           </div>
           <div className="flex flex-col items-center gap-2 sm:gap-4">
-            <div className="relative w-16 sm:w-24 md:w-32 h-8 sm:h-12 md:h-16">
-              <Image src="/meity.png" alt="MeitY" fill className="object-contain" />
-            </div>
+            <Image
+              src="/meity.png"
+              alt="MeitY"
+              width={128}
+              height={64}
+              loading="eager"
+              style={{ width: "auto" }}
+              className="object-contain h-8 sm:h-12 md:h-16"
+            />
             <span className="hidden sm:block text-[10px] md:text-xs font-bold text-text-secondary uppercase tracking-widest text-center">MeitY</span>
           </div>
           <div className="flex flex-col items-center gap-2 sm:gap-4">
-            <div className="relative w-16 sm:w-24 md:w-32 h-8 sm:h-12 md:h-16">
-              <Image src="/india-ai.png" alt="IndiaAI" fill className="object-contain" />
-            </div>
+            <Image
+              src="/india-ai.png"
+              alt="IndiaAI"
+              width={128}
+              height={64}
+              style={{ width: "auto" }}
+              className="object-contain h-8 sm:h-12 md:h-16"
+            />
             <span className="hidden sm:block text-[10px] md:text-xs font-bold text-text-secondary uppercase tracking-widest text-center">IndiaAI</span>
           </div>
           <div className="flex flex-col items-center gap-2 sm:gap-4">
-            <div className="relative w-16 sm:w-24 md:w-32 h-8 sm:h-12 md:h-16">
-              <Image src="/digital-india.png" alt="Digital India" fill className="object-contain" />
-            </div>
+            <Image
+              src="/digital-india.png"
+              alt="Digital India"
+              width={128}
+              height={64}
+              style={{ width: "auto" }}
+              className="object-contain h-8 sm:h-12 md:h-16"
+            />
             <span className="hidden sm:block text-[10px] md:text-xs font-bold text-text-secondary uppercase tracking-widest text-center">Digital India</span>
           </div>
         </div>

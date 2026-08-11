@@ -11,7 +11,7 @@ export default function Footer() {
 
           {/* Brand — full width on mobile */}
           <div className="col-span-2 lg:col-span-1">
-            <Image src="/ksum-logo.png" alt="Kerala Startup Mission" width={120} height={48} className="object-contain h-10 w-auto mb-4" />
+            <Image src="/ksum-logo.png" alt="Kerala Startup Mission" width={120} height={48} style={{ width: 'auto' }} className="object-contain h-10 mb-4" />
             <span className="font-heading font-bold text-base text-text-primary leading-tight tracking-tight block">BIO-AI CoE</span>
             <span className="text-[10px] sm:text-xs font-medium text-text-secondary uppercase tracking-widest mt-1 block">Kerala Startup Mission</span>
             <p className="mt-4 sm:mt-6 text-xs sm:text-sm text-text-secondary leading-relaxed">

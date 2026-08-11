@@ -39,15 +39,16 @@ export default function Navbar() {
               alt="Kerala Startup Mission"
               width={140}
               height={56}
-              className="object-contain h-8 sm:h-10 md:h-12 w-auto shrink-0"
+              style={{ width: 'auto' }}
+              className="object-contain h-8 sm:h-10 md:h-12 shrink-0"
               priority
             />
             {/* Partner logos — only shown on very wide screens */}
             <div className="hidden xl:flex items-center space-x-5 border-l border-gray-300 pl-5 ml-2">
-              <Image src="/kerala-it.png" alt="Kerala IT" width={100} height={40} className="object-contain h-8 w-auto md:h-10" />
-              <Image src="/meity.png" alt="MeitY" width={100} height={40} className="object-contain h-8 w-auto md:h-10" />
-              <Image src="/india-ai.png" alt="IndiaAI" width={100} height={40} className="object-contain h-8 w-auto md:h-10" />
-              <Image src="/digital-india.png" alt="Digital India" width={100} height={40} className="object-contain h-8 w-auto md:h-10" />
+              <Image src="/kerala-it.png" alt="Kerala IT" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-8 w-auto md:h-10" />
+              <Image src="/meity.png" alt="MeitY" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-8 w-auto md:h-10" />
+              <Image src="/india-ai.png" alt="IndiaAI" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-8 w-auto md:h-10" />
+              <Image src="/digital-india.png" alt="Digital India" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-8 w-auto md:h-10" />
             </div>
           </div>
 
@@ -103,10 +104,10 @@ export default function Navbar() {
           <div className="mt-8 pt-6 border-t border-gray-100">
             <p className="text-[10px] font-semibold text-text-secondary uppercase tracking-widest mb-5">Backed by</p>
             <div className="flex flex-wrap items-center gap-6">
-              <Image src="/ksum-logo.png" alt="KSUM" width={100} height={40} className="object-contain h-8 w-auto" />
-              <Image src="/kerala-it.png" alt="Kerala IT" width={80} height={32} className="object-contain h-7 w-auto" />
-              <Image src="/meity.png" alt="MeitY" width={80} height={32} className="object-contain h-7 w-auto" />
-              <Image src="/india-ai.png" alt="IndiaAI" width={80} height={32} className="object-contain h-7 w-auto" />
+              <Image src="/ksum-logo.png" alt="KSUM" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-8 w-auto" />
+              <Image src="/kerala-it.png" alt="Kerala IT" width={80} height={32} style={{ width: 'auto' }} className="object-contain h-7 w-auto" />
+              <Image src="/meity.png" alt="MeitY" width={80} height={32} style={{ width: 'auto' }} className="object-contain h-7 w-auto" />
+              <Image src="/india-ai.png" alt="IndiaAI" width={80} height={32} style={{ width: 'auto' }} className="object-contain h-7 w-auto" />
             </div>
           </div>
 
