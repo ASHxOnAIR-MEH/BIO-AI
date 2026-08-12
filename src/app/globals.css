@@ -3,12 +3,12 @@
 @theme {
   --font-sans: var(--font-inter);
   --font-heading: var(--font-sora);
-  
+
   --color-bio-green: #6FAE24;
   --color-deep-green: #315C2B;
   --color-soft-green: #E5F0D8;
   --color-offwhite: #F4F4F1;
-  
+
   --color-text-primary: #101010;
   --color-text-secondary: #777777;
 }
@@ -18,29 +18,54 @@
   --foreground: #101010;
 }
 
+/* ─── Box model & tap highlight ─────────────────────────────────────────────── */
+
 *, *::before, *::after {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
 
+/* ─── html ───────────────────────────────────────────────────────────────────── */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;           /* Belt */
+  max-width: 100%;
+  scroll-behavior: smooth;
+}
+
+/* ─── body ───────────────────────────────────────────────────────────────────── */
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+  overflow-x: hidden;           /* Suspenders */
   /* Safe area insets for notched devices */
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
+  min-width: 320px;
 }
 
-/* Smooth touch scrolling on iOS */
-html {
-  -webkit-text-size-adjust: 100%;
+/* ─── Universal touch improvements ──────────────────────────────────────────── */
+
+button,
+a,
+[role="button"] {
+  touch-action: manipulation;
 }
+
+/* ─── Utilities ──────────────────────────────────────────────────────────────── */
 
 @layer utilities {
+  /* Editorial card — used in Opportunity / Benefits sections */
   .editorial-card {
-    @apply bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100;
+    @apply bg-white rounded-3xl p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100;
+  }
+
+  /* Prevent accidental browser text-selection highlight on UI chrome elements */
+  .no-select {
+    -webkit-user-select: none;
+    user-select: none;
   }
 }

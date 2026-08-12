@@ -1,23 +1,34 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+// ─── Nav Links ────────────────────────────────────────────────────────────────
+
+const navLinks = [
+  { label: "Home",       href: "/"            },
+  { label: "About",      href: "#about"       },
+  { label: "Incubation", href: "#opportunity" },
+  { label: "Contact",    href: "#contact"     },
+];
+
+// ─── Component ────────────────────────────────────────────────────────────────
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen]       = useState(false);
+  const [scrolled, setScrolled]   = useState(false);
+  const navRef                    = useRef<HTMLElement>(null);
 
+  // Scroll detection
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
+  // Body scroll lock when mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -27,108 +38,256 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
+  const closeMenu = () => setIsOpen(false);
+
+  const handleNavClick = (href: string) => {
+    closeMenu();
+    if (href.startsWith("#")) {
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 400);
+    }
+  };
+
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-offwhite/95 backdrop-blur-md border-b border-gray-200 py-3 sm:py-4" : "bg-transparent py-4 sm:py-6"}`}>
-        <div className="max-w-[1400px] w-full mx-auto px-5 sm:px-10 lg:px-12 flex items-center justify-between">
+      {/* ─── NAVBAR ──────────────────────────────────────────────────────────── */}
+      <nav
+        ref={navRef}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-offwhite/95 backdrop-blur-md border-b border-gray-200"
+            : "bg-offwhite/90 backdrop-blur-sm"
+        }`}
+      >
+        {/* ── Inner wrapper — constrained width, never wider than viewport ─── */}
+        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
 
-          {/* --- DESKTOP LOGO GROUP --- */}
-          <div className="hidden xl:flex items-center gap-6">
-            {/* National Ecosystem */}
-            <div className="flex items-center gap-5">
-              <Image src="/meity.png" alt="MeitY" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-8" />
-              <Image src="/india-ai.png" alt="IndiaAI" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-8" />
-              <Image src="/digital-india.png" alt="Digital India" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-8" />
+          {/* ── DESKTOP layout (xl+) ─────────────────────────────────────────── */}
+          <div className="hidden xl:flex items-center justify-between py-4">
+            {/* Logo group */}
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-5">
+                <Image src="/meity.png"         alt="MeitY"         width={100} height={40} style={{ width: "auto" }} className="object-contain h-8" />
+                <Image src="/india-ai.png"      alt="IndiaAI"       width={100} height={40} style={{ width: "auto" }} className="object-contain h-8" />
+                <Image src="/digital-india.png" alt="Digital India" width={100} height={40} style={{ width: "auto" }} className="object-contain h-8" />
+              </div>
+              <div className="h-10 w-px bg-gray-300 shrink-0" />
+              <div className="flex items-center gap-5">
+                <Image src="/ksum-logo.png" alt="Kerala Startup Mission" width={220} height={88} style={{ width: "auto" }} className="object-contain h-16 shrink-0" priority />
+                <Image src="/kerala-it.png" alt="Kerala IT"              width={100} height={40} style={{ width: "auto" }} className="object-contain h-8" />
+              </div>
             </div>
 
-            {/* Separator */}
-            <div className="h-12 w-px bg-gray-300 shrink-0"></div>
-
-            {/* Kerala Ecosystem */}
-            <div className="flex items-center gap-5">
-              <Image src="/ksum-logo.png" alt="Kerala Startup Mission" width={256} height={104} style={{ width: 'auto' }} className="object-contain h-20 shrink-0" priority />
-              <Image src="/kerala-it.png" alt="Kerala IT" width={100} height={40} style={{ width: 'auto' }} className="object-contain h-8" />
+            {/* Nav links + CTA */}
+            <div className="flex items-center gap-8">
+              <Link href="/" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Home</Link>
+              <a href="#about" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">About</a>
+              <a href="#opportunity" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Incubation</a>
+              <a href="#contact" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Contact</a>
+              <a
+                href="https://zfrmz.com/Ene770rEwgTw2cP7chBH"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-text-primary rounded-full hover:bg-bio-green transition-colors"
+              >
+                Apply Now ↗
+              </a>
             </div>
           </div>
 
-          {/* Desktop Links */}
-          <div className="hidden xl:flex items-center space-x-8 ml-10">
-            <Link href="/" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Home</Link>
-            <Link href="#about" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">About</Link>
-            <Link href="#opportunity" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Incubation</Link>
-            <Link href="#contact" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Contact</Link>
-            <a
-              href="https://zfrmz.com/Ene770rEwgTw2cP7chBH"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-7 py-2.5 text-sm font-bold text-white bg-text-primary rounded-full hover:bg-bio-green transition-colors"
-            >
-              Apply Now ↗
-            </a>
-          </div>
+          {/* ── MOBILE / TABLET layout (< xl) ────────────────────────────────── */}
+          <div className="xl:hidden flex flex-col py-3">
 
-          {/* --- MOBILE/TABLET HEADER --- */}
-          <div className="flex xl:hidden flex-col w-full gap-3 sm:gap-4">
-            {/* Top Row: KSUM + Controls */}
-            <div className="flex items-center justify-between w-full">
-              <Image src="/ksum-logo.png" alt="Kerala Startup Mission" width={200} height={80} style={{ width: 'auto' }} className="object-contain h-10 sm:h-12 shrink-0" priority />
-              <div className="flex items-center gap-2 sm:gap-3">
+            {/* Row 1 — KSUM branding + hamburger */}
+            <div className="flex items-center justify-between">
+              <Image
+                src="/ksum-logo.png"
+                alt="Kerala Startup Mission"
+                width={180}
+                height={72}
+                style={{ width: "auto" }}
+                className="object-contain h-11 sm:h-13 shrink-0"
+                priority
+              />
+
+              <div className="flex items-center gap-2">
+                {/* Apply — visible on sm tablet, hidden on phone (CTA is in Hero) */}
                 <a
                   href="https://zfrmz.com/Ene770rEwgTw2cP7chBH"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-4 py-2 text-xs font-bold text-white bg-bio-green rounded-full hover:bg-deep-green transition-colors active:scale-95"
+                  className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-bold text-white bg-bio-green rounded-full hover:bg-deep-green transition-colors active:scale-95"
                 >
-                  Apply ↗
+                  Apply Now ↗
                 </a>
+
+                {/* Hamburger button */}
                 <button
                   onClick={() => setIsOpen(!isOpen)}
-                  className="text-text-primary p-1 sm:p-2 focus:outline-none touch-manipulation"
-                  aria-label="Toggle menu"
+                  className="w-10 h-10 flex flex-col items-center justify-center gap-[5px] focus:outline-none touch-manipulation rounded-lg hover:bg-black/5 transition-colors"
+                  aria-label={isOpen ? "Close menu" : "Open menu"}
+                  aria-expanded={isOpen}
                 >
-                  {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                  <motion.span
+                    animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="block h-[2px] bg-text-primary rounded-full origin-center"
+                    style={{ width: "22px" }}
+                  />
+                  <motion.span
+                    animate={isOpen ? { opacity: 0, x: -6 } : { opacity: 1, x: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="block h-[2px] bg-text-primary rounded-full"
+                    style={{ width: "16px" }}
+                  />
+                  <motion.span
+                    animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="block h-[2px] bg-text-primary rounded-full origin-center"
+                    style={{ width: "22px" }}
+                  />
                 </button>
               </div>
             </div>
 
-            {/* Bottom Row: Remaining Logos */}
-            <div className="flex items-center gap-3 sm:gap-4 pb-1">
-              <Image src="/meity.png" alt="MeitY" width={70} height={28} style={{ width: 'auto' }} className="object-contain h-4 sm:h-5 shrink-0" />
-              <Image src="/india-ai.png" alt="IndiaAI" width={70} height={28} style={{ width: 'auto' }} className="object-contain h-4 sm:h-5 shrink-0" />
-              <Image src="/digital-india.png" alt="Digital India" width={70} height={28} style={{ width: 'auto' }} className="object-contain h-4 sm:h-5 shrink-0" />
-              
-              <div className="h-4 sm:h-5 w-px bg-gray-300 shrink-0"></div>
-              
-              <Image src="/kerala-it.png" alt="Kerala IT" width={70} height={28} style={{ width: 'auto' }} className="object-contain h-4 sm:h-5 shrink-0" />
+            {/* Row 2 — Institutional logos strip */}
+            <div className="flex items-center gap-3 sm:gap-4 mt-2 pb-1 overflow-hidden">
+              <Image src="/meity.png"         alt="MeitY"         width={56} height={22} style={{ width: "auto" }} className="object-contain h-[17px] sm:h-5 shrink-0" />
+              <Image src="/india-ai.png"      alt="IndiaAI"       width={56} height={22} style={{ width: "auto" }} className="object-contain h-[17px] sm:h-5 shrink-0" />
+              <Image src="/digital-india.png" alt="Digital India" width={56} height={22} style={{ width: "auto" }} className="object-contain h-[17px] sm:h-5 shrink-0" />
+              <div className="h-3.5 w-px bg-gray-300 shrink-0" />
+              <Image src="/kerala-it.png"     alt="Kerala IT"     width={56} height={22} style={{ width: "auto" }} className="object-contain h-[17px] sm:h-5 shrink-0" />
             </div>
+
           </div>
 
         </div>
       </nav>
 
-      {/* Mobile Full-Screen Menu */}
-      {isOpen && (
-        <div className="fixed inset-0 z-40 bg-offwhite flex flex-col pt-32 px-6 pb-8 overflow-y-auto">
-          <nav className="flex flex-col space-y-6 text-3xl font-heading font-semibold text-text-primary">
-            <Link href="/" onClick={() => setIsOpen(false)} className="border-b border-gray-100 pb-6 hover:text-bio-green transition-colors">Home</Link>
-            <Link href="#about" onClick={() => setIsOpen(false)} className="border-b border-gray-100 pb-6 hover:text-bio-green transition-colors">About</Link>
-            <Link href="#opportunity" onClick={() => setIsOpen(false)} className="border-b border-gray-100 pb-6 hover:text-bio-green transition-colors">Incubation</Link>
-            <Link href="#contact" onClick={() => setIsOpen(false)} className="border-b border-gray-100 pb-6 hover:text-bio-green transition-colors">Contact</Link>
-          </nav>
+      {/* ─── MOBILE SLIDE-IN MENU ────────────────────────────────────────────── */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 z-[55] bg-black/40 backdrop-blur-[2px]"
+              onClick={closeMenu}
+              aria-hidden="true"
+            />
 
-          {/* Sticky CTA */}
-          <div className="mt-auto pt-8 w-full">
-            <a
-              href="https://zfrmz.com/Ene770rEwgTw2cP7chBH"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex items-center justify-center px-8 py-5 text-base font-bold text-white bg-bio-green rounded-full shadow-lg active:scale-95 transition-transform"
+            {/* Panel */}
+            <motion.div
+              key="menu-panel"
+              initial={{ x: "-100%" }}
+              animate={{ x: "0%" }}
+              exit={{ x: "-100%" }}
+              transition={{ duration: 0.38, ease: "easeInOut" }}
+              className="fixed top-0 left-0 bottom-0 z-[60] w-[82vw] max-w-[340px] bg-offwhite shadow-2xl flex flex-col"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navigation"
             >
-              Apply for Incubation ↗
-            </a>
-          </div>
-        </div>
-      )}
+              {/* Panel header */}
+              <div className="flex items-center justify-between px-5 pt-5 pb-4 border-b border-gray-100">
+                <Image
+                  src="/ksum-logo.png"
+                  alt="Kerala Startup Mission"
+                  width={150}
+                  height={60}
+                  style={{ width: "auto" }}
+                  className="object-contain h-9"
+                />
+                <button
+                  onClick={closeMenu}
+                  className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-black/8 transition-colors touch-manipulation focus:outline-none"
+                  aria-label="Close menu"
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <line x1="1" y1="1" x2="15" y2="15" />
+                    <line x1="15" y1="1" x2="1" y2="15" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Nav list */}
+              <nav className="flex-1 flex flex-col overflow-y-auto px-5 pt-3 pb-5">
+                <ul className="flex flex-col">
+                  {navLinks.map((link, i) => (
+                    <motion.li
+                      key={link.label}
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ duration: 0.3, delay: 0.1 + i * 0.06 }}
+                    >
+                      {link.href === "/" ? (
+                        <Link
+                          href={link.href}
+                          onClick={closeMenu}
+                          className="flex items-center justify-between w-full py-[14px] border-b border-gray-100 group min-h-[52px]"
+                        >
+                          <span className="text-2xl font-heading font-semibold text-text-primary group-hover:text-bio-green transition-colors">
+                            {link.label}
+                          </span>
+                          <span className="text-text-secondary group-hover:text-bio-green transition-colors">↗</span>
+                        </Link>
+                      ) : (
+                        <button
+                          onClick={() => handleNavClick(link.href)}
+                          className="flex items-center justify-between w-full py-[14px] border-b border-gray-100 group min-h-[52px] text-left"
+                        >
+                          <span className="text-2xl font-heading font-semibold text-text-primary group-hover:text-bio-green transition-colors">
+                            {link.label}
+                          </span>
+                          <span className="text-text-secondary group-hover:text-bio-green transition-colors">↗</span>
+                        </button>
+                      )}
+                    </motion.li>
+                  ))}
+                </ul>
+
+                <div className="flex-1 min-h-[24px]" />
+
+                {/* CTA */}
+                <motion.div
+                  initial={{ y: 12, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.35, delay: 0.42 }}
+                >
+                  <a
+                    href="https://zfrmz.com/Ene770rEwgTw2cP7chBH"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={closeMenu}
+                    className="flex items-center justify-center w-full px-5 py-4 text-sm font-bold text-white bg-bio-green rounded-2xl hover:bg-deep-green active:scale-95 transition-all shadow-md min-h-[52px]"
+                  >
+                    Apply for Bio-AI Incubation ↗
+                  </a>
+                </motion.div>
+
+                {/* Institutional logos */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.52 }}
+                  className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-center gap-4 flex-wrap"
+                >
+                  <Image src="/meity.png"         alt="MeitY"         width={44} height={18} style={{ width: "auto" }} className="object-contain h-[14px] opacity-50" />
+                  <Image src="/india-ai.png"      alt="IndiaAI"       width={44} height={18} style={{ width: "auto" }} className="object-contain h-[14px] opacity-50" />
+                  <Image src="/digital-india.png" alt="Digital India" width={44} height={18} style={{ width: "auto" }} className="object-contain h-[14px] opacity-50" />
+                  <Image src="/kerala-it.png"     alt="Kerala IT"     width={44} height={18} style={{ width: "auto" }} className="object-contain h-[14px] opacity-50" />
+                </motion.div>
+              </nav>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 }
