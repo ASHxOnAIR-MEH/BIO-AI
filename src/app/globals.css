@@ -4,18 +4,58 @@
   --font-sans: var(--font-inter);
   --font-heading: var(--font-sora);
 
-  --color-bio-green: #6FAE24;
-  --color-deep-green: #315C2B;
-  --color-soft-green: #E5F0D8;
-  --color-offwhite: #F4F4F1;
+  /* Primary Palette */
+  --color-primary: #0A2164;
+  --color-primary-dark: #081A52;
+  --color-blue: #1B4D9B;
+  --color-blue-bright: #3B82F6;
+  --color-blue-light: #EEF2FB;
 
-  --color-text-primary: #101010;
-  --color-text-secondary: #777777;
+  /* Accent Palette — Blue */
+  --color-accent: #1B4D9B;
+  --color-accent-bright: #3B82F6;
+  --color-accent-dark: #081A52;
+
+  /* Background & Surfaces */
+  --color-background: #F6F8FC;
+  --color-surface: #FFFFFF;
+  --color-surface-secondary: #F1F5FB;
+
+  /* Typography */
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+
+  /* Border */
+  --color-border: rgba(15, 23, 42, 0.08);
+
+  /* Aliases for legacy component compatibility */
+  --color-bio-green: #1B4D9B;
+  --color-deep-green: #081A52;
+  --color-soft-green: #EEF2FB;
+  --color-offwhite: #F6F8FC;
 }
 
 :root {
-  --background: #F4F4F1;
-  --foreground: #101010;
+  --primary: #0A2164;
+  --primary-dark: #081A52;
+  --blue: #1B4D9B;
+  --blue-bright: #3B82F6;
+  --blue-light: #EEF2FB;
+
+  --accent: #1B4D9B;
+  --accent-bright: #3B82F6;
+  --accent-dark: #081A52;
+
+  --background: #F6F8FC;
+  --surface: #FFFFFF;
+  --surface-secondary: #F1F5FB;
+
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+
+  --border: rgba(15, 23, 42, 0.08);
+
+  --foreground: #0F172A;
 }
 
 /* ─── Box model & tap highlight ─────────────────────────────────────────────── */
@@ -60,7 +100,7 @@ a,
 @layer utilities {
   /* Editorial card — used in Opportunity / Benefits sections */
   .editorial-card {
-    @apply bg-white rounded-3xl p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100;
+    @apply bg-white rounded-3xl p-6 sm:p-8 shadow-[0_8px_30px_rgba(10,33,100,0.06)] border border-[#EEF2FB] hover:border-[#1B4D9B]/30 hover:shadow-[0_12px_40px_rgba(27,77,155,0.1)] transition-all duration-300;
   }
 
   /* Prevent accidental browser text-selection highlight on UI chrome elements */

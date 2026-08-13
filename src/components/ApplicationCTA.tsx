@@ -90,7 +90,7 @@ export default function ApplicationCTA() {
                 href="https://zfrmz.com/Ene770rEwgTw2cP7chBH"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full lg:w-auto inline-flex items-center justify-center px-8 sm:px-10 py-4 sm:py-5 text-sm sm:text-base font-bold text-text-primary bg-bio-green rounded-full hover:bg-white transition-all shadow-[0_0_40px_rgba(111,174,36,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)] active:scale-95 min-h-[52px] touch-manipulation"
+                className="w-full lg:w-auto inline-flex items-center justify-center px-8 sm:px-10 py-4 sm:py-5 text-sm sm:text-base font-bold text-white bg-bio-green rounded-full hover:bg-white hover:text-primary transition-all shadow-[0_0_40px_rgba(27,77,155,0.35)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)] active:scale-95 min-h-[52px] touch-manipulation"
               >
                 Apply for Incubation ↗
               </a>

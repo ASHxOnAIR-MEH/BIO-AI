@@ -3,44 +3,53 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-// ─── Journey strip ────────────────────────────────────────────────────────────
+// ─── Bio-AI CoE Pillars strip ──────────────────────────────────────────────────
 
-const journey = [
+const coePillars = [
   {
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10"/><path d="M12 6v6l4 2"/><circle cx="19" cy="5" r="3" fill="currentColor" stroke="none"/>
+        <circle cx="12" cy="12" r="2"/>
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
       </svg>
     ),
-    label: "INNOVATE",
-    sub: "Build deep-tech bio-AI solutions",
+    label: "01 — RESEARCH",
+    sub: "Advancing Bio-AI research and deep-tech innovation",
   },
   {
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>
+        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+        <line x1="6" y1="6" x2="6.01" y2="6"/>
+        <line x1="6" y1="18" x2="6.01" y2="18"/>
       </svg>
     ),
-    label: "INCUBATE",
-    sub: "Access infrastructure & mentorship",
+    label: "02 — INFRASTRUCTURE",
+    sub: "Access to compute, GPU infrastructure and advanced facilities",
   },
   {
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M9 3H5a2 2 0 0 0-2 2v4"/><path d="M9 3h10a2 2 0 0 1 2 2v10"/><path d="M3 9v10a2 2 0 0 0 2 2h10"/><circle cx="15" cy="15" r="3"/>
+        <path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/>
+        <path d="M9 21h6"/>
       </svg>
     ),
-    label: "VALIDATE",
-    sub: "Collaborate with labs & experts",
+    label: "03 — EXPERTISE",
+    sub: "Domain mentoring connecting AI, biotechnology and life sciences",
   },
   {
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
+        <circle cx="18" cy="5" r="3"/>
+        <circle cx="6" cy="12" r="3"/>
+        <circle cx="18" cy="19" r="3"/>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
       </svg>
     ),
-    label: "COMMERCIALISE",
-    sub: "Scale with funding & ecosystem",
+    label: "04 — ECOSYSTEM",
+    sub: "Connecting startups, researchers, institutions and industry",
   },
 ];
 
@@ -49,24 +58,6 @@ const journey = [
 export default function Hero() {
   return (
     <section className="relative w-full bg-offwhite overflow-x-hidden">
-
-      {/*
-       * ── HERO MAIN AREA ─────────────────────────────────────────────────────
-       *
-       * Desktop (xl+):
-       *   Flex row — text left ~45%, image right ~55%
-       *   Navbar on desktop is ~88px tall (logo h-16 + py-4 × 2).
-       *   padding-top on the text column must be ≥ navbar height + breathing room.
-       *   We use pt-28 on xl (112px) which safely clears the ~88px navbar.
-       *
-       * Tablet (lg–xl):
-       *   Same flex-row but slightly less pt.
-       *
-       * Mobile (< lg):
-       *   Stacked: text block first, then image below, then journey strip.
-       *   Mobile navbar is ~88px (KSUM row ~48px + logo row ~28px + py-3 ~12px).
-       *   pt-24 (96px) on mobile safely clears it.
-       */}
 
       <div className="flex flex-col lg:flex-row w-full min-h-[auto] lg:min-h-[78vh] xl:min-h-[82vh]">
 
@@ -94,7 +85,7 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Heading: "BIO-AI CENTRE OF" black / "EXCELLENCE" green */}
+          {/* Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -151,32 +142,28 @@ export default function Hero() {
             sizes="(max-width: 1024px) 100vw, 58vw"
             className="object-cover object-[55%_center]"
           />
-          {/* Subtle left-fade only on desktop — keeps building fully visible */}
+          {/* Subtle left-fade only on desktop */}
           <div
             className="absolute inset-y-0 left-0 hidden lg:block pointer-events-none"
-            style={{ width: "10%", background: "linear-gradient(to right, #F4F4F1, transparent)" }}
+            style={{ width: "10%", background: "linear-gradient(to right, #F6F8FC, transparent)" }}
           />
         </motion.div>
 
       </div>
 
-      {/* ── JOURNEY STRIP ─────────────────────────────────────────────────────── */}
+      {/* ── BIO-AI COE PILLARS STRIP ───────────────────────────────────────────── */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.45, ease: "easeOut" }}
         className="px-4 sm:px-8 lg:px-12 pb-8 sm:pb-10 lg:pb-12 pt-4 sm:pt-5"
       >
-        <div className="bg-text-primary rounded-2xl px-5 sm:px-8 lg:px-10 py-5 sm:py-6">
-          {/*
-           * Mobile: 2 × 2 grid
-           * Desktop: 4-column row
-           */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-5 sm:gap-x-6 sm:gap-y-0">
-            {journey.map((item) => (
+        <div className="bg-primary rounded-2xl px-5 sm:px-8 lg:px-10 py-5 sm:py-6 shadow-xl border border-white/10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-5 sm:gap-x-6 lg:gap-x-8 sm:gap-y-0">
+            {coePillars.map((item) => (
               <div key={item.label} className="flex items-start gap-3">
                 {/* Icon bubble */}
-                <div className="shrink-0 w-8 h-8 rounded-full bg-bio-green/15 flex items-center justify-center text-bio-green mt-0.5">
+                <div className="shrink-0 w-8 h-8 rounded-full bg-blue-bright/15 flex items-center justify-center text-blue-bright mt-0.5">
                   {item.icon}
                 </div>
                 {/* Text */}
@@ -184,7 +171,7 @@ export default function Hero() {
                   <p className="text-[11px] font-bold text-white uppercase tracking-wider leading-none mb-1 select-none">
                     {item.label}
                   </p>
-                  <p className="text-[10px] sm:text-[11px] text-white/55 leading-snug select-none">
+                  <p className="text-[10px] sm:text-[11px] text-white/70 leading-snug select-none">
                     {item.sub}
                   </p>
                 </div>
