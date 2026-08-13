@@ -100,17 +100,28 @@ export default function Navbar() {
           {/* ── MOBILE / TABLET layout (< xl) ────────────────────────────────── */}
           <div className="xl:hidden flex flex-col py-3">
 
-            {/* Row 1 — KSUM branding + hamburger */}
-            <div className="flex items-center justify-between">
-              <Image
-                src="/ksum-logo.png"
-                alt="Kerala Startup Mission"
-                width={180}
-                height={72}
-                style={{ width: "auto" }}
-                className="object-contain h-11 sm:h-13 shrink-0"
-                priority
-              />
+            {/* Row 1 — Central Govt / IndiaAI Ecosystem */}
+            <div className="flex items-center gap-4 sm:gap-6 pb-3">
+              <Image src="/meity.png"         alt="MeitY"         width={76} height={30} style={{ width: "auto" }} className="object-contain h-[22px] sm:h-[24px] shrink-0" />
+              <Image src="/india-ai.png"      alt="IndiaAI"       width={76} height={30} style={{ width: "auto" }} className="object-contain h-[22px] sm:h-[24px] shrink-0" />
+              <Image src="/digital-india.png" alt="Digital India" width={76} height={30} style={{ width: "auto" }} className="object-contain h-[22px] sm:h-[24px] shrink-0" />
+            </div>
+
+            {/* Row 2 — Kerala Ecosystem + Hamburger */}
+            <div className="flex items-center justify-between border-t border-gray-200/80 pt-3">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <Image
+                  src="/ksum-logo.png"
+                  alt="Kerala Startup Mission"
+                  width={140}
+                  height={56}
+                  style={{ width: "auto" }}
+                  className="object-contain h-[34px] sm:h-[38px] shrink-0"
+                  priority
+                />
+                <div className="h-5 w-px bg-gray-300 shrink-0" />
+                <Image src="/kerala-it.png" alt="Kerala IT" width={68} height={28} style={{ width: "auto" }} className="object-contain h-[22px] sm:h-[24px] shrink-0" />
+              </div>
 
               <div className="flex items-center gap-2">
                 {/* Apply — visible on sm tablet, hidden on phone (CTA is in Hero) */}
@@ -150,15 +161,6 @@ export default function Navbar() {
                   />
                 </button>
               </div>
-            </div>
-
-            {/* Row 2 — Institutional logos strip */}
-            <div className="flex items-center gap-3 sm:gap-4 mt-2 pb-1 overflow-hidden">
-              <Image src="/meity.png"         alt="MeitY"         width={56} height={22} style={{ width: "auto" }} className="object-contain h-[17px] sm:h-5 shrink-0" />
-              <Image src="/india-ai.png"      alt="IndiaAI"       width={56} height={22} style={{ width: "auto" }} className="object-contain h-[17px] sm:h-5 shrink-0" />
-              <Image src="/digital-india.png" alt="Digital India" width={56} height={22} style={{ width: "auto" }} className="object-contain h-[17px] sm:h-5 shrink-0" />
-              <div className="h-3.5 w-px bg-gray-300 shrink-0" />
-              <Image src="/kerala-it.png"     alt="Kerala IT"     width={56} height={22} style={{ width: "auto" }} className="object-contain h-[17px] sm:h-5 shrink-0" />
             </div>
 
           </div>

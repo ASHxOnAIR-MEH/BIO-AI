@@ -76,7 +76,7 @@ export default function Hero() {
             relative z-10 flex flex-col justify-center
             w-full lg:w-[46%] xl:w-[44%]
             shrink-0
-            pt-24 sm:pt-28 lg:pt-32 xl:pt-36
+            pt-32 sm:pt-36 lg:pt-36 xl:pt-40
             pb-8 sm:pb-10 lg:pb-14
             px-5 sm:px-8 lg:px-12 xl:px-14
           `}
