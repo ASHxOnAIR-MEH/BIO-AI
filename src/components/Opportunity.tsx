@@ -36,7 +36,7 @@ export default function Opportunity() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8 }}
-          className="mb-8 sm:mb-16 md:mb-20"
+          className="mb-6 sm:mb-8 md:mb-10"
         >
           <h2 className="text-[clamp(1.75rem,6vw,3.5rem)] font-heading font-semibold text-text-primary tracking-tight">
             The Incubation Opportunity
@@ -62,7 +62,7 @@ export default function Opportunity() {
               <h3 className="text-xl sm:text-2xl font-heading font-semibold text-text-primary mb-2 sm:mb-4">
                 {step.title}
               </h3>
-              <p className="text-sm sm:text-base text-text-secondary leading-relaxed font-normal mt-auto text-justify">
+              <p className="text-sm sm:text-base text-text-secondary leading-relaxed font-normal mt-auto">
                 {step.description}
               </p>
             </motion.div>
