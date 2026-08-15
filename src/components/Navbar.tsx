@@ -42,7 +42,9 @@ export default function Navbar() {
 
   const handleNavClick = (href: string) => {
     closeMenu();
-    if (href.startsWith("#")) {
+    if (href === "/") {
+      setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 400);
+    } else if (href.startsWith("#")) {
       setTimeout(() => {
         const el = document.querySelector(href);
         if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -82,7 +84,7 @@ export default function Navbar() {
 
             {/* Nav links + CTA */}
             <div className="flex items-center gap-8">
-              <Link href="/" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Home</Link>
+              <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Home</button>
               <a href="#about" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">About</a>
               <a href="#opportunity" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Incubation</a>
               <a href="#contact" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Contact</a>
@@ -229,16 +231,15 @@ export default function Navbar() {
                       transition={{ duration: 0.3, delay: 0.1 + i * 0.06 }}
                     >
                       {link.href === "/" ? (
-                        <Link
-                          href={link.href}
-                          onClick={closeMenu}
-                          className="flex items-center justify-between w-full py-[14px] border-b border-gray-100 group min-h-[52px]"
+                        <button
+                          onClick={() => handleNavClick(link.href)}
+                          className="flex items-center justify-between w-full py-[14px] border-b border-gray-100 group min-h-[52px] text-left"
                         >
                           <span className="text-2xl font-heading font-semibold text-text-primary group-hover:text-bio-green transition-colors">
                             {link.label}
                           </span>
                           <span className="text-text-secondary group-hover:text-bio-green transition-colors">↗</span>
-                        </Link>
+                        </button>
                       ) : (
                         <button
                           onClick={() => handleNavClick(link.href)}
