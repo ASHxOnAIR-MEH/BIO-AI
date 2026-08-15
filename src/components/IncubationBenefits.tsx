@@ -44,9 +44,9 @@ export default function IncubationBenefits() {
           className="mb-8 sm:mb-12 max-w-3xl"
         >
           <h2 className="text-[clamp(1.85rem,5vw,3.25rem)] font-heading font-semibold text-text-primary tracking-tight mb-3">
-            What you get.
+            What you get
           </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-text-secondary leading-relaxed font-normal">
+          <p className="text-sm sm:text-base lg:text-lg text-text-secondary leading-relaxed font-normal text-justify">
             We provide the critical resources needed to turn complex biology into scalable technology.
           </p>
         </motion.div>

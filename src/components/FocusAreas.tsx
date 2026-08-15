@@ -8,14 +8,14 @@ const domains = [
     id: "01",
     title: "Ayurveda",
     description: "AI and deep-tech applications across Ayurveda.",
-    image: "/images/new_ayurveda.jpg",
+    image: "/images/bio_ayurveda.webp",
   },
   {
     id: "02",
     title: "Spices",
     description:
       "AI and deep-tech innovation, value addition and technology development in the spices sector.",
-    image: "/images/image3.jpg",
+    image: "/images/bio_spices.webp",
   },
 ];
 
@@ -36,7 +36,7 @@ export default function FocusAreas() {
           className="mb-10 sm:mb-16 md:mb-20 text-center"
         >
           <h2 className="text-[clamp(1.75rem,7vw,4rem)] font-heading font-semibold text-text-primary tracking-tight mb-3 sm:mb-6 uppercase">
-            Two domains.<br />One intelligence layer.
+            Two domains.<br />One intelligence layer
           </h2>
           <p className="text-sm sm:text-lg text-text-secondary max-w-2xl mx-auto">
             Uniting deep technologies with Kerala&apos;s core ecosystem strengths.

@@ -98,10 +98,10 @@ export default function Footer() {
                   </a>
                   <span className="text-xs text-text-secondary block">8:00 AM – 8:00 PM</span>
                   <a
-                    href="mailto:info@startupmission.in"
+                    href="mailto:bioai@startupmission.in"
                     className="hover:text-bio-green transition-colors block pt-1"
                   >
-                    info@startupmission.in
+                    bioai@startupmission.in
                   </a>
                 </address>
               </div>

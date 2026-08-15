@@ -6,7 +6,7 @@ const steps = [
   {
     label: "PHASE 01 — PRE-INCUBATION",
     title: "Discover",
-    description: "Identify high-impact use cases intersecting AI, Ayurveda, biodiversity, and life sciences.",
+    description: "Identify high-impact use cases intersecting AI, Ayurveda, spices, biodiversity, and life sciences.",
   },
   {
     label: "PHASE 02 — INCUBATION",
@@ -39,7 +39,7 @@ export default function Opportunity() {
           className="mb-8 sm:mb-16 md:mb-20"
         >
           <h2 className="text-[clamp(1.75rem,6vw,3.5rem)] font-heading font-semibold text-text-primary tracking-tight">
-            The Incubation Opportunity.
+            The Incubation Opportunity
           </h2>
         </motion.div>
 
@@ -62,7 +62,7 @@ export default function Opportunity() {
               <h3 className="text-xl sm:text-2xl font-heading font-semibold text-text-primary mb-2 sm:mb-4">
                 {step.title}
               </h3>
-              <p className="text-sm sm:text-base text-text-secondary leading-relaxed font-normal mt-auto">
+              <p className="text-sm sm:text-base text-text-secondary leading-relaxed font-normal mt-auto text-justify">
                 {step.description}
               </p>
             </motion.div>
@@ -89,26 +89,24 @@ export default function Opportunity() {
             {/* Left Column: Program Description & Who Can Apply */}
             <div className="lg:col-span-7 space-y-6">
               <div>
-                <span className="text-[10px] sm:text-xs font-bold text-blue-bright tracking-widest uppercase block mb-3">
+                {/* Highlighted programme announcement label */}
+                <span className="inline-block text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-3 px-3 py-1.5 rounded-full border border-blue-bright/40 bg-blue-bright/15 text-blue-bright">
                   CALL FOR BIO-AI INCUBATION PROGRAM
                 </span>
                 <h3 className="text-[clamp(1.75rem,5vw,3rem)] font-heading font-semibold text-white tracking-tight mb-4 leading-tight">
-                  Build the future of Bio-AI.
+                  Build the future of Bio-AI
                 </h3>
-                <p className="text-sm sm:text-base lg:text-lg text-white/85 leading-relaxed font-normal">
+                <p className="text-sm sm:text-base lg:text-lg text-white/85 leading-relaxed font-normal text-justify">
                   The Bio-AI Incubation Program is designed to support startups developing innovative solutions at the intersection of Artificial Intelligence, biotechnology, Ayurveda, spices, biodiversity, and life sciences.
                 </p>
               </div>
 
               <div className="pt-2 border-t border-white/10">
-                <h4 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider mb-2">
+                <h4 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider mb-3">
                   Who Can Apply?
                 </h4>
-                <p className="text-xs sm:text-sm text-white/70 font-medium mb-2">
-                  Bio-AI CoE invites applications from:
-                </p>
-                <p className="text-xs sm:text-sm text-white/85 leading-relaxed">
-                  Startups working on innovative solutions in the Bio-AI domain, particularly those leveraging AI and deep technologies for applications in Ayurveda, spices, biodiversity, biotechnology, and life sciences.
+                <p className="text-xl sm:text-2xl font-bold text-blue-bright tracking-wider uppercase">
+                  STARTUPS
                 </p>
               </div>
             </div>
@@ -125,7 +123,7 @@ export default function Opportunity() {
                     APPLICATION DEADLINE
                   </span>
                   <span className="text-2xl sm:text-3xl font-bold text-white block">
-                    31 AUGUST 2026
+                    10 SEPTEMBER 2026
                   </span>
                 </div>
 
