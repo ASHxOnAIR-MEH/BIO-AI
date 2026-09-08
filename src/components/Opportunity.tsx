@@ -123,7 +123,7 @@ export default function Opportunity() {
                     APPLICATION DEADLINE
                   </span>
                   <span className="text-2xl sm:text-3xl font-bold text-white block">
-                    10 SEPTEMBER 2026
+                    20 SEPTEMBER 2026
                   </span>
                 </div>
 
