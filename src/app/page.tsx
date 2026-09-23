@@ -4,6 +4,7 @@ import About from "@/components/About";
 import FocusAreas from "@/components/FocusAreas";
 import Opportunity from "@/components/Opportunity";
 import IncubationBenefits from "@/components/IncubationBenefits";
+import Community from "@/components/Community";
 import CredibilityStrip from "@/components/CredibilityStrip";
 import Footer from "@/components/Footer";
 
@@ -16,6 +17,7 @@ export default function Home() {
       <FocusAreas />
       <Opportunity />
       <IncubationBenefits />
+      <Community />
       <CredibilityStrip />
       <Footer />
     </main>
