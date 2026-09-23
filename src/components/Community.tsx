@@ -28,51 +28,81 @@ export default function Community() {
       className="py-14 sm:py-20 lg:py-28 px-5 sm:px-10 lg:px-12 bg-offwhite scroll-mt-24 sm:scroll-mt-32"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Navy Container with KSUM-inspired orange accents */}
+        {/* Kerala Bio-AI Background Container */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8 }}
-          className="bg-primary rounded-[1.5rem] sm:rounded-[2.5rem] p-7 sm:p-12 lg:p-16 text-white shadow-2xl relative overflow-hidden"
+          className="rounded-[1.5rem] sm:rounded-[2.5rem] p-7 sm:p-12 lg:p-16 text-white shadow-2xl relative overflow-hidden bg-[#0A2164]"
         >
-          {/* Subtle background ambient glow */}
-          <div className="absolute inset-0 opacity-20 pointer-events-none">
-            <div className="absolute -top-24 -right-24 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-blue-bright blur-3xl" />
-            <div className="absolute -bottom-24 -left-24 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-[#FF6B00] blur-3xl opacity-30" />
-          </div>
+          {/* Responsive Kerala Bio-AI Background Image */}
+          <Image
+            src="/images/community-bg.jpg"
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 95vw, 1280px"
+            className="object-cover object-[center_35%] sm:object-center pointer-events-none select-none"
+            aria-hidden="true"
+          />
+
+          {/* Responsive Gradient Overlays — gentle tint so the Kerala background image is vividly visible */}
+          {/* Mobile Overlay: Balanced top-to-bottom tint */}
+          <div
+            className="absolute inset-0 pointer-events-none lg:hidden"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(6, 21, 58, 0.65) 0%, rgba(6, 21, 58, 0.35) 55%, rgba(6, 21, 58, 0.12) 100%)",
+            }}
+          />
+
+          {/* Desktop Overlay: Gentle left-to-right tint keeping text readable while Kerala scenery shines through */}
+          <div
+            className="absolute inset-0 pointer-events-none hidden lg:block"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(6, 21, 58, 0.68) 0%, rgba(6, 21, 58, 0.35) 48%, rgba(6, 21, 58, 0.05) 100%)",
+            }}
+          />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center relative z-10">
             {/* Left Column: Community Details & Content */}
             <div className="lg:col-span-7 space-y-6">
               <div>
                 {/* KSUM-inspired Orange Accent Eyebrow Pill */}
-                <span className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 px-3.5 py-1.5 rounded-full border border-orange-400/40 bg-orange-500/15 text-orange-400">
+                <span className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 px-3.5 py-1.5 rounded-full border border-orange-400/50 bg-black/40 backdrop-blur-md text-orange-400 shadow-sm">
                   <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
                   JOIN OUR COMMUNITY
                 </span>
 
-                <h2 className="text-[clamp(1.75rem,5vw,3rem)] font-heading font-semibold text-white tracking-tight leading-tight mb-4">
+                <h2 className="text-[clamp(1.75rem,5vw,3rem)] font-heading font-semibold text-white tracking-tight leading-tight mb-4 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
                   Be part of Kerala&apos;s Bio-AI revolution
                 </h2>
 
-                <p className="text-sm sm:text-base lg:text-lg text-white/85 leading-relaxed font-normal text-justify">
+                <p className="text-sm sm:text-base lg:text-lg text-white/95 leading-relaxed font-normal text-justify drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">
                   Join a thriving ecosystem of innovators, researchers, clinicians, founders, and industry leaders working at the convergence of Artificial Intelligence, biology, and deep technology.
                 </p>
               </div>
 
-              {/* Highlight Perks */}
+              {/* Highlight Perks with solid glassmorphism */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-2">
                 {communityHighlights.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm flex flex-col justify-between"
+                    className="p-4 rounded-xl flex flex-col justify-between shadow-lg"
+                    style={{
+                      background: "rgba(6, 21, 58, 0.72)",
+                      backdropFilter: "blur(12px)",
+                      WebkitBackdropFilter: "blur(12px)",
+                      border: "1px solid rgba(255, 255, 255, 0.20)",
+                    }}
                   >
-                    <div className="w-2 h-2 rounded-full bg-orange-400 mb-2" />
+                    <div className="w-2 h-2 rounded-full bg-orange-400 mb-2 shadow-[0_0_8px_rgba(255,107,0,0.8)]" />
                     <h3 className="text-xs sm:text-sm font-semibold text-white mb-1">
                       {item.title}
                     </h3>
-                    <p className="text-[11px] sm:text-xs text-white/70 leading-relaxed">
+                    <p className="text-[11px] sm:text-xs text-white/85 leading-relaxed">
                       {item.description}
                     </p>
                   </div>

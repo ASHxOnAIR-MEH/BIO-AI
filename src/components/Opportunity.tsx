@@ -69,75 +69,43 @@ export default function Opportunity() {
           ))}
         </div>
 
-        {/* ── UNIFIED CALL FOR BIO-AI INCUBATION PROGRAM & APPLICATION CARD ──────── */}
+        {/* ── CALL FOR BIO-AI INCUBATION — STATUS STRIP (CURRENTLY CLOSED) ──────── */}
         <motion.div
           id="incubation-call"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8 }}
-          className="bg-primary rounded-[1.5rem] sm:rounded-[2.5rem] p-7 sm:p-12 lg:p-16 text-white shadow-2xl relative overflow-hidden scroll-mt-24 sm:scroll-mt-32"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="bg-primary border border-blue-bright/30 rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:px-9 text-white shadow-xl relative overflow-hidden scroll-mt-24 sm:scroll-mt-32"
+          style={{
+            background: "linear-gradient(90deg, #0A2164 0%, #0F2D80 50%, #0A2164 100%)",
+          }}
         >
-          {/* Subtle background glow */}
-          <div className="absolute inset-0 opacity-20 pointer-events-none">
-            <div className="absolute -top-24 -right-24 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-blue-bright blur-3xl" />
-            <div className="absolute -bottom-24 -left-24 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-blue blur-3xl" />
-          </div>
+          {/* Subtle accent glow */}
+          <div className="absolute -right-12 -top-12 w-48 h-48 bg-blue-bright/15 rounded-full blur-2xl pointer-events-none" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-
-            {/* Left Column: Program Description & Who Can Apply */}
-            <div className="lg:col-span-7 space-y-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-5 text-center md:text-left relative z-10">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start md:items-center gap-3.5 sm:gap-5">
+              <span className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-red-500/20 text-red-300 border border-red-400/35">
+                <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
+                CLOSED
+              </span>
               <div>
-                {/* Highlighted programme announcement label */}
-                <span className="inline-block text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-3 px-3 py-1.5 rounded-full border border-blue-bright/40 bg-blue-bright/15 text-blue-bright">
-                  CALL FOR BIO-AI INCUBATION PROGRAM
-                </span>
-                <h3 className="text-[clamp(1.75rem,5vw,3rem)] font-heading font-semibold text-white tracking-tight mb-4 leading-tight">
-                  Build the future of Bio-AI
+                <h3 className="text-base sm:text-lg lg:text-xl font-heading font-semibold text-white tracking-tight">
+                  CALL FOR BIO-AI INCUBATION IS CURRENTLY <span className="text-red-400 font-bold">CLOSED</span>
                 </h3>
-                <p className="text-sm sm:text-base lg:text-lg text-white/85 leading-relaxed font-normal text-justify">
-                  The Bio-AI Incubation Program is designed to support startups developing innovative solutions at the intersection of Artificial Intelligence, biotechnology, Ayurveda, spices, biodiversity, and life sciences.
-                </p>
-              </div>
-
-              <div className="pt-2 border-t border-white/10">
-                <h4 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider mb-3">
-                  Who Can Apply?
-                </h4>
-                <p className="text-xl sm:text-2xl font-bold text-blue-bright tracking-wider uppercase">
-                  STARTUPS
+                <p className="text-xs sm:text-sm text-white/75 mt-1">
+                  Applications for the current cohort are closed. Join our community to get notified for upcoming rounds and challenges.
                 </p>
               </div>
             </div>
 
-            {/* Right Column: Application Deadline & CTA Box */}
-            <div className="lg:col-span-5">
-              <div className="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-6 sm:p-8 flex flex-col items-start lg:items-center text-left lg:text-center space-y-6">
-                <span className="inline-block bg-blue-bright/20 text-blue-bright border border-blue-bright/30 text-[10px] sm:text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">
-                  APPLICATIONS OPEN
-                </span>
-
-                <div className="space-y-1 w-full">
-                  <span className="text-[10px] sm:text-xs font-semibold text-white/70 uppercase tracking-widest block">
-                    APPLICATION DEADLINE
-                  </span>
-                  <span className="text-2xl sm:text-3xl font-bold text-white block">
-                    20 SEPTEMBER 2026
-                  </span>
-                </div>
-
-                <a
-                  href="https://zfrmz.com/Ene770rEwgTw2cP7chBH"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center px-6 sm:px-8 py-4 text-sm font-bold text-white bg-blue-bright hover:bg-white hover:text-primary transition-all rounded-full shadow-[0_0_30px_rgba(59,130,246,0.35)] active:scale-95 touch-manipulation min-h-[52px]"
-                >
-                  APPLY FOR BIO-AI INCUBATION ↗
-                </a>
-              </div>
-            </div>
-
+            <a
+              href="#community"
+              className="shrink-0 inline-flex items-center justify-center px-6 py-2.5 text-xs sm:text-sm font-semibold text-white bg-blue-bright/25 hover:bg-blue-bright border border-blue-bright/50 hover:border-blue-bright rounded-full transition-all shadow-sm active:scale-95 touch-manipulation min-h-[44px]"
+            >
+              Join Community for Updates ↓
+            </a>
           </div>
         </motion.div>
 
