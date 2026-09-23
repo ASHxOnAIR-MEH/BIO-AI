@@ -38,31 +38,31 @@ export default function Community() {
         >
           {/* Responsive Kerala Bio-AI Background Image */}
           <Image
-            src="/images/community-bg.jpg"
+            src="/images/community-bg.png"
             alt=""
             fill
             priority
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 95vw, 1280px"
-            className="object-cover object-[center_35%] sm:object-center pointer-events-none select-none"
+            className="object-cover object-center pointer-events-none select-none"
             aria-hidden="true"
           />
 
-          {/* Responsive Gradient Overlays — gentle tint so the Kerala background image is vividly visible */}
+          {/* Responsive Gradient Overlays for Maximum Readability & Scenery Visibility */}
           {/* Mobile Overlay: Balanced top-to-bottom tint */}
           <div
             className="absolute inset-0 pointer-events-none lg:hidden"
             style={{
               background:
-                "linear-gradient(180deg, rgba(6, 21, 58, 0.65) 0%, rgba(6, 21, 58, 0.35) 55%, rgba(6, 21, 58, 0.12) 100%)",
+                "linear-gradient(180deg, rgba(6, 21, 58, 0.85) 0%, rgba(6, 21, 58, 0.60) 55%, rgba(6, 21, 58, 0.25) 100%)",
             }}
           />
 
-          {/* Desktop Overlay: Gentle left-to-right tint keeping text readable while Kerala scenery shines through */}
+          {/* Desktop Overlay: Left-to-right gradient protecting text while showcasing Kerala scenery on the right */}
           <div
             className="absolute inset-0 pointer-events-none hidden lg:block"
             style={{
               background:
-                "linear-gradient(90deg, rgba(6, 21, 58, 0.68) 0%, rgba(6, 21, 58, 0.35) 48%, rgba(6, 21, 58, 0.05) 100%)",
+                "linear-gradient(90deg, rgba(6, 21, 58, 0.84) 0%, rgba(6, 21, 58, 0.58) 48%, rgba(6, 21, 58, 0.20) 100%)",
             }}
           />
 
