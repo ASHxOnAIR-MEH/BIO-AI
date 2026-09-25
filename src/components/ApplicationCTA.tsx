@@ -64,7 +64,7 @@ export default function ApplicationCTA() {
                   Applications Open
                 </span>
                 <span className="text-bio-green text-xs sm:text-sm font-semibold uppercase tracking-widest">
-                  Deadline: 31 August 2026
+                  Deadline: 20 September 2026
                 </span>
               </div>
             </motion.div>
