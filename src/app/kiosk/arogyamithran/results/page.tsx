@@ -5,16 +5,106 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import ArogyamithranCharacterFrame from "@/components/kiosk/ArogyamithranCharacterFrame";
+import { ArrowLeft, RotateCcw, QrCode, CheckCircle2, AlertCircle, ExternalLink } from "lucide-react";
+import KioskSubHeader from "@/components/kiosk/KioskSubHeader";
 import { useArogyamithranLanguage } from "@/components/kiosk/ArogyamithranContext";
 import {
   KioskLanguage,
   QuizFinalResult,
-  QuizReviewItem,
-  EmailDeliveryInfo,
 } from "@/components/kiosk/types";
-import KioskSubHeader from "@/components/kiosk/KioskSubHeader";
-import KioskFooter from "@/components/kiosk/KioskFooter";
+
+// Premium 3D Golden Trophy Cup SVG component matching Screen 7 storyboard
+function GoldenTrophyGraphic({ className = "w-24 h-24 sm:w-28 sm:h-28" }: { className?: string }) {
+  return (
+    <div className={`relative shrink-0 flex items-center justify-center ${className} drop-shadow-xl select-none`}>
+      <svg viewBox="0 0 160 170" className="w-full h-full">
+        <defs>
+          <linearGradient id="gold-cup" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#FFF3B0" />
+            <stop offset="30%" stopColor="#F59E0B" />
+            <stop offset="70%" stopColor="#D97706" />
+            <stop offset="100%" stopColor="#B45309" />
+          </linearGradient>
+          <linearGradient id="gold-glow" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#FEF08A" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="#D97706" stopOpacity="0.2" />
+          </linearGradient>
+          <linearGradient id="pedestal-wood" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#291206" />
+            <stop offset="50%" stopColor="#4A1E0E" />
+            <stop offset="100%" stopColor="#1E0B04" />
+          </linearGradient>
+          <linearGradient id="pedestal-plate" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#FBBF24" />
+            <stop offset="50%" stopColor="#FEF3C7" />
+            <stop offset="100%" stopColor="#D97706" />
+          </linearGradient>
+        </defs>
+
+        {/* Ambient Glow */}
+        <circle cx="80" cy="65" r="50" fill="url(#gold-glow)" />
+
+        {/* Trophy Left Handle */}
+        <path
+          d="M 45 42 C 20 42 16 75 42 85 C 44 86 48 83 48 80 C 26 73 30 50 48 48 Z"
+          fill="url(#gold-cup)"
+          stroke="#B45309"
+          strokeWidth="1.5"
+        />
+
+        {/* Trophy Right Handle */}
+        <path
+          d="M 115 42 C 140 42 144 75 118 85 C 116 86 112 83 112 80 C 134 73 130 50 112 48 Z"
+          fill="url(#gold-cup)"
+          stroke="#B45309"
+          strokeWidth="1.5"
+        />
+
+        {/* Main Cup Body */}
+        <path
+          d="M 46 32 L 114 32 C 114 32 118 78 80 94 C 42 78 46 32 46 32 Z"
+          fill="url(#gold-cup)"
+          stroke="#92400E"
+          strokeWidth="1.5"
+        />
+
+        {/* Cup Rim Highlight */}
+        <ellipse cx="80" cy="32" rx="34" ry="7" fill="#FEF08A" stroke="#B45309" strokeWidth="1.5" />
+        <ellipse cx="80" cy="33" rx="30" ry="4" fill="#F59E0B" />
+
+        {/* Laurel Wreath Engraving on Cup */}
+        <path
+          d="M 68 55 C 65 65 72 75 80 78 C 88 75 95 65 92 55"
+          fill="none"
+          stroke="#FEF3C7"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
+        <circle cx="80" cy="62" r="3.5" fill="#FEF3C7" />
+
+        {/* Stem / Neck */}
+        <path d="M 74 94 L 86 94 L 84 116 L 76 116 Z" fill="url(#gold-cup)" stroke="#92400E" strokeWidth="1" />
+        <ellipse cx="80" cy="116" rx="14" ry="4" fill="#D97706" />
+
+        {/* Base Tier 1 */}
+        <path d="M 62 118 L 98 118 L 102 126 L 58 126 Z" fill="url(#gold-cup)" stroke="#92400E" strokeWidth="1" />
+
+        {/* Dark Mahogany Wooden Pedestal */}
+        <rect x="50" y="126" width="60" height="26" rx="4" fill="url(#pedestal-wood)" stroke="#110502" strokeWidth="1.5" />
+
+        {/* Gold Plaque on Pedestal */}
+        <rect x="58" y="132" width="44" height="14" rx="2" fill="url(#pedestal-plate)" stroke="#92400E" strokeWidth="0.8" />
+        <text x="80" y="142" fontSize="7" fontWeight="bold" textAnchor="middle" fill="#78350F" letterSpacing="0.5">
+          BIO-AI 2026
+        </text>
+
+        {/* Sparkles */}
+        <path d="M 116 26 L 118 31 L 123 33 L 118 35 L 116 40 L 114 35 L 109 33 L 114 31 Z" fill="#FFFBEB" />
+        <path d="M 42 66 L 43 69 L 46 70 L 43 71 L 42 74 L 41 71 L 38 70 L 41 69 Z" fill="#FFFBEB" />
+      </svg>
+    </div>
+  );
+}
 
 function ResultsContent() {
   const router = useRouter();
@@ -43,18 +133,9 @@ function ResultsContent() {
   const [errorMessage, setErrorMessage] = useState<string | null>(() =>
     !attemptId ? "No attempt identifier provided." : null
   );
-  const [showReview, setShowReview] = useState(false);
-  const [copiedLink, setCopiedLink] = useState(false);
-
-  // Email resend tracking
-  const [isResending, setIsResending] = useState(false);
-  const [resendStatusMsg, setResendStatusMsg] = useState<string | null>(null);
-  const [liveEmailDelivery, setLiveEmailDelivery] = useState<EmailDeliveryInfo | null>(null);
 
   useEffect(() => {
-    if (!attemptId) {
-      return;
-    }
+    if (!attemptId) return;
 
     let isMounted = true;
 
@@ -72,15 +153,10 @@ function ResultsContent() {
 
         if (isMounted) {
           setResult(data.result);
-          if (data.result.emailDelivery) {
-            setLiveEmailDelivery(data.result.emailDelivery);
-          }
         }
       } catch (err: unknown) {
         if (isMounted) {
-          const msg =
-            err instanceof Error ? err.message : "Error retrieving result.";
-          setErrorMessage(msg);
+          setErrorMessage(err instanceof Error ? err.message : "Error retrieving result.");
         }
       } finally {
         if (isMounted) setLoading(false);
@@ -94,503 +170,251 @@ function ResultsContent() {
     };
   }, [attemptId]);
 
-  // Handle Copy Link
-  const handleCopyLink = () => {
-    if (!result?.resultUrl) return;
-    if (navigator?.clipboard?.writeText) {
-      navigator.clipboard.writeText(result.resultUrl);
-      setCopiedLink(true);
-      setTimeout(() => setCopiedLink(false), 3000);
-    }
+  const handlePlayAgain = () => {
+    clearLanguage();
+    router.push(`/kiosk/arogyamithran/instructions?lang=${activeLang}`);
   };
 
-  // Handle Email Retry / Resend
-  const handleResendEmail = async () => {
-    if (!result?.accessToken || isResending) return;
-    setIsResending(true);
-    setResendStatusMsg(null);
-
-    try {
-      const res = await fetch("/api/kiosk/quiz/resend-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ accessToken: result.accessToken }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || "Email retry failed.");
-      }
-
-      setLiveEmailDelivery(data.emailDelivery);
-      setResendStatusMsg(
-        isMl ? "ഇമെയിൽ വീണ്ടും അയച്ചു." : "Email retry processed."
-      );
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Error retrying email.";
-      setResendStatusMsg(msg);
-    } finally {
-      setIsResending(false);
-    }
-  };
-
-  // Handle Return Home and reset visitor session
   const handleReturnHome = () => {
     clearLanguage();
-    try {
-      sessionStorage.removeItem("kiosk_arogyamithran_lang");
-      sessionStorage.removeItem("kiosk_language");
-    } catch {
-      // ignore
-    }
     router.push("/kiosk");
   };
 
-  if (loading) {
-    return (
-      <main className="min-h-screen flex items-center justify-center bg-[#FAFAF7] text-[#073B30]">
-        <div className="flex flex-col items-center gap-4 text-center p-6">
-          <div className="w-12 h-12 rounded-full border-4 border-[#0B5D46] border-t-transparent animate-spin" />
-          <p className="text-base font-bold">
-            {isMl
-              ? "ഫലം സംരക്ഷിക്കുകയും QR തയ്യാറാക്കുകയും ചെയ്യുന്നു..."
-              : "Saving Result & Generating Personal QR Code..."}
-          </p>
-        </div>
-      </main>
-    );
-  }
-
-  if (errorMessage || !result) {
-    return (
-      <main className="min-h-screen flex flex-col justify-between bg-[#FAFAF7] text-[#132E27]">
+  return (
+    <div className="min-h-screen w-full bg-[#F0F7F2] text-[#132E27] relative flex flex-col justify-between items-center selection:bg-[#55B96A]/25 overflow-x-hidden">
+      <main className="w-full max-w-[820px] min-h-screen flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.18)] overflow-hidden bg-[#F0F7F2]">
+        {/* 1. Header with official KSUM | Kerala IT | Huddle Global branding */}
         <KioskSubHeader
           language={activeLang}
-          showLanguageToggle={false}
-          currentStepBadge="Quiz Results"
-          currentStepBadgeMl="ക്വിസ് ഫലം"
           backHref="/kiosk"
+          backLabel="Exit"
+          backLabelMl="പുറത്തു കടക്കുക"
         />
-        <div className="flex-1 max-w-lg mx-auto p-6 flex flex-col items-center justify-center text-center">
-          <div className="w-16 h-16 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-2xl mb-4 font-bold">
-            !
+
+        {/* 2. Visual Content Area */}
+        <div className="relative flex-1 flex flex-col justify-between px-3 sm:px-6 py-3 sm:py-5 overflow-y-auto">
+          {/* Background Botanical Illustration */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <Image
+              src="/assets/kiosk/backgrounds/hero_portrait.jpg"
+              alt="Bio-AI results celebration background"
+              fill
+              priority
+              className="object-cover object-center opacity-30 select-none"
+              sizes="820px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#F0F7F2]/95 via-[#F0F7F2]/85 to-[#F0F7F2]/95" />
           </div>
-          <h2 className="text-xl font-bold text-[#073B30] mb-2">
-            {isMl ? "ഫലം കണ്ടെത്താനായില്ല" : "Results Not Available"}
-          </h2>
-          <p className="text-sm text-[#244B3F] mb-6 leading-relaxed">
-            {errorMessage || "Attempt data could not be verified."}
-          </p>
-          <Link
-            href="/kiosk"
-            className="px-6 py-3.5 rounded-2xl bg-[#073B30] text-white font-bold text-sm shadow-md hover:bg-[#0B5D46] transition-all"
-          >
-            {isMl ? "കിയോസ്ക് മെനുവിലേക്ക് മടങ്ങുക" : "Return to Kiosk Menu"}
-          </Link>
-        </div>
-        <KioskFooter language={activeLang} />
-      </main>
-    );
-  }
 
-  // Final congratulatory message based on verified score
-  let congratulatoryMessage = "";
-  if (result.totalScore >= 80) {
-    congratulatoryMessage = isMl
-      ? "അത്ഭുതകരമായ അറിവ്! നിങ്ങൾ ബയോ-എഐയുടെയും ഔഷധസസ്യങ്ങളുടെയും ലോകത്ത് മികച്ച മികവ് പുലർത്തിയിരിക്കുന്നു."
-      : "Outstanding! You demonstrated deep insight into Bio-AI, medicinal plants, and scientific concepts.";
-  } else if (result.totalScore >= 50) {
-    congratulatoryMessage = isMl
-      ? "മികച്ച പ്രകടനം! കേരളത്തിന്റെ ജൈവ സമ്പത്തിനെക്കുറിച്ചും ആധുനിക ബയോ-എഐ സാങ്കേതികവിദ്യകളെക്കുറിച്ചും വിലപ്പെട്ട അറിവുകൾ നിങ്ങൾ നേടി."
-      : "Great performance! You grasped essential concepts across Bio-AI innovations and Kerala's botanical heritage.";
-  } else {
-    congratulatoryMessage = isMl
-      ? "നല്ല ശ്രമം! ഓരോ ചോദ്യവും പുതിയൊരു അറിവ് നേടാനുള്ള അവസരമായിരുന്നു. ശാസ്ത്രവും ആയുർവേദവും എന്നും കൗതുകകരമാണ്."
-      : "Wonderful effort! Every question was an opportunity to learn something new about Bio-AI and traditional knowledge.";
-  }
-
-  const currentEmailDelivery = liveEmailDelivery || result.emailDelivery;
-
-  return (
-    <main className="min-h-screen flex flex-col justify-between bg-[#FAFAF7] text-[#132E27] relative selection:bg-[#55B96A]/20">
-      {/* ─── KIOSK SUB HEADER ────────────────────────────────────────── */}
-      <KioskSubHeader
-        language={activeLang}
-        backHref="/kiosk"
-        backLabel="Back to Kiosk"
-        backLabelMl="കിയോസ്ക് മെനു"
-        currentStepBadge="Step 9: Final Results & Certificate"
-        currentStepBadgeMl="ഘട്ടം 9: അന്തിമ ഫലം"
-      />
-
-      {/* ─── RESULTS CONTAINER ─────────────────────────────────────────── */}
-      <div className="flex-1 max-w-3xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex flex-col items-center justify-center text-center">
-        {/* Step Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F0F7F1] border border-[#0B5D46]/15 mb-3 shadow-xs">
-          <span className="w-2 h-2 rounded-full bg-[#55B96A]" />
-          <span className="text-[11px] sm:text-xs font-bold text-[#0B5D46] uppercase tracking-wider">
-            {isMl ? "ഘട്ടം 9 / 9 · അന്തിമ ഫലം" : "Step 9 of 9 · Final Results"}
-          </span>
-        </div>
-
-        {/* Heading */}
-        <motion.h1
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className={`text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#073B30] tracking-tight mb-3 ${
-            isMl ? "font-malayalam leading-snug" : ""
-          }`}
-        >
-          {isMl ? "ചലഞ്ച് പൂർത്തിയായി!" : "Challenge Completed!"}
-        </motion.h1>
-
-        {/* ─── STEP 5: PERSONAL RESULT & SCANNABLE QR SHOWCASE CARD ─────── */}
-        {result.qrCodeDataUrl && (
-          <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.4 }}
-            className="w-full max-w-xl bg-white rounded-3xl p-6 sm:p-7 border-2 border-[#0B5D46]/20 shadow-[0_12px_36px_rgba(11,93,70,0.1)] mb-6 text-center relative overflow-hidden"
-          >
-            {/* Kerala Kasavu Gold trim */}
-            <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-[#0B5D46] via-[#D4AF37] to-[#55B96A]" />
-
-            {/* Saved Confirmation Badge */}
-            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#F0F7F1] border border-[#0B5D46]/20 text-[11px] font-bold text-[#0B5D46] mb-3">
-              <span className="text-[#55B96A] font-bold">✓</span>
-              <span>
-                {isMl
-                  ? "ഫലം സുരക്ഷിതമായി രേഖപ്പെടുത്തി"
-                  : "Result Saved & Verified"}
-              </span>
+          {loading ? (
+            <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center py-20">
+              <div className="w-10 h-10 border-4 border-[#0B5D46]/20 border-t-[#0B5D46] rounded-full animate-spin mb-4" />
+              <p className="text-sm font-bold text-[#073B30]">
+                {isMl ? "ഫലം കണക്കാക്കുന്നു..." : "Calculating Your Score..."}
+              </p>
             </div>
-
-            <h2
-              className={`text-lg sm:text-xl font-bold text-[#073B30] mb-1 ${
-                isMl ? "font-malayalam" : ""
-              }`}
-            >
-              {isMl
-                ? "നിങ്ങളുടെ ബയോ-എഐ ചലഞ്ച് ഫലം തയ്യാറാണ്!"
-                : "Your Bio-AI Challenge Result Is Ready!"}
-            </h2>
-
-            <p
-              className={`text-xs sm:text-sm text-[#244B3F]/90 mb-4 max-w-md mx-auto ${
-                isMl ? "font-malayalam" : ""
-              }`}
-            >
-              {isMl
-                ? "നിങ്ങളുടെ വ്യക്തിഗത ഫലം ഫോണിൽ കാണുന്നതിന് ഈ QR കോഡ് സ്കാൻ ചെയ്യുക."
-                : "Scan this QR code with your phone to view your personal result."}
-            </p>
-
-            {/* High-Contrast QR Code Card */}
-            <div className="inline-block p-4 rounded-3xl bg-[#FAFAF7] border-2 border-[#0B5D46]/20 shadow-xs mb-3">
-              <div className="bg-white p-3 rounded-2xl shadow-inner border border-gray-100">
-                <Image
-                  src={result.qrCodeDataUrl}
-                  alt="Scannable Bio-AI Result QR Code"
-                  width={200}
-                  height={200}
-                  priority
-                  className="w-44 h-44 sm:w-52 sm:h-52 object-contain"
-                />
-              </div>
+          ) : errorMessage && !result ? (
+            <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center py-12 px-4 max-w-md mx-auto">
+              <AlertCircle className="w-12 h-12 text-red-500 mb-3" />
+              <h2 className="text-lg font-black text-[#073B30] mb-2">Notice</h2>
+              <p className="text-xs text-[#244B3F] mb-4 leading-relaxed">{errorMessage}</p>
+              <Link
+                href="/kiosk"
+                className="px-6 py-2.5 rounded-full bg-[#073B30] text-white text-xs font-bold"
+              >
+                Return to Kiosk
+              </Link>
             </div>
-
-            <p className="text-[11px] text-[#244B3F]/75 font-medium mb-3">
-              {isMl
-                ? "ഫോണിലെ ക്യാമറ തുറന്ന് QR കോഡിലേക്ക് ചൂണ്ടുക"
-                : "Point your phone camera at this QR code"}
-            </p>
-
-            {/* Visible Result Link Alternative */}
-            {result.resultUrl && (
-              <div className="w-full max-w-md mx-auto p-3 rounded-2xl bg-[#F0F7F1] border border-[#0B5D46]/15 text-left mb-4 flex items-center justify-between gap-2">
-                <div className="min-w-0">
-                  <span className="block text-[10px] font-bold text-[#0B5D46] uppercase">
-                    {isMl ? "വ്യക്തിഗത ഫല ലിങ്ക്:" : "Personal Result Link:"}
-                  </span>
-                  <a
-                    href={result.resultUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-mono text-[#073B30] hover:underline truncate block"
-                  >
-                    {result.resultUrl}
-                  </a>
-                </div>
-                <button
-                  type="button"
-                  onClick={handleCopyLink}
-                  className="shrink-0 px-3 py-1.5 rounded-xl bg-[#073B30] text-white text-xs font-bold hover:bg-[#0B5D46] transition-all touch-manipulation"
-                >
-                  {copiedLink
-                    ? isMl
-                      ? "കോപ്പി ചെയ്തു!"
-                      : "Copied!"
-                    : isMl
-                    ? "കോപ്പി"
-                    : "Copy"}
-                </button>
-              </div>
-            )}
-
-            {/* Email Delivery Status Box */}
-            {currentEmailDelivery && (
-              <div className="w-full max-w-md mx-auto p-3.5 rounded-2xl bg-[#FAFAF7] border border-[#0B5D46]/15 text-left">
-                <div className="flex items-center justify-between gap-2 mb-1">
-                  <span className="text-xs font-bold text-[#073B30] flex items-center gap-1.5">
-                    <span>📧</span>
-                    <span>{isMl ? "ഇമെയിൽ ഡെലിവറി:" : "Email Delivery:"}</span>
-                  </span>
-
-                  {/* Delivery Status Pill */}
-                  <span
-                    className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                      currentEmailDelivery.status === "sent"
-                        ? "bg-[#55B96A] text-[#073B30]"
-                        : currentEmailDelivery.status === "accepted"
-                        ? "bg-blue-100 text-blue-900"
-                        : currentEmailDelivery.status === "failed"
-                        ? "bg-red-100 text-red-900"
-                        : "bg-amber-100 text-amber-900"
-                    }`}
-                  >
-                    {currentEmailDelivery.status}
-                  </span>
-                </div>
-
-                <p className="text-[11px] text-[#244B3F]/85 leading-relaxed">
-                  {currentEmailDelivery.status === "sent" ? (
-                    isMl ? (
-                      `നിങ്ങൾ രജിസ്റ്റർ ചെയ്ത ഇമെയിൽ വിലാസത്തിലേക്ക് (${currentEmailDelivery.recipientEmailMasked}) ഫലം അയച്ചിട്ടുണ്ട്.`
-                    ) : (
-                      `Result has been sent to your registered email (${currentEmailDelivery.recipientEmailMasked}).`
-                    )
-                  ) : currentEmailDelivery.status === "accepted" ? (
-                    isMl ? (
-                      `ഇമെയിൽ ഡെലിവറിക്ക് സ്വീകരിച്ചു (${currentEmailDelivery.recipientEmailMasked}).`
-                    ) : (
-                      `Email accepted for delivery to ${currentEmailDelivery.recipientEmailMasked}.`
-                    )
-                  ) : currentEmailDelivery.status === "not-configured" ? (
-                    isMl ? (
-                      `ഇമെയിൽ സർവീസ് കോൺഫിഗറേഷൻ തയ്യാറാകുന്നു (RESEND_API_KEY). നിങ്ങളുടെ ഓൺ-സ്ക്രീൻ QR കോഡും ലിങ്കും പ്രവർത്തനക്ഷമമാണ്.`
-                    ) : (
-                      `Email provider configuration pending in deployment. Your on-screen QR code and personal link are fully active.`
-                    )
-                  ) : (
-                    isMl ? (
-                      `ഇമെയിൽ അയയ്ക്കുന്നതിൽ തടസ്സമുണ്ടായി: ${currentEmailDelivery.error || "ദയവായി വീണ്ടും ശ്രമിക്കുക"}`
-                    ) : (
-                      `Email delivery failed: ${currentEmailDelivery.error || "Please try again."}`
-                    )
-                  )}
+          ) : result ? (
+            /* ═════════════════════════════════════════════════════════════════
+               SCREEN 7: FINAL RESULTS & QR CODE MATCHING STORYBOARD
+            ═════════════════════════════════════════════════════════════════ */
+            <div className="relative z-10 w-full max-w-lg mx-auto flex flex-col items-center flex-1 justify-between gap-3">
+              {/* Header Title */}
+              <div className="text-center pt-1">
+                <h1 className={`text-xl sm:text-2xl md:text-3xl font-black text-[#073B30] tracking-tight leading-tight ${isMl ? "font-malayalam" : ""}`}>
+                  {isMl ? "ചലഞ്ച് പൂർത്തിയായി!" : "Challenge Completed!"}
+                </h1>
+                <p className={`text-xs sm:text-sm font-semibold text-[#0B5D46] mt-0.5 ${isMl ? "font-malayalam" : ""}`}>
+                  {isMl ? "മികച്ച പ്രകടനം! നിങ്ങളുടെ സ്കോർ" : "Great job! Your Score"}
                 </p>
-
-                {/* Email Retry Button if delivery failed */}
-                {currentEmailDelivery.status === "failed" && (
-                  <div className="mt-2 pt-2 border-t border-gray-200 flex items-center justify-between">
-                    <span className="text-[10px] text-gray-500">
-                      Attempt {currentEmailDelivery.attemptsCount}
-                    </span>
-                    <button
-                      type="button"
-                      disabled={isResending}
-                      onClick={handleResendEmail}
-                      className="px-3 py-1 rounded-lg bg-[#073B30] text-white text-[11px] font-bold hover:bg-[#0B5D46] disabled:opacity-50"
-                    >
-                      {isResending ? "Retrying..." : "Retry Email"}
-                    </button>
-                  </div>
-                )}
-
-                {resendStatusMsg && (
-                  <p className="text-[10px] text-[#0B5D46] font-semibold mt-1">
-                    {resendStatusMsg}
-                  </p>
-                )}
               </div>
-            )}
-          </motion.div>
-        )}
 
-        {/* Main Score Showcase Card */}
-        <motion.div
-          initial={{ scale: 0.95, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.4 }}
-          className="w-full max-w-xl bg-gradient-to-b from-white via-[#F0F7F1]/50 to-white rounded-3xl p-6 sm:p-7 border-2 border-[#0B5D46]/20 shadow-[0_8px_30px_rgba(11,93,70,0.08)] mb-6 text-center relative overflow-hidden"
-        >
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#0B5D46] mb-2">
-            {isMl ? "നിങ്ങളുടെ അന്തിമ സ്കോർ" : "YOUR SCORE"}
-          </p>
+              {/* Score Hero Card: Arogyamithran Thumbs-up | Score 80/100 | Golden Trophy */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="w-full bg-white rounded-3xl p-4 sm:p-5 shadow-xl border-2 border-[#0B5D46]/15 flex items-center justify-between gap-3 relative overflow-hidden"
+              >
+                {/* Subtle festive background glow */}
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-amber-500/10 to-emerald-500/5 pointer-events-none" />
 
-          <div className="text-5xl sm:text-6xl font-black text-[#073B30] tracking-tight mb-2">
-            <span>{result.totalScore}</span>
-            <span className="text-2xl sm:text-3xl font-bold text-[#0B5D46]/60">
-              {" "}/ 100
-            </span>
-          </div>
+                {/* Left: Arogyamithran Thumbs-up / Celebration Pose */}
+                <div className="relative w-24 h-32 sm:w-28 sm:h-36 shrink-0 rounded-2xl overflow-hidden shadow-md border-2 border-white/80 bg-[#FAFAF7]">
+                  <Image
+                    src="/assets/kiosk/arogyamithran/correct-answer.jpg"
+                    alt="Arogyamithran celebration thumbs up"
+                    fill
+                    priority
+                    className="object-cover object-top"
+                    sizes="120px"
+                  />
+                </div>
 
-          {/* Stats Bar */}
-          <div className="grid grid-cols-2 gap-3 mt-5 pt-4 border-t border-[#0B5D46]/15">
-            <div className="p-3 rounded-2xl bg-white border border-[#0B5D46]/15 shadow-xs">
-              <span className="block text-2xl font-black text-[#0B5D46]">
-                {result.correctCount} / {result.totalQuestions}
-              </span>
-              <span className="text-[11px] sm:text-xs font-semibold text-[#244B3F]">
-                {isMl ? "ശരിയുത്തരങ്ങൾ" : "Correct Answers"}
-              </span>
-            </div>
+                {/* Center: Big Bold Score Display */}
+                <div className="flex-1 flex flex-col items-center justify-center text-center">
+                  <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-[#0B5D46] mb-0.5">
+                    YOUR SCORE
+                  </span>
+                  <div className="text-4xl sm:text-5xl font-black text-[#0B5D46] tracking-tight leading-none">
+                    {result.totalScore}
+                    <span className="text-2xl sm:text-3xl text-[#55B96A] font-bold">/100</span>
+                  </div>
+                  <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full bg-emerald-100/80 text-[#073B30] text-[11px] font-bold">
+                    {result.accuracyPercentage}% Accuracy
+                  </span>
+                </div>
 
-            <div className="p-3 rounded-2xl bg-white border border-[#0B5D46]/15 shadow-xs">
-              <span className="block text-2xl font-black text-[#991B1B]">
-                {result.incorrectCount} / {result.totalQuestions}
-              </span>
-              <span className="text-[11px] sm:text-xs font-semibold text-[#244B3F]">
-                {isMl ? "തെറ്റിയ ഉത്തരങ്ങൾ" : "Incorrect Answers"}
-              </span>
-            </div>
-          </div>
-        </motion.div>
+                {/* Right: Golden Trophy Cup */}
+                <GoldenTrophyGraphic className="w-20 h-28 sm:w-24 sm:h-32" />
+              </motion.div>
 
-        {/* Arogyamithran Character Final Congratulatory Message */}
-        <div className="w-full max-w-xl mb-6">
-          <ArogyamithranCharacterFrame
-            compact={true}
-            selectedLanguage={activeLang}
-            expression="final"
-            dialogue={congratulatoryMessage}
-          />
-        </div>
+              {/* 3 Metrics Card (8 Correct Answers | 2 Incorrect Answers | 10 Total Questions) */}
+              <div className="w-full grid grid-cols-3 gap-2.5">
+                {/* Correct Answers */}
+                <div className="bg-white rounded-2xl p-2.5 sm:p-3 text-center border-2 border-emerald-100 shadow-sm flex flex-col items-center justify-center">
+                  <span className="text-xl sm:text-2xl font-black text-[#0B5D46] leading-none mb-0.5">
+                    {result.correctCount}
+                  </span>
+                  <span className={`text-[10px] sm:text-[11px] font-bold text-gray-600 leading-tight ${isMl ? "font-malayalam" : ""}`}>
+                    {isMl ? "ശരിയുത്തരങ്ങൾ" : "Correct Answers"}
+                  </span>
+                </div>
 
-        {/* Question Review Accordion / Toggle */}
-        <div className="w-full max-w-xl mb-6">
-          <button
-            type="button"
-            onClick={() => setShowReview(!showReview)}
-            className="w-full py-3.5 px-5 rounded-2xl bg-white border-2 border-[#0B5D46]/15 shadow-sm text-xs sm:text-sm font-bold text-[#073B30] hover:bg-[#F0F7F1] transition-all flex items-center justify-between touch-manipulation"
-          >
-            <span>
-              {showReview
-                ? isMl
-                  ? "ചോദ്യ അവലോകനം മറയ്ക്കുക"
-                  : "Hide Question Review"
-                : isMl
-                ? `ചോദ്യ അവലോകനം കാണുക (${result.review.length} ചോദ്യങ്ങൾ)`
-                : `Review All ${result.review.length} Questions & Explanations`}
-            </span>
-            <span className="text-base text-[#0B5D46]">
-              {showReview ? "▲" : "▼"}
-            </span>
-          </button>
+                {/* Incorrect Answers */}
+                <div className="bg-white rounded-2xl p-2.5 sm:p-3 text-center border-2 border-amber-100 shadow-sm flex flex-col items-center justify-center">
+                  <span className="text-xl sm:text-2xl font-black text-[#D97706] leading-none mb-0.5">
+                    {result.incorrectCount}
+                  </span>
+                  <span className={`text-[10px] sm:text-[11px] font-bold text-gray-600 leading-tight ${isMl ? "font-malayalam" : ""}`}>
+                    {isMl ? "തെറ്റായ ഉത്തരങ്ങൾ" : "Incorrect Answers"}
+                  </span>
+                </div>
 
-          {showReview && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              className="mt-3 space-y-3 text-left overflow-hidden"
-            >
-              {result.review.map((item: QuizReviewItem, rIdx: number) => (
-                <div
-                  key={rIdx}
-                  className={`p-4 rounded-2xl border-2 text-xs sm:text-sm ${
-                    item.isCorrect
-                      ? "bg-white border-[#55B96A]/40"
-                      : "bg-white border-red-200"
-                  }`}
-                >
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="font-bold text-[#073B30]">
-                      #{item.questionId} · Q{rIdx + 1}
-                    </span>
-                    <span
-                      className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                        item.isCorrect
-                          ? "bg-[#55B96A] text-[#073B30]"
-                          : "bg-red-100 text-red-800"
-                      }`}
-                    >
-                      {item.isCorrect
-                        ? isMl
-                          ? "✓ ശരി (+10)"
-                          : "✓ Correct (+10)"
-                        : isMl
-                        ? "✕ തെറ്റ് (0)"
-                        : "✕ Incorrect (0)"}
-                    </span>
+                {/* Total Questions */}
+                <div className="bg-white rounded-2xl p-2.5 sm:p-3 text-center border-2 border-teal-100 shadow-sm flex flex-col items-center justify-center">
+                  <span className="text-xl sm:text-2xl font-black text-[#073B30] leading-none mb-0.5">
+                    {result.totalQuestions}
+                  </span>
+                  <span className={`text-[10px] sm:text-[11px] font-bold text-gray-600 leading-tight ${isMl ? "font-malayalam" : ""}`}>
+                    {isMl ? "ആകെ ചോദ്യങ്ങൾ" : "Total Questions"}
+                  </span>
+                </div>
+              </div>
+
+              {/* Bottom Card: QR Code & Registered Email Status */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="w-full bg-white rounded-3xl p-4 sm:p-5 shadow-xl border-2 border-[#0B5D46]/15 flex flex-col gap-3"
+              >
+                {/* Email Delivery Note */}
+                <div className="flex items-center gap-2 text-xs font-semibold text-[#0B5D46]">
+                  <CheckCircle2 className="w-4 h-4 text-[#55B96A] shrink-0" />
+                  <span className={isMl ? "font-malayalam" : ""}>
+                    {isMl
+                      ? "നിങ്ങളുടെ ഫലം രജിസ്റ്റർ ചെയ്ത ഇമെയിൽ വിലാസത്തിലേക്ക് അയച്ചിട്ടുണ്ട്."
+                      : "Your result has been sent to your registered email address."}
+                  </span>
+                </div>
+
+                {/* QR Code and Scanner Prompt Row */}
+                <div className="flex items-center gap-4 bg-[#F0F7F1] rounded-2xl p-3 border border-[#0B5D46]/10">
+                  {/* Verified Live QR Code Image */}
+                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 bg-white rounded-xl p-1.5 shadow-sm border border-gray-200 shrink-0 flex items-center justify-center">
+                    {result.qrCodeDataUrl ? (
+                      <Image
+                        src={result.qrCodeDataUrl}
+                        alt="Scan QR code for your Bio-AI result"
+                        width={112}
+                        height={112}
+                        className="w-full h-full object-contain"
+                      />
+                    ) : (
+                      <QrCode className="w-12 h-12 text-[#0B5D46]" />
+                    )}
                   </div>
 
-                  <p className="font-semibold text-[#132E27] mb-2 leading-snug">
-                    {item.questionText}
-                  </p>
-
-                  <div className="space-y-1 text-[11px] sm:text-xs">
-                    <p className="text-[#244B3F]">
-                      <span className="font-bold">
-                        {isMl ? "നിങ്ങളുടെ ഉത്തരം: " : "Your Choice: "}
+                  {/* Scan Instructions */}
+                  <div className="flex-1 flex flex-col justify-center">
+                    <div className="flex items-center gap-1.5 text-xs font-black text-[#073B30] mb-1">
+                      <span className="w-5 h-5 rounded-full bg-[#55B96A] text-white flex items-center justify-center text-[10px] shrink-0">
+                        📱
                       </span>
-                      {item.selectedOptionIndex >= 0
-                        ? item.options[item.selectedOptionIndex]
-                        : "None"}
+                      <span className={isMl ? "font-malayalam" : ""}>
+                        {isMl ? "സ്മാർട്ട്ഫോണിൽ കാണാം" : "Scan on Mobile"}
+                      </span>
+                    </div>
+                    <p className={`text-[11px] sm:text-xs text-[#244B3F] font-medium leading-relaxed ${isMl ? "font-malayalam" : ""}`}>
+                      {isMl
+                        ? "മൊബൈലിൽ ഫലവും വിശദമായ റിപ്പോർട്ടും പരിശോധിക്കാൻ ഈ ക്യുആർ കോഡ് സ്കാൻ ചെയ്യുക."
+                        : "Scan this QR code to view your verified quiz certificate and score report on your mobile."}
                     </p>
-
-                    {!item.isCorrect && (
-                      <p className="text-[#0B5D46] font-bold">
-                        <span>{isMl ? "ശരിയുത്തരം: " : "Correct Answer: "}</span>
-                        {item.options[item.correctOptionIndex]}
-                      </p>
-                    )}
-
-                    {item.explanation && (
-                      <p className="text-[#244B3F]/85 italic mt-1 pt-1 border-t border-gray-100">
-                        {item.explanation}
-                      </p>
-                    )}
                   </div>
                 </div>
-              ))}
-            </motion.div>
-          )}
-        </div>
+              </motion.div>
 
-        {/* Primary Return Button (Ends Kiosk Session) */}
-        <div className="w-full max-w-xl">
-          <button
-            type="button"
-            onClick={handleReturnHome}
-            className="w-full min-h-[58px] sm:min-h-[64px] px-8 py-4 rounded-2xl bg-[#073B30] text-[#FAFAF7] hover:bg-[#0B5D46] active:scale-95 transition-all text-base sm:text-lg font-bold shadow-lg flex items-center justify-center gap-3 touch-manipulation focus:outline-none focus-visible:ring-4 focus-visible:ring-[#55B96A]"
-          >
-            <span className={isMl ? "font-malayalam" : ""}>
-              {isMl ? "കിയോസ്ക് മെനുവിലേക്ക് മടങ്ങുക" : "RETURN TO KIOSK HOMEPAGE"}
-            </span>
-            <span className="text-[#55B96A] text-xl font-bold">→</span>
-          </button>
-        </div>
-      </div>
+              {/* Action Buttons matching Storyboard Screen 7 */}
+              <div className="w-full flex flex-col gap-2 mt-1">
+                {/* Primary Button: View My Result (QR Code) */}
+                {result.resultUrl && (
+                  <Link
+                    href={result.resultUrl}
+                    className="w-full min-h-[48px] sm:min-h-[52px] rounded-2xl bg-gradient-to-r from-[#073B30] to-[#0B5D46] hover:from-[#0B5D46] hover:to-[#55B96A] text-[#FAFAF7] font-black text-sm sm:text-base shadow-lg border border-white/20 flex items-center justify-center gap-2 touch-manipulation active:scale-95 transition-all"
+                  >
+                    <span className={isMl ? "font-malayalam" : ""}>
+                      {isMl ? "എന്റെ ഫലം കാണുക (ഓൺലൈൻ)" : "View My Result (QR Code)"}
+                    </span>
+                    <ExternalLink className="w-4 h-4" />
+                  </Link>
+                )}
 
-      {/* ─── KIOSK FOOTER ──────────────────────────────────────────────── */}
-      <KioskFooter language={activeLang} />
-    </main>
+                {/* Secondary Actions Side-by-Side: Play Again | Return to Home */}
+                <div className="w-full grid grid-cols-2 gap-2.5">
+                  <button
+                    type="button"
+                    onClick={handlePlayAgain}
+                    className="w-full min-h-[44px] sm:min-h-[46px] rounded-2xl bg-white hover:bg-emerald-50 text-[#073B30] font-bold text-xs sm:text-sm border-2 border-[#0B5D46]/20 shadow-xs flex items-center justify-center gap-1.5 touch-manipulation active:scale-95 transition-all"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5 text-[#55B96A]" />
+                    <span className={isMl ? "font-malayalam" : ""}>
+                      {isMl ? "വീണ്ടും കളിക്കുക" : "Play Again"}
+                    </span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleReturnHome}
+                    className="w-full min-h-[44px] sm:min-h-[46px] rounded-2xl bg-white hover:bg-emerald-50 text-[#073B30] font-bold text-xs sm:text-sm border-2 border-[#0B5D46]/20 shadow-xs flex items-center justify-center gap-1.5 touch-manipulation active:scale-95 transition-all"
+                  >
+                    <ArrowLeft className="w-3.5 h-3.5 text-[#55B96A]" />
+                    <span className={isMl ? "font-malayalam" : ""}>
+                      {isMl ? "പ്രധാന പേജിലേക്ക്" : "Return to Home"}
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </main>
+    </div>
   );
 }
 
 export default function ArogyamithranResultsPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen flex items-center justify-center bg-[#FAFAF7] text-[#073B30]">
-          <div className="flex items-center gap-3">
-            <span className="w-3 h-3 rounded-full bg-[#55B96A] animate-ping" />
-            <span className="text-sm font-bold">Loading Results...</span>
-          </div>
-        </div>
-      }
-    >
+    <Suspense fallback={<div className="min-h-screen bg-[#F0F7F2]" />}>
       <ResultsContent />
     </Suspense>
   );

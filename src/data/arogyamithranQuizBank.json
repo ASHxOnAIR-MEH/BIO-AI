@@ -34,7 +34,8 @@
         "https://www.who.int/publications/i/item/9241545178"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q002",
@@ -54,27 +55,29 @@
         "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q003",
       "category": "Ayurveda & traditional knowledge",
       "difficulty": "easy",
-      "question": "Which plant part is the usual culinary source of turmeric powder?",
+      "question": "Which of the following is the scientific name of Turmeric?",
       "options": [
-        "Root bark",
-        "Rhizome",
-        "Flower petals",
-        "Seeds"
+        "Curcuma longa",
+        "Ocimum sanctum",
+        "Withania somnifera",
+        "Zingiber officinale"
       ],
-      "correct_option_index": 1,
-      "correct_answer": "Rhizome",
-      "explanation": "Turmeric powder is made from the rhizome, an underground stem, of Curcuma longa.",
+      "correct_option_index": 0,
+      "correct_answer": "Curcuma longa",
+      "explanation": "Curcuma longa is the scientific name of Turmeric. It contains curcumin, which is studied for its anti-inflammatory and antioxidant properties.",
+      "image": "/assets/kiosk/questions/turmeric.jpg",
       "source_urls": [
         "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
         "https://powo.science.kew.org/"
       ],
-      "status": "draft_review_required",
+      "status": "verified",
       "language": "en"
     },
     {
@@ -96,7 +99,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q005",
@@ -117,7 +121,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q006",
@@ -137,7 +142,8 @@
         "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q007",
@@ -158,7 +164,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q008",
@@ -179,7 +186,8 @@
         "https://smpbkerala.in/herbal-data/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q009",
@@ -200,7 +208,8 @@
         "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q010",
@@ -221,7 +230,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q011",
@@ -242,7 +252,8 @@
         "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q012",
@@ -262,7 +273,8 @@
         "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q013",
@@ -283,7 +295,8 @@
         "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q014",
@@ -304,7 +317,8 @@
         "https://mpns.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q015",
@@ -325,7 +339,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q016",
@@ -345,7 +360,8 @@
         "https://mpns.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q017",
@@ -366,7 +382,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q018",
@@ -387,7 +404,8 @@
         "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q019",
@@ -408,7 +426,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q020",
@@ -429,7 +448,8 @@
         "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q021",
@@ -449,7 +469,8 @@
         "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q022",
@@ -469,7 +490,8 @@
         "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q023",
@@ -489,7 +511,8 @@
         "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q024",
@@ -509,7 +532,8 @@
         "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q025",
@@ -530,7 +554,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q026",
@@ -550,7 +575,8 @@
         "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q027",
@@ -571,7 +597,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q028",
@@ -592,7 +619,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q029",
@@ -612,7 +640,8 @@
         "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q030",
@@ -632,7 +661,8 @@
         "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q031",
@@ -652,7 +682,8 @@
         "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q032",
@@ -673,7 +704,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q033",
@@ -693,7 +725,8 @@
         "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q034",
@@ -714,7 +747,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q035",
@@ -734,7 +768,8 @@
         "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q036",
@@ -754,7 +789,8 @@
         "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q037",
@@ -775,7 +811,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q038",
@@ -796,7 +833,8 @@
         "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q039",
@@ -816,7 +854,8 @@
         "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q040",
@@ -837,7 +876,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/tulsi.jpg"
     },
     {
       "id": "Q041",
@@ -857,7 +897,8 @@
         "https://www.genome.gov/genetics-glossary"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q042",
@@ -877,7 +918,8 @@
         "https://www.genome.gov/genetics-glossary"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q043",
@@ -897,7 +939,8 @@
         "https://www.genome.gov/genetics-glossary"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q044",
@@ -917,7 +960,8 @@
         "https://www.genome.gov/genetics-glossary"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q045",
@@ -937,7 +981,8 @@
         "https://www.genome.gov/genetics-glossary"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q046",
@@ -955,7 +1000,8 @@
       "explanation": "AI refers broadly to computational systems that perform tasks such as pattern recognition, prediction or language processing.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q047",
@@ -973,7 +1019,8 @@
       "explanation": "Machine learning is a branch of AI that uses data to fit models or identify patterns.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q048",
@@ -991,7 +1038,8 @@
       "explanation": "Cells are the basic structural and functional units of living organisms.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q049",
@@ -1011,7 +1059,8 @@
         "https://www.genome.gov/genetics-glossary"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q050",
@@ -1031,7 +1080,8 @@
         "https://www.genome.gov/genetics-glossary"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q051",
@@ -1049,7 +1099,8 @@
       "explanation": "Amino acids are linked to form proteins.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q052",
@@ -1067,7 +1118,8 @@
       "explanation": "Enzymes speed up biochemical reactions without being consumed in the overall reaction.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q053",
@@ -1085,7 +1137,8 @@
       "explanation": "Microscopes make small structures such as cells visible at suitable magnification.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q054",
@@ -1105,7 +1158,8 @@
         "https://www.genome.gov/genetics-glossary"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q055",
@@ -1123,7 +1177,8 @@
       "explanation": "Biosensors use a recognition element and a transducer to detect a target and produce a measurable signal.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q056",
@@ -1141,7 +1196,8 @@
       "explanation": "Cell membranes form selective boundaries around cells and regulate material exchange.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q057",
@@ -1159,7 +1215,8 @@
       "explanation": "Bacteria are microscopic single-celled organisms; different bacteria have different effects and uses.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q058",
@@ -1177,7 +1234,8 @@
       "explanation": "Viruses use host cells to reproduce and are not made of the same cellular structures as bacteria.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q059",
@@ -1195,7 +1253,8 @@
       "explanation": "Fermentation uses microbial activity to change foods, often affecting flavour, texture and preservation.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q060",
@@ -1213,7 +1272,8 @@
       "explanation": "AI can support analysis and prediction, but methods, data quality, bias and results require expert validation.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q061",
@@ -1233,7 +1293,8 @@
         "https://www.cbd.int/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q062",
@@ -1253,7 +1314,8 @@
         "https://bsi.gov.in/page/hi/medicinal-plant-database"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q063",
@@ -1274,7 +1336,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q064",
@@ -1294,7 +1357,8 @@
         "https://www.cbd.int/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q065",
@@ -1314,7 +1378,8 @@
         "https://www.cbd.int/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q066",
@@ -1334,7 +1399,8 @@
         "https://www.cbd.int/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q067",
@@ -1354,7 +1420,8 @@
         "https://www.cbd.int/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q068",
@@ -1375,7 +1442,8 @@
         "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q069",
@@ -1396,7 +1464,8 @@
         "https://www.cbd.int/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q070",
@@ -1416,7 +1485,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q071",
@@ -1434,7 +1504,8 @@
       "explanation": "In flowering plants, fruits often protect seeds and help disperse them, though mechanisms vary widely.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q072",
@@ -1452,7 +1523,8 @@
       "explanation": "Roots commonly anchor plants and absorb water and mineral nutrients.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q073",
@@ -1470,7 +1542,8 @@
       "explanation": "Photosynthesis converts light energy into chemical energy; plants use carbon dioxide and water to produce sugars and release oxygen in oxygenic photosynthesis.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q074",
@@ -1491,7 +1564,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q075",
@@ -1511,7 +1585,8 @@
         "https://www.cbd.int/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q076",
@@ -1532,7 +1607,8 @@
         "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q077",
@@ -1552,7 +1628,8 @@
         "https://www.cbd.int/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q078",
@@ -1572,7 +1649,8 @@
         "https://www.cbd.int/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q079",
@@ -1593,7 +1671,8 @@
         "https://mpns.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q080",
@@ -1614,7 +1693,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q081",
@@ -1635,7 +1715,8 @@
         "https://www.who.int/publications/i/item/9241545178"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q082",
@@ -1653,7 +1734,8 @@
       "explanation": "Peer review is a quality-control step, not a guarantee that every finding is correct.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q083",
@@ -1671,7 +1753,8 @@
       "explanation": "Clinical studies involving people investigate health-related questions under defined protocols and oversight.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q084",
@@ -1692,7 +1775,8 @@
         "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q085",
@@ -1713,7 +1797,8 @@
         "https://medlineplus.gov/druginfo/herb_All.html"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     },
     {
       "id": "Q086",
@@ -1733,7 +1818,8 @@
         "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q087",
@@ -1754,7 +1840,8 @@
         "https://mpns.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q088",
@@ -1774,7 +1861,8 @@
         "https://www.who.int/publications/i/item/9241545178"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q089",
@@ -1794,7 +1882,8 @@
         "https://powo.science.kew.org/"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q090",
@@ -1815,7 +1904,8 @@
         "https://www.who.int/publications/i/item/9241545178"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q091",
@@ -1836,7 +1926,8 @@
         "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q092",
@@ -1856,7 +1947,8 @@
         "https://www.who.int/publications/i/item/9241545178"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q093",
@@ -1877,7 +1969,8 @@
         "https://bsi.gov.in/page/hi/medicinal-plant-database"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q094",
@@ -1897,7 +1990,8 @@
         "https://www.nccih.nih.gov/health/turmeric"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q095",
@@ -1918,7 +2012,8 @@
         "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q096",
@@ -1936,7 +2031,8 @@
       "explanation": "Public rankings should minimise personal data and never expose phone numbers or unrelated private details.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/turmeric.jpg"
     },
     {
       "id": "Q097",
@@ -1954,7 +2050,8 @@
       "explanation": "The interface must report persistence honestly and show retry/error behaviour when saving fails.",
       "source_urls": [],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q098",
@@ -1975,7 +2072,8 @@
         "https://www.who.int/publications/i/item/9241545178"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q099",
@@ -1996,7 +2094,8 @@
         "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/dna_biotech.jpg"
     },
     {
       "id": "Q100",
@@ -2016,7 +2115,8 @@
         "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
       ],
       "status": "draft_review_required",
-      "language": "en"
+      "language": "en",
+      "image": "/assets/kiosk/questions/pepper.jpg"
     }
   ]
 }

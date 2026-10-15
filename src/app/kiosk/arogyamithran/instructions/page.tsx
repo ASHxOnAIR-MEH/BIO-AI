@@ -1,11 +1,12 @@
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import ArogyamithranCharacterFrame from "@/components/kiosk/ArogyamithranCharacterFrame";
+import { ArrowLeft, AlertCircle } from "lucide-react";
 import KioskSubHeader from "@/components/kiosk/KioskSubHeader";
-import KioskFooter from "@/components/kiosk/KioskFooter";
 import { useArogyamithranLanguage } from "@/components/kiosk/ArogyamithranContext";
 import { KioskLanguage } from "@/components/kiosk/types";
 
@@ -34,40 +35,21 @@ function InstructionsContent() {
 
   const isMl = activeLang === "ml";
 
-  // Content specified in Step 4 requirements
-  const heading = isMl
-    ? "ആരോഗ്യ മിത്രൻ ബയോ-എഐ ചലഞ്ച്"
-    : "Arogyamithran Bio-AI Challenge";
-
-  const supportingText = isMl
-    ? "ബയോ-എഐ, ആയുർവേദം, ഔഷധസസ്യങ്ങൾ, സുഗന്ധവ്യഞ്ജനങ്ങൾ, അനുബന്ധ ശാസ്ത്രീയ ആശയങ്ങൾ എന്നിവയിലെ നിങ്ങളുടെ അറിവ് പരിശോധിക്കുക."
-    : "Test your knowledge of Bio-AI, Ayurveda, medicinal plants, spices and related scientific concepts.";
-
-  const rulesHeading = isMl ? "ചലഞ്ച് നിയമങ്ങൾ" : "Challenge Rules";
-
-  const rules = isMl
+  const instructions = isMl
     ? [
-        { icon: "📝", text: "10 ചോദ്യങ്ങൾക്ക് ഉത്തരം നൽകുക." },
-        { icon: "✨", text: "ഓരോ ശരിയുത്തരത്തിനും 10 പോയിന്റ് ലഭിക്കും." },
-        { icon: "🔢", text: "ഓരോ ചോദ്യത്തിനും നാല് ഉത്തര ഓപ്ഷനുകൾ ഉണ്ട്." },
-        { icon: "🎯", text: "ഒരു ചോദ്യത്തിന് ഒരു ഉത്തരം മാത്രം തിരഞ്ഞെടുക്കുക." },
-        { icon: "🏆", text: "നിങ്ങളുടെ പരമാവധി സ്കോർ 100 പോയിന്റാണ്." },
+        { num: 1, text: "10 മൾട്ടിപ്പിൾ ചോയ്സ് ചോദ്യങ്ങൾ ഉണ്ടായിരിക്കും." },
+        { num: 2, text: "100 ചോദ്യങ്ങളുടെ ബയോ-എഐ ബാങ്കിൽ നിന്ന് റാൻഡമായി ചോദ്യങ്ങൾ തിരഞ്ഞെടുക്കപ്പെടുന്നു." },
+        { num: 3, text: "ഓരോ ശരിയുത്തരത്തിനും 10 പോയിന്റ് ലഭിക്കും." },
+        { num: 4, text: "സസ്യങ്ങൾ, സുഗന്ധവ്യഞ്ജനങ്ങൾ, ബയോടെക്നോളജി, എഐ എന്നിവയെക്കുറിച്ചുള്ള രസകരമായ വസ്തുതകൾ പഠിക്കാം." },
+        { num: 5, text: "അവസാനം നിങ്ങളുടെ സ്കോറും ക്യുആർ കോഡും ലഭിക്കും, ഫലം ഇമെയിലിൽ അയയ്ക്കും." },
       ]
     : [
-        { icon: "📝", text: "Answer 10 questions." },
-        { icon: "✨", text: "Each correct answer earns 10 points." },
-        { icon: "🔢", text: "Each question has four answer options." },
-        { icon: "🎯", text: "Select one answer per question." },
-        { icon: "🏆", text: "Your maximum score is 100 points." },
+        { num: 1, text: "You will see 10 multiple-choice questions." },
+        { num: 2, text: "Questions are selected randomly from our 100-question Bio-AI bank." },
+        { num: 3, text: "Each correct answer gives you 10 points." },
+        { num: 4, text: "Try your best and learn interesting facts about plants, spices, biotechnology and AI." },
+        { num: 5, text: "At the end, you will get your score, a QR code and the result will be sent to your email." },
       ];
-
-  const characterDialogue = isMl
-    ? "ചലഞ്ചിലേക്ക് സ്വാഗതം! ചോദ്യങ്ങൾ ശ്രദ്ധാപൂർവ്വം വായിച്ച് പുതിയ ബയോ-എഐ അറിവുകൾ നേടൂ."
-    : "Welcome to the challenge! Read each question carefully and discover exciting Bio-AI insights.";
-
-  const startButtonLabel = isMl
-    ? "ചലഞ്ച് ആരംഭിക്കുക"
-    : "START THE CHALLENGE";
 
   const handleStartChallenge = async () => {
     setIsStarting(true);
@@ -76,9 +58,7 @@ function InstructionsContent() {
     try {
       const response = await fetch("/api/kiosk/quiz/start", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           registrationId: regId || "kiosk-guest-session",
           language: activeLang,
@@ -88,169 +68,164 @@ function InstructionsContent() {
       const data = await response.json();
 
       if (!response.ok || !data.success) {
-        throw new Error(data.error || "Failed to initialize challenge attempt.");
+        throw new Error(data.error || (isMl ? "ചലഞ്ച് ആരംഭിക്കാൻ കഴിഞ്ഞില്ല." : "Failed to start quiz attempt."));
       }
 
-      // Navigate to challenge screen with attemptId
       router.push(
         `/kiosk/arogyamithran/challenge?attemptId=${encodeURIComponent(
           data.attemptId
         )}&regId=${encodeURIComponent(regId)}&lang=${activeLang}`
       );
     } catch (err: unknown) {
-      const message =
-        err instanceof Error ? err.message : "An unexpected error occurred.";
-      setErrorMessage(message);
+      const msg = err instanceof Error ? err.message : isMl ? "സെർവർ പിശക് സംഭവിച്ചു." : "An error occurred.";
+      setErrorMessage(msg);
       setIsStarting(false);
     }
   };
 
   return (
-    <main className="min-h-screen flex flex-col justify-between bg-[#FAFAF7] text-[#132E27] relative selection:bg-[#55B96A]/20">
-      {/* ─── KIOSK SUB HEADER ────────────────────────────────────────── */}
-      <KioskSubHeader
-        language={activeLang}
-        backHref="/kiosk"
-        backLabel="Back to Kiosk"
-        backLabelMl="കിയോസ്ക് മെനു"
-        currentStepBadge="Step 5: Challenge Instructions"
-        currentStepBadgeMl="ഘട്ടം 5: ചലഞ്ച് നിർദ്ദേശങ്ങൾ"
-      />
+    <div className="min-h-screen w-full bg-[#F0F7F2] text-[#132E27] relative flex flex-col justify-between items-center selection:bg-[#55B96A]/25 overflow-x-hidden">
+      <main className="w-full max-w-[820px] min-h-screen flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.18)] overflow-hidden bg-[#F0F7F2]">
+        {/* 1. Header with official KSUM | Kerala IT | Huddle Global branding */}
+        <KioskSubHeader
+          language={activeLang}
+          backHref={`/kiosk/arogyamithran/register?lang=${activeLang}`}
+          backLabel="Back"
+          backLabelMl="പിന്നിലേക്ക്"
+        />
 
-      {/* ─── INSTRUCTIONS CONTENT ──────────────────────────────────────── */}
-      <div className="flex-1 max-w-3xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 flex flex-col items-center justify-center">
-        {/* Step indicator badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F0F7F1] border border-[#0B5D46]/15 mb-3 shadow-xs">
-          <span className="w-2 h-2 rounded-full bg-[#55B96A]" />
-          <span className="text-[11px] sm:text-xs font-bold text-[#0B5D46] uppercase tracking-wider">
-            {isMl ? "ഘട്ടം 7 / 9 · ചലഞ്ച് നിർദ്ദേശങ്ങൾ" : "Step 7 of 9 · Challenge Instructions"}
-          </span>
-        </div>
-
-        {/* Heading */}
-        <h1
-          className={`text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#073B30] text-center tracking-tight mb-2 ${
-            isMl ? "font-malayalam leading-snug" : ""
-          }`}
-        >
-          {heading}
-        </h1>
-
-        {/* Supporting introduction */}
-        <p
-          className={`text-sm sm:text-base text-[#244B3F]/90 text-center max-w-xl mb-6 leading-relaxed ${
-            isMl ? "font-malayalam" : ""
-          }`}
-        >
-          {supportingText}
-        </p>
-
-        {/* Arogyamithran explaining character frame */}
-        <div className="w-full mb-6">
-          <ArogyamithranCharacterFrame
-            compact={true}
-            selectedLanguage={activeLang}
-            expression="talking"
-            dialogue={characterDialogue}
-          />
-        </div>
-
-        {/* Rules Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="w-full max-w-xl bg-white rounded-3xl p-5 sm:p-6 border-2 border-[#0B5D46]/15 shadow-sm mb-6"
-        >
-          <div className="flex items-center gap-2 mb-3.5 pb-2 border-b border-[#0B5D46]/10">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#0B5D46]" />
-            <h2
-              className={`text-xs sm:text-sm font-bold uppercase tracking-wider text-[#073B30] ${
-                isMl ? "font-malayalam" : ""
-              }`}
-            >
-              {rulesHeading}
-            </h2>
+        {/* 2. Visual Content Area */}
+        <div className="relative flex-1 flex flex-col justify-between px-4 sm:px-6 py-4 sm:py-6 overflow-y-auto">
+          {/* Background Botanical Illustration */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <Image
+              src="/assets/kiosk/backgrounds/hero_portrait.jpg"
+              alt="Bio-AI tropical background"
+              fill
+              priority
+              className="object-cover object-center opacity-30 select-none"
+              sizes="820px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#F0F7F2]/95 via-[#F0F7F2]/85 to-[#F0F7F2]/95" />
           </div>
 
-          <ul className="space-y-2.5">
-            {rules.map((rule, idx) => (
-              <li
-                key={idx}
-                className="flex items-center gap-3 text-xs sm:text-sm text-[#132E27] font-medium"
+          <div className="relative z-10 w-full max-w-lg mx-auto flex flex-col items-center">
+            {/* Title Section */}
+            <div className="text-center mb-3">
+              <h1 className={`text-2xl sm:text-3xl font-black text-[#073B30] tracking-tight ${isMl ? "font-malayalam" : ""}`}>
+                {isMl ? "ബയോ-എഐ ചലഞ്ച്" : "Bio-AI Challenge"}
+              </h1>
+              <p className={`text-xs sm:text-sm font-semibold text-[#0B5D46] mt-0.5 max-w-md mx-auto ${isMl ? "font-malayalam" : ""}`}>
+                {isMl
+                  ? "നിങ്ങളുടെ അറിവ് പരിശോധിക്കൂ. പുതിയ കാര്യങ്ങൾ പഠിക്കൂ. ആരോഗ്യകരവും സുസ്ഥിരവുമായ നാളേക്കായി!"
+                  : "Test your knowledge. Learn something new. Be a part of a healthier, sustainable future!"}
+              </p>
+            </div>
+
+            {/* Error Banner */}
+            {errorMessage && (
+              <motion.div
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="w-full mb-3 p-3 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2"
               >
-                <span className="text-base shrink-0">{rule.icon}</span>
-                <span className={isMl ? "font-malayalam leading-relaxed" : ""}>
-                  {rule.text}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-
-        {/* Language Notification Badge */}
-        {isMl && (
-          <div className="w-full max-w-xl mb-4 px-4 py-2.5 rounded-xl bg-[#F0F7F1] border border-[#0B5D46]/20 text-[11px] sm:text-xs text-[#0B5D46] font-medium flex items-center gap-2">
-            <span className="shrink-0 text-sm">ℹ️</span>
-            <span>
-              ചോദ്യ ബാങ്ക് ഇംഗ്ലീഷിൽ ലഭ്യമാണ് • ഇന്റർഫേസും ഫീഡ്ബാക്കും മലയാളത്തിലാണ്.
-            </span>
-          </div>
-        )}
-
-        {/* Error message alert if attempt start fails */}
-        {errorMessage && (
-          <div className="w-full max-w-xl mb-4 p-4 rounded-2xl bg-red-50 border border-red-200 text-red-800 text-xs sm:text-sm">
-            <p className="font-bold mb-1">Configuration / Session Error:</p>
-            <p>{errorMessage}</p>
-          </div>
-        )}
-
-        {/* Start Button: Accessible touch size ~60px min-height */}
-        <div className="w-full max-w-xl">
-          <button
-            type="button"
-            onClick={handleStartChallenge}
-            disabled={isStarting}
-            className="w-full min-h-[58px] sm:min-h-[64px] px-8 py-4 rounded-2xl bg-[#073B30] text-[#FAFAF7] hover:bg-[#0B5D46] active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed transition-all text-base sm:text-lg font-bold shadow-lg flex items-center justify-center gap-3 touch-manipulation focus:outline-none focus-visible:ring-4 focus-visible:ring-[#55B96A]"
-          >
-            {isStarting ? (
-              <>
-                <span className="w-5 h-5 rounded-full border-2 border-white border-t-transparent animate-spin" />
-                <span>
-                  {isMl ? "ചോദ്യങ്ങൾ തയ്യാറാക്കുന്നു..." : "Preparing your challenge..."}
-                </span>
-              </>
-            ) : (
-              <>
-                <span className={isMl ? "font-malayalam" : ""}>
-                  {startButtonLabel}
-                </span>
-                <span className="text-[#55B96A] text-xl font-bold">→</span>
-              </>
+                <AlertCircle className="w-4 h-4 shrink-0 text-red-500" />
+                <span>{errorMessage}</span>
+              </motion.div>
             )}
-          </button>
-        </div>
-      </div>
 
-      {/* ─── KIOSK FOOTER ──────────────────────────────────────────────── */}
-      <KioskFooter language={activeLang} />
-    </main>
+            {/* Mascot and Speech Bubble Row matching Storyboard Screen 4 */}
+            <div className="w-full flex items-center justify-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+              {/* Arogyamithran Pointing Pose */}
+              <div className="relative w-20 h-28 sm:w-28 sm:h-36 shrink-0 rounded-2xl overflow-hidden shadow-md border-2 border-white/60 bg-[#FAFAF7]">
+                <Image
+                  src="/assets/kiosk/arogyamithran/pointing.jpg"
+                  alt="Arogyamithran explaining the quiz rules"
+                  fill
+                  priority
+                  className="object-cover object-top"
+                  sizes="120px"
+                />
+              </div>
+
+              {/* Speech Bubble pointing to Arogyamithran */}
+              <div className="relative flex-1 bg-white rounded-2xl p-3.5 sm:p-4 shadow-lg border-2 border-[#0B5D46]/15">
+                <div className="absolute top-1/2 -left-2.5 -translate-y-1/2 w-3 h-3 bg-white border-b-2 border-l-2 border-[#0B5D46]/15 rotate-45" />
+                <p className={`text-xs sm:text-sm font-extrabold text-[#073B30] leading-snug ${isMl ? "font-malayalam" : ""}`}>
+                  {isMl ? "ചലഞ്ച് എങ്ങനെയാണെന്ന് മനസ്സിലാക്കാം!" : "Here's how the challenge works!"}
+                </p>
+                <p className={`text-[11px] text-[#244B3F]/80 font-medium mt-0.5 ${isMl ? "font-malayalam" : ""}`}>
+                  {isMl ? "10 ചോദ്യങ്ങൾ · 100 പരമാവധി സ്കോർ" : "10 Questions · 100 Maximum Score"}
+                </p>
+              </div>
+            </div>
+
+            {/* Five Instructions White Card matching Storyboard */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="w-full bg-white rounded-3xl p-4 sm:p-5 shadow-xl border-2 border-[#0B5D46]/15 flex flex-col gap-2.5"
+            >
+              {instructions.map((item) => (
+                <div key={item.num} className="flex items-start gap-3">
+                  {/* Number Badge */}
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#55B96A] text-white font-black text-xs sm:text-sm flex items-center justify-center shrink-0 shadow-xs">
+                    {item.num}
+                  </div>
+                  {/* Rule Text */}
+                  <p className={`text-xs sm:text-sm text-[#132E27] font-semibold leading-relaxed pt-0.5 ${isMl ? "font-malayalam" : ""}`}>
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* Action Button: Start Quiz */}
+            <motion.button
+              type="button"
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={handleStartChallenge}
+              disabled={isStarting}
+              className="w-full min-h-[50px] sm:min-h-[54px] mt-4 rounded-2xl bg-gradient-to-r from-[#073B30] to-[#0B5D46] hover:from-[#0B5D46] hover:to-[#55B96A] text-[#FAFAF7] font-black text-base sm:text-lg shadow-lg border border-white/20 flex items-center justify-center gap-2 touch-manipulation active:scale-95 transition-all disabled:opacity-60"
+            >
+              {isStarting ? (
+                <span className="flex items-center gap-2">
+                  <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <span>{isMl ? "ചോദ്യങ്ങൾ തയ്യാറാക്കുന്നു..." : "Preparing Questions..."}</span>
+                </span>
+              ) : (
+                <>
+                  <span className={isMl ? "font-malayalam" : ""}>
+                    {isMl ? "ക്വിസ് ആരംഭിക്കുക" : "Start Quiz"}
+                  </span>
+                  <span className="text-xl">→</span>
+                </>
+              )}
+            </motion.button>
+
+            {/* Back to Home Button */}
+            <div className="mt-3">
+              <Link
+                href="/kiosk"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-full bg-white/90 hover:bg-white text-[#073B30] text-xs font-bold shadow-xs border border-[#0B5D46]/20 transition-all active:scale-95 touch-manipulation"
+              >
+                <ArrowLeft className="w-3.5 h-3.5 text-[#55B96A]" />
+                <span className={isMl ? "font-malayalam" : ""}>
+                  {isMl ? "പ്രധാന പേജിലേക്ക് മടങ്ങുക" : "Back to Home"}
+                </span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }
 
 export default function ArogyamithranInstructionsPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen flex items-center justify-center bg-[#FAFAF7] text-[#073B30]">
-          <div className="flex items-center gap-3">
-            <span className="w-3 h-3 rounded-full bg-[#55B96A] animate-ping" />
-            <span className="text-sm font-bold">Loading Instructions...</span>
-          </div>
-        </div>
-      }
-    >
+    <Suspense fallback={<div className="min-h-screen bg-[#F0F7F2]" />}>
       <InstructionsContent />
     </Suspense>
   );

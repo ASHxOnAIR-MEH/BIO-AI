@@ -115,6 +115,7 @@ export function startQuizAttempt(
     difficulty: q.difficulty,
     question: q.question,
     options: [...q.options],
+    image: q.image || "/assets/kiosk/categories/card_vedaverse.jpg",
   }));
 
   return { attemptId, questions: clientQuestions };
@@ -270,6 +271,7 @@ export function getOngoingAttemptState(attemptId: string): {
       difficulty: q.difficulty,
       question: q.question,
       options: [...q.options],
+      image: q.image || "/assets/kiosk/categories/card_vedaverse.jpg",
     })
   );
 

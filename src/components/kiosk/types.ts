@@ -45,6 +45,7 @@ export interface QuizQuestionRaw {
   source_urls?: string[];
   status?: string;
   language?: string;
+  image?: string;
 }
 
 export interface QuizBankDataset {
@@ -73,6 +74,7 @@ export interface QuizQuestionClient {
   difficulty: string;
   question: string;
   options: string[];
+  image?: string;
 }
 
 /** Feedback returned from server after answer submission */

@@ -1,12 +1,14 @@
 "use client";
 
 import { Suspense, useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useArogyamithranLanguage } from "@/components/kiosk/ArogyamithranContext";
-import ArogyamithranMascot from "@/components/kiosk/ArogyamithranMascot";
+import { motion } from "framer-motion";
+import { ArrowLeft, User, Phone, Mail, Award, Building2, AlertCircle } from "lucide-react";
 import KioskSubHeader from "@/components/kiosk/KioskSubHeader";
-import KioskFooter from "@/components/kiosk/KioskFooter";
 import PrivacyNoticeModal from "@/components/kiosk/PrivacyNoticeModal";
+import { useArogyamithranLanguage } from "@/components/kiosk/ArogyamithranContext";
 import { KioskLanguage } from "@/components/kiosk/types";
 
 interface FormState {
@@ -15,14 +17,16 @@ interface FormState {
   email: string;
   designation: string;
   organisation: string;
-  consent: boolean;
+  consentPrivacy: boolean;
+  consentChallenge: boolean;
 }
 
 interface FormErrors {
   fullName?: string;
   mobile?: string;
   email?: string;
-  consent?: string;
+  consentPrivacy?: string;
+  consentChallenge?: string;
   general?: string;
 }
 
@@ -47,94 +51,70 @@ function RegisterContent() {
 
   const isMl = activeLang === "ml";
 
-  // In-memory form state (Never stored in localStorage/sessionStorage)
   const [formData, setFormData] = useState<FormState>({
     fullName: "",
     mobile: "",
     email: "",
     designation: "",
     organisation: "",
-    consent: false,
+    consentPrivacy: false,
+    consentChallenge: false,
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
-  // Field change handler
-  const handleChange = (
-    field: keyof FormState,
-    value: string | boolean
-  ) => {
+  const handleChange = (field: keyof FormState, value: string | boolean) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-    // Clear field-specific error as user types
     if (errors[field as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
   };
 
-  // Client-side validation
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
 
-    // 1. Full Name
     const name = formData.fullName.trim();
     if (!name) {
-      newErrors.fullName = isMl
-        ? "പൂർണ്ണനാമം നൽകേണ്ടത് നിർബന്ധമാണ്."
-        : "Full name is required.";
+      newErrors.fullName = isMl ? "പൂർണ്ണനാമം നൽകുക." : "Please enter your full name.";
     } else if (name.length < 2) {
-      newErrors.fullName = isMl
-        ? "സാധുവായ പൂർണ്ണനാമം നൽകുക (കുറഞ്ഞത് 2 അക്ഷരങ്ങൾ)."
-        : "Please enter a valid full name (minimum 2 characters).";
+      newErrors.fullName = isMl ? "കുറഞ്ഞത് 2 അക്ഷരങ്ങൾ നൽകുക." : "Minimum 2 characters required.";
     }
 
-    // 2. Mobile Number (10-digit Indian Mobile)
     const rawMobile = formData.mobile.trim().replace(/\D/g, "");
     if (!rawMobile) {
-      newErrors.mobile = isMl
-        ? "മൊബൈൽ നമ്പർ നൽകേണ്ടത് നിർബന്ധമാണ്."
-        : "Mobile number is required.";
+      newErrors.mobile = isMl ? "മൊബൈൽ നമ്പർ നൽകുക." : "Mobile number is required.";
     } else if (!/^[6-9]\d{9}$/.test(rawMobile)) {
-      newErrors.mobile = isMl
-        ? "സാധുവായ 10 അക്ക മൊബൈൽ നമ്പർ നൽകുക (6, 7, 8, അല്ലെങ്കിൽ 9-ൽ തുടങ്ങുന്നത്)."
-        : "Please enter a valid 10-digit Indian mobile number (starts with 6-9).";
+      newErrors.mobile = isMl ? "സാധുവായ 10 അക്ക മൊബൈൽ നമ്പർ നൽകുക." : "Enter a valid 10-digit Indian mobile.";
     }
 
-    // 3. Email Address
     const email = formData.email.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!email) {
-      newErrors.email = isMl
-        ? "ഇമെയിൽ വിലാസം നൽകേണ്ടത് നിർബന്ധമാണ്."
-        : "Email address is required.";
-    } else if (!emailRegex.test(email)) {
-      newErrors.email = isMl
-        ? "ശരിയായ ഇമെയിൽ വിലാസം നൽകുക (ഉദാ: name@example.com)."
-        : "Please enter a valid email address (e.g. name@example.com).";
+      newErrors.email = isMl ? "ഇമെയിൽ വിലാസം നൽകുക." : "Email address is required.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = isMl ? "സാധുവായ ഇമെയിൽ നൽകുക." : "Enter a valid email address.";
     }
 
-    // 4. Consent (Must be explicitly checked)
-    if (!formData.consent) {
-      newErrors.consent = isMl
-        ? "തുടരുന്നതിനായി വിവര ശേഖരണ സമ്മതം രേഖപ്പെടുത്തേണ്ടത് നിർബന്ധമാണ്."
-        : "Consent is required before proceeding with registration.";
+    if (!formData.consentPrivacy) {
+      newErrors.consentPrivacy = isMl ? "സമ്മതം നൽകേണ്ടതുണ്ട്." : "You must agree to the privacy notice.";
+    }
+
+    if (!formData.consentChallenge) {
+      newErrors.consentChallenge = isMl ? "സമ്മതം നൽകേണ്ടതുണ്ട്." : "Please confirm your consent.";
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  // Form submission handler
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validate()) {
-      return;
-    }
+    if (!validate()) return;
 
     setIsSubmitting(true);
-    setErrors((prev) => ({ ...prev, general: undefined }));
+    setErrors({});
 
     try {
       const response = await fetch("/api/kiosk/register", {
@@ -143,10 +123,10 @@ function RegisterContent() {
         body: JSON.stringify({
           fullName: formData.fullName.trim(),
           mobile: formData.mobile.trim().replace(/\D/g, ""),
-          email: formData.email.trim(),
-          designation: formData.designation.trim(),
-          organisation: formData.organisation.trim(),
-          consent: formData.consent,
+          email: formData.email.trim().toLowerCase(),
+          designation: formData.designation.trim() || undefined,
+          organisation: formData.organisation.trim() || undefined,
+          consent: formData.consentPrivacy && formData.consentChallenge,
           language: activeLang,
         }),
       });
@@ -154,402 +134,316 @@ function RegisterContent() {
       const data = await response.json();
 
       if (!response.ok || !data.success) {
-        setErrors({
-          general:
-            data?.message ||
-            (isMl
-              ? "രജിസ്ട്രേഷൻ പ്രക്രിയയിൽ തടസ്സം നേരിട്ടു. വീണ്ടും ശ്രമിക്കുക."
-              : "Unable to complete registration. Please check your details and try again."),
-        });
-        setIsSubmitting(false);
-        return;
+        throw new Error(data.error || (isMl ? "രജിസ്ട്രേഷൻ പരാജയപ്പെട്ടു." : "Registration failed."));
       }
 
-      // Success: Navigate to Registration Completion Screen
-      // Clear sensitive state from memory upon successful transition
-      const regId = data.registrationId;
       router.push(
-        `/kiosk/arogyamithran/completed?regId=${encodeURIComponent(
-          regId
+        `/kiosk/arogyamithran/instructions?regId=${encodeURIComponent(
+          data.registrationId
         )}&lang=${activeLang}`
       );
-    } catch {
-      setErrors({
-        general: isMl
-          ? "നെറ്റ്‌വർക്ക് കണക്ഷനിൽ പ്രശ്നം നേരിട്ടു. വീണ്ടും ശ്രമിക്കുക."
-          : "Network connection error. Please try submitting again.",
-      });
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : isMl ? "സെർവർ പിശക് സംഭവിച്ചു." : "An error occurred.";
+      setErrors({ general: msg });
+    } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <main className="min-h-screen flex flex-col justify-between bg-[#FAFAF7] text-[#132E27] relative selection:bg-[#55B96A]/20">
-      {/* ─── KIOSK SUB HEADER ────────────────────────────────────────── */}
-      <KioskSubHeader
-        language={activeLang}
-        backHref={`/kiosk/arogyamithran/welcome?lang=${activeLang}`}
-        backLabel="Back"
-        backLabelMl="തിരികെ"
-        currentStepBadge="Step 3: Registration & Consent"
-        currentStepBadgeMl="ഘട്ടം 3: സന്ദർശക രജിസ്ട്രേഷൻ"
-      />
+    <div className="min-h-screen w-full bg-[#F0F7F2] text-[#132E27] relative flex flex-col justify-between items-center selection:bg-[#55B96A]/25 overflow-x-hidden">
+      <main className="w-full max-w-[820px] min-h-screen flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.18)] overflow-hidden bg-[#F0F7F2]">
+        {/* 1. Header with official KSUM | Kerala IT | Huddle Global branding */}
+        <KioskSubHeader
+          language={activeLang}
+          backHref={`/kiosk/arogyamithran/welcome?lang=${activeLang}`}
+          backLabel="Back"
+          backLabelMl="പിന്നിലേക്ക്"
+        />
 
-      {/* ─── REGISTRATION FORM CONTENT ─────────────────────────────────── */}
-      <div className="flex-1 max-w-2xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 flex flex-col justify-center">
-        {/* Step indicator */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F0F7F1] border border-[#0B5D46]/15 mb-3 shadow-xs w-fit mx-auto">
-          <span className="w-2 h-2 rounded-full bg-[#55B96A]" />
-          <span className="text-[11px] sm:text-xs font-bold text-[#0B5D46] uppercase tracking-wider">
-            {isMl
-              ? "ഘട്ടം 2: സന്ദർശക രജിസ്ട്രേഷൻ"
-              : "Step 2: Visitor Registration"}
-          </span>
-        </div>
-
-        {/* Headings */}
-        <div className="text-center mb-6 sm:mb-8">
-          <h1
-            className={`text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#073B30] tracking-tight mb-2 ${
-              isMl ? "font-malayalam leading-snug" : ""
-            }`}
-          >
-            {isMl ? "നമുക്ക് തുടങ്ങുന്നതിന് മുമ്പ്" : "Before We Begin"}
-          </h1>
-          <p
-            className={`text-xs sm:text-sm md:text-base text-[#244B3F]/90 leading-relaxed max-w-xl mx-auto ${
-              isMl ? "font-malayalam" : ""
-            }`}
-          >
-            {isMl
-              ? "നിങ്ങളുടെ ചലഞ്ച് ഫലം നിങ്ങളുമായി ബന്ധിപ്പിക്കുന്നതിനും വ്യക്തിഗത ഫലത്തിന്റെ QR ലിങ്ക് ഇമെയിൽ വഴി അയയ്ക്കുന്നതിനുമായി ദയവായി വിവരങ്ങൾ പങ്കിടുക."
-              : "Please share a few details so we can associate your challenge result with you and send your personal result QR link to your email."}
-          </p>
-        </div>
-
-        {/* General Error Banner */}
-        {errors.general && (
-          <div className="mb-6 p-4 rounded-2xl bg-red-50 border-2 border-red-200 text-red-800 text-xs sm:text-sm flex items-center gap-3">
-            <span className="text-lg shrink-0">⚠️</span>
-            <span>{errors.general}</span>
-          </div>
-        )}
-
-        {/* Mascot Guiding Visitor */}
-        <div className="mb-6 flex justify-center">
-          <ArogyamithranMascot
-            expression="pointing"
-            size="sm"
-            language={activeLang}
-            dialogue={
-              isMl
-                ? "നിങ്ങളുടെ വിവരങ്ങൾ നൽകൂ, ചലഞ്ച് ഫലവും QR കോഡും ഇമെയിലിൽ അയച്ചുതരാം!"
-                : "Enter your details so I can prepare your personalized Bio-AI results and QR code!"
-            }
-            showDialogue={true}
-          />
-        </div>
-
-        {/* Form Container */}
-        <form
-          onSubmit={handleSubmit}
-          noValidate
-          className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 border-2 border-[#0B5D46]/15 shadow-sm space-y-5"
-        >
-          {/* 1. Full Name / പൂർണ്ണനാമം (Required) */}
-          <div>
-            <label
-              htmlFor="field-fullName"
-              className={`block text-xs sm:text-sm font-bold text-[#073B30] mb-1.5 ${
-                isMl ? "font-malayalam" : ""
-              }`}
-            >
-              {isMl ? "പൂർണ്ണനാമം" : "Full Name"}{" "}
-              <span className="text-red-500">*</span>
-            </label>
-            <input
-              id="field-fullName"
-              type="text"
-              autoComplete="name"
-              value={formData.fullName}
-              onChange={(e) => handleChange("fullName", e.target.value)}
-              placeholder={isMl ? "നിങ്ങളുടെ പേര് നൽകുക" : "Enter your full name"}
-              className={`w-full min-h-[52px] sm:min-h-[56px] px-4 py-3 rounded-xl border-2 text-sm sm:text-base text-[#132E27] bg-[#FAFAF7] transition-all focus:outline-none focus:ring-2 focus:ring-[#55B96A]/40 ${
-                errors.fullName
-                  ? "border-red-400 bg-red-50/20"
-                  : "border-[#0B5D46]/20 focus:border-[#0B5D46]"
-              }`}
+        {/* 2. Content with Botanical Background */}
+        <div className="relative flex-1 flex flex-col justify-between px-4 sm:px-6 py-4 sm:py-6 overflow-y-auto">
+          {/* Botanical Background Framing */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <Image
+              src="/assets/kiosk/backgrounds/hero_portrait.jpg"
+              alt="Bio-AI botanical background frame"
+              fill
+              priority
+              className="object-cover object-center opacity-40 select-none"
+              sizes="820px"
             />
-            {errors.fullName && (
-              <p
-                className={`mt-1.5 text-xs font-semibold text-red-600 flex items-center gap-1 ${
-                  isMl ? "font-malayalam" : ""
-                }`}
-              >
-                <span>⚠</span>
-                <span>{errors.fullName}</span>
-              </p>
-            )}
-          </div>
-
-          {/* 2. Mobile Number / മൊബൈൽ നമ്പർ (Required) */}
-          <div>
-            <label
-              htmlFor="field-mobile"
-              className={`block text-xs sm:text-sm font-bold text-[#073B30] mb-1.5 ${
-                isMl ? "font-malayalam" : ""
-              }`}
-            >
-              {isMl ? "മൊബൈൽ നമ്പർ" : "Mobile Number"}{" "}
-              <span className="text-red-500">*</span>
-            </label>
-            <div className="relative flex items-center">
-              <span className="absolute left-4 text-xs sm:text-sm font-bold text-[#244B3F]/70 select-none">
-                +91
-              </span>
-              <input
-                id="field-mobile"
-                type="tel"
-                inputMode="numeric"
-                autoComplete="tel"
-                maxLength={10}
-                value={formData.mobile}
-                onChange={(e) =>
-                  handleChange(
-                    "mobile",
-                    e.target.value.replace(/\D/g, "").slice(0, 10)
-                  )
-                }
-                placeholder={isMl ? "10 അക്ക മൊബൈൽ നമ്പർ" : "10-digit mobile number"}
-                className={`w-full min-h-[52px] sm:min-h-[56px] pl-14 pr-4 py-3 rounded-xl border-2 text-sm sm:text-base text-[#132E27] bg-[#FAFAF7] transition-all focus:outline-none focus:ring-2 focus:ring-[#55B96A]/40 tracking-wider ${
-                  errors.mobile
-                    ? "border-red-400 bg-red-50/20"
-                    : "border-[#0B5D46]/20 focus:border-[#0B5D46]"
-                }`}
+            {/* Spices footer background as seen in Screen 3 */}
+            <div className="absolute inset-x-0 bottom-0 h-44 opacity-25">
+              <Image
+                src="/assets/kiosk/categories/card_vedaverse.jpg"
+                alt="Kerala spices and botanical heritage"
+                fill
+                className="object-cover object-bottom"
+                sizes="820px"
               />
             </div>
-            {errors.mobile && (
-              <p
-                className={`mt-1.5 text-xs font-semibold text-red-600 flex items-center gap-1 ${
-                  isMl ? "font-malayalam" : ""
-                }`}
-              >
-                <span>⚠</span>
-                <span>{errors.mobile}</span>
+            <div className="absolute inset-0 bg-gradient-to-b from-[#F0F7F2]/90 via-[#F0F7F2]/80 to-[#F0F7F2]/95" />
+          </div>
+
+          {/* Form Container */}
+          <div className="relative z-10 w-full max-w-lg mx-auto flex flex-col items-center">
+            {/* Headings */}
+            <div className="text-center mb-4">
+              <h1 className={`text-2xl sm:text-3xl font-black text-[#073B30] tracking-tight ${isMl ? "font-malayalam" : ""}`}>
+                {isMl ? "സന്ദർശക രജിസ്ട്രേഷൻ" : "Visitor Registration"}
+              </h1>
+              <p className={`text-xs sm:text-sm font-semibold text-[#0B5D46] mt-0.5 ${isMl ? "font-malayalam" : ""}`}>
+                {isMl
+                  ? "ബയോ-എഐ ചലഞ്ച് ആരംഭിക്കുന്നതിനുള്ള ലളിതമായ രജിസ്ട്രേഷൻ."
+                  : "A quick registration to start your Bio-AI Challenge."}
               </p>
-            )}
-          </div>
+            </div>
 
-          {/* 3. Email Address / ഇമെയിൽ വിലാസം (Required) */}
-          <div>
-            <label
-              htmlFor="field-email"
-              className={`block text-xs sm:text-sm font-bold text-[#073B30] mb-1.5 ${
-                isMl ? "font-malayalam" : ""
-              }`}
-            >
-              {isMl ? "ഇമെയിൽ വിലാസം" : "Email Address"}{" "}
-              <span className="text-red-500">*</span>
-            </label>
-            <input
-              id="field-email"
-              type="email"
-              inputMode="email"
-              autoComplete="email"
-              value={formData.email}
-              onChange={(e) => handleChange("email", e.target.value)}
-              placeholder="name@example.com"
-              className={`w-full min-h-[52px] sm:min-h-[56px] px-4 py-3 rounded-xl border-2 text-sm sm:text-base text-[#132E27] bg-[#FAFAF7] transition-all focus:outline-none focus:ring-2 focus:ring-[#55B96A]/40 ${
-                errors.email
-                  ? "border-red-400 bg-red-50/20"
-                  : "border-[#0B5D46]/20 focus:border-[#0B5D46]"
-              }`}
-            />
-            {errors.email && (
-              <p
-                className={`mt-1.5 text-xs font-semibold text-red-600 flex items-center gap-1 ${
-                  isMl ? "font-malayalam" : ""
-                }`}
+            {/* Error Banner */}
+            {errors.general && (
+              <motion.div
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="w-full mb-3 p-3 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2"
               >
-                <span>⚠</span>
-                <span>{errors.email}</span>
-              </p>
+                <AlertCircle className="w-4 h-4 shrink-0 text-red-500" />
+                <span>{errors.general}</span>
+              </motion.div>
             )}
-          </div>
 
-          {/* 4. Designation / പദവി (Optional) */}
-          <div>
-            <label
-              htmlFor="field-designation"
-              className={`block text-xs sm:text-sm font-bold text-[#073B30] mb-1.5 ${
-                isMl ? "font-malayalam" : ""
-              }`}
+            {/* Registration Form Card matching Storyboard */}
+            <motion.form
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              onSubmit={handleSubmit}
+              className="w-full bg-white rounded-3xl p-5 sm:p-6 shadow-xl border-2 border-[#0B5D46]/15 flex flex-col gap-3.5"
             >
-              {isMl ? "പദവി" : "Designation"}{" "}
-              <span className="text-xs font-normal text-[#244B3F]/70">
-                ({isMl ? "ഓപ്ഷണൽ" : "Optional"})
-              </span>
-            </label>
-            <input
-              id="field-designation"
-              type="text"
-              value={formData.designation}
-              onChange={(e) => handleChange("designation", e.target.value)}
-              placeholder={
-                isMl
-                  ? "ഉദാ: വിദ്യാർത്ഥി / ഗവേഷകൻ / സ്ഥാപകൻ"
-                  : "e.g. Student / Researcher / Founder"
-              }
-              className="w-full min-h-[52px] sm:min-h-[56px] px-4 py-3 rounded-xl border-2 border-[#0B5D46]/20 text-sm sm:text-base text-[#132E27] bg-[#FAFAF7] transition-all focus:outline-none focus:border-[#0B5D46] focus:ring-2 focus:ring-[#55B96A]/40"
-            />
-          </div>
+              {/* Field 1: Full Name */}
+              <div>
+                <label className="block text-[11px] sm:text-xs font-bold text-[#073B30] mb-1 flex items-center gap-1.5">
+                  <User className="w-3.5 h-3.5 text-[#55B96A]" />
+                  <span>{isMl ? "പൂർണ്ണനാമം *" : "Full Name *"}</span>
+                </label>
+                <input
+                  type="text"
+                  value={formData.fullName}
+                  onChange={(e) => handleChange("fullName", e.target.value)}
+                  placeholder={isMl ? "നിങ്ങളുടെ പൂർണ്ണനാമം" : "Your full name"}
+                  className={`w-full h-11 px-3.5 rounded-xl border text-sm font-medium transition-all outline-none ${
+                    errors.fullName
+                      ? "border-red-400 bg-red-50/30 ring-2 ring-red-200"
+                      : "border-gray-200 focus:border-[#55B96A] focus:ring-2 focus:ring-[#55B96A]/20"
+                  }`}
+                  disabled={isSubmitting}
+                />
+                {errors.fullName && (
+                  <p className="text-[11px] text-red-500 font-semibold mt-0.5">{errors.fullName}</p>
+                )}
+              </div>
 
-          {/* 5. Organisation / സ്ഥാപനം അല്ലെങ്കിൽ സംഘടന (Optional) */}
-          <div>
-            <label
-              htmlFor="field-organisation"
-              className={`block text-xs sm:text-sm font-bold text-[#073B30] mb-1.5 ${
-                isMl ? "font-malayalam" : ""
-              }`}
-            >
-              {isMl ? "സ്ഥാപനം അല്ലെങ്കിൽ സംഘടന" : "Organisation"}{" "}
-              <span className="text-xs font-normal text-[#244B3F]/70">
-                ({isMl ? "ഓപ്ഷണൽ" : "Optional"})
-              </span>
-            </label>
-            <input
-              id="field-organisation"
-              type="text"
-              value={formData.organisation}
-              onChange={(e) => handleChange("organisation", e.target.value)}
-              placeholder={
-                isMl
-                  ? "നിങ്ങളുടെ കോളേജ് / കമ്പനി / സംഘടന"
-                  : "e.g. College / Company / Institution"
-              }
-              className="w-full min-h-[52px] sm:min-h-[56px] px-4 py-3 rounded-xl border-2 border-[#0B5D46]/20 text-sm sm:text-base text-[#132E27] bg-[#FAFAF7] transition-all focus:outline-none focus:border-[#0B5D46] focus:ring-2 focus:ring-[#55B96A]/40"
-            />
-          </div>
+              {/* Field 2: Mobile Number */}
+              <div>
+                <label className="block text-[11px] sm:text-xs font-bold text-[#073B30] mb-1 flex items-center gap-1.5">
+                  <Phone className="w-3.5 h-3.5 text-[#55B96A]" />
+                  <span>{isMl ? "മൊബൈൽ നമ്പർ *" : "Mobile Number *"}</span>
+                </label>
+                <div className="flex gap-2">
+                  <div className="h-11 px-3 rounded-xl border border-gray-200 bg-gray-50 flex items-center gap-1 text-xs font-bold text-gray-700 shrink-0">
+                    <span>+91</span>
+                    <span className="text-[10px] text-gray-400">▼</span>
+                  </div>
+                  <input
+                    type="tel"
+                    maxLength={10}
+                    value={formData.mobile}
+                    onChange={(e) => handleChange("mobile", e.target.value)}
+                    placeholder="98765 43210"
+                    className={`flex-1 h-11 px-3.5 rounded-xl border text-sm font-medium transition-all outline-none ${
+                      errors.mobile
+                        ? "border-red-400 bg-red-50/30 ring-2 ring-red-200"
+                        : "border-gray-200 focus:border-[#55B96A] focus:ring-2 focus:ring-[#55B96A]/20"
+                    }`}
+                    disabled={isSubmitting}
+                  />
+                </div>
+                {errors.mobile && (
+                  <p className="text-[11px] text-red-500 font-semibold mt-0.5">{errors.mobile}</p>
+                )}
+              </div>
 
-          {/* ─── CONSENT CHECKBOX (UNCHECKED BY DEFAULT) ──────────────────── */}
-          <div className="pt-2">
-            <label
-              htmlFor="field-consent"
-              className="flex items-start gap-3.5 cursor-pointer group p-3 rounded-2xl bg-[#F0F7F1]/70 border border-[#0B5D46]/15 hover:bg-[#F0F7F1] transition-colors"
-            >
-              <input
-                id="field-consent"
-                type="checkbox"
-                checked={formData.consent}
-                onChange={(e) => handleChange("consent", e.target.checked)}
-                className="mt-1 w-5 h-5 rounded border-2 border-[#0B5D46]/40 text-[#0B5D46] focus:ring-[#55B96A] shrink-0 cursor-pointer accent-[#0B5D46]"
-              />
-              <span
-                className={`text-xs sm:text-sm text-[#244B3F] leading-relaxed select-none ${
-                  isMl ? "font-malayalam" : ""
-                }`}
+              {/* Field 3: Email Address */}
+              <div>
+                <label className="block text-[11px] sm:text-xs font-bold text-[#073B30] mb-1 flex items-center gap-1.5">
+                  <Mail className="w-3.5 h-3.5 text-[#55B96A]" />
+                  <span>{isMl ? "ഇമെയിൽ വിലാസം *" : "Email Address *"}</span>
+                </label>
+                <input
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => handleChange("email", e.target.value)}
+                  placeholder="yourname@example.com"
+                  className={`w-full h-11 px-3.5 rounded-xl border text-sm font-medium transition-all outline-none ${
+                    errors.email
+                      ? "border-red-400 bg-red-50/30 ring-2 ring-red-200"
+                      : "border-gray-200 focus:border-[#55B96A] focus:ring-2 focus:ring-[#55B96A]/20"
+                  }`}
+                  disabled={isSubmitting}
+                />
+                {errors.email && (
+                  <p className="text-[11px] text-red-500 font-semibold mt-0.5">{errors.email}</p>
+                )}
+              </div>
+
+              {/* Field 4: Designation (Optional) */}
+              <div>
+                <label className="block text-[11px] sm:text-xs font-bold text-[#073B30] mb-1 flex items-center gap-1.5">
+                  <Award className="w-3.5 h-3.5 text-gray-400" />
+                  <span>{isMl ? "പദവി (ഐച്ഛികം)" : "Designation"}</span>
+                </label>
+                <input
+                  type="text"
+                  value={formData.designation}
+                  onChange={(e) => handleChange("designation", e.target.value)}
+                  placeholder={isMl ? "നിങ്ങളുടെ പദവി (ഐച്ഛികം)" : "Your designation (optional)"}
+                  className="w-full h-11 px-3.5 rounded-xl border border-gray-200 focus:border-[#55B96A] focus:ring-2 focus:ring-[#55B96A]/20 text-sm font-medium transition-all outline-none"
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              {/* Field 5: Organisation (Optional) */}
+              <div>
+                <label className="block text-[11px] sm:text-xs font-bold text-[#073B30] mb-1 flex items-center gap-1.5">
+                  <Building2 className="w-3.5 h-3.5 text-gray-400" />
+                  <span>{isMl ? "സ്ഥാപനം (ഐച്ഛികം)" : "Organisation"}</span>
+                </label>
+                <input
+                  type="text"
+                  value={formData.organisation}
+                  onChange={(e) => handleChange("organisation", e.target.value)}
+                  placeholder={isMl ? "നിങ്ങളുടെ സ്ഥാപനം (ഐച്ഛികം)" : "Your organisation (optional)"}
+                  className="w-full h-11 px-3.5 rounded-xl border border-gray-200 focus:border-[#55B96A] focus:ring-2 focus:ring-[#55B96A]/20 text-sm font-medium transition-all outline-none"
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              {/* Checkbox 1: Privacy notice & Email result */}
+              <div className="pt-1">
+                <label className="flex items-start gap-2.5 cursor-pointer touch-manipulation">
+                  <input
+                    type="checkbox"
+                    checked={formData.consentPrivacy}
+                    onChange={(e) => handleChange("consentPrivacy", e.target.checked)}
+                    className="mt-0.5 w-4 h-4 rounded text-[#0B5D46] focus:ring-[#55B96A] accent-[#0B5D46] shrink-0"
+                    disabled={isSubmitting}
+                  />
+                  <span className={`text-[11px] sm:text-xs text-[#244B3F] font-medium leading-relaxed ${isMl ? "font-malayalam" : ""}`}>
+                    {isMl ? (
+                      <>
+                        ഞാൻ{" "}
+                        <button
+                          type="button"
+                          onClick={() => setIsPrivacyModalOpen(true)}
+                          className="text-[#0B5D46] underline font-bold"
+                        >
+                          സ്വകാര്യതാ നയം
+                        </button>{" "}
+                        വായിച്ചു സമ്മതിക്കുന്നു. ഫലം ഇമെയിലിൽ സ്വീകരിക്കാൻ സമ്മതിക്കുന്നു.
+                      </>
+                    ) : (
+                      <>
+                        I agree to the{" "}
+                        <button
+                          type="button"
+                          onClick={() => setIsPrivacyModalOpen(true)}
+                          className="text-[#0B5D46] underline font-bold"
+                        >
+                          privacy notice
+                        </button>{" "}
+                        and consent to receive my quiz result via email.
+                      </>
+                    )}
+                  </span>
+                </label>
+                {errors.consentPrivacy && (
+                  <p className="text-[11px] text-red-500 font-semibold mt-0.5 pl-6">{errors.consentPrivacy}</p>
+                )}
+              </div>
+
+              {/* Checkbox 2: Limited Purpose */}
+              <div>
+                <label className="flex items-start gap-2.5 cursor-pointer touch-manipulation">
+                  <input
+                    type="checkbox"
+                    checked={formData.consentChallenge}
+                    onChange={(e) => handleChange("consentChallenge", e.target.checked)}
+                    className="mt-0.5 w-4 h-4 rounded text-[#0B5D46] focus:ring-[#55B96A] accent-[#0B5D46] shrink-0"
+                    disabled={isSubmitting}
+                  />
+                  <span className={`text-[11px] sm:text-xs text-[#244B3F] font-medium leading-relaxed ${isMl ? "font-malayalam" : ""}`}>
+                    {isMl
+                      ? "എന്റെ വിവരങ്ങൾ ഈ ബയോ-എഐ ചലഞ്ചിനായി മാത്രം ഉപയോഗിക്കുമെന്ന് ഞാൻ മനസ്സിലാക്കുന്നു."
+                      : "I understand that my information will be used only for this Bio-AI Challenge."}
+                  </span>
+                </label>
+                {errors.consentChallenge && (
+                  <p className="text-[11px] text-red-500 font-semibold mt-0.5 pl-6">{errors.consentChallenge}</p>
+                )}
+              </div>
+
+              {/* Submit Button: Start Challenge */}
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
+                disabled={isSubmitting}
+                className="w-full min-h-[50px] sm:min-h-[54px] mt-2 rounded-2xl bg-gradient-to-r from-[#073B30] to-[#0B5D46] hover:from-[#0B5D46] hover:to-[#55B96A] text-[#FAFAF7] font-black text-base sm:text-lg shadow-lg border border-white/20 flex items-center justify-center gap-2 touch-manipulation active:scale-95 transition-all disabled:opacity-60"
               >
-                {isMl ? (
-                  <>
-                    എന്റെ Bio-AI Challenge നടത്തുന്നതിനും ക്വിസ് ഫലം എന്റെ
-                    രജിസ്ട്രേഷനുമായി ബന്ധിപ്പിക്കുന്നതിനും വ്യക്തിഗത ഫല ലിങ്ക്
-                    ഇമെയിൽ വഴി അയയ്ക്കുന്നതിനുമായി ഞാൻ നൽകുന്ന വിവരങ്ങൾ
-                    ശേഖരിക്കുകയും ഉപയോഗിക്കുകയും ചെയ്യുന്നതിന് ഞാൻ
-                    സമ്മതിക്കുന്നു.{" "}
-                    <button
-                      type="button"
-                      onClick={(ev) => {
-                        ev.preventDefault();
-                        setIsPrivacyModalOpen(true);
-                      }}
-                      className="text-[#0B5D46] font-bold underline underline-offset-2 hover:text-[#073B30]"
-                    >
-                      സ്വകാര്യതാ അറിയിപ്പ് ഞാൻ വായിച്ചിട്ടുണ്ട്.
-                    </button>
-                  </>
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2">
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <span>{isMl ? "രജിസ്റ്റർ ചെയ്യുന്നു..." : "Registering..."}</span>
+                  </span>
                 ) : (
                   <>
-                    I agree to the collection and use of the details I provide to
-                    conduct my Bio-AI Challenge, associate my quiz result with my
-                    registration, and send my personal result link by email.{" "}
-                    <button
-                      type="button"
-                      onClick={(ev) => {
-                        ev.preventDefault();
-                        setIsPrivacyModalOpen(true);
-                      }}
-                      className="text-[#0B5D46] font-bold underline underline-offset-2 hover:text-[#073B30]"
-                    >
-                      I have read the privacy notice.
-                    </button>
+                    <span className={isMl ? "font-malayalam" : ""}>
+                      {isMl ? "ചലഞ്ച് ആരംഭിക്കുക" : "Start Challenge"}
+                    </span>
+                    <span className="text-xl">→</span>
                   </>
                 )}
-              </span>
-            </label>
-            {errors.consent && (
-              <p
-                className={`mt-1.5 ml-2 text-xs font-semibold text-red-600 flex items-center gap-1 ${
-                  isMl ? "font-malayalam" : ""
-                }`}
+              </motion.button>
+            </motion.form>
+
+            {/* Back to Home Button */}
+            <div className="mt-3">
+              <Link
+                href="/kiosk"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-full bg-white/90 hover:bg-white text-[#073B30] text-xs font-bold shadow-xs border border-[#0B5D46]/20 transition-all active:scale-95 touch-manipulation"
               >
-                <span>⚠</span>
-                <span>{errors.consent}</span>
-              </p>
-            )}
+                <ArrowLeft className="w-3.5 h-3.5 text-[#55B96A]" />
+                <span className={isMl ? "font-malayalam" : ""}>
+                  {isMl ? "പ്രധാന പേജിലേക്ക് മടങ്ങുക" : "Back to Home"}
+                </span>
+              </Link>
+            </div>
           </div>
+        </div>
+      </main>
 
-          {/* ─── SUBMIT BUTTON (TOUCH TARGET 56-64PX HEIGHT) ─────────────── */}
-          <div className="pt-3">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full min-h-[58px] sm:min-h-[64px] px-8 py-4 rounded-2xl bg-[#073B30] text-[#FAFAF7] hover:bg-[#0B5D46] active:scale-95 transition-all text-base sm:text-lg font-bold shadow-lg flex items-center justify-center gap-3 touch-manipulation focus:outline-none focus-visible:ring-4 focus-visible:ring-[#55B96A] disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? (
-                <>
-                  <span className="w-5 h-5 border-3 border-white border-t-transparent rounded-full animate-spin" />
-                  <span>
-                    {isMl ? "രജിസ്റ്റർ ചെയ്യുന്നു..." : "Submitting Details..."}
-                  </span>
-                </>
-              ) : (
-                <>
-                  <span className={isMl ? "font-malayalam" : ""}>
-                    {isMl ? "സമർപ്പിച്ചു തുടരുക" : "SUBMIT & CONTINUE"}
-                  </span>
-                  <span className="text-[#55B96A] text-xl font-bold">→</span>
-                </>
-              )}
-            </button>
-          </div>
-        </form>
-      </div>
-
-      {/* ─── KIOSK FOOTER ──────────────────────────────────────────────── */}
-      <KioskFooter language={activeLang} />
-
-      {/* ─── PRIVACY NOTICE MODAL ─────────────────────────────────────── */}
+      {/* Privacy Notice Modal */}
       <PrivacyNoticeModal
         isOpen={isPrivacyModalOpen}
-        language={activeLang}
         onClose={() => setIsPrivacyModalOpen(false)}
+        language={activeLang}
       />
-    </main>
+    </div>
   );
 }
 
 export default function ArogyamithranRegisterPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen flex items-center justify-center bg-[#FAFAF7] text-[#073B30]">
-          <div className="flex items-center gap-3">
-            <span className="w-3 h-3 rounded-full bg-[#55B96A] animate-ping" />
-            <span className="text-sm font-bold">Loading Registration...</span>
-          </div>
-        </div>
-      }
-    >
+    <Suspense fallback={<div className="min-h-screen bg-[#F0F7F2]" />}>
       <RegisterContent />
     </Suspense>
   );

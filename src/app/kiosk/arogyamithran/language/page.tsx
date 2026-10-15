@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import ArogyamithranCharacterFrame from "@/components/kiosk/ArogyamithranCharacterFrame";
+import { ArrowLeft } from "lucide-react";
 import KioskSubHeader from "@/components/kiosk/KioskSubHeader";
-import KioskFooter from "@/components/kiosk/KioskFooter";
 import { useArogyamithranLanguage } from "@/components/kiosk/ArogyamithranContext";
 import { KioskLanguage } from "@/components/kiosk/types";
 
@@ -13,172 +14,163 @@ export default function ArogyamithranLanguagePage() {
   const router = useRouter();
   const { setLanguage } = useArogyamithranLanguage();
   const [selected, setSelected] = useState<KioskLanguage | null>(null);
-  const [isNavigating, setIsNavigating] = useState(false);
 
   const handleSelectLanguage = (lang: KioskLanguage) => {
     setSelected(lang);
     setLanguage(lang);
-    setIsNavigating(true);
 
-    // Brief tactile transition delay to show feedback before navigating
     setTimeout(() => {
       router.push(`/kiosk/arogyamithran/welcome?lang=${lang}`);
-    }, 280);
+    }, 250);
   };
 
   return (
-    <main className="min-h-screen flex flex-col justify-between bg-[#FAFAF7] text-[#132E27] relative selection:bg-[#55B96A]/20">
-      {/* ─── KIOSK SUB HEADER WITH OFFICIAL BRANDING ─────────────────── */}
-      <KioskSubHeader
-        language={selected || "en"}
-        backHref="/kiosk"
-        backLabel="Back to Kiosk"
-        backLabelMl="കിയോസ്ക് മെനു"
-        currentStepBadge="Step 1: Language Selection"
-        currentStepBadgeMl="ഘട്ടം 1: ഭാഷ തിരഞ്ഞെടുക്കുക"
-      />
-
-      {/* ─── SCREEN CONTENT ────────────────────────────────────────────── */}
-      <div className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 flex flex-col items-center justify-center">
-        {/* Character Visual Reservation Area */}
-        <ArogyamithranCharacterFrame
-          compact={false}
-          selectedLanguage={selected}
-          expression="namaskaram"
+    <div className="min-h-screen w-full bg-[#F0F7F2] text-[#132E27] relative flex flex-col justify-between items-center selection:bg-[#55B96A]/25 overflow-x-hidden">
+      {/* ── MAIN KIOSK CONTAINER (max-w-[820px] portrait kiosk reference) ── */}
+      <main className="w-full max-w-[820px] min-h-screen flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.18)] overflow-hidden bg-[#F0F7F2]">
+        {/* 1. Header with official KSUM | Kerala IT | Huddle Global branding */}
+        <KioskSubHeader
+          language={selected || "en"}
+          backHref="/kiosk"
+          backLabel="Back to Home"
+          backLabelMl="പ്രധാന പേജ്"
         />
 
-        {/* Headings */}
-        <div className="text-center mt-3 mb-6 sm:mb-8 max-w-2xl">
-          <p className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#0B5D46] mb-1">
-            BIO-AI CENTRE OF EXCELLENCE
-          </p>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#073B30] tracking-tight mb-2">
-            Meet Arogyamithran
-          </h1>
-          <p className="text-base sm:text-lg text-[#244B3F] font-medium leading-relaxed">
-            Choose your preferred language to continue.
-          </p>
-          <p className="text-sm sm:text-base text-[#0B5D46] font-medium font-malayalam mt-0.5">
-            തുടരുന്നതിന് നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കുക.
-          </p>
-        </div>
+        {/* 2. Visual Content Area */}
+        <div className="relative flex-1 flex flex-col justify-between px-4 sm:px-6 py-3 sm:py-5 overflow-y-auto">
+          {/* Background Illustration with Digital Hub, palms and botanical frame */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <Image
+              src="/assets/kiosk/backgrounds/hero_portrait.jpg"
+              alt="Digital Hub Kochi Bio-AI campus background"
+              fill
+              priority
+              className="object-cover object-top select-none opacity-40"
+              sizes="820px"
+            />
+            {/* Soft gradient wash */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAF7]/70 via-[#FAFAF7]/85 to-[#FAFAF7]" />
+          </div>
 
-        {/* Informative Guidance Banner */}
-        <div className="w-full max-w-xl mb-6 px-4 py-2.5 rounded-2xl bg-[#F0F7F1] border border-[#0B5D46]/15 text-center">
-          <p className="text-xs text-[#244B3F]/90 leading-relaxed font-medium">
-            Selecting either option determines the language used throughout your
-            subsequent Arogyamithran experience. You can switch back at any time.
-          </p>
-        </div>
-
-        {/* ─── TWO LARGE LANGUAGE SELECTION CARDS ──────────────────────── */}
-        <div className="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-          {/* OPTION 1 — ENGLISH */}
-          <motion.div
-            whileHover={{ y: -3 }}
-            whileTap={{ scale: 0.985 }}
-            className="h-full"
-          >
-            <div
-              className={`h-full bg-white rounded-3xl p-6 sm:p-7 border-2 transition-all duration-200 flex flex-col justify-between shadow-sm relative overflow-hidden ${
-                selected === "en"
-                  ? "border-[#0B5D46] ring-4 ring-[#55B96A]/25 bg-emerald-50/20"
-                  : "border-[#0B5D46]/20 hover:border-[#55B96A]"
-              }`}
+          {/* Top Headings */}
+          <div className="relative z-10 text-center pt-1 sm:pt-2 max-w-xl mx-auto">
+            <motion.h1
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-2xl sm:text-3xl md:text-4xl font-black text-[#073B30] tracking-tight leading-tight mb-1"
+              style={{ textShadow: "0 1px 8px rgba(255,255,255,0.9)" }}
             >
-              {/* Selected Badge */}
-              {selected === "en" && (
-                <div className="absolute top-4 right-4 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#0B5D46] text-white text-[10px] font-bold">
-                  <span>Active</span>
-                  <span>✓</span>
-                </div>
-              )}
+              Let&apos;s begin your Bio-AI journey!
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.08 }}
+              className="text-sm sm:text-base font-semibold text-[#0B5D46]"
+              style={{ textShadow: "0 1px 6px rgba(255,255,255,0.9)" }}
+            >
+              Please choose your language to continue.
+            </motion.p>
+          </div>
 
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#F0F7F1] text-[#0B5D46] font-extrabold text-base flex items-center justify-center mb-4 border border-[#0B5D46]/15">
-                  EN
+          {/* Arogyamithran Center Mascot matching Screen 1 Storyboard */}
+          <div className="relative z-10 w-full flex-1 flex flex-col justify-center items-center py-2">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4 }}
+              className="relative w-48 h-56 sm:w-56 sm:h-68 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/90 bg-gradient-to-b from-[#F0F7F1] via-white to-[#FAFAF7]"
+            >
+              <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-[#0B5D46] via-[#D4AF37] to-[#0B5D46] z-10" />
+              <Image
+                src="/assets/kiosk/arogyamithran/hero_mascot.jpg"
+                alt="Arogyamithran welcoming Bio-AI guide"
+                fill
+                priority
+                className="object-cover object-top select-none"
+                sizes="(max-width: 640px) 220px, 280px"
+              />
+            </motion.div>
+          </div>
+
+          {/* Bottom Area: Language Cards + Return Button */}
+          <div className="relative z-10 w-full max-w-xl mx-auto flex flex-col items-center gap-4 pb-2">
+            {/* Language Selection Grid */}
+            <div className="w-full grid grid-cols-2 gap-3.5 sm:gap-5">
+              {/* English Card */}
+              <motion.button
+                type="button"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => handleSelectLanguage("en")}
+                className={`relative w-full rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-center flex flex-col items-center justify-center transition-all bg-white border-2 shadow-lg touch-manipulation ${
+                  selected === "en"
+                    ? "border-[#0B5D46] ring-4 ring-[#55B96A]/30 bg-[#F0F7F1]"
+                    : "border-emerald-900/10 hover:border-[#55B96A]"
+                }`}
+              >
+                {/* Circular UK Flag / Language Badge */}
+                <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full overflow-hidden shadow-md mb-2 flex items-center justify-center border border-gray-200 bg-white">
+                  <svg viewBox="0 0 60 30" className="w-full h-full object-cover">
+                    <clipPath id="uk-s">
+                      <path d="M0,0 v30 h60 v-30 z"/>
+                    </clipPath>
+                    <clipPath id="uk-t">
+                      <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/>
+                    </clipPath>
+                    <g clipPath="url(#uk-s)">
+                      <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+                      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/>
+                      <path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#uk-t)" stroke="#C8102E" strokeWidth="4"/>
+                      <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10"/>
+                      <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6"/>
+                    </g>
+                  </svg>
                 </div>
-                <h2 className="text-2xl font-bold text-[#073B30] mb-1">
+                <h3 className="text-lg sm:text-2xl font-black text-[#073B30] tracking-tight leading-tight">
                   English
-                </h2>
-                <p className="text-sm text-[#244B3F]/80 mb-6 font-medium">
+                </h3>
+                <p className="text-[11px] sm:text-xs font-semibold text-[#0B5D46]/80 mt-0.5">
                   Continue in English
                 </p>
-              </div>
+              </motion.button>
 
-              {/* Action Button: Target 56–72px touch height */}
-              <button
+              {/* Malayalam Card */}
+              <motion.button
                 type="button"
-                onClick={() => handleSelectLanguage("en")}
-                disabled={isNavigating}
-                className={`w-full min-h-[58px] sm:min-h-[64px] px-6 py-4 rounded-2xl text-sm sm:text-base font-bold tracking-wide transition-all shadow-md active:scale-95 touch-manipulation focus:outline-none focus-visible:ring-4 focus-visible:ring-[#55B96A] flex items-center justify-center gap-2 ${
-                  selected === "en"
-                    ? "bg-[#073B30] text-[#FAFAF7] ring-2 ring-[#55B96A]"
-                    : "bg-[#0B5D46] text-[#FAFAF7] hover:bg-[#073B30]"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => handleSelectLanguage("ml")}
+                className={`relative w-full rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-center flex flex-col items-center justify-center transition-all bg-white border-2 shadow-lg touch-manipulation ${
+                  selected === "ml"
+                    ? "border-[#0B5D46] ring-4 ring-[#55B96A]/30 bg-[#F0F7F1]"
+                    : "border-emerald-900/10 hover:border-[#55B96A]"
                 }`}
-                aria-label="Continue in English"
               >
-                <span>CONTINUE IN ENGLISH</span>
-                <span className="text-[#55B96A] text-lg font-bold">→</span>
-              </button>
-            </div>
-          </motion.div>
-
-          {/* OPTION 2 — MALAYALAM */}
-          <motion.div
-            whileHover={{ y: -3 }}
-            whileTap={{ scale: 0.985 }}
-            className="h-full"
-          >
-            <div
-              className={`h-full bg-white rounded-3xl p-6 sm:p-7 border-2 transition-all duration-200 flex flex-col justify-between shadow-sm relative overflow-hidden ${
-                selected === "ml"
-                  ? "border-[#0B5D46] ring-4 ring-[#55B96A]/25 bg-emerald-50/20"
-                  : "border-[#0B5D46]/20 hover:border-[#55B96A]"
-              }`}
-            >
-              {/* Selected Badge */}
-              {selected === "ml" && (
-                <div className="absolute top-4 right-4 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#0B5D46] text-white text-[10px] font-bold">
-                  <span>തിരഞ്ഞെടുത്തു</span>
-                  <span>✓</span>
+                {/* Circular Kerala Motif Badge */}
+                <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-full overflow-hidden shadow-md mb-2 flex items-center justify-center border border-[#D4AF37]/50 bg-gradient-to-br from-[#0B5D46] to-[#073B30] text-white">
+                  <span className="text-xl sm:text-2xl">🌱</span>
                 </div>
-              )}
-
-              <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#F0F7F1] text-[#0B5D46] font-extrabold text-base flex items-center justify-center mb-4 border border-[#0B5D46]/15 font-malayalam">
-                  മല
-                </div>
-                <h2 className="text-2xl font-bold text-[#073B30] mb-1 font-malayalam">
+                <h3 className="text-lg sm:text-2xl font-black text-[#073B30] tracking-tight leading-tight font-malayalam">
                   മലയാളം
-                </h2>
-                <p className="text-sm text-[#244B3F]/80 mb-6 font-medium font-malayalam">
+                </h3>
+                <p className="text-[11px] sm:text-xs font-semibold text-[#0B5D46]/80 mt-0.5 font-malayalam">
                   മലയാളത്തിൽ തുടരുക
                 </p>
-              </div>
-
-              {/* Action Button: Target 56–72px touch height */}
-              <button
-                type="button"
-                onClick={() => handleSelectLanguage("ml")}
-                disabled={isNavigating}
-                className={`w-full min-h-[58px] sm:min-h-[64px] px-6 py-4 rounded-2xl text-sm sm:text-base font-bold tracking-wide transition-all shadow-md active:scale-95 touch-manipulation focus:outline-none focus-visible:ring-4 focus-visible:ring-[#55B96A] flex items-center justify-center gap-2 font-malayalam ${
-                  selected === "ml"
-                    ? "bg-[#073B30] text-[#FAFAF7] ring-2 ring-[#55B96A]"
-                    : "bg-[#0B5D46] text-[#FAFAF7] hover:bg-[#073B30]"
-                }`}
-                aria-label="മലയാളത്തിൽ തുടരുക"
-              >
-                <span>മലയാളത്തിൽ തുടരുക</span>
-                <span className="text-[#55B96A] text-lg font-bold">→</span>
-              </button>
+              </motion.button>
             </div>
-          </motion.div>
-        </div>
-      </div>
 
-      {/* ─── KIOSK FOOTER ──────────────────────────────────────────────── */}
-      <KioskFooter language={selected || "en"} />
-    </main>
+            {/* Back to Home Button */}
+            <Link
+              href="/kiosk"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-white/90 hover:bg-white text-[#073B30] text-xs font-bold shadow-sm border border-[#0B5D46]/20 transition-all active:scale-95 touch-manipulation"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 text-[#55B96A]" />
+              <span>Back to Home</span>
+            </Link>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }

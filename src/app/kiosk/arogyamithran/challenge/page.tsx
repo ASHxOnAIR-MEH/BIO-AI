@@ -1,20 +1,18 @@
 "use client";
 
-import { Suspense, useEffect, useState, useCallback } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import ArogyamithranCharacterFrame from "@/components/kiosk/ArogyamithranCharacterFrame";
+import { motion } from "framer-motion";
+import { ArrowLeft, CheckCircle2, Sparkles, AlertCircle } from "lucide-react";
+import KioskSubHeader from "@/components/kiosk/KioskSubHeader";
 import { useArogyamithranLanguage } from "@/components/kiosk/ArogyamithranContext";
 import {
   KioskLanguage,
   QuizQuestionClient,
   QuizAnswerResponse,
 } from "@/components/kiosk/types";
-import { KIOSK_BRANDING } from "@/lib/kioskAssets";
-import KioskSubHeader from "@/components/kiosk/KioskSubHeader";
-import KioskFooter from "@/components/kiosk/KioskFooter";
 
 function ChallengeContent() {
   const router = useRouter();
@@ -46,19 +44,14 @@ function ChallengeContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState<QuizAnswerResponse | null>(null);
   const [score, setScore] = useState(0);
-  const [completedCount, setCompletedCount] = useState(0);
   const [loading, setLoading] = useState(() => Boolean(attemptId));
   const [errorMessage, setErrorMessage] = useState<string | null>(() =>
-    !attemptId
-      ? "No active challenge attempt found. Please start from registration."
-      : null
+    !attemptId ? "No active challenge attempt found. Please start from registration." : null
   );
 
-  // Load or recover attempt questions on mount
+  // Load questions on mount
   useEffect(() => {
-    if (!attemptId) {
-      return;
-    }
+    if (!attemptId) return;
 
     let isMounted = true;
 
@@ -66,9 +59,7 @@ function ChallengeContent() {
       try {
         setLoading(true);
         const res = await fetch(
-          `/api/kiosk/quiz/result?attemptId=${encodeURIComponent(
-            attemptId
-          )}&action=recover`
+          `/api/kiosk/quiz/result?attemptId=${encodeURIComponent(attemptId)}&action=recover`
         );
         const data = await res.json();
 
@@ -80,13 +71,10 @@ function ChallengeContent() {
           setQuestions(data.questions || []);
           setScore(data.currentScore || 0);
 
-          // If there are already answered questions, determine current progress
           const answered = data.answeredQuestions || {};
           const answeredKeys = Object.keys(answered);
-          setCompletedCount(answeredKeys.length);
 
-          if (answeredKeys.length >= (data.questions || []).length) {
-            // Already finished all 10
+          if (answeredKeys.length >= (data.questions || []).length && (data.questions || []).length > 0) {
             router.push(
               `/kiosk/arogyamithran/results?attemptId=${encodeURIComponent(
                 attemptId
@@ -95,7 +83,6 @@ function ChallengeContent() {
             return;
           }
 
-          // Advance to the first unanswered question
           const firstUnansweredIndex = (data.questions || []).findIndex(
             (q: QuizQuestionClient) => !answered[q.id]
           );
@@ -106,9 +93,7 @@ function ChallengeContent() {
         }
       } catch (err: unknown) {
         if (isMounted) {
-          const message =
-            err instanceof Error ? err.message : "Error loading challenge attempt.";
-          setErrorMessage(message);
+          setErrorMessage(err instanceof Error ? err.message : "Error loading attempt.");
         }
       } finally {
         if (isMounted) setLoading(false);
@@ -122,19 +107,12 @@ function ChallengeContent() {
     };
   }, [attemptId, regId, activeLang, router]);
 
-  const currentQuestion: QuizQuestionClient | undefined = questions[currentIndex];
+  const currentQuestion = questions[currentIndex];
+  const progressPercent = Math.round(((currentIndex + 1) / (questions.length || 10)) * 100);
 
-  // Handle option select (only allowed if feedback has not yet been shown)
-  const handleSelectOption = useCallback((idx: number) => {
-    if (feedback !== null || isSubmitting) return;
-    setSelectedOption(idx);
-  }, [feedback, isSubmitting]);
-
-  // Submit answer
-  const handleSubmitAnswer = useCallback(async () => {
-    if (selectedOption === null || !currentQuestion || feedback !== null || isSubmitting) {
-      return;
-    }
+  // Submit Answer Handler
+  const handleSubmitAnswer = async () => {
+    if (selectedOption === null || !currentQuestion || isSubmitting) return;
 
     setIsSubmitting(true);
     setErrorMessage(null);
@@ -142,9 +120,7 @@ function ChallengeContent() {
     try {
       const response = await fetch("/api/kiosk/quiz/submit-answer", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           attemptId,
           questionId: currentQuestion.id,
@@ -155,471 +131,403 @@ function ChallengeContent() {
       const data = await response.json();
 
       if (!response.ok || !data.success) {
-        throw new Error(data.message || "Failed to submit answer.");
+        throw new Error(data.error || "Failed to submit answer.");
       }
 
-      const answerResult: QuizAnswerResponse = data.result;
-      setFeedback(answerResult);
-      setScore(answerResult.currentScore);
-      setCompletedCount(answerResult.questionsAnswered);
+      setFeedback(data);
+      setScore(data.currentScore);
     } catch (err: unknown) {
-      const message =
-        err instanceof Error ? err.message : "Submission error occurred.";
-      setErrorMessage(message);
+      setErrorMessage(err instanceof Error ? err.message : "Submission error.");
     } finally {
       setIsSubmitting(false);
     }
-  }, [attemptId, currentQuestion, feedback, isSubmitting, selectedOption]);
+  };
 
-  // Proceed to next question or view results
-  const handleNextQuestion = useCallback(() => {
+  // Next Question Handler
+  const handleNextQuestion = () => {
     if (currentIndex < questions.length - 1) {
       setCurrentIndex((prev) => prev + 1);
       setSelectedOption(null);
       setFeedback(null);
       setErrorMessage(null);
     } else {
-      // Completed all 10 questions
       router.push(
         `/kiosk/arogyamithran/results?attemptId=${encodeURIComponent(
           attemptId
         )}&regId=${encodeURIComponent(regId)}&lang=${activeLang}`
       );
     }
-  }, [currentIndex, questions.length, router, attemptId, regId, activeLang]);
+  };
 
-  // Keyboard navigation for testing (1, 2, 3, 4 to select, Enter to submit/advance)
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (feedback === null) {
-        if (["1", "2", "3", "4"].includes(e.key)) {
-          const idx = parseInt(e.key, 10) - 1;
-          if (idx >= 0 && idx < 4) {
-            handleSelectOption(idx);
-          }
-        } else if (e.key === "Enter" && selectedOption !== null) {
-          handleSubmitAnswer();
-        }
-      } else {
-        if (e.key === "Enter" || e.key === " ") {
-          handleNextQuestion();
-        }
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [feedback, selectedOption, handleSubmitAnswer, handleSelectOption, handleNextQuestion]);
-
-  // Character Dialogue and Expression determination
-  let currentExpression: "thinking" | "correct" | "incorrect" = "thinking";
-  let characterDialogue = isMl
-    ? "ചോദ്യം ശ്രദ്ധാപൂർവ്വം വായിച്ച് ശരിയായ ഉത്തരം തിരഞ്ഞെടുക്കൂ!"
-    : "Read the question carefully and select the best answer!";
-
-  if (feedback !== null) {
-    if (feedback.isCorrect) {
-      currentExpression = "correct";
-      characterDialogue = isMl
-        ? "അടിപൊളി! ശരിയുത്തരം! (+10 പോയിന്റ്)"
-        : "Excellent! You got it right! (+10 points)";
-    } else {
-      currentExpression = "incorrect";
-      characterDialogue = isMl
-        ? "നല്ല ശ്രമം! നമുക്ക് പുതിയൊരു കാര്യം കൂടി പഠിക്കാം."
-        : "Good try! Let's learn something new.";
-    }
-  }
-
-  // Calculated Progress percentage based on completed answers
-  const progressPercent = Math.round((completedCount / (questions.length || 10)) * 100);
-
-  // Loading Screen
-  if (loading) {
-    return (
-      <main className="min-h-screen flex items-center justify-center bg-[#FAFAF7] text-[#073B30]">
-        <div className="flex flex-col items-center gap-4 text-center p-6">
-          <div className="w-12 h-12 rounded-full border-4 border-[#0B5D46] border-t-transparent animate-spin" />
-          <p className="text-base font-bold">
-            {isMl ? "ചോദ്യങ്ങൾ തയ്യാറാക്കുന്നു..." : "Loading Challenge..."}
-          </p>
-        </div>
-      </main>
-    );
-  }
-
-  // Error Screen
-  if (errorMessage && questions.length === 0) {
-    return (
-      <main className="min-h-screen flex flex-col justify-between bg-[#FAFAF7] text-[#132E27]">
-        <KioskSubHeader
-          language={activeLang}
-          showLanguageToggle={false}
-          currentStepBadge="Bio-AI Challenge"
-          currentStepBadgeMl="ബയോ-എഐ ചലഞ്ച്"
-          backHref="/kiosk/arogyamithran/instructions"
-        />
-        <div className="flex-1 max-w-lg mx-auto p-6 flex flex-col items-center justify-center text-center">
-          <div className="w-16 h-16 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-2xl mb-4 font-bold">
-            !
-          </div>
-          <h2 className="text-xl font-bold text-[#073B30] mb-2">
-            {isMl ? "സെഷൻ ലഭ്യമല്ല" : "Session Unavailable"}
-          </h2>
-          <p className="text-sm text-[#244B3F] mb-6 leading-relaxed">
-            {errorMessage}
-          </p>
-          <Link
-            href="/kiosk/arogyamithran/instructions"
-            className="px-6 py-3.5 rounded-2xl bg-[#073B30] text-white font-bold text-sm shadow-md hover:bg-[#0B5D46] transition-all"
-          >
-            {isMl ? "നിർദ്ദേശങ്ങളിലേക്ക് മടങ്ങുക" : "Return to Instructions"}
-          </Link>
-        </div>
-        <KioskFooter language={activeLang} />
-      </main>
-    );
-  }
+  const optionLabels = ["A", "B", "C", "D"];
 
   return (
-    <main className="min-h-screen flex flex-col justify-between bg-[#FAFAF7] text-[#132E27] relative selection:bg-[#55B96A]/20">
-      {/* ─── KIOSK HEADER WITH DEDICATED INSTITUTIONAL BRANDING ────────── */}
-      <header className="w-full bg-[#FAFAF7]/95 backdrop-blur-md border-b border-[#0B5D46]/15 sticky top-0 z-40">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-3">
-          {/* Institutional Branding Card */}
-          <div className="flex items-center gap-2 sm:gap-3 bg-white/95 rounded-2xl px-3 sm:px-4 py-1.5 border border-[#0B5D46]/15 shadow-xs">
-            {/* KSUM Logo */}
-            <div className="flex items-center shrink-0">
-              <Image
-                src={KIOSK_BRANDING.ksum.path}
-                alt={isMl ? KIOSK_BRANDING.ksum.altTextMl : KIOSK_BRANDING.ksum.altTextEn}
-                width={120}
-                height={42}
-                priority
-                className="h-6 sm:h-7 w-auto object-contain select-none"
-              />
-            </div>
+    <div className="min-h-screen w-full bg-[#F0F7F2] text-[#132E27] relative flex flex-col justify-between items-center selection:bg-[#55B96A]/25 overflow-x-hidden">
+      <main className="w-full max-w-[820px] min-h-screen flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.18)] overflow-hidden bg-[#F0F7F2]">
+        {/* 1. Header with official KSUM | Kerala IT | Huddle Global branding */}
+        <KioskSubHeader
+          language={activeLang}
+          backHref="/kiosk"
+          backLabel="Exit"
+          backLabelMl="പുറത്തു കടക്കുക"
+        />
 
-            <div className="h-5 sm:h-6 w-px bg-[#0B5D46]/20 shrink-0" />
-
-            <div className="hidden sm:flex flex-col justify-center min-w-0 px-0.5">
-              <span className="text-[10px] sm:text-[11px] font-extrabold tracking-wider text-[#073B30] uppercase truncate">
-                Bio-AI Challenge
-              </span>
-              <span className="text-[9px] text-[#0B5D46]/80 tracking-tight truncate">
-                Digital Hub, Kochi
-              </span>
-            </div>
-
-            <div className="h-5 sm:h-6 w-px bg-[#0B5D46]/20 shrink-0" />
-
-            {/* Huddle Global Logo */}
-            <div className="flex items-center shrink-0">
-              <Image
-                src={KIOSK_BRANDING.huddleGlobal.path}
-                alt={isMl ? KIOSK_BRANDING.huddleGlobal.altTextMl : KIOSK_BRANDING.huddleGlobal.altTextEn}
-                width={100}
-                height={38}
-                priority
-                className="h-5 sm:h-6 w-auto object-contain select-none"
-              />
-            </div>
+        {/* 2. Visual Content Area */}
+        <div className="relative flex-1 flex flex-col justify-between px-3 sm:px-6 py-3 sm:py-5 overflow-y-auto">
+          {/* Background Botanical Illustration */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <Image
+              src="/assets/kiosk/backgrounds/hero_portrait.jpg"
+              alt="Bio-AI challenge background"
+              fill
+              priority
+              className="object-cover object-center opacity-30 select-none"
+              sizes="820px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#F0F7F2]/95 via-[#F0F7F2]/85 to-[#F0F7F2]/95" />
           </div>
 
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            {/* Live Score Counter Pill */}
-            <div className="px-3.5 py-1.5 rounded-full bg-[#073B30] text-white text-xs sm:text-sm font-bold flex items-center gap-1.5 shadow-xs border border-[#55B96A]/30">
-              <span className="text-[#55B96A]">★</span>
-              <span>
-                {isMl ? `സ്കോർ: ${score}` : `Score: ${score}`}
-              </span>
+          {loading ? (
+            <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center py-20">
+              <div className="w-10 h-10 border-4 border-[#0B5D46]/20 border-t-[#0B5D46] rounded-full animate-spin mb-4" />
+              <p className="text-sm font-bold text-[#073B30]">
+                {isMl ? "ചോദ്യങ്ങൾ തയ്യാറാക്കുന്നു..." : "Loading Bio-AI Challenge..."}
+              </p>
             </div>
-
-            <Link
-              href="/kiosk"
-              className="inline-flex items-center justify-center gap-1.5 min-h-[40px] px-3.5 py-1.5 rounded-full bg-[#F0F7F1] text-[#073B30] hover:bg-[#0B5D46] hover:text-white border border-[#0B5D46]/20 text-xs font-bold transition-all touch-manipulation shadow-xs"
-            >
-              <span>{isMl ? "മെനു" : "Exit"}</span>
-              <span className="text-red-500 font-bold">✕</span>
-            </Link>
-          </div>
-        </div>
-      </header>
-
-      {/* ─── PROGRESS BAR STRIP ────────────────────────────────────────── */}
-      <div className="w-full bg-[#F0F7F1] border-b border-[#0B5D46]/10 px-4 sm:px-8 py-2">
-        <div className="max-w-3xl mx-auto flex items-center justify-between text-xs font-bold text-[#073B30] mb-1.5">
-          <div className="flex items-center gap-2">
-            <span>
-              {isMl
-                ? `ചോദ്യം ${currentIndex + 1} / ${questions.length}`
-                : `Question ${currentIndex + 1} of ${questions.length}`}
-            </span>
-            {currentQuestion?.category && (
-              <span className="hidden sm:inline px-2 py-0.5 rounded-full bg-white text-[10px] text-[#0B5D46] border border-[#0B5D46]/15 font-medium">
-                {currentQuestion.category}
-              </span>
-            )}
-          </div>
-          <span>{isMl ? `പൂർത്തിയായത്: ${progressPercent}%` : `Progress: ${progressPercent}%`}</span>
-        </div>
-        <div className="max-w-3xl mx-auto w-full h-2 rounded-full bg-white border border-[#0B5D46]/15 overflow-hidden">
-          <motion.div
-            className="h-full bg-gradient-to-r from-[#0B5D46] to-[#55B96A]"
-            initial={{ width: 0 }}
-            animate={{ width: `${progressPercent}%` }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-          />
-        </div>
-      </div>
-
-      {/* ─── MAIN QUESTION STAGE ───────────────────────────────────────── */}
-      <div className="flex-1 max-w-3xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 flex flex-col justify-start">
-        {/* Character Feedback & Dialogue Bar */}
-        <div className="w-full mb-3">
-          <ArogyamithranCharacterFrame
-            compact={true}
-            selectedLanguage={activeLang}
-            expression={currentExpression}
-            dialogue={characterDialogue}
-          />
-        </div>
-
-        {/* Question Content Box */}
-        {currentQuestion && (
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentQuestion.id}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.25 }}
-              className="w-full bg-white rounded-3xl p-5 sm:p-7 border-2 border-[#0B5D46]/15 shadow-sm mb-4"
-            >
-              {/* Question metadata badge */}
-              <div className="flex items-center justify-between gap-2 mb-3">
-                <span className="text-[11px] font-bold text-[#0B5D46] uppercase tracking-wider">
-                  #{currentQuestion.id} · {currentQuestion.category || "Bio-AI Topic"}
-                </span>
-
-                {isMl && (
-                  <span className="text-[10px] font-medium text-[#244B3F]/75 bg-[#F0F7F1] px-2 py-0.5 rounded-full border border-[#0B5D46]/10">
-                    ചോദ്യ ബാങ്ക് ഇംഗ്ലീഷിൽ
+          ) : errorMessage && !currentQuestion ? (
+            <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center py-12 px-4 max-w-md mx-auto">
+              <AlertCircle className="w-12 h-12 text-red-500 mb-3" />
+              <h2 className="text-lg font-black text-[#073B30] mb-2">Notice</h2>
+              <p className="text-xs text-[#244B3F] mb-4 leading-relaxed">{errorMessage}</p>
+              <Link
+                href={`/kiosk/arogyamithran/register?lang=${activeLang}`}
+                className="px-6 py-2.5 rounded-full bg-[#073B30] text-white text-xs font-bold"
+              >
+                Register to Start
+              </Link>
+            </div>
+          ) : !feedback ? (
+            /* ═════════════════════════════════════════════════════════════════
+               SCREEN 5: QUIZ QUESTION MODE (AKINATOR-STYLE MASCOT ON TOP)
+            ═════════════════════════════════════════════════════════════════ */
+            <div className="relative z-10 w-full max-w-lg mx-auto flex flex-col items-center flex-1 justify-between gap-2.5">
+              {/* Progress Bar Header */}
+              <div className="w-full">
+                <div className="flex items-center justify-between text-xs font-bold text-[#073B30] mb-1">
+                  <span>
+                    {isMl
+                      ? `ചോദ്യം ${currentIndex + 1} / ${questions.length || 10}`
+                      : `Question ${currentIndex + 1} of ${questions.length || 10}`}
                   </span>
-                )}
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-bold text-[#0B5D46] bg-emerald-50 px-2.5 py-0.5 rounded-full border border-[#0B5D46]/20">
+                      {score} pts
+                    </span>
+                    <span className="text-[#0B5D46]">{progressPercent}%</span>
+                  </div>
+                </div>
+                <div className="w-full h-2.5 bg-gray-200/80 rounded-full overflow-hidden p-0.5">
+                  <motion.div
+                    className="h-full bg-gradient-to-r from-[#0B5D46] to-[#55B96A] rounded-full"
+                    initial={{ width: 0 }}
+                    animate={{ width: `${progressPercent}%` }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </div>
               </div>
 
-              {/* The Question Text */}
-              <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[#073B30] leading-snug tracking-tight mb-5">
-                {currentQuestion.question}
-              </h2>
+              {/* ─── AKINATOR-STYLE PROMINENT MASCOT ON TOP ─── */}
+              <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 py-2">
+                {/* Arogyamithran Large Character Showcase Frame with Kasavu Trim */}
+                <motion.div
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative w-44 h-56 sm:w-52 sm:h-64 md:w-60 md:h-72 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/90 bg-gradient-to-b from-[#F0F7F1] via-white to-[#FAFAF7] shrink-0"
+                >
+                  {/* Kerala Kasavu Gold & Emerald Header Trim */}
+                  <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-[#0B5D46] via-[#D4AF37] to-[#0B5D46] z-10" />
 
-              {/* The Four Options */}
-              <div className="space-y-3">
-                {currentQuestion.options.map((optionText, optIndex) => {
-                  const optionLetters = ["A", "B", "C", "D"];
-                  const isSelected = selectedOption === optIndex;
-                  const hasSubmitted = feedback !== null;
+                  {/* High-Resolution Thinking Character */}
+                  <Image
+                    src="/assets/kiosk/arogyamithran/thinking.jpg"
+                    alt="Arogyamithran thinking pose"
+                    fill
+                    priority
+                    className="object-cover object-top select-none"
+                    sizes="(max-width: 640px) 220px, 260px"
+                  />
 
-                  let optionClasses =
-                    "w-full min-h-[56px] sm:min-h-[62px] p-3.5 sm:p-4 rounded-2xl border-2 text-left flex items-center justify-between gap-3 text-sm sm:text-base font-semibold transition-all touch-manipulation";
+                  {/* Active Status Beacon */}
+                  <span className="absolute top-3.5 right-3.5 flex h-3.5 w-3.5 z-20">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#55B96A] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#55B96A] border-2 border-white" />
+                  </span>
+                </motion.div>
 
-                  if (!hasSubmitted) {
-                    // Pre-submission state
-                    if (isSelected) {
-                      optionClasses +=
-                        " bg-[#F0F7F1] border-[#0B5D46] text-[#073B30] shadow-sm ring-2 ring-[#0B5D46]/20";
-                    } else {
-                      optionClasses +=
-                        " bg-[#FAFAF7] hover:bg-[#F0F7F1] border-[#0B5D46]/15 text-[#132E27] active:scale-[0.99]";
-                    }
-                  } else {
-                    // Post-submission feedback state
-                    const isThisCorrect = optIndex === feedback.correctOptionIndex;
-                    const isThisSelectedWrong =
-                      isSelected && optIndex !== feedback.correctOptionIndex;
+                {/* Akinator Speech Bubble with Pointer pointing to Arogyamithran */}
+                <div className="relative bg-white rounded-2xl p-3.5 sm:p-4 shadow-xl border-2 border-[#0B5D46]/15 max-w-xs sm:max-w-sm text-left">
+                  <div className="hidden sm:block absolute top-1/2 -left-2.5 -translate-y-1/2 w-3 h-3 bg-white border-b-2 border-l-2 border-[#0B5D46]/15 rotate-45" />
+                  <div className="sm:hidden absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-white border-t-2 border-l-2 border-[#0B5D46]/15 rotate-45" />
+                  <p className={`text-sm sm:text-base font-black text-[#073B30] leading-snug ${isMl ? "font-malayalam" : ""}`}>
+                    {isMl ? "മ്മ്... ചിന്തിച്ച് ഉത്തരം പറയൂ!" : "Hmm... Let's think!"}
+                  </p>
+                  <p className={`text-xs text-[#244B3F]/85 font-medium mt-1 leading-relaxed ${isMl ? "font-malayalam" : ""}`}>
+                    {isMl ? "സസ്യശാസ്ത്ര രഹസ്യം കണ്ടെത്താൻ നിങ്ങൾക്ക് കഴിയുമോ?" : "Can you solve this Bio-AI mystery? Take a close look at the plant!"}
+                  </p>
+                </div>
+              </div>
 
-                    if (isThisCorrect) {
-                      optionClasses +=
-                        " bg-[#073B30] border-[#55B96A] text-[#FAFAF7] shadow-md ring-2 ring-[#55B96A]";
-                    } else if (isThisSelectedWrong) {
-                      optionClasses +=
-                        " bg-red-50 border-red-400 text-red-900 line-through opacity-90";
-                    } else {
-                      optionClasses +=
-                        " bg-gray-50 border-gray-200 text-gray-400 opacity-60";
-                    }
-                  }
+              {/* Question Card */}
+              <motion.div
+                key={currentQuestion.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="w-full bg-white rounded-3xl p-4 sm:p-5 shadow-xl border-2 border-[#0B5D46]/15 flex flex-col gap-2.5"
+              >
+                {/* Question Heading */}
+                <h2 className={`text-sm sm:text-base md:text-lg font-black text-[#073B30] leading-snug tracking-tight ${isMl ? "font-malayalam" : ""}`}>
+                  {currentQuestion.question}
+                </h2>
 
-                  return (
-                    <button
-                      key={optIndex}
-                      type="button"
-                      disabled={hasSubmitted || isSubmitting}
-                      onClick={() => handleSelectOption(optIndex)}
-                      className={optionClasses}
-                      aria-pressed={isSelected}
-                    >
-                      <div className="flex items-center gap-3 min-w-0">
-                        {/* Letter indicator circle */}
-                        <span
-                          className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
-                            hasSubmitted && optIndex === feedback.correctOptionIndex
-                              ? "bg-[#55B96A] text-[#073B30]"
-                              : isSelected
-                              ? "bg-[#0B5D46] text-white"
-                              : "bg-[#0B5D46]/10 text-[#0B5D46]"
+                {/* Subject Image (New Generated Botanical Image) */}
+                <div className="relative w-full h-32 sm:h-44 rounded-2xl overflow-hidden border border-[#0B5D46]/15 shadow-md bg-emerald-50/40">
+                  <Image
+                    src={currentQuestion.image || "/assets/kiosk/questions/turmeric.jpg"}
+                    alt={currentQuestion.question}
+                    fill
+                    priority
+                    className="object-cover object-center select-none"
+                    sizes="(max-width: 640px) 100vw, 640px"
+                  />
+                </div>
+
+                {/* 4 Selectable Options Grid */}
+                <div className="flex flex-col gap-2">
+                  {currentQuestion.options.map((option, idx) => {
+                    const isSelected = selectedOption === idx;
+                    return (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => setSelectedOption(idx)}
+                        disabled={isSubmitting}
+                        className={`w-full min-h-[46px] sm:min-h-[50px] px-3.5 py-2 rounded-2xl border-2 text-left flex items-center gap-3 transition-all touch-manipulation active:scale-[0.99] ${
+                          isSelected
+                            ? "border-[#0B5D46] bg-[#F0F7F1] ring-2 ring-[#55B96A]/30 shadow-sm"
+                            : "border-gray-200 hover:border-[#55B96A]/50 bg-white"
+                        }`}
+                      >
+                        {/* Letter Badge A, B, C, D */}
+                        <div
+                          className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full font-black text-xs sm:text-sm flex items-center justify-center shrink-0 transition-colors ${
+                            isSelected
+                              ? "bg-[#0B5D46] text-white shadow-xs"
+                              : "bg-gray-100 text-[#073B30]"
                           }`}
                         >
-                          {optionLetters[optIndex]}
-                        </span>
-
-                        <span className="leading-snug break-words">
-                          {optionText}
-                        </span>
-                      </div>
-
-                      {/* Status Checkmark / Cross icon */}
-                      {hasSubmitted && (
-                        <div className="shrink-0 pl-2">
-                          {optIndex === feedback.correctOptionIndex ? (
-                            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#55B96A] text-[#073B30] text-xs font-bold shadow-xs">
-                              ✓ {isMl ? "ശരി" : "Correct"}
-                            </span>
-                          ) : isSelected ? (
-                            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-200 text-red-900 text-xs font-bold">
-                              ✕ {isMl ? "നിങ്ങൾ തിരഞ്ഞെടുത്തത്" : "Your pick"}
-                            </span>
-                          ) : null}
+                          {optionLabels[idx]}
                         </div>
-                      )}
-                    </button>
-                  );
-                })}
+                        {/* Option Text */}
+                        <span className={`text-xs sm:text-sm font-bold text-[#132E27] flex-1 ${isMl ? "font-malayalam" : ""}`}>
+                          {option}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Primary Button: Submit Answer */}
+                <motion.button
+                  type="button"
+                  whileHover={{ scale: selectedOption !== null ? 1.01 : 1 }}
+                  whileTap={{ scale: selectedOption !== null ? 0.98 : 1 }}
+                  onClick={handleSubmitAnswer}
+                  disabled={selectedOption === null || isSubmitting}
+                  className={`w-full min-h-[48px] sm:min-h-[52px] mt-1 rounded-2xl font-black text-sm sm:text-base shadow-lg transition-all touch-manipulation flex items-center justify-center gap-2 ${
+                    selectedOption !== null && !isSubmitting
+                      ? "bg-gradient-to-r from-[#073B30] to-[#0B5D46] hover:from-[#0B5D46] hover:to-[#55B96A] text-[#FAFAF7] border border-white/20 active:scale-95"
+                      : "bg-gray-200 text-gray-400 cursor-not-allowed border border-transparent shadow-none"
+                  }`}
+                >
+                  {isSubmitting ? (
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      <span className={isMl ? "font-malayalam" : ""}>
+                        {isMl ? "ഉത്തരം സമർപ്പിക്കുക" : "Submit Answer"}
+                      </span>
+                      <span className="text-lg">→</span>
+                    </>
+                  )}
+                </motion.button>
+              </motion.div>
+
+              {/* Back to Home Link */}
+              <div className="text-center pt-0.5">
+                <Link
+                  href="/kiosk"
+                  className="inline-flex items-center justify-center gap-1.5 px-3 py-1 rounded-full bg-white/90 hover:bg-white text-[#073B30] text-[11px] font-bold shadow-xs border border-[#0B5D46]/20 transition-all active:scale-95 touch-manipulation"
+                >
+                  <ArrowLeft className="w-3 h-3 text-[#55B96A]" />
+                  <span>{isMl ? "പ്രധാന പേജ്" : "Back to Home"}</span>
+                </Link>
+              </div>
+            </div>
+          ) : (
+            /* ═════════════════════════════════════════════════════════════════
+               SCREEN 6A & 6B: ANSWER FEEDBACK MODE (AKINATOR-STYLE REACTION)
+            ═════════════════════════════════════════════════════════════════ */
+            <div className="relative z-10 w-full max-w-lg mx-auto flex flex-col items-center flex-1 justify-between gap-2.5">
+              {/* Progress Bar Header */}
+              <div className="w-full">
+                <div className="flex items-center justify-between text-xs font-bold text-[#073B30] mb-1">
+                  <span>
+                    {isMl
+                      ? `ചോദ്യം ${currentIndex + 1} / ${questions.length || 10}`
+                      : `Question ${currentIndex + 1} of ${questions.length || 10}`}
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-bold text-[#0B5D46] bg-emerald-50 px-2.5 py-0.5 rounded-full border border-[#0B5D46]/20">
+                      {score} pts
+                    </span>
+                    <span className="text-[#0B5D46]">{progressPercent}%</span>
+                  </div>
+                </div>
+                <div className="w-full h-2.5 bg-gray-200/80 rounded-full overflow-hidden p-0.5">
+                  <div
+                    className="h-full bg-gradient-to-r from-[#0B5D46] to-[#55B96A] rounded-full"
+                    style={{ width: `${progressPercent}%` }}
+                  />
+                </div>
               </div>
 
-              {/* Educational Explanation Box (Visible only after submission) */}
-              {feedback !== null && feedback.explanation && (
+              {/* ─── AKINATOR-STYLE PROMINENT MASCOT REACTION ON TOP ─── */}
+              <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 py-2">
+                {/* Large Reaction Character Frame */}
                 <motion.div
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="mt-4 p-4 rounded-2xl bg-[#F0F7F1] border border-[#0B5D46]/20 text-xs sm:text-sm text-[#073B30]"
+                  initial={{ scale: 0.9, y: 10 }}
+                  animate={{ scale: 1, y: [0, -5, 0] }}
+                  transition={{
+                    scale: { duration: 0.3 },
+                    y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                  }}
+                  className="relative w-44 h-56 sm:w-52 sm:h-64 md:w-60 md:h-72 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/90 bg-gradient-to-b from-[#F0F7F1] via-white to-[#FAFAF7] shrink-0"
                 >
-                  <div className="flex items-start gap-2.5">
-                    <span className="text-base shrink-0">🌿</span>
-                    <div>
-                      <p className="font-bold text-[#0B5D46] mb-1">
-                        {isMl
-                          ? "ശാസ്ത്രീയ / പരമ്പരാഗത വിശദീകരണം:"
-                          : "Scientific & Educational Note:"}
-                      </p>
-                      <p className="leading-relaxed text-[#244B3F]">
-                        {feedback.explanation}
-                      </p>
-                    </div>
-                  </div>
+                  <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-[#0B5D46] via-[#D4AF37] to-[#0B5D46] z-10" />
+
+                  <Image
+                    src={
+                      feedback.isCorrect
+                        ? "/assets/kiosk/arogyamithran/correct-answer.jpg"
+                        : "/assets/kiosk/arogyamithran/holding-spice.jpg"
+                    }
+                    alt={feedback.isCorrect ? "Arogyamithran celebrating" : "Arogyamithran encouraging"}
+                    fill
+                    priority
+                    className="object-cover object-top select-none"
+                    sizes="(max-width: 640px) 220px, 260px"
+                  />
+
+                  {/* Status Beacon */}
+                  <span className="absolute top-3.5 right-3.5 flex h-3.5 w-3.5 z-20">
+                    <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${feedback.isCorrect ? "bg-[#55B96A]" : "bg-[#D97706]"} opacity-75`} />
+                    <span className={`relative inline-flex rounded-full h-3.5 w-3.5 ${feedback.isCorrect ? "bg-[#55B96A]" : "bg-[#D97706]"} border-2 border-white`} />
+                  </span>
                 </motion.div>
-              )}
-            </motion.div>
-          </AnimatePresence>
-        )}
 
-        {/* Inline Submission Error alert */}
-        {errorMessage && (
-          <div className="w-full mb-3 p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-medium">
-            {errorMessage}
-          </div>
-        )}
+                {/* Speech Bubble with Pointer */}
+                <div
+                  className={`relative rounded-2xl p-3.5 sm:p-4 shadow-xl border-2 max-w-xs sm:max-w-sm text-left ${
+                    feedback.isCorrect
+                      ? "bg-emerald-50/95 border-[#55B96A]/60 text-[#073B30]"
+                      : "bg-amber-50/95 border-[#D97706]/50 text-[#073B30]"
+                  }`}
+                >
+                  <div className={`hidden sm:block absolute top-1/2 -left-2.5 -translate-y-1/2 w-3 h-3 rotate-45 ${
+                    feedback.isCorrect ? "bg-emerald-50 border-b-2 border-l-2 border-[#55B96A]/60" : "bg-amber-50 border-b-2 border-l-2 border-[#D97706]/50"
+                  }`} />
+                  <div className={`sm:hidden absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 ${
+                    feedback.isCorrect ? "bg-emerald-50 border-t-2 border-l-2 border-[#55B96A]/60" : "bg-amber-50 border-t-2 border-l-2 border-[#D97706]/50"
+                  }`} />
+                  <p className="text-sm sm:text-base font-black tracking-tight flex items-center gap-1.5">
+                    {feedback.isCorrect ? (
+                      <>
+                        <Sparkles className="w-4 h-4 text-[#55B96A] shrink-0" />
+                        <span>{isMl ? "മികച്ച ഉത്തരം! ശരിയായി!" : "Excellent! You got it right!"}</span>
+                      </>
+                    ) : (
+                      <span>{isMl ? "നല്ല ശ്രമം! നമുക്ക് പുതിയൊരു കാര്യം പഠിക്കാം." : "Good try! Let's learn something new."}</span>
+                    )}
+                  </p>
+                  <p className="text-xs font-semibold text-[#244B3F]/85 mt-1 leading-relaxed">
+                    {feedback.isCorrect
+                      ? isMl ? "+10 പോയിന്റുകൾ ലഭിച്ചു! നിങ്ങളുടെ അറിവ് അത്ഭുതപ്പെടുത്തുന്നു!" : "+10 points awarded! Your knowledge of nature is remarkable."
+                      : isMl ? "എല്ലാ ഉത്തരങ്ങളിൽ നിന്നും പുതിയൊരു അറിവ് നേടാം!" : "Every attempt teaches us something new. Keep exploring!"}
+                  </p>
+                </div>
+              </div>
 
-        {/* ─── ACTION BUTTON AREA ───────────────────────────────────────── */}
-        <div className="w-full mt-2">
-          {feedback === null ? (
-            /* SUBMIT ANSWER BUTTON */
-            <button
-              type="button"
-              disabled={selectedOption === null || isSubmitting}
-              onClick={handleSubmitAnswer}
-              className="w-full min-h-[58px] sm:min-h-[64px] px-8 py-4 rounded-2xl bg-[#073B30] text-[#FAFAF7] hover:bg-[#0B5D46] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-base sm:text-lg font-bold shadow-lg flex items-center justify-center gap-3 touch-manipulation focus:outline-none focus-visible:ring-4 focus-visible:ring-[#55B96A]"
-            >
-              {isSubmitting ? (
-                <>
-                  <span className="w-5 h-5 rounded-full border-2 border-white border-t-transparent animate-spin" />
-                  <span>
-                    {isMl ? "പരിശോധിക്കുന്നു..." : "Validating Answer..."}
+              {/* Feedback Card matching Storyboard 6A & 6B */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="w-full bg-white rounded-3xl p-4 sm:p-5 shadow-xl border-2 border-[#0B5D46]/15 flex flex-col gap-2.5"
+              >
+                <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+                  {isMl ? "ശരിയുത്തരം:" : "The correct answer is:"}
+                </p>
+
+                {/* Highlighted Correct Answer */}
+                <div className="flex items-center gap-2 p-3 rounded-2xl bg-[#F0F7F1] border border-[#0B5D46]/20">
+                  <CheckCircle2 className="w-5 h-5 text-[#55B96A] shrink-0" />
+                  <span className={`text-sm sm:text-base font-black text-[#073B30] ${isMl ? "font-malayalam" : ""}`}>
+                    {feedback.correctAnswer}
                   </span>
-                </>
-              ) : (
-                <>
+                </div>
+
+                {/* Verified Explanation */}
+                <p className={`text-xs sm:text-sm text-[#244B3F] font-medium leading-relaxed pt-1 ${isMl ? "font-malayalam" : ""}`}>
+                  {feedback.explanation}
+                </p>
+
+                {/* Action Button: Next Question or See Final Results */}
+                <motion.button
+                  type="button"
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={handleNextQuestion}
+                  className="w-full min-h-[48px] sm:min-h-[52px] mt-2 rounded-2xl bg-gradient-to-r from-[#073B30] to-[#0B5D46] hover:from-[#0B5D46] hover:to-[#55B96A] text-[#FAFAF7] font-black text-sm sm:text-base shadow-lg border border-white/20 flex items-center justify-center gap-2 touch-manipulation active:scale-95 transition-all"
+                >
                   <span className={isMl ? "font-malayalam" : ""}>
-                    {isMl ? "ഉത്തരം സമർപ്പിക്കുക" : "SUBMIT ANSWER"}
+                    {currentIndex < questions.length - 1
+                      ? isMl ? "അടുത്ത ചോദ്യം" : "Next Question"
+                      : isMl ? "അന്തിമ ഫലം കാണുക" : "See Final Results"}
                   </span>
-                  <span className="text-[#55B96A] text-xl font-bold">→</span>
-                </>
-              )}
-            </button>
-          ) : (
-            /* NEXT QUESTION / VIEW RESULTS BUTTON */
-            <button
-              type="button"
-              onClick={handleNextQuestion}
-              className="w-full min-h-[58px] sm:min-h-[64px] px-8 py-4 rounded-2xl bg-[#0B5D46] text-[#FAFAF7] hover:bg-[#073B30] active:scale-95 transition-all text-base sm:text-lg font-bold shadow-lg flex items-center justify-center gap-3 touch-manipulation focus:outline-none focus-visible:ring-4 focus-visible:ring-[#55B96A]"
-            >
-              {currentIndex < questions.length - 1 ? (
-                <>
-                  <span className={isMl ? "font-malayalam" : ""}>
-                    {isMl ? "അടുത്ത ചോദ്യം" : "NEXT QUESTION"}
-                  </span>
-                  <span className="text-[#55B96A] text-xl font-bold">→</span>
-                </>
-              ) : (
-                <>
-                  <span className={isMl ? "font-malayalam" : ""}>
-                    {isMl ? "എന്റെ ഫലം കാണുക" : "VIEW MY RESULTS"}
-                  </span>
-                  <span className="text-[#55B96A] text-xl font-bold">🏆</span>
-                </>
-              )}
-            </button>
+                  <span className="text-lg">→</span>
+                </motion.button>
+              </motion.div>
+
+              {/* Back to Home Link */}
+              <div className="text-center pt-0.5">
+                <Link
+                  href="/kiosk"
+                  className="inline-flex items-center justify-center gap-1.5 px-3 py-1 rounded-full bg-white/90 hover:bg-white text-[#073B30] text-[11px] font-bold shadow-xs border border-[#0B5D46]/20 transition-all active:scale-95 touch-manipulation"
+                >
+                  <ArrowLeft className="w-3 h-3 text-[#55B96A]" />
+                  <span>{isMl ? "പ്രധാന പേജ്" : "Back to Home"}</span>
+                </Link>
+              </div>
+            </div>
           )}
         </div>
-      </div>
-
-      {/* ─── KIOSK FOOTER ──────────────────────────────────────────────── */}
-      <footer className="w-full py-3 px-4 sm:px-8 border-t border-[#0B5D46]/15 bg-[#F0F7F1]/80 text-[#244B3F]">
-        <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#55B96A]" />
-            <span className="font-semibold text-[#073B30]">
-              {isMl
-                ? `ചലഞ്ച് പുരോഗതി: ${completedCount} / 10 ചോദ്യങ്ങൾ പൂർത്തിയായി`
-                : `Challenge Progress: ${completedCount} of 10 completed`}
-            </span>
-          </div>
-
-          <span className="text-[11px] text-[#244B3F]/75">
-            {isMl
-              ? "ഓരോ ശരിയുത്തരത്തിനും 10 പോയിന്റ് · നെഗറ്റീവ് മാർക്കിംഗ് ഇല്ല"
-              : "10 points per correct answer · No negative marking"}
-          </span>
-        </div>
-      </footer>
-    </main>
+      </main>
+    </div>
   );
 }
 
 export default function ArogyamithranChallengePage() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen flex items-center justify-center bg-[#FAFAF7] text-[#073B30]">
-          <div className="flex items-center gap-3">
-            <span className="w-3 h-3 rounded-full bg-[#55B96A] animate-ping" />
-            <span className="text-sm font-bold">Loading Challenge...</span>
-          </div>
-        </div>
-      }
-    >
+    <Suspense fallback={<div className="min-h-screen bg-[#F0F7F2]" />}>
       <ChallengeContent />
     </Suspense>
   );
