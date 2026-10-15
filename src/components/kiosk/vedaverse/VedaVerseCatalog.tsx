@@ -37,15 +37,22 @@ export default function VedaVerseCatalog({
   const [selectedCategory, setSelectedCategory] = useState<
     VedaVerseCategory | "all"
   >(initialCategory);
+  const [selectedLetter, setSelectedLetter] = useState<string>("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [showAllAtOnce, setShowAllAtOnce] = useState(false);
 
   // Track filter changes to adjust page during render without cascading effect
   const [prevSearch, setPrevSearch] = useState(searchQuery);
   const [prevCategory, setPrevCategory] = useState(selectedCategory);
-  if (prevSearch !== searchQuery || prevCategory !== selectedCategory) {
+  const [prevLetter, setPrevLetter] = useState(selectedLetter);
+  if (
+    prevSearch !== searchQuery ||
+    prevCategory !== selectedCategory ||
+    prevLetter !== selectedLetter
+  ) {
     setPrevSearch(searchQuery);
     setPrevCategory(selectedCategory);
+    setPrevLetter(selectedLetter);
     setCurrentPage(1);
   }
 
@@ -61,11 +68,17 @@ export default function VedaVerseCatalog({
 
   // Filtered plant list
   const filteredPlants = useMemo(() => {
-    return searchPlants({
+    let list = searchPlants({
       query: searchQuery,
       category: selectedCategory,
     });
-  }, [searchQuery, selectedCategory]);
+    if (selectedLetter !== "all") {
+      list = list.filter((p) =>
+        p.common_name_en.trim().toUpperCase().startsWith(selectedLetter)
+      );
+    }
+    return list;
+  }, [searchQuery, selectedCategory, selectedLetter]);
 
   // Paginated slice
   const totalPages = Math.ceil(filteredPlants.length / ITEMS_PER_PAGE) || 1;
@@ -78,6 +91,7 @@ export default function VedaVerseCatalog({
   const handleClearFilters = () => {
     setSearchQuery("");
     setSelectedCategory("all");
+    setSelectedLetter("all");
     setCurrentPage(1);
   };
 
@@ -321,8 +335,8 @@ export default function VedaVerseCatalog({
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={
               isMl
-                ? "സസ്യത്തിന്റെ പേര്, മലയാളം, ശാസ്ത്രനാമം (Scientific name), കുടുംബം എന്നിവ തിരയുക..."
-                : "Search by English name, Malayalam (മലയാളം), scientific name, family or plant part..."
+                ? "ഇംഗ്ലീഷ്, മലയാളം അല്ലെങ്കിൽ ശാസ്ത്രനാമം തിരയുക…"
+                : "Search by English, Malayalam or scientific name…"
             }
             className="w-full pl-12 sm:pl-14 pr-12 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl border-2 border-[#0B5D46]/20 focus:border-[#55B96A] focus:outline-none focus:ring-4 focus:ring-[#55B96A]/20 bg-[#F0F7F1]/30 text-base sm:text-lg text-[#073B30] placeholder-[#244B3F]/50 transition-all font-medium touch-manipulation"
           />
@@ -406,7 +420,7 @@ export default function VedaVerseCatalog({
                 ? `${filteredPlants.length} സസ്യങ്ങൾ ലഭ്യമാണ്`
                 : `Showing ${filteredPlants.length} of 100 species`}
             </span>
-            {(searchQuery || selectedCategory !== "all") && (
+            {(searchQuery || selectedCategory !== "all" || selectedLetter !== "all") && (
               <button
                 type="button"
                 onClick={handleClearFilters}
@@ -417,6 +431,47 @@ export default function VedaVerseCatalog({
               </button>
             )}
           </div>
+        </div>
+
+        {/* Alphabetical Browsing Row (A-Z) */}
+        <div className="pt-3 border-t border-[#0B5D46]/10 flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+          <span className="text-[11px] font-bold text-[#244B3F]/60 uppercase tracking-wider shrink-0 mr-1">
+            {isMl ? "അക്ഷരസൂചിക:" : "A-Z Index:"}
+          </span>
+          <button
+            type="button"
+            onClick={() => setSelectedLetter("all")}
+            className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all shrink-0 touch-manipulation ${
+              selectedLetter === "all"
+                ? "bg-[#073B30] text-white shadow-2xs"
+                : "bg-[#F0F7F1] text-[#073B30] hover:bg-[#E2EDE3]"
+            }`}
+          >
+            {isMl ? "എല്ലാം" : "All"}
+          </button>
+          {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => {
+            const hasPlants = "ABCDEFGHIKLMNOPRSTVWY".includes(letter);
+            return (
+              <button
+                key={letter}
+                type="button"
+                disabled={!hasPlants}
+                onClick={() =>
+                  setSelectedLetter(selectedLetter === letter ? "all" : letter)
+                }
+                className={`w-7 h-7 rounded-lg text-xs font-mono font-bold transition-all shrink-0 touch-manipulation flex items-center justify-center ${
+                  selectedLetter === letter
+                    ? "bg-[#0B5D46] text-white shadow-2xs scale-105"
+                    : hasPlants
+                    ? "bg-[#F0F7F1] text-[#073B30] hover:bg-[#E2EDE3]"
+                    : "opacity-25 cursor-not-allowed bg-transparent text-gray-400"
+                }`}
+                aria-label={`Filter species starting with ${letter}`}
+              >
+                {letter}
+              </button>
+            );
+          })}
         </div>
       </section>
 

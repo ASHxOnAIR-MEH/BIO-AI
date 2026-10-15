@@ -237,3 +237,24 @@ export function getCategoryVisuals(category: VedaVerseCategory) {
       };
   }
 }
+
+/** Returns plant thumbnail image and accessible alt text */
+export function getPlantThumbnail(plant: PlantRecord): { src: string; alt: string } {
+  const norm = plant.common_name_en.toLowerCase();
+  if (norm.includes("tulsi") || norm.includes("holy basil")) {
+    return { src: "/assets/kiosk/questions/tulsi.jpg", alt: `${plant.common_name_en} (${plant.scientific_name})` };
+  }
+  if (norm.includes("pepper") || norm.includes("black pepper")) {
+    return { src: "/assets/kiosk/questions/pepper.jpg", alt: `${plant.common_name_en} (${plant.scientific_name})` };
+  }
+  if (norm.includes("turmeric") || norm.includes("curcuma")) {
+    return { src: "/assets/kiosk/questions/turmeric.jpg", alt: `${plant.common_name_en} (${plant.scientific_name})` };
+  }
+  if (plant.category === "Ayurvedic plant") {
+    return { src: "/assets/kiosk/categories/ayurvedic-plants.jpg", alt: `${plant.common_name_en} - Classical Ayurvedic Plant` };
+  }
+  if (plant.category === "Medicinal plant") {
+    return { src: "/assets/kiosk/categories/medicinal-plants.jpg", alt: `${plant.common_name_en} - Medicinal Botanical Flora` };
+  }
+  return { src: "/assets/kiosk/categories/spices.jpg", alt: `${plant.common_name_en} - Kerala Herb & Spice Heritage` };
+}

@@ -27,13 +27,13 @@ export default function VedaVerseDisclaimer({
         <div className="min-w-0 flex-1">
           <p className="font-semibold text-[#78350F] leading-snug">
             {isMl
-              ? "വിദ്യാഭ്യാസ റഫറൻസ് മാത്രം · വൈദ്യോപദേശമല്ല"
-              : "Educational Reference Only · Not Medical Advice"}
+              ? "വിദ്യാഭ്യാസ ആവശ്യങ്ങൾക്ക് മാത്രം · വൈദ്യോപദേശമല്ല"
+              : "Educational Information Only · Not Medical Advice"}
           </p>
           <p className="text-[11px] sm:text-xs text-[#92400E]/90 mt-0.5 leading-normal">
             {isMl
-              ? "പരമ്പരാഗത ഉപയോഗങ്ങളും ഗവേഷണ കണ്ടെത്തലുകളും വിദഗ്ദ്ധ വൈദ്യോപദേശത്തിന് പകരമാവില്ല. ഔഷധ ഉപയോഗത്തിന് ആരോഗ്യവിദഗ്ദ്ധരെ സമീപിക്കുക."
-              : "Traditional uses and botanical descriptions do not replace professional healthcare advice. Always consult qualified healthcare practitioners."}
+              ? "വിദ്യാഭ്യാസ ആവശ്യങ്ങൾക്ക് മാത്രം. പരമ്പരാഗത ഉപയോഗങ്ങളും ഗവേഷണ കണ്ടെത്തലുകളും വിദഗ്ദ്ധ വൈദ്യോപദേശത്തിന് പകരമാവില്ല."
+              : "Educational information only. Traditional uses and research findings do not replace professional medical advice."}
           </p>
         </div>
       </div>
