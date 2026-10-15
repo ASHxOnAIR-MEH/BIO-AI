@@ -60,9 +60,13 @@ function Particles({ count = 200 }) {
   const points = useMemo(() => {
     const p = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      p[i * 3] = (Math.random() - 0.5) * 15;
-      p[i * 3 + 1] = (Math.random() - 0.5) * 15;
-      p[i * 3 + 2] = (Math.random() - 0.5) * 15;
+      // Deterministic pseudo-random distribution to keep render pure
+      const r1 = ((i * 9301 + 49297) % 233280) / 233280;
+      const r2 = ((i * 49297 + 9301) % 233280) / 233280;
+      const r3 = ((i * 12345 + 67891) % 233280) / 233280;
+      p[i * 3] = (r1 - 0.5) * 15;
+      p[i * 3 + 1] = (r2 - 0.5) * 15;
+      p[i * 3 + 2] = (r3 - 0.5) * 15;
     }
     return p;
   }, [count]);

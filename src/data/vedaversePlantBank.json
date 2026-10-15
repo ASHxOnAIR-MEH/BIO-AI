@@ -1,0 +1,2436 @@
+{
+  "dataset": "Bio-AI Centre of Excellence — VedaVerse Plant Library",
+  "version": "1.0-draft",
+  "description": "100 entries: 25 Ayurvedic plants, 25 other medicinal plants and 50 culinary spices/herbs. Entries are educational drafts; review taxonomy, vernacular names, references and safety text before publication.",
+  "counts": {
+    "Ayurvedic plant": 25,
+    "Medicinal plant": 25,
+    "Culinary spice / herb": 50,
+    "total": 100
+  },
+  "disclaimer": "Educational reference only, not medical advice. Traditional use does not prove clinical effectiveness. Species identity, safety and claims should be reviewed by qualified botanists/health professionals before publication.",
+  "sources": {
+    "kerala_smpb": {
+      "name": "State Medicinal Plants Board Kerala – Herbal Database",
+      "url": "https://smpbkerala.in/herbal-data/",
+      "scope": "Scientific and Malayalam names and local medicinal-plant identity; confirm species-specific details in the live database."
+    },
+    "ayush_echarak": {
+      "name": "Ministry of AYUSH / National Medicinal Plants Board – e-Charak Knowledge Resources",
+      "url": "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+      "scope": "Medicinal-plant names and parts used in Indian traditional medicine resources."
+    },
+    "spices_board": {
+      "name": "Spices Board India – Spices of India list",
+      "url": "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+      "scope": "Common names, botanical names, families and parts used as spices."
+    },
+    "kew_powo": {
+      "name": "Royal Botanic Gardens, Kew – Plants of the World Online",
+      "url": "https://powo.science.kew.org/",
+      "scope": "Plant taxonomic names and accepted-name cross-checking; use the linked search URL for each plant."
+    },
+    "kew_mpns": {
+      "name": "Royal Botanic Gardens, Kew – Medicinal Plant Names Services",
+      "url": "https://mpns.science.kew.org/",
+      "scope": "Medicinal-name disambiguation and source tracking; same common names may refer to different species."
+    },
+    "who_monographs": {
+      "name": "World Health Organization – WHO Monographs on Selected Medicinal Plants",
+      "url": "https://www.who.int/publications/i/item/9241545178",
+      "scope": "Selected medicinal-plant safety, quality and evidence summaries; monographs are not blanket WHO endorsement."
+    },
+    "nccih_turmeric": {
+      "name": "US National Center for Complementary and Integrative Health – Turmeric",
+      "url": "https://www.nccih.nih.gov/health/turmeric",
+      "scope": "Turmeric background and safety cautions; supplement formulations may differ from culinary use."
+    },
+    "nccih_safety": {
+      "name": "US National Center for Complementary and Integrative Health – How Safe Is This Product or Practice?",
+      "url": "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice",
+      "scope": "Herbal product safety, potential interactions, adverse effects and cautions."
+    },
+    "bsi": {
+      "name": "Botanical Survey of India – Medicinal Plant Database",
+      "url": "https://bsi.gov.in/page/hi/medicinal-plant-database",
+      "scope": "Indian medicinal-plant scientific names, vernacular names, distribution and herbarium references."
+    },
+    "powo_spice": {
+      "name": "Kew Plants of the World Online – species search",
+      "url": "https://powo.science.kew.org/",
+      "scope": "Taxonomic verification for botanical names."
+    },
+    "cbd": {
+      "name": "Convention on Biological Diversity – Biodiversity",
+      "url": "https://www.cbd.int/",
+      "scope": "Biodiversity and conservation concepts."
+    },
+    "genome": {
+      "name": "National Human Genome Research Institute – Talking Glossary",
+      "url": "https://www.genome.gov/genetics-glossary",
+      "scope": "Genomics and molecular-biology terminology."
+    },
+    "medline": {
+      "name": "MedlinePlus – Herbs and Supplements",
+      "url": "https://medlineplus.gov/druginfo/herb_All.html",
+      "scope": "Plain-language health and safety information for selected herbs and supplements."
+    }
+  },
+  "plants": [
+    {
+      "id": "PL001",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Ashwagandha",
+      "common_name_ml": "അശ്വഗന്ധ",
+      "scientific_name": "Withania somnifera",
+      "family": "Solanaceae",
+      "plant_part_or_spice_part": "Root (commonly described in traditional preparations)",
+      "traditional_or_general_context": "A well-known plant in Ayurveda, often discussed in the context of rasayana traditions. This is a description of tradition, not a treatment recommendation.",
+      "culinary_or_ecological_context": "Small shrub with orange-red berries enclosed by a papery calyx.",
+      "safety_note": "Use caution with supplements: NCCIH notes possible side effects and interactions; avoid assuming it is suitable for everyone.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Ashwagandha Withania somnifera plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://www.nccih.nih.gov/health/ashwagandha",
+        "https://powo.science.kew.org/results?q=Withania%20somnifera"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL002",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Brahmi",
+      "common_name_ml": "ബ്രാഹ്മി",
+      "scientific_name": "Bacopa monnieri",
+      "family": "Plantaginaceae",
+      "plant_part_or_spice_part": "Whole aerial herb",
+      "traditional_or_general_context": "Used in Ayurvedic traditions; common names such as Brahmi can be applied inconsistently across regions, so the scientific name should be checked.",
+      "culinary_or_ecological_context": "Small creeping wetland herb with succulent leaves.",
+      "safety_note": "Do not self-medicate with extracts; product quality and drug interactions can vary.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Brahmi Bacopa monnieri plant botanical photo",
+      "source_urls": [
+        "https://smpbkerala.in/herbal-data/",
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Bacopa%20monnieri"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL003",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Shatavari",
+      "common_name_ml": "ശതാവരി",
+      "scientific_name": "Asparagus racemosus",
+      "family": "Asparagaceae",
+      "plant_part_or_spice_part": "Root",
+      "traditional_or_general_context": "A plant used in Ayurveda, often described in traditional texts as a rasayana; traditional descriptions do not establish effectiveness for a particular condition.",
+      "culinary_or_ecological_context": "Climbing/arching plant with fine leaf-like cladodes and small berries.",
+      "safety_note": "Seek professional advice before medicinal use, particularly during pregnancy or while taking medication.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Shatavari Asparagus racemosus plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://smpbkerala.in/herbal-data/",
+        "https://powo.science.kew.org/results?q=Asparagus%20racemosus"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL004",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Amla / Indian gooseberry",
+      "common_name_ml": "നെല്ലിക്ക",
+      "scientific_name": "Phyllanthus emblica",
+      "family": "Phyllanthaceae",
+      "plant_part_or_spice_part": "Fruit",
+      "traditional_or_general_context": "Widely represented in Ayurveda and traditional food practices; fruit is also consumed as food.",
+      "culinary_or_ecological_context": "Round, sour fruit used in pickles, preserves and food preparations.",
+      "safety_note": "Food use differs from concentrated supplements; consider acidity and individual medical needs.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Amla / Indian gooseberry Phyllanthus emblica plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Phyllanthus%20emblica"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL005",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Haritaki",
+      "common_name_ml": "കടുക്ക",
+      "scientific_name": "Terminalia chebula",
+      "family": "Combretaceae",
+      "plant_part_or_spice_part": "Fruit",
+      "traditional_or_general_context": "One of the three fruits traditionally used in Triphala formulations in Ayurveda.",
+      "culinary_or_ecological_context": "A deciduous tree with ovoid fruits.",
+      "safety_note": "May cause gastrointestinal effects; medicinal use should be reviewed with a qualified practitioner.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Haritaki Terminalia chebula plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Terminalia%20chebula"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL006",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Bibhitaki",
+      "common_name_ml": "താന്നി",
+      "scientific_name": "Terminalia bellirica",
+      "family": "Combretaceae",
+      "plant_part_or_spice_part": "Fruit",
+      "traditional_or_general_context": "One of the three fruits traditionally used in Triphala formulations.",
+      "culinary_or_ecological_context": "Large tree; its dried fruit is used in traditional preparations.",
+      "safety_note": "Use products from reliable sources; do not infer a safe dose from traditional use.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Bibhitaki Terminalia bellirica plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Terminalia%20bellirica"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL007",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Guduchi / Giloy",
+      "common_name_ml": "അമൃത് (പേരുപയോഗം പ്രാദേശികമായി വ്യത്യാസപ്പെടാം)",
+      "scientific_name": "Tinospora cordifolia",
+      "family": "Menispermaceae",
+      "plant_part_or_spice_part": "Stem",
+      "traditional_or_general_context": "A climbing plant included in Ayurvedic traditions. Published safety concerns mean it should not be presented as automatically safe.",
+      "culinary_or_ecological_context": "Large climbing vine with heart-shaped leaves.",
+      "safety_note": "Potential liver-injury reports have been associated with Tinospora products; avoid self-treatment and seek professional advice.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Guduchi / Giloy Tinospora cordifolia plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Tinospora%20cordifolia",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL008",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Arjuna",
+      "common_name_ml": "അർജുന",
+      "scientific_name": "Terminalia arjuna",
+      "family": "Combretaceae",
+      "plant_part_or_spice_part": "Bark (traditional preparations)",
+      "traditional_or_general_context": "Bark is described in Ayurvedic literature; statements about cardiovascular treatment should not be made without evidence-specific review.",
+      "culinary_or_ecological_context": "Large tree with buttressed trunk and exfoliating bark.",
+      "safety_note": "May interact with medicines; never substitute it for prescribed cardiovascular treatment.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Arjuna Terminalia arjuna plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Terminalia%20arjuna"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL009",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Yashtimadhu / Licorice",
+      "common_name_ml": "ഇരട്ടിമധുരം",
+      "scientific_name": "Glycyrrhiza glabra",
+      "family": "Fabaceae",
+      "plant_part_or_spice_part": "Root",
+      "traditional_or_general_context": "Used in several traditional systems and herbal products; licorice contains glycyrrhizin, which can have significant safety implications.",
+      "culinary_or_ecological_context": "Perennial herb with pinnate leaves and sweet-tasting roots.",
+      "safety_note": "Excessive or prolonged licorice intake can raise blood pressure and lower potassium; extra caution with heart, kidney or blood-pressure conditions and medicines.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Yashtimadhu / Licorice Glycyrrhiza glabra plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://medlineplus.gov/druginfo/herb_All.html",
+        "https://powo.science.kew.org/results?q=Glycyrrhiza%20glabra"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL010",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Shankhapushpi",
+      "common_name_ml": "ശംഖുപുഷ്പി (സസ്യ തിരിച്ചറിയൽ പ്രാദേശികമായി മാറാം)",
+      "scientific_name": "Convolvulus pluricaulis",
+      "family": "Convolvulaceae",
+      "plant_part_or_spice_part": "Whole herb (traditional descriptions vary)",
+      "traditional_or_general_context": "A traditional Ayurvedic herb; the common name Shankhapushpi is used for different plants in different regions, so identification must be verified.",
+      "culinary_or_ecological_context": "Small herb with funnel-shaped flowers.",
+      "safety_note": "Do not rely on a common name alone for plant identification; use verified botanical identification.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Shankhapushpi Convolvulus pluricaulis plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Convolvulus%20pluricaulis"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL011",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Punarnava",
+      "common_name_ml": "പുനർനവ",
+      "scientific_name": "Boerhavia diffusa",
+      "family": "Nyctaginaceae",
+      "plant_part_or_spice_part": "Root / whole plant depending on tradition",
+      "traditional_or_general_context": "Included in Ayurvedic plant references. Parts and preparations vary by source.",
+      "culinary_or_ecological_context": "Low-growing herb with spreading stems and small flowers.",
+      "safety_note": "Medicinal use requires professional review; plant-part and product identity matter.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Punarnava Boerhavia diffusa plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Boerhavia%20diffusa"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL012",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Gokshura",
+      "common_name_ml": "നെരിഞ്ഞിൽ",
+      "scientific_name": "Tribulus terrestris",
+      "family": "Zygophyllaceae",
+      "plant_part_or_spice_part": "Fruit",
+      "traditional_or_general_context": "Used in Ayurvedic and other traditional herbal systems; evidence for specific health outcomes varies.",
+      "culinary_or_ecological_context": "Low-growing plant with spiny fruit.",
+      "safety_note": "Products may interact with medicines and may not be appropriate for everyone; avoid self-prescribing.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Gokshura Tribulus terrestris plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Tribulus%20terrestris"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL013",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Manjistha",
+      "common_name_ml": "മഞ്ജിഷ്ഠ",
+      "scientific_name": "Rubia cordifolia",
+      "family": "Rubiaceae",
+      "plant_part_or_spice_part": "Root",
+      "traditional_or_general_context": "A plant described in Ayurveda; traditional indications should not be presented as proven clinical outcomes.",
+      "culinary_or_ecological_context": "Climbing perennial with whorled leaves and red roots.",
+      "safety_note": "Use only correctly identified, quality-controlled products and seek qualified advice for medicinal use.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Manjistha Rubia cordifolia plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Rubia%20cordifolia"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL014",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Musta / Nut grass",
+      "common_name_ml": "മുത്തങ്ങ",
+      "scientific_name": "Cyperus rotundus",
+      "family": "Cyperaceae",
+      "plant_part_or_spice_part": "Rhizome / tuber",
+      "traditional_or_general_context": "Included in traditional Ayurvedic materia medica; identity should be confirmed because common names can be ambiguous.",
+      "culinary_or_ecological_context": "A sedge with underground tubers, common in many tropical regions.",
+      "safety_note": "Avoid harvesting or ingesting wild plants unless they are accurately identified and prepared by qualified professionals.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Musta / Nut grass Cyperus rotundus plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Cyperus%20rotundus"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL015",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Vasaka / Malabar nut",
+      "common_name_ml": "ആടലോടകം",
+      "scientific_name": "Justicia adhatoda",
+      "family": "Acanthaceae",
+      "plant_part_or_spice_part": "Leaves (traditional preparations)",
+      "traditional_or_general_context": "A medicinal shrub noted in Ayurveda. Traditional respiratory uses are not a substitute for clinical assessment.",
+      "culinary_or_ecological_context": "Evergreen shrub with lance-shaped leaves and white flowers marked purple.",
+      "safety_note": "Do not use for self-treatment of breathing difficulty; seek medical care for respiratory symptoms.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Vasaka / Malabar nut Justicia adhatoda plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Justicia%20adhatoda"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL016",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Bala",
+      "common_name_ml": "കുരുന്തോട്ടി (name may refer to related Sida species)",
+      "scientific_name": "Sida cordifolia",
+      "family": "Malvaceae",
+      "plant_part_or_spice_part": "Whole plant in traditional records",
+      "traditional_or_general_context": "Used in Ayurvedic traditions; common names may cover related Sida species and must be checked.",
+      "culinary_or_ecological_context": "Small shrub with heart-shaped leaves and yellow flowers.",
+      "safety_note": "Some preparations may contain stimulant alkaloids; avoid unsupervised medicinal use, especially with heart or blood-pressure conditions.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Bala Sida cordifolia plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Sida%20cordifolia"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL017",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Kalmegh",
+      "common_name_ml": "കിരിയാത്ത്",
+      "scientific_name": "Andrographis paniculata",
+      "family": "Acanthaceae",
+      "plant_part_or_spice_part": "Aerial parts",
+      "traditional_or_general_context": "A bitter plant used in some Ayurvedic and other traditional herbal preparations.",
+      "culinary_or_ecological_context": "Annual herb with small white-purple flowers and narrow leaves.",
+      "safety_note": "May cause adverse reactions and interact with medicines; avoid assuming supplements are harmless.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Kalmegh Andrographis paniculata plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Andrographis%20paniculata"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL018",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Bhringraj",
+      "common_name_ml": "കയ്യോന്നി",
+      "scientific_name": "Eclipta prostrata",
+      "family": "Asteraceae",
+      "plant_part_or_spice_part": "Whole plant / leaves in traditional descriptions",
+      "traditional_or_general_context": "A herb used in several South Asian traditional hair-care and Ayurvedic preparations.",
+      "culinary_or_ecological_context": "Small herb often found in moist places, with white button-like flower heads.",
+      "safety_note": "Cosmetic tradition does not establish treatment efficacy; use products according to their labels and stop if irritation occurs.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Bhringraj Eclipta prostrata plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Eclipta%20prostrata"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL019",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Jatamansi",
+      "common_name_ml": "ജടാമാഞ്ചി",
+      "scientific_name": "Nardostachys jatamansi",
+      "family": "Caprifoliaceae",
+      "plant_part_or_spice_part": "Rhizome / roots",
+      "traditional_or_general_context": "A Himalayan aromatic plant used in traditional systems; wild collection can raise conservation concerns.",
+      "culinary_or_ecological_context": "Perennial Himalayan herb with aromatic underground parts.",
+      "safety_note": "Check lawful sourcing and sustainability; avoid unidentified or unverified products.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Jatamansi Nardostachys jatamansi plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Nardostachys%20jatamansi"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL020",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Sarpagandha",
+      "common_name_ml": "സർപ്പഗന്ധി",
+      "scientific_name": "Rauvolfia serpentina",
+      "family": "Apocynaceae",
+      "plant_part_or_spice_part": "Root in traditional records",
+      "traditional_or_general_context": "A historically important Ayurvedic plant; its alkaloids have pharmacological effects and require strict caution.",
+      "culinary_or_ecological_context": "Evergreen understory shrub with whorled leaves and dark fruits.",
+      "safety_note": "Can have potent blood-pressure and neurological effects and drug interactions. Not suitable for self-medication; root handling and products need professional control.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Sarpagandha Rauvolfia serpentina plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Rauvolfia%20serpentina"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL021",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Chitraka",
+      "common_name_ml": "ചിത്രകം",
+      "scientific_name": "Plumbago zeylanica",
+      "family": "Plumbaginaceae",
+      "plant_part_or_spice_part": "Root in traditional descriptions",
+      "traditional_or_general_context": "Listed in Indian traditional medicinal resources; this plant is not an everyday home remedy.",
+      "culinary_or_ecological_context": "Shrub with white flowers and sticky seeds.",
+      "safety_note": "Can be irritating/toxic, especially in concentrated or improperly prepared forms; do not self-administer.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Chitraka Plumbago zeylanica plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Plumbago%20zeylanica"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL022",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Daruharidra",
+      "common_name_ml": "ദാരുഹരിദ്ര",
+      "scientific_name": "Berberis aristata",
+      "family": "Berberidaceae",
+      "plant_part_or_spice_part": "Stem/root bark in traditional descriptions",
+      "traditional_or_general_context": "A plant discussed in Ayurvedic traditions; berberine-containing species require attention to safety and interactions.",
+      "culinary_or_ecological_context": "Spiny shrub with yellow inner bark and berries.",
+      "safety_note": "Avoid self-medication, particularly during pregnancy or when taking medicines; source and species identity matter.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Daruharidra Berberis aristata plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Berberis%20aristata"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL023",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Kutki",
+      "common_name_ml": "കുട്കി (Malayalam name needs local review)",
+      "scientific_name": "Picrorhiza kurroa",
+      "family": "Plantaginaceae",
+      "plant_part_or_spice_part": "Rhizome / root",
+      "traditional_or_general_context": "A Himalayan medicinal plant referenced in Ayurveda and other traditional sources.",
+      "culinary_or_ecological_context": "Small alpine herb from Himalayan habitats.",
+      "safety_note": "Verify botanical identity and sourcing; avoid unsupervised use and products of uncertain composition.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Kutki Picrorhiza kurroa plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Picrorhiza%20kurroa"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL024",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Guggul",
+      "common_name_ml": "ഗുഗ്ഗുലു",
+      "scientific_name": "Commiphora wightii",
+      "family": "Burseraceae",
+      "plant_part_or_spice_part": "Oleo-gum-resin",
+      "traditional_or_general_context": "A resin used in some Ayurvedic formulations; botanical names and taxonomic treatment should be checked against the supplier label.",
+      "culinary_or_ecological_context": "A small, thorny, resin-bearing shrub of arid regions.",
+      "safety_note": "Products may interact with medicines and quality can vary; obtain professional advice and use traceable products.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Guggul Commiphora wightii plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Commiphora%20wightii"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL025",
+      "category": "Ayurvedic plant",
+      "common_name_en": "Neem",
+      "common_name_ml": "ആര്യവേപ്പ്",
+      "scientific_name": "Azadirachta indica",
+      "family": "Meliaceae",
+      "plant_part_or_spice_part": "Leaves, bark, seed oil (different products; not interchangeable)",
+      "traditional_or_general_context": "Widely used in traditional and household contexts, but different neem preparations have different risks.",
+      "culinary_or_ecological_context": "Tropical tree with pinnate leaves and olive-like fruit.",
+      "safety_note": "Neem oil can be toxic if swallowed, especially by children. Do not ingest neem oil; keep it away from children and pets.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Neem Azadirachta indica plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Azadirachta%20indica"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "ayush_echarak",
+        "kerala_smpb",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL026",
+      "category": "Medicinal plant",
+      "common_name_en": "Aloe vera",
+      "common_name_ml": "കറ്റാർവാഴ",
+      "scientific_name": "Aloe vera",
+      "family": "Asphodelaceae",
+      "plant_part_or_spice_part": "Leaf gel; latex is a different preparation",
+      "traditional_or_general_context": "A succulent used in topical cosmetics and some traditional products. Gel and latex must not be treated as the same material.",
+      "culinary_or_ecological_context": "Fleshy leaves store water; gel is used in many skin-care products.",
+      "safety_note": "Oral aloe latex can cause serious gastrointestinal effects; topical products can cause allergy. Use product-specific safety advice.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Aloe vera Aloe vera plant botanical photo",
+      "source_urls": [
+        "https://www.nccih.nih.gov/health/aloe-vera",
+        "https://powo.science.kew.org/results?q=Aloe%20vera"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL027",
+      "category": "Medicinal plant",
+      "common_name_en": "Gotu kola",
+      "common_name_ml": "കുടങ്ങൽ",
+      "scientific_name": "Centella asiatica",
+      "family": "Apiaceae",
+      "plant_part_or_spice_part": "Leaves / aerial parts",
+      "traditional_or_general_context": "Used as a food and in traditional herbal systems in parts of Asia.",
+      "culinary_or_ecological_context": "Low-growing creeping plant with rounded leaves, often in moist settings.",
+      "safety_note": "Correct identification matters; concentrated extracts can differ from food use and may have safety concerns.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Gotu kola Centella asiatica plant botanical photo",
+      "source_urls": [
+        "https://smpbkerala.in/herbal-data/",
+        "https://powo.science.kew.org/results?q=Centella%20asiatica"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL028",
+      "category": "Medicinal plant",
+      "common_name_en": "Psyllium / Isabgol",
+      "common_name_ml": "ഇസബ്ഗോൾ",
+      "scientific_name": "Plantago ovata",
+      "family": "Plantaginaceae",
+      "plant_part_or_spice_part": "Seed husk",
+      "traditional_or_general_context": "Psyllium husk is a source of soluble fibre used in some products for bowel regularity.",
+      "culinary_or_ecological_context": "The husk swells in water and is used as a fibre ingredient.",
+      "safety_note": "Must be taken with adequate fluid and can interfere with the timing of medicines; seek label or clinician guidance.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Psyllium / Isabgol Plantago ovata plant botanical photo",
+      "source_urls": [
+        "https://medlineplus.gov/druginfo/herb_All.html",
+        "https://powo.science.kew.org/results?q=Plantago%20ovata"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL029",
+      "category": "Medicinal plant",
+      "common_name_en": "Senna",
+      "common_name_ml": "ചെറിയമരുന്ന് (local name needs review)",
+      "scientific_name": "Senna alexandrina",
+      "family": "Fabaceae",
+      "plant_part_or_spice_part": "Leaves / pods in standardised products",
+      "traditional_or_general_context": "Senna is used in regulated laxative products; this is not a recommendation for routine herbal self-treatment.",
+      "culinary_or_ecological_context": "Shrub with yellow flowers and pods.",
+      "safety_note": "Can cause cramps and diarrhoea; prolonged or inappropriate use can disturb electrolytes. Follow medicinal-product guidance.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Senna Senna alexandrina plant botanical photo",
+      "source_urls": [
+        "https://medlineplus.gov/druginfo/herb_All.html",
+        "https://powo.science.kew.org/results?q=Senna%20alexandrina"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL030",
+      "category": "Medicinal plant",
+      "common_name_en": "Echinacea",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Echinacea purpurea",
+      "family": "Asteraceae",
+      "plant_part_or_spice_part": "Aerial parts / roots depending on product",
+      "traditional_or_general_context": "Used in some herbal products; evidence for specific outcomes varies by preparation and indication.",
+      "culinary_or_ecological_context": "North American flowering perennial with purple ray florets.",
+      "safety_note": "May cause allergic reactions, particularly in people sensitive to related plants; check interactions and product labelling.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Echinacea Echinacea purpurea plant botanical photo",
+      "source_urls": [
+        "https://www.nccih.nih.gov/health/echinacea",
+        "https://powo.science.kew.org/results?q=Echinacea%20purpurea"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL031",
+      "category": "Medicinal plant",
+      "common_name_en": "Valerian",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Valeriana officinalis",
+      "family": "Caprifoliaceae",
+      "plant_part_or_spice_part": "Root / rhizome in products",
+      "traditional_or_general_context": "A European herb used in some traditional preparations and supplements, often marketed for sleep; efficacy varies by use.",
+      "culinary_or_ecological_context": "Perennial plant with clusters of pale flowers and aromatic roots.",
+      "safety_note": "May cause drowsiness and interact with alcohol or sedating medicines; avoid driving if affected.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Valerian Valeriana officinalis plant botanical photo",
+      "source_urls": [
+        "https://www.nccih.nih.gov/health/valerian",
+        "https://powo.science.kew.org/results?q=Valeriana%20officinalis"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL032",
+      "category": "Medicinal plant",
+      "common_name_en": "Milk thistle",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Silybum marianum",
+      "family": "Asteraceae",
+      "plant_part_or_spice_part": "Seeds / fruits",
+      "traditional_or_general_context": "A plant used in herbal supplement products; research outcomes for liver-related conditions remain uncertain.",
+      "culinary_or_ecological_context": "Thistle with purple flowers and white-veined leaves.",
+      "safety_note": "Can cause digestive symptoms or allergic reactions; consult a clinician for liver conditions rather than self-treating.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Milk thistle Silybum marianum plant botanical photo",
+      "source_urls": [
+        "https://www.nccih.nih.gov/health/milk-thistle",
+        "https://powo.science.kew.org/results?q=Silybum%20marianum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL033",
+      "category": "Medicinal plant",
+      "common_name_en": "Ginkgo",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Ginkgo biloba",
+      "family": "Ginkgoaceae",
+      "plant_part_or_spice_part": "Leaves in standardised extracts; seeds differ",
+      "traditional_or_general_context": "Ginkgo is an ancient tree; leaf extracts are used in supplements, but benefits depend on the outcome studied.",
+      "culinary_or_ecological_context": "Fan-shaped leaves with distinctive branching veins.",
+      "safety_note": "May increase bleeding risk and interact with medication; raw seeds can be toxic. Keep seeds away from children.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Ginkgo Ginkgo biloba plant botanical photo",
+      "source_urls": [
+        "https://www.nccih.nih.gov/health/ginkgo",
+        "https://powo.science.kew.org/results?q=Ginkgo%20biloba"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL034",
+      "category": "Medicinal plant",
+      "common_name_en": "Asian ginseng",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Panax ginseng",
+      "family": "Araliaceae",
+      "plant_part_or_spice_part": "Root",
+      "traditional_or_general_context": "Used in East Asian traditional medicine and supplements; product species and extract composition vary.",
+      "culinary_or_ecological_context": "Slow-growing perennial with palmately arranged leaves and red berries.",
+      "safety_note": "Can affect blood sugar, sleep and blood clotting and interact with medicines; seek professional advice.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Asian ginseng Panax ginseng plant botanical photo",
+      "source_urls": [
+        "https://www.nccih.nih.gov/health/asian-ginseng",
+        "https://powo.science.kew.org/results?q=Panax%20ginseng"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL035",
+      "category": "Medicinal plant",
+      "common_name_en": "German chamomile",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Matricaria chamomilla",
+      "family": "Asteraceae",
+      "plant_part_or_spice_part": "Flower heads",
+      "traditional_or_general_context": "Used as a herbal tea and in traditional preparations.",
+      "culinary_or_ecological_context": "Daisy-like flower heads with white rays and yellow central discs.",
+      "safety_note": "May trigger allergies, especially in people sensitive to daisies; some interactions have been reported.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "German chamomile Matricaria chamomilla plant botanical photo",
+      "source_urls": [
+        "https://www.nccih.nih.gov/health/chamomile",
+        "https://powo.science.kew.org/results?q=Matricaria%20chamomilla"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL036",
+      "category": "Medicinal plant",
+      "common_name_en": "Calendula / Pot marigold",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Calendula officinalis",
+      "family": "Asteraceae",
+      "plant_part_or_spice_part": "Flower heads",
+      "traditional_or_general_context": "Used in some topical preparations and traditional herbal products.",
+      "culinary_or_ecological_context": "Bright orange or yellow daisy-like flowers.",
+      "safety_note": "Topical products can cause contact allergy; avoid assuming topical use is suitable for open wounds or every skin condition.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Calendula / Pot marigold Calendula officinalis plant botanical photo",
+      "source_urls": [
+        "https://powo.science.kew.org/results?q=Calendula%20officinalis",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL037",
+      "category": "Medicinal plant",
+      "common_name_en": "St John's wort",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Hypericum perforatum",
+      "family": "Hypericaceae",
+      "plant_part_or_spice_part": "Flowering tops",
+      "traditional_or_general_context": "Used in some herbal products, but its interaction profile is particularly important.",
+      "culinary_or_ecological_context": "Yellow-flowered perennial with translucent-looking leaf dots.",
+      "safety_note": "Can interact dangerously with many medicines, including some antidepressants, contraceptives and transplant/HIV medicines. Never combine without professional advice.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "St John's wort Hypericum perforatum plant botanical photo",
+      "source_urls": [
+        "https://www.nccih.nih.gov/health/st-johns-wort",
+        "https://powo.science.kew.org/results?q=Hypericum%20perforatum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL038",
+      "category": "Medicinal plant",
+      "common_name_en": "White willow",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Salix alba",
+      "family": "Salicaceae",
+      "plant_part_or_spice_part": "Bark in some products",
+      "traditional_or_general_context": "Willow bark contains salicylate-related compounds and has a history of traditional use.",
+      "culinary_or_ecological_context": "Tree with narrow leaves and flexible branches.",
+      "safety_note": "May increase bleeding risk and is not suitable for everyone, including some people with aspirin sensitivity; seek professional guidance.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "White willow Salix alba plant botanical photo",
+      "source_urls": [
+        "https://powo.science.kew.org/results?q=Salix%20alba",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL039",
+      "category": "Medicinal plant",
+      "common_name_en": "Dandelion",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Taraxacum officinale",
+      "family": "Asteraceae",
+      "plant_part_or_spice_part": "Leaves / roots in food or herbal products",
+      "traditional_or_general_context": "Leaves are eaten in some cuisines and various parts are used in traditional preparations.",
+      "culinary_or_ecological_context": "Rosette-forming herb with yellow flower heads and wind-dispersed seeds.",
+      "safety_note": "May cause allergy in sensitive individuals; potential interactions or effects in gallbladder/kidney conditions require professional advice.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Dandelion Taraxacum officinale plant botanical photo",
+      "source_urls": [
+        "https://powo.science.kew.org/results?q=Taraxacum%20officinale",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL040",
+      "category": "Medicinal plant",
+      "common_name_en": "Broadleaf plantain",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Plantago major",
+      "family": "Plantaginaceae",
+      "plant_part_or_spice_part": "Leaves / seeds in traditional contexts",
+      "traditional_or_general_context": "A widespread plant with a long history of folk use; traditional applications vary and evidence for specific claims is limited.",
+      "culinary_or_ecological_context": "Low rosette of broad oval leaves with parallel veins.",
+      "safety_note": "Avoid consuming plants collected from polluted or sprayed areas; identification and hygiene matter.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Broadleaf plantain Plantago major plant botanical photo",
+      "source_urls": [
+        "https://powo.science.kew.org/results?q=Plantago%20major",
+        "https://bsi.gov.in/page/hi/medicinal-plant-database"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL041",
+      "category": "Medicinal plant",
+      "common_name_en": "Elderberry",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Sambucus nigra",
+      "family": "Adoxaceae",
+      "plant_part_or_spice_part": "Cooked ripe berries / flowers in some products",
+      "traditional_or_general_context": "Used in foods and some traditional products; correct preparation is important.",
+      "culinary_or_ecological_context": "Shrub or small tree with clusters of dark berries.",
+      "safety_note": "Raw or unripe berries and other plant parts may cause illness; use only properly identified and appropriately prepared products.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Elderberry Sambucus nigra plant botanical photo",
+      "source_urls": [
+        "https://powo.science.kew.org/results?q=Sambucus%20nigra",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL042",
+      "category": "Medicinal plant",
+      "common_name_en": "Passionflower",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Passiflora incarnata",
+      "family": "Passifloraceae",
+      "plant_part_or_spice_part": "Aerial parts in products",
+      "traditional_or_general_context": "Used in some traditional herbal products; evidence for effects varies and is not definitive.",
+      "culinary_or_ecological_context": "Climbing vine with distinctive complex flowers.",
+      "safety_note": "May cause drowsiness and interact with sedatives; avoid during pregnancy unless specifically advised by a qualified clinician.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Passionflower Passiflora incarnata plant botanical photo",
+      "source_urls": [
+        "https://powo.science.kew.org/results?q=Passiflora%20incarnata",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL043",
+      "category": "Medicinal plant",
+      "common_name_en": "Hawthorn",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Crataegus monogyna",
+      "family": "Rosaceae",
+      "plant_part_or_spice_part": "Leaves, flowers or berries in products",
+      "traditional_or_general_context": "Hawthorn has a history of traditional use; it should not replace professional care for heart symptoms.",
+      "culinary_or_ecological_context": "Thorny shrub or tree with lobed leaves and red fruits.",
+      "safety_note": "Can interact with heart and blood-pressure medicines; seek clinician advice before use.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Hawthorn Crataegus monogyna plant botanical photo",
+      "source_urls": [
+        "https://powo.science.kew.org/results?q=Crataegus%20monogyna",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL044",
+      "category": "Medicinal plant",
+      "common_name_en": "Stinging nettle",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Urtica dioica",
+      "family": "Urticaceae",
+      "plant_part_or_spice_part": "Young leaves as cooked food; other parts in products",
+      "traditional_or_general_context": "Young leaves are consumed as food after appropriate processing in some cuisines; traditional use also occurs.",
+      "culinary_or_ecological_context": "Perennial herb with stinging hairs on leaves and stems.",
+      "safety_note": "Fresh plant can sting skin; supplements may interact with medicines and are not equivalent to cooked food.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Stinging nettle Urtica dioica plant botanical photo",
+      "source_urls": [
+        "https://powo.science.kew.org/results?q=Urtica%20dioica",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL045",
+      "category": "Medicinal plant",
+      "common_name_en": "Moringa / Drumstick tree",
+      "common_name_ml": "മുരിങ്ങ",
+      "scientific_name": "Moringa oleifera",
+      "family": "Moringaceae",
+      "plant_part_or_spice_part": "Leaves, pods and flowers as food; seeds in other contexts",
+      "traditional_or_general_context": "Leaves and pods are common foods in many Indian cuisines; traditional medicinal claims should be assessed separately from nutritional use.",
+      "culinary_or_ecological_context": "Fast-growing tree with compound leaves and long pods.",
+      "safety_note": "Food preparation differs from concentrated extracts; seek advice during pregnancy or when using supplements.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Moringa / Drumstick tree Moringa oleifera plant botanical photo",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/results?q=Moringa%20oleifera"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL046",
+      "category": "Medicinal plant",
+      "common_name_en": "Achillea / Yarrow",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Achillea millefolium",
+      "family": "Asteraceae",
+      "plant_part_or_spice_part": "Flowering tops in traditional products",
+      "traditional_or_general_context": "A plant found in traditional herbal references in several regions; claimed uses vary.",
+      "culinary_or_ecological_context": "Aromatic perennial with finely divided leaves and flat flower clusters.",
+      "safety_note": "May cause allergic reactions; avoid medicinal use without advice during pregnancy or with relevant medicines.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Achillea / Yarrow Achillea millefolium plant botanical photo",
+      "source_urls": [
+        "https://powo.science.kew.org/results?q=Achillea%20millefolium",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL047",
+      "category": "Medicinal plant",
+      "common_name_en": "Sweet wormwood",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Artemisia annua",
+      "family": "Asteraceae",
+      "plant_part_or_spice_part": "Leaves / aerial parts; regulated compounds are not equivalent to home remedies",
+      "traditional_or_general_context": "The plant is the natural source from which artemisinin was identified; modern antimalarial medicines require regulated formulations.",
+      "culinary_or_ecological_context": "Annual aromatic herb with finely divided leaves.",
+      "safety_note": "Do not use plant material or unregulated Artemisia products to self-treat malaria; seek urgent, evidence-based medical care.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Sweet wormwood Artemisia annua plant botanical photo",
+      "source_urls": [
+        "https://powo.science.kew.org/results?q=Artemisia%20annua",
+        "https://www.who.int/teams/global-malaria-programme"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL048",
+      "category": "Medicinal plant",
+      "common_name_en": "Cissus quadrangularis",
+      "common_name_ml": "ചങ്ങലംപരണ്ട",
+      "scientific_name": "Cissus quadrangularis",
+      "family": "Vitaceae",
+      "plant_part_or_spice_part": "Stem in traditional preparations",
+      "traditional_or_general_context": "A succulent-stemmed climber used in some South Asian traditional preparations.",
+      "culinary_or_ecological_context": "Distinctive four-angled succulent stems.",
+      "safety_note": "Evidence and product quality vary; avoid treating traditional claims as proof and seek advice if taking medicines.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Cissus quadrangularis Cissus quadrangularis plant botanical photo",
+      "source_urls": [
+        "https://powo.science.kew.org/results?q=Cissus%20quadrangularis",
+        "https://bsi.gov.in/page/hi/medicinal-plant-database"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL049",
+      "category": "Medicinal plant",
+      "common_name_en": "Nirgundi",
+      "common_name_ml": "കരിനൊച്ചി",
+      "scientific_name": "Vitex negundo",
+      "family": "Lamiaceae",
+      "plant_part_or_spice_part": "Leaves and other parts in traditional records",
+      "traditional_or_general_context": "A shrub used in traditional medicine in South Asia; uses vary by community and preparation.",
+      "culinary_or_ecological_context": "Aromatic shrub with palmately arranged leaflets and small flowers.",
+      "safety_note": "Do not consume unverified wild plants or use concentrated products without qualified advice.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Nirgundi Vitex negundo plant botanical photo",
+      "source_urls": [
+        "https://powo.science.kew.org/results?q=Vitex%20negundo",
+        "https://bsi.gov.in/page/hi/medicinal-plant-database"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL050",
+      "category": "Medicinal plant",
+      "common_name_en": "Indian borage",
+      "common_name_ml": "പനിക്കൂർക്ക",
+      "scientific_name": "Coleus amboinicus",
+      "family": "Lamiaceae",
+      "plant_part_or_spice_part": "Leaves in foods and traditional preparations",
+      "traditional_or_general_context": "Aromatic leaves are used in some Kerala household food and traditional practices.",
+      "culinary_or_ecological_context": "Fleshy, strongly aromatic leaves with scalloped margins.",
+      "safety_note": "Traditional household use is not a substitute for medical assessment; avoid concentrated preparations without advice.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Indian borage Coleus amboinicus plant botanical photo",
+      "source_urls": [
+        "https://smpbkerala.in/herbal-data/",
+        "https://powo.science.kew.org/results?q=Coleus%20amboinicus"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "bsi",
+        "kew_mpns",
+        "who_monographs"
+      ]
+    },
+    {
+      "id": "PL051",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Small cardamom",
+      "common_name_ml": "ഏലം",
+      "scientific_name": "Elettaria cardamomum",
+      "family": "Zingiberaceae",
+      "plant_part_or_spice_part": "Fruit / seeds",
+      "traditional_or_general_context": "Aromatic pods and seeds used in sweet and savoury dishes.",
+      "culinary_or_ecological_context": "Native to southwest India; small capsules contain fragrant seeds.",
+      "safety_note": "Food use is different from concentrated essential oil or supplement use.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Small cardamom Elettaria cardamomum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Elettaria%20cardamomum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL052",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Large cardamom",
+      "common_name_ml": "വലിയ ഏലം (local wording varies)",
+      "scientific_name": "Amomum subulatum",
+      "family": "Zingiberaceae",
+      "plant_part_or_spice_part": "Fruit / seeds",
+      "traditional_or_general_context": "Smoky aromatic pods used in savoury dishes and spice blends.",
+      "culinary_or_ecological_context": "Larger pods, commonly smoke-dried in production regions.",
+      "safety_note": "Food seasoning amounts are not equivalent to medicinal extracts.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Large cardamom Amomum subulatum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Amomum%20subulatum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL053",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Black pepper",
+      "common_name_ml": "കുരുമുളക്",
+      "scientific_name": "Piper nigrum",
+      "family": "Piperaceae",
+      "plant_part_or_spice_part": "Fruit",
+      "traditional_or_general_context": "Peppercorns are dried fruits used whole, cracked or ground.",
+      "culinary_or_ecological_context": "The pepper vine is historically important in Kerala spice cultivation.",
+      "safety_note": "Can irritate some people with reflux or sensitivity in large amounts.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Black pepper Piper nigrum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Piper%20nigrum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL054",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Bird's eye chilli",
+      "common_name_ml": "കാന്താരി മുളക്",
+      "scientific_name": "Capsicum frutescens",
+      "family": "Solanaceae",
+      "plant_part_or_spice_part": "Fruit",
+      "traditional_or_general_context": "Small hot chilli fruits used to add heat to dishes.",
+      "culinary_or_ecological_context": "Capsaicinoids cause the burning sensation.",
+      "safety_note": "Avoid eye contact; very hot peppers can irritate skin and mucous membranes.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Bird's eye chilli Capsicum frutescens plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Capsicum%20frutescens"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL055",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Chilli pepper",
+      "common_name_ml": "മുളക്",
+      "scientific_name": "Capsicum annuum",
+      "family": "Solanaceae",
+      "plant_part_or_spice_part": "Fruit",
+      "traditional_or_general_context": "Fresh or dried fruits used widely as a spice.",
+      "culinary_or_ecological_context": "Includes many cultivated sweet and hot varieties.",
+      "safety_note": "Can trigger irritation or reflux for sensitive individuals.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Chilli pepper Capsicum annuum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Capsicum%20annuum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL056",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Ginger",
+      "common_name_ml": "ഇഞ്ചി",
+      "scientific_name": "Zingiber officinale",
+      "family": "Zingiberaceae",
+      "plant_part_or_spice_part": "Rhizome",
+      "traditional_or_general_context": "Fresh or dried rhizome used in cooking, drinks and spice blends.",
+      "culinary_or_ecological_context": "The edible portion is an underground stem, botanically a rhizome.",
+      "safety_note": "Concentrated supplements can affect medicines, including those affecting bleeding; ordinary food use differs.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Ginger Zingiber officinale plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Zingiber%20officinale"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL057",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Turmeric",
+      "common_name_ml": "മഞ്ഞൾ",
+      "scientific_name": "Curcuma longa",
+      "family": "Zingiberaceae",
+      "plant_part_or_spice_part": "Rhizome",
+      "traditional_or_general_context": "Rhizome provides yellow colour and earthy flavour in cooking.",
+      "culinary_or_ecological_context": "Curcumin contributes to turmeric's yellow colour.",
+      "safety_note": "Culinary amounts differ from supplements; enhanced-bioavailability products have been linked to liver injury in some cases.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Turmeric Curcuma longa plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Curcuma%20longa"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL058",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Coriander",
+      "common_name_ml": "മല്ലി",
+      "scientific_name": "Coriandrum sativum",
+      "family": "Apiaceae",
+      "plant_part_or_spice_part": "Leaves and dried fruits (often called seeds)",
+      "traditional_or_general_context": "Leaves and dried fruits are both used in cooking, with different flavours.",
+      "culinary_or_ecological_context": "Belongs to the carrot family; the spice fruit is commonly called coriander seed.",
+      "safety_note": "Possible allergy; do not confuse culinary use with essential-oil dosing.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Coriander Coriandrum sativum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Coriandrum%20sativum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL059",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Cumin",
+      "common_name_ml": "ജീരകം",
+      "scientific_name": "Cuminum cyminum",
+      "family": "Apiaceae",
+      "plant_part_or_spice_part": "Fruit (commonly called seed)",
+      "traditional_or_general_context": "Dried aromatic fruits used in seasoning and spice blends.",
+      "culinary_or_ecological_context": "Cumin has narrow leaves and small flowers in umbels.",
+      "safety_note": "Food use is not evidence for medicinal dosing.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Cumin Cuminum cyminum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Cuminum%20cyminum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL060",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Fennel",
+      "common_name_ml": "പെരുംജീരകം",
+      "scientific_name": "Foeniculum vulgare",
+      "family": "Apiaceae",
+      "plant_part_or_spice_part": "Fruit (commonly called seed)",
+      "traditional_or_general_context": "Anise-like fruits used in cooking and after-meal spice mixes.",
+      "culinary_or_ecological_context": "Aromatic plant with feathery leaves and yellow umbels.",
+      "safety_note": "Concentrated preparations may be inappropriate for some people; seek advice during pregnancy or for hormone-sensitive conditions.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Fennel Foeniculum vulgare plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Foeniculum%20vulgare"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL061",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Fenugreek",
+      "common_name_ml": "ഉലുവ",
+      "scientific_name": "Trigonella foenum-graecum",
+      "family": "Fabaceae",
+      "plant_part_or_spice_part": "Seed and leaves",
+      "traditional_or_general_context": "Seeds add bitterness and aroma; leaves are also used as a food herb.",
+      "culinary_or_ecological_context": "A legume cultivated for seed and leafy use.",
+      "safety_note": "May lower blood sugar and cause allergy or digestive effects in some people.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Fenugreek Trigonella foenum-graecum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Trigonella%20foenum-graecum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL062",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Celery",
+      "common_name_ml": "സെലറി",
+      "scientific_name": "Apium graveolens",
+      "family": "Apiaceae",
+      "plant_part_or_spice_part": "Leaf, stem and fruit",
+      "traditional_or_general_context": "Leaves, stems and fruits are used as food and seasoning.",
+      "culinary_or_ecological_context": "A cultivated plant in the carrot family.",
+      "safety_note": "Celery is a recognised food allergen for some people.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Celery Apium graveolens plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Apium%20graveolens"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL063",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Aniseed",
+      "common_name_ml": "അനീസ്",
+      "scientific_name": "Pimpinella anisum",
+      "family": "Apiaceae",
+      "plant_part_or_spice_part": "Fruit (commonly called seed)",
+      "traditional_or_general_context": "Sweet, licorice-like aroma used in baked goods, sweets and spice mixtures.",
+      "culinary_or_ecological_context": "An annual herb of the Apiaceae family.",
+      "safety_note": "Check product identity; anise is distinct from star anise and fennel.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Aniseed Pimpinella anisum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Pimpinella%20anisum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL064",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Ajwain / carom",
+      "common_name_ml": "അയമോദകം (usage varies)",
+      "scientific_name": "Trachyspermum ammi",
+      "family": "Apiaceae",
+      "plant_part_or_spice_part": "Fruit",
+      "traditional_or_general_context": "Small aromatic fruits used in Indian savoury foods.",
+      "culinary_or_ecological_context": "Often used in flatbreads and pulse preparations.",
+      "safety_note": "Avoid high-dose medicinal use, especially during pregnancy, without professional advice.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Ajwain / carom Trachyspermum ammi plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Trachyspermum%20ammi"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL065",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Caraway",
+      "common_name_ml": "കരവേ (name needs local review)",
+      "scientific_name": "Carum carvi",
+      "family": "Apiaceae",
+      "plant_part_or_spice_part": "Fruit",
+      "traditional_or_general_context": "Dried fruits flavour breads, cheeses and savoury dishes.",
+      "culinary_or_ecological_context": "A plant of the carrot family, distinct from cumin.",
+      "safety_note": "Possible allergy in people sensitive to Apiaceae plants.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Caraway Carum carvi plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Carum%20carvi"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL066",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Dill",
+      "common_name_ml": "ചതകുപ്പ",
+      "scientific_name": "Anethum graveolens",
+      "family": "Apiaceae",
+      "plant_part_or_spice_part": "Leaves and fruits",
+      "traditional_or_general_context": "Leaves and dried fruits are used to flavour foods.",
+      "culinary_or_ecological_context": "Feathery leaves and flat flower clusters.",
+      "safety_note": "Food use differs from concentrated preparations; possible allergy.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Dill Anethum graveolens plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Anethum%20graveolens"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL067",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Ceylon cinnamon",
+      "common_name_ml": "കറുവപ്പട്ട",
+      "scientific_name": "Cinnamomum verum",
+      "family": "Lauraceae",
+      "plant_part_or_spice_part": "Bark",
+      "traditional_or_general_context": "Inner bark is dried into quills or ground for food.",
+      "culinary_or_ecological_context": "Ceylon cinnamon differs from cassia cinnamon.",
+      "safety_note": "Large or prolonged use of cinnamon supplements warrants caution; identity matters.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Ceylon cinnamon Cinnamomum verum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Cinnamomum%20verum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL068",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Cassia cinnamon",
+      "common_name_ml": "കാസിയ കറുവപ്പട്ട",
+      "scientific_name": "Cinnamomum cassia",
+      "family": "Lauraceae",
+      "plant_part_or_spice_part": "Bark",
+      "traditional_or_general_context": "A stronger cinnamon-like bark used in many spice blends.",
+      "culinary_or_ecological_context": "Often has higher coumarin levels than Ceylon cinnamon.",
+      "safety_note": "Frequent high intake may raise coumarin-related liver concerns; product type matters.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Cassia cinnamon Cinnamomum cassia plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Cinnamomum%20cassia"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL069",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Garlic",
+      "common_name_ml": "വെളുത്തുള്ളി",
+      "scientific_name": "Allium sativum",
+      "family": "Amaryllidaceae",
+      "plant_part_or_spice_part": "Bulb",
+      "traditional_or_general_context": "Bulbs and cloves add pungent flavour to a wide range of dishes.",
+      "culinary_or_ecological_context": "Close relatives include onion and leek.",
+      "safety_note": "Garlic supplements can increase bleeding risk and interact with medicines; food use differs.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Garlic Allium sativum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Allium%20sativum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL070",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Curry leaf",
+      "common_name_ml": "കറിവേപ്പില",
+      "scientific_name": "Murraya koenigii",
+      "family": "Rutaceae",
+      "plant_part_or_spice_part": "Leaf",
+      "traditional_or_general_context": "Fresh leaves are fried or added to Indian dishes for aroma.",
+      "culinary_or_ecological_context": "A small aromatic tree native to the Indian subcontinent.",
+      "safety_note": "Use as a culinary herb; health claims about extracts need evidence-specific review.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Curry leaf Murraya koenigii plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Murraya%20koenigii"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL071",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Kokum",
+      "common_name_ml": "കുടംപുളി / കൊക്കം",
+      "scientific_name": "Garcinia indica",
+      "family": "Clusiaceae",
+      "plant_part_or_spice_part": "Fruit rind",
+      "traditional_or_general_context": "Dried rind gives sourness to regional dishes and beverages.",
+      "culinary_or_ecological_context": "A Western Ghats-associated tree with deep red-purple fruits.",
+      "safety_note": "Do not assume products marketed for weight loss are safe or effective; check ingredients carefully.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Kokum Garcinia indica plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Garcinia%20indica"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL072",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Peppermint",
+      "common_name_ml": "പുതിന",
+      "scientific_name": "Mentha × piperita",
+      "family": "Lamiaceae",
+      "plant_part_or_spice_part": "Leaves",
+      "traditional_or_general_context": "Leaves flavour teas, sweets and savoury foods.",
+      "culinary_or_ecological_context": "Peppermint is a hybrid mint; essential oil is much more concentrated than leaves.",
+      "safety_note": "Peppermint oil can cause adverse effects and is not interchangeable with food leaves.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Peppermint Mentha × piperita plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Mentha%20%C3%97%20piperita"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL073",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Indian mustard",
+      "common_name_ml": "കടുക്",
+      "scientific_name": "Brassica juncea",
+      "family": "Brassicaceae",
+      "plant_part_or_spice_part": "Seeds / leaves",
+      "traditional_or_general_context": "Seeds are used whole, crushed or as oil; leaves are also eaten.",
+      "culinary_or_ecological_context": "A member of the mustard/cabbage family.",
+      "safety_note": "Mustard is a recognised food allergen for some people.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Indian mustard Brassica juncea plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Brassica%20juncea"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL074",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Parsley",
+      "common_name_ml": "പാർസ്ലി",
+      "scientific_name": "Petroselinum crispum",
+      "family": "Apiaceae",
+      "plant_part_or_spice_part": "Leaves",
+      "traditional_or_general_context": "Fresh leaves are used as a garnish and culinary herb.",
+      "culinary_or_ecological_context": "A leafy herb in the carrot family.",
+      "safety_note": "Culinary leaves differ from concentrated seed oils or medicinal extracts.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Parsley Petroselinum crispum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Petroselinum%20crispum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL075",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Pomegranate seed",
+      "common_name_ml": "മാതളനാരങ്ങ വിത്ത്",
+      "scientific_name": "Punica granatum",
+      "family": "Lythraceae",
+      "plant_part_or_spice_part": "Seed / aril depending on product",
+      "traditional_or_general_context": "Pomegranate arils and seeds are used in foods; dried seeds are used as a sour spice in some cuisines.",
+      "culinary_or_ecological_context": "The edible red aril surrounds the seed.",
+      "safety_note": "May interact with certain medicines; ordinary food use differs from concentrated extracts.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Pomegranate seed Punica granatum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Punica%20granatum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL076",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Saffron",
+      "common_name_ml": "കുങ്കുമപ്പൂവ്",
+      "scientific_name": "Crocus sativus",
+      "family": "Iridaceae",
+      "plant_part_or_spice_part": "Stigma",
+      "traditional_or_general_context": "The dried red stigmas are used in small quantities for colour and aroma.",
+      "culinary_or_ecological_context": "It takes many flowers to produce a small quantity of saffron.",
+      "safety_note": "High-dose saffron products are not equivalent to culinary use and can be unsafe.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Saffron Crocus sativus plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Crocus%20sativus"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL077",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Vanilla",
+      "common_name_ml": "വാനില",
+      "scientific_name": "Vanilla planifolia",
+      "family": "Orchidaceae",
+      "plant_part_or_spice_part": "Fruit pod",
+      "traditional_or_general_context": "Cured pods provide vanilla flavour in food.",
+      "culinary_or_ecological_context": "A climbing orchid whose pods require curing to develop characteristic aroma.",
+      "safety_note": "Use food-grade products; extracts vary in strength and ingredients.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Vanilla Vanilla planifolia plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Vanilla%20planifolia"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL078",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Indian bay leaf / Tejpat",
+      "common_name_ml": "വയനയില (name varies)",
+      "scientific_name": "Cinnamomum tamala",
+      "family": "Lauraceae",
+      "plant_part_or_spice_part": "Leaf",
+      "traditional_or_general_context": "Leaves add aroma to rice, curries and spice mixtures.",
+      "culinary_or_ecological_context": "Not the same species as Mediterranean bay laurel.",
+      "safety_note": "Correct identification matters because similarly named leaves may differ.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Indian bay leaf / Tejpat Cinnamomum tamala plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Cinnamomum%20tamala"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL079",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Long pepper",
+      "common_name_ml": "തിപ്പലി",
+      "scientific_name": "Piper longum",
+      "family": "Piperaceae",
+      "plant_part_or_spice_part": "Fruit spike",
+      "traditional_or_general_context": "Dried fruit spikes are used in some Indian spice blends and traditional preparations.",
+      "culinary_or_ecological_context": "A close relative of black pepper with elongated fruiting spikes.",
+      "safety_note": "Medicinal use can interact with medicines; do not treat it as a harmless supplement.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Long pepper Piper longum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Piper%20longum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL080",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Star anise",
+      "common_name_ml": "തക്കോലം",
+      "scientific_name": "Illicium verum",
+      "family": "Schisandraceae",
+      "plant_part_or_spice_part": "Fruit",
+      "traditional_or_general_context": "Star-shaped dried fruits impart a sweet anise-like flavour.",
+      "culinary_or_ecological_context": "Chinese star anise is the culinary species; toxic Japanese star anise must not be confused with it.",
+      "safety_note": "Buy from reliable food suppliers; species confusion can cause poisoning.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Star anise Illicium verum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Illicium%20verum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL081",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Greater galangal",
+      "common_name_ml": "വലിയ ചിറ്റരത്ത (local name needs review)",
+      "scientific_name": "Alpinia galanga",
+      "family": "Zingiberaceae",
+      "plant_part_or_spice_part": "Rhizome",
+      "traditional_or_general_context": "A fragrant rhizome used in Southeast Asian cooking.",
+      "culinary_or_ecological_context": "Related to ginger but has a distinct citrus-pine aroma.",
+      "safety_note": "Food use differs from concentrated medicinal preparations.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Greater galangal Alpinia galanga plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Alpinia%20galanga"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL082",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Clove",
+      "common_name_ml": "ഗ്രാമ്പൂ",
+      "scientific_name": "Syzygium aromaticum",
+      "family": "Myrtaceae",
+      "plant_part_or_spice_part": "Unopened flower bud",
+      "traditional_or_general_context": "Dried unopened flower buds provide a strong warm aroma in sweet and savoury dishes.",
+      "culinary_or_ecological_context": "Clove oil contains eugenol and is highly concentrated compared with the spice.",
+      "safety_note": "Swallowing clove oil can be dangerous; culinary clove is not equivalent to clove-oil dosing.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Clove Syzygium aromaticum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Syzygium%20aromaticum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL083",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Asafoetida",
+      "common_name_ml": "കായം",
+      "scientific_name": "Ferula asafoetida",
+      "family": "Apiaceae",
+      "plant_part_or_spice_part": "Oleo-gum-resin",
+      "traditional_or_general_context": "A pungent resin is used in small quantities, especially in pulse dishes.",
+      "culinary_or_ecological_context": "The strong smell changes when heated in oil or ghee.",
+      "safety_note": "Check products for added flour or allergens; concentrated use differs from seasoning.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Asafoetida Ferula asafoetida plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Ferula%20asafoetida"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL084",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Camboge / Malabar tamarind",
+      "common_name_ml": "മരപ്പുളി (local names vary)",
+      "scientific_name": "Garcinia gummi-gutta",
+      "family": "Clusiaceae",
+      "plant_part_or_spice_part": "Fruit rind",
+      "traditional_or_general_context": "Dried rind has been used as a souring agent in regional cooking.",
+      "culinary_or_ecological_context": "Common name and identity may overlap with other Garcinia species.",
+      "safety_note": "Avoid weight-loss supplements based on Garcinia without professional advice; product safety concerns exist.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Camboge / Malabar tamarind Garcinia gummi-gutta plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Garcinia%20gummi-gutta"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL085",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Hyssop",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Hyssopus officinalis",
+      "family": "Lamiaceae",
+      "plant_part_or_spice_part": "Leaves / flowering tops",
+      "traditional_or_general_context": "Aromatic herb historically used in European cooking and herbal traditions.",
+      "culinary_or_ecological_context": "Small shrub with narrow leaves and blue-purple flowers.",
+      "safety_note": "Essential oil can be unsafe, including seizure risk; do not ingest essential oil.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Hyssop Hyssopus officinalis plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Hyssopus%20officinalis"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL086",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Juniper berry",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Juniperus communis",
+      "family": "Cupressaceae",
+      "plant_part_or_spice_part": "Berry-like seed cone",
+      "traditional_or_general_context": "Used as a flavouring in some regional foods and beverages.",
+      "culinary_or_ecological_context": "The fleshy cones are commonly called berries.",
+      "safety_note": "Not all Juniperus species are edible; medicinal use can be inappropriate in pregnancy or kidney conditions.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Juniper berry Juniperus communis plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Juniperus%20communis"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL087",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Bay laurel",
+      "common_name_ml": "വഴനയില / ബേ ലീഫ് (usage varies)",
+      "scientific_name": "Laurus nobilis",
+      "family": "Lauraceae",
+      "plant_part_or_spice_part": "Leaf",
+      "traditional_or_general_context": "Leaves are used to flavour soups, stews and sauces and are generally removed before serving.",
+      "culinary_or_ecological_context": "Distinct from Indian bay leaf (Cinnamomum tamala).",
+      "safety_note": "Leaves are tough and should not usually be swallowed whole.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Bay laurel Laurus nobilis plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Laurus%20nobilis"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL088",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Marjoram",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Origanum majorana",
+      "family": "Lamiaceae",
+      "plant_part_or_spice_part": "Leaves",
+      "traditional_or_general_context": "Leaves season vegetables, meats and sauces.",
+      "culinary_or_ecological_context": "Aromatic herb related to oregano.",
+      "safety_note": "Essential oils are concentrated; do not ingest them without qualified guidance.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Marjoram Origanum majorana plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Origanum%20majorana"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL089",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Nutmeg",
+      "common_name_ml": "ജാതിക്ക",
+      "scientific_name": "Myristica fragrans",
+      "family": "Myristicaceae",
+      "plant_part_or_spice_part": "Seed",
+      "traditional_or_general_context": "The kernel is grated in small quantities into sweet and savoury dishes.",
+      "culinary_or_ecological_context": "The same fruit also yields the aril known as mace.",
+      "safety_note": "Large quantities can cause toxic neurological effects; use normal culinary amounts only.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Nutmeg Myristica fragrans plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Myristica%20fragrans"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL090",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Mace",
+      "common_name_ml": "ജാതിപത്രി",
+      "scientific_name": "Myristica fragrans",
+      "family": "Myristicaceae",
+      "plant_part_or_spice_part": "Aril around seed",
+      "traditional_or_general_context": "The red aril surrounding nutmeg is dried and used as a spice.",
+      "culinary_or_ecological_context": "Mace and nutmeg come from different parts of the same fruit.",
+      "safety_note": "Large medicinal quantities are unsafe; use food-level quantities.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Mace Myristica fragrans plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Myristica%20fragrans"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL091",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Sweet basil",
+      "common_name_ml": "തുളസി എന്ന പൊതുപേരുമായി കുഴയ്ക്കരുത്; ബേസിൽ",
+      "scientific_name": "Ocimum basilicum",
+      "family": "Lamiaceae",
+      "plant_part_or_spice_part": "Leaves",
+      "traditional_or_general_context": "Fresh leaves flavour sauces, salads and other foods.",
+      "culinary_or_ecological_context": "Sweet basil is a different species from holy basil (Ocimum tenuiflorum).",
+      "safety_note": "Do not confuse species with similar common names; concentrated oils differ from leaves.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Sweet basil Ocimum basilicum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Ocimum%20basilicum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL092",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Poppy seed",
+      "common_name_ml": "കശകശ",
+      "scientific_name": "Papaver somniferum",
+      "family": "Papaveraceae",
+      "plant_part_or_spice_part": "Seed",
+      "traditional_or_general_context": "Seeds are used in baking and some regional dishes.",
+      "culinary_or_ecological_context": "The food seed is distinct from latex and other parts of the opium poppy.",
+      "safety_note": "Use food-grade seeds from reliable suppliers; other plant parts are not food substitutes.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Poppy seed Papaver somniferum plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Papaver%20somniferum"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL093",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Allspice",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Pimenta dioica",
+      "family": "Myrtaceae",
+      "plant_part_or_spice_part": "Fruit",
+      "traditional_or_general_context": "Dried berries have a flavour reminiscent of clove, cinnamon and nutmeg.",
+      "culinary_or_ecological_context": "Native to the Caribbean and Central America and used in global cuisines.",
+      "safety_note": "Use as a food spice; concentrated oils require separate safety review.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Allspice Pimenta dioica plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Pimenta%20dioica"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL094",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Rosemary",
+      "common_name_ml": "റോസ്മേരി",
+      "scientific_name": "Salvia rosmarinus (syn. Rosmarinus officinalis)",
+      "family": "Lamiaceae",
+      "plant_part_or_spice_part": "Leaves",
+      "traditional_or_general_context": "Needle-like leaves flavour roasted foods, breads and oils.",
+      "culinary_or_ecological_context": "An aromatic evergreen shrub.",
+      "safety_note": "Rosemary essential oil is concentrated and should not be ingested casually.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Rosemary Salvia rosmarinus (syn. Rosmarinus officinalis) plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Salvia%20rosmarinus%20%28syn.%20Rosmarinus%20officinalis%29"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL095",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Sage",
+      "common_name_ml": "സേജ്",
+      "scientific_name": "Salvia officinalis",
+      "family": "Lamiaceae",
+      "plant_part_or_spice_part": "Leaves",
+      "traditional_or_general_context": "Leaves season stuffing, sauces and savoury dishes.",
+      "culinary_or_ecological_context": "Grey-green aromatic leaves are common in Mediterranean cooking.",
+      "safety_note": "High doses or concentrated sage oil can be unsafe because some varieties contain thujone.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Sage Salvia officinalis plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Salvia%20officinalis"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL096",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Summer savory",
+      "common_name_ml": "Not verified — review locally",
+      "scientific_name": "Satureja hortensis",
+      "family": "Lamiaceae",
+      "plant_part_or_spice_part": "Leaves",
+      "traditional_or_general_context": "An aromatic herb used in seasoning beans and savoury dishes.",
+      "culinary_or_ecological_context": "Annual herb with small leaves and flowers.",
+      "safety_note": "Use as a culinary herb; concentrated essential oil has different risks.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Summer savory Satureja hortensis plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Satureja%20hortensis"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL097",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Thyme",
+      "common_name_ml": "തൈം",
+      "scientific_name": "Thymus vulgaris",
+      "family": "Lamiaceae",
+      "plant_part_or_spice_part": "Leaves / flowering tops",
+      "traditional_or_general_context": "Small leaves flavour soups, stews and roasted foods.",
+      "culinary_or_ecological_context": "Low-growing aromatic plant in the mint family.",
+      "safety_note": "Thyme essential oil is much more concentrated than culinary leaves.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Thyme Thymus vulgaris plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Thymus%20vulgaris"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL098",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Oregano",
+      "common_name_ml": "ഒറിഗാനോ",
+      "scientific_name": "Origanum vulgare",
+      "family": "Lamiaceae",
+      "plant_part_or_spice_part": "Leaves",
+      "traditional_or_general_context": "Leaves are used dried or fresh in sauces and savoury foods.",
+      "culinary_or_ecological_context": "Aromatic perennial herb related to marjoram.",
+      "safety_note": "Culinary use differs from concentrated essential-oil use.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Oregano Origanum vulgare plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Origanum%20vulgare"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL099",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Tarragon",
+      "common_name_ml": "ടാരഗൺ",
+      "scientific_name": "Artemisia dracunculus",
+      "family": "Asteraceae",
+      "plant_part_or_spice_part": "Leaves",
+      "traditional_or_general_context": "Anise-like leaves flavour sauces, vinegar and other foods.",
+      "culinary_or_ecological_context": "Aromatic perennial herb used especially in European cooking.",
+      "safety_note": "Avoid medicinal-dose use during pregnancy; product and dose matter.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Tarragon Artemisia dracunculus plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Artemisia%20dracunculus"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    },
+    {
+      "id": "PL100",
+      "category": "Culinary spice / herb",
+      "common_name_en": "Tamarind",
+      "common_name_ml": "പുളി",
+      "scientific_name": "Tamarindus indica",
+      "family": "Fabaceae",
+      "plant_part_or_spice_part": "Fruit pulp",
+      "traditional_or_general_context": "Sour pulp is widely used in Kerala and Indian cooking.",
+      "culinary_or_ecological_context": "A tropical tree producing brown pod fruits with acidic pulp.",
+      "safety_note": "May affect blood glucose or medicine absorption in certain contexts; normal food use differs from supplements.",
+      "evidence_note": "Traditional use does not by itself establish clinical effectiveness. Add species-specific evidence only after review of reliable sources.",
+      "image_search_query": "Tamarind Tamarindus indica plant botanical photo",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/results?q=Tamarindus%20indica"
+      ],
+      "verification_status": "draft_review_required",
+      "source_ids": [
+        "spices_board",
+        "kew_powo"
+      ]
+    }
+  ]
+}

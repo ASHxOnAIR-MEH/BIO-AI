@@ -12,6 +12,7 @@ const navLinks = [
   { label: "About",      href: "#about"       },
   { label: "Incubation", href: "#opportunity" },
   { label: "Contact",    href: "#contact"     },
+  { label: "Kiosk",      href: "/kiosk"       },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -88,6 +89,7 @@ export default function Navbar() {
               <a href="#about" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">About</a>
               <a href="#opportunity" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Incubation</a>
               <a href="#contact" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Contact</a>
+              <Link href="/kiosk" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Kiosk</Link>
               <a
                 href="https://zfrmz.com/Ene770rEwgTw2cP7chBH"
                 target="_blank"
@@ -230,16 +232,17 @@ export default function Navbar() {
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ duration: 0.3, delay: 0.1 + i * 0.06 }}
                     >
-                      {link.href === "/" ? (
-                        <button
-                          onClick={() => handleNavClick(link.href)}
+                      {link.href.startsWith("/") && link.href !== "/" ? (
+                        <Link
+                          href={link.href}
+                          onClick={closeMenu}
                           className="flex items-center justify-between w-full py-[14px] border-b border-gray-100 group min-h-[52px] text-left"
                         >
                           <span className="text-2xl font-heading font-semibold text-text-primary group-hover:text-bio-green transition-colors">
                             {link.label}
                           </span>
                           <span className="text-text-secondary group-hover:text-bio-green transition-colors">↗</span>
-                        </button>
+                        </Link>
                       ) : (
                         <button
                           onClick={() => handleNavClick(link.href)}

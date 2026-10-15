@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -107,5 +108,11 @@ a,
   .no-select {
     -webkit-user-select: none;
     user-select: none;
+  }
+
+  /* Malayalam typography optimization */
+  .font-malayalam {
+    font-family: 'Manjari', 'Noto Sans Malayalam', 'Gayathri', 'Nirmala UI', system-ui, sans-serif;
+    line-height: 1.6;
   }
 }

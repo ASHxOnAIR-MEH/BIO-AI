@@ -1,0 +1,130 @@
+{
+  "innovations": [
+    {
+      "id": "BIO-INN-01",
+      "title": "AyurPharma-AI: Phytochemical Screening & Molecular Docking",
+      "titleMl": "ആയുർഫാർമ-എഐ: സസ്യ രാസഘടകങ്ങളുടെ തന്മാത്രാ പരിശോധന",
+      "category": "Ayurveda & Deep-Tech",
+      "categoryMl": "ആയുർവേദവും ഡീപ്-ടെക്കും",
+      "status": "Active Research",
+      "statusMl": "സജീവ ഗവേഷണം",
+      "summary": "Machine-learning accelerated screening of active secondary metabolites from Kerala's medicinal flora, predicting target protein binding affinities for classical Rasayana therapeutics.",
+      "summaryMl": "കേരളത്തിലെ ഔഷധസസ്യങ്ങളിലെ സസ്യരാസഘടകങ്ങളെ മെഷീൻ ലേണിംഗ് വഴി വേഗത്തിൽ പരിശോധിച്ച് പ്രോട്ടീൻ ബൈൻഡിംഗ് സാധ്യതകൾ കണ്ടെത്തുന്ന ആധുനിക ഗവേഷണം.",
+      "leadInstitution": "Bio-AI Centre of Excellence, Digital Hub, Kochi",
+      "collaborators": ["Kerala Ayurvedic Research Network", "CARE KSUM"],
+      "keyCapabilities": [
+        "In-silico molecular docking against anti-inflammatory and metabolic targets",
+        "Tox-prediction filters for bioactive Ayurvedic compounds",
+        "Validation of multi-herb synergistic formulations (Samyoga)"
+      ],
+      "metrics": "Over 1,200 active compounds screened with 92% docking affinity correlation",
+      "sourceReference": "Bio-AI CoE Pharmacoinformatics Initiative · Digital Hub, Kochi",
+      "link": "https://startupmission.kerala.gov.in"
+    },
+    {
+      "id": "BIO-INN-02",
+      "title": "SpiceGenomics: High-Throughput Cardamom & Pepper Gene Mapping",
+      "titleMl": "സ്പൈസ് ജീനോമിക്സ്: ഏലവും കുരുമുളകും ജീനോം മാപ്പിംഗ്",
+      "category": "Spice Biotechnology",
+      "categoryMl": "സുഗന്ധവ്യഞ്ജന ബയോടെക്നോളജി",
+      "status": "Field Validation",
+      "statusMl": "ഫീൽഡ് വാലിഡേഷൻ",
+      "summary": "Deep neural network models for predictive trait selection, drought resistance mapping, and yield forecasting across Malabar black pepper and cardamom cultivars.",
+      "summaryMl": "മലബാർ കുരുമുളകിന്റെയും ഏലത്തിന്റെയും മികച്ച ഇനങ്ങൾ തിരഞ്ഞെടുക്കാനും വരൾച്ച പ്രതിരോധം വിലയിരുത്താനുമുള്ള ന്യൂറൽ നെറ്റ്‌വർക്ക് മാപ്പിംഗ്.",
+      "leadInstitution": "Bio-AI Centre of Excellence & AgriTech Incubation Wing",
+      "collaborators": ["Kerala Spices Growers Consortium", "Digital Hub Computing Lab"],
+      "keyCapabilities": [
+        "SNP-trait association for fungal wilt resistance (Phytophthora)",
+        "Micro-climate predictive yield forecasting for Idukki & Wayanad plantations",
+        "Genomic provenance tracking for GI-tagged Malabar Spices"
+      ],
+      "metrics": "24 landraces sequenced across high-altitude agro-climatic zones",
+      "sourceReference": "Kerala Startup Mission Agri-Biotech Innovation Cohort",
+      "link": "https://startupmission.kerala.gov.in"
+    },
+    {
+      "id": "BIO-INN-03",
+      "title": "SpectraSpice-AI: Instant NIR Spectral Quality & Purity Scanner",
+      "titleMl": "സ്പെക്ട്രാസ്പൈസ്-എഐ: സുഗന്ധവ്യഞ്ജന ഗുണനിലവാര സ്കാനർ",
+      "category": "Spice Biotechnology",
+      "categoryMl": "സുഗന്ധവ്യഞ്ജന ബയോടെക്നോളജി",
+      "status": "Prototype Tested",
+      "statusMl": "പ്രോട്ടോടൈപ്പ് പരീക്ഷിച്ചു",
+      "summary": "Portable edge-AI near-infrared reflectance spectroscopy (NIRS) system delivering non-destructive farmgate determination of curcumin content and adulteration detection.",
+      "summaryMl": "മഞ്ഞളിലെ കുർക്കുമിൻ തോതും മായം ചേർക്കലുകളും നിമിഷങ്ങൾക്കുള്ളിൽ പരിശോധിക്കുന്ന പോർട്ടബിൾ ഇൻഫ്രാറെഡ് എഡ്ജ്-എഐ സ്കാനർ.",
+      "leadInstitution": "Digital Hub Kochi Bio-Computing Lab",
+      "collaborators": ["Incubated Hardware Startups", "KSUM Deep-Tech Lab"],
+      "keyCapabilities": [
+        "Instant quantification of active curcumin (0.5% - 8.0% range) in 15 seconds",
+        "Detection of synthetic dyes (Metanil yellow) and starch fillers",
+        "Bluetooth connectivity to mobile farmgate valuation app"
+      ],
+      "metrics": "Field verified with 98.4% classification accuracy against HPLC benchmarks",
+      "sourceReference": "Digital Hub Edge-AI Hardware Demonstration Showcase",
+      "link": "https://startupmission.kerala.gov.in"
+    },
+    {
+      "id": "BIO-INN-04",
+      "title": "AyurGen-Prakriti: Deep Learning for Clinical Phenotype Classification",
+      "titleMl": "ആയുർജെൻ-പ്രകൃതി: ക്ലിനിക്കൽ പ്രകൃതി നിർണ്ണയം",
+      "category": "Ayurveda & Deep-Tech",
+      "categoryMl": "ആയുർവേദവും ഡീപ്-ടെക്കും",
+      "status": "Pilot Validation",
+      "statusMl": "പൈലറ്റ് വാലിഡേഷൻ",
+      "summary": "Multimodal digital diagnostic suite combining optical arterial pulse waveforms, tongue dermatoglyphics, and constitution tokens to standardize Prakriti assessment.",
+      "summaryMl": "നാഡിമിടിപ്പും ശാരീരിക ലക്ഷണങ്ങളും നിർമ്മിതബുദ്ധി വഴി വിശകലനം ചെയ്ത് ആയുർവേദ പ്രകൃതി നിർണ്ണയം കൃത്യമാക്കുന്ന ഡിജിറ്റൽ സംവിധാനം.",
+      "leadInstitution": "Bio-AI Centre of Excellence",
+      "collaborators": ["Clinical Ayurveda Research Faculty", "AyurTech Startups"],
+      "keyCapabilities": [
+        "Nadi (radial pulse) piezoelectric sensor spectral Fourier decomposition",
+        "Computer-vision lingual coating and micro-vascular analysis",
+        "Explainable AI scoring aligning Vata, Pitta, and Kapha constitution ratios"
+      ],
+      "metrics": "2,400+ clinical pulse profiles recorded under IRB ethical protocol",
+      "sourceReference": "Bio-AI Clinical Informatics Core · Digital Hub, Kochi",
+      "link": "https://startupmission.kerala.gov.in"
+    },
+    {
+      "id": "BIO-INN-05",
+      "title": "WesternGhats-BioDB: Metagenomic Biodiversity Transformer Models",
+      "titleMl": "വെസ്റ്റേൺഘട്ട്സ്-ബയോഡിബി: മെറ്റാജീനോമിക് ട്രാൻസ്ഫോർമർ മോഡൽ",
+      "category": "Life Sciences & Genomics",
+      "categoryMl": "ലൈഫ് സയൻസസും ജീനോമിക്സും",
+      "status": "Dataset Published",
+      "statusMl": "ഡാറ്റാസെറ്റ് ലഭ്യമാക്കി",
+      "summary": "Biological language models trained on microbial and fungal sequences from protected Kerala biodiversity hotspots, identifying novel biocatalysts and natural enzymes.",
+      "summaryMl": "കേരളത്തിലെ പശ്ചിമഘട്ട ജൈവവൈവിധ്യ മേഖലകളിലെ സൂക്ഷ്മജീവികളുടെ ഡിഎൻഎ ഘടന വിശകലനം ചെയ്ത് പുതിയ എൻസൈമുകൾ കണ്ടെത്തുന്ന ലാംഗ്വേജ് മോഡൽ.",
+      "leadInstitution": "Bio-AI CoE Metagenomics Core",
+      "collaborators": ["State Biodiversity Working Group", "Digital Hub Computing Lab"],
+      "keyCapabilities": [
+        "Protein representation embeddings for novel thermostable enzymes",
+        "Environmental DNA (eDNA) classification for forest flora health",
+        "Open-access metadata repository for Kerala academic institutions"
+      ],
+      "metrics": "Over 18 million sequence tokens indexed on High-Performance GPU Cluster",
+      "sourceReference": "Bio-AI CoE Metagenomic Foundation Initiative",
+      "link": "https://startupmission.kerala.gov.in"
+    },
+    {
+      "id": "BIO-INN-06",
+      "title": "BioSynth-AI: Metabolic Pathway Modeling for Green Biomanufacturing",
+      "titleMl": "ബയോസിന്ത്-എഐ: ഗ്രീൻ ബയോമാനുഫാക്ചറിംഗ് മെറ്റബോളിക് മോഡലിംഗ്",
+      "category": "Life Sciences & Genomics",
+      "categoryMl": "ലൈഫ് സയൻസസും ജീനോമിക്സും",
+      "status": "Lab Research",
+      "statusMl": "ലാബ് ഗവേഷണം",
+      "summary": "Generative AI simulations for microbial strain engineering, optimizing fermentative yield of therapeutic compounds without harvesting endangered wild forest plants.",
+      "summaryMl": "വനങ്ങളിലെ വംശനാശഭീഷണി നേരിടുന്ന സസ്യങ്ങളെ നശിപ്പിക്കാതെ, ഔഷധ തന്മാത്രകൾ സൂക്ഷ്മജീവികൾ വഴി നിർമ്മിക്കാൻ സഹായിക്കുന്ന എഐ മോഡലിംഗ്.",
+      "leadInstitution": "Digital Hub Kochi High-Performance GPU Facility",
+      "collaborators": ["Biotech Startup Incubatees", "Academic Research Teams"],
+      "keyCapabilities": [
+        "Metabolic flux analysis for yeast & bacterial chassis strains",
+        "CRISPR-Cas9 on-target guide RNA design for secondary metabolism",
+        "Bioreactor optimization algorithms reducing batch turnaround time"
+      ],
+      "metrics": "Simulated yield optimization demonstrated for 6 key medicinal alkaloids",
+      "sourceReference": "KSUM Digital Hub Bio-Manufacturing Incubation Track",
+      "link": "https://startupmission.kerala.gov.in"
+    }
+  ]
+}

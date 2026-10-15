@@ -1,0 +1,2022 @@
+{
+  "dataset": "Bio-AI Centre of Excellence — Arogyamithran Quiz Bank",
+  "version": "1.0-draft",
+  "description": "100 source-linked English multiple-choice questions for a visitor quiz. Review wording and references before production. Ten unique questions should be selected server-side per attempt.",
+  "scoring": {
+    "points_per_correct_answer": 10,
+    "max_questions_per_attempt": 10,
+    "max_score": 100,
+    "no_negative_marking": true
+  },
+  "selection_policy": {
+    "questions_per_attempt": 10,
+    "no_duplicates_within_attempt": true,
+    "recommended_repeat_visitor_policy": "Track question IDs shown per visitor using an opaque visitor ID; prioritise unseen questions. When fewer than 10 unseen questions remain, either ask permission to recycle or reset history according to organiser policy.",
+    "security": "Do not send correct_option_index or correct_answer to the browser before the answer is submitted. Validate and score on the server."
+  },
+  "questions": [
+    {
+      "id": "Q001",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "The word 'Ayurveda' is commonly explained from which Sanskrit words?",
+      "options": [
+        "Ayus (life) and Veda (knowledge)",
+        "Ayu (water) and Veda (sound)",
+        "Asha (hope) and Vidya (school)",
+        "Anna (food) and Veda (medicine)"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Ayus (life) and Veda (knowledge)",
+      "explanation": "Ayurveda is commonly glossed as the knowledge or science of life. This describes the traditional system's name, not proof of a treatment claim.",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://www.who.int/publications/i/item/9241545178"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q002",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Which set is traditionally known as the three doshas in Ayurveda?",
+      "options": [
+        "Vata, Pitta and Kapha",
+        "DNA, RNA and ATP",
+        "Earth, fire and metal",
+        "Salt, sugar and starch"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Vata, Pitta and Kapha",
+      "explanation": "Vata, Pitta and Kapha are central concepts in traditional Ayurvedic theory.",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q003",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Which plant part is the usual culinary source of turmeric powder?",
+      "options": [
+        "Root bark",
+        "Rhizome",
+        "Flower petals",
+        "Seeds"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "Rhizome",
+      "explanation": "Turmeric powder is made from the rhizome, an underground stem, of Curcuma longa.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q004",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Which scientific name is associated with Ashwagandha?",
+      "options": [
+        "Withania somnifera",
+        "Bacopa monnieri",
+        "Azadirachta indica",
+        "Piper nigrum"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Withania somnifera",
+      "explanation": "Withania somnifera is the botanical name used for Ashwagandha.",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q005",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Amla is commonly identified botanically as which species?",
+      "options": [
+        "Phyllanthus emblica",
+        "Terminalia arjuna",
+        "Aloe vera",
+        "Glycyrrhiza glabra"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Phyllanthus emblica",
+      "explanation": "Amla or Indian gooseberry is Phyllanthus emblica; some references use the synonym Emblica officinalis.",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q006",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Which three fruits are traditionally combined in Triphala?",
+      "options": [
+        "Amla, Haritaki and Bibhitaki",
+        "Neem, Tulsi and Ginger",
+        "Turmeric, Pepper and Clove",
+        "Aloe, Brahmi and Ashwagandha"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Amla, Haritaki and Bibhitaki",
+      "explanation": "Triphala traditionally combines Phyllanthus emblica, Terminalia chebula and Terminalia bellirica.",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q007",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Neem's accepted scientific name is which of these?",
+      "options": [
+        "Azadirachta indica",
+        "Ocimum basilicum",
+        "Curcuma longa",
+        "Centella asiatica"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Azadirachta indica",
+      "explanation": "Azadirachta indica is neem. Common names should be checked against scientific names to avoid confusion.",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q008",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Which plant is commonly called Shatavari?",
+      "options": [
+        "Asparagus racemosus",
+        "Withania somnifera",
+        "Terminalia chebula",
+        "Ginkgo biloba"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Asparagus racemosus",
+      "explanation": "Asparagus racemosus is widely referred to as Shatavari in Indian traditional plant resources.",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://smpbkerala.in/herbal-data/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q009",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Which statement about an Ayurvedic traditional use is most accurate?",
+      "options": [
+        "A traditional use automatically proves clinical effectiveness",
+        "Traditional use is historical/contextual information; efficacy needs evidence for the specific claim",
+        "All traditional plants are safe at any dose",
+        "A plant name alone establishes the correct dose"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "Traditional use is historical/contextual information; efficacy needs evidence for the specific claim",
+      "explanation": "Traditional use and modern evidence are different kinds of information. Specific health claims need appropriate evidence and safety review.",
+      "source_urls": [
+        "https://www.who.int/publications/i/item/9241545178",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q010",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Which plant is commonly associated with the Ayurvedic name Guduchi/Giloy?",
+      "options": [
+        "Tinospora cordifolia",
+        "Matricaria chamomilla",
+        "Pimenta dioica",
+        "Salvia officinalis"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Tinospora cordifolia",
+      "explanation": "Tinospora cordifolia is commonly called Guduchi or Giloy in Indian medicinal-plant resources.",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q011",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "The plant part most commonly described for Yashtimadhu/licorice is its…",
+      "options": [
+        "Root",
+        "Flower petal",
+        "Fruit rind",
+        "Leaf tip"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Root",
+      "explanation": "Glycyrrhiza glabra root is used in licorice products. Concentrated use can have important safety concerns.",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q012",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Which best describes a 'rasayana' in traditional Ayurveda?",
+      "options": [
+        "A category of rejuvenation/healthy-ageing concepts in Ayurvedic texts",
+        "A microscope type",
+        "A DNA sequencing method",
+        "A spice export licence"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "A category of rejuvenation/healthy-ageing concepts in Ayurvedic texts",
+      "explanation": "Rasayana is a traditional Ayurvedic concept often associated with rejuvenation and maintaining vitality; exact meanings vary by text and context.",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q013",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "What should a visitor do before using an unfamiliar medicinal plant for a health problem?",
+      "options": [
+        "Assume it is safe because it is natural",
+        "Identify it accurately and consult a qualified healthcare professional",
+        "Try a large amount first",
+        "Mix it with any medicine"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "Identify it accurately and consult a qualified healthcare professional",
+      "explanation": "Correct identification, known safety information and professional advice matter; natural origin does not guarantee safety.",
+      "source_urls": [
+        "https://www.who.int/publications/i/item/9241545178",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q014",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Brahmi is a common name associated with which plant in many Indian references?",
+      "options": [
+        "Bacopa monnieri",
+        "Clove",
+        "Saffron",
+        "Tamarind"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Bacopa monnieri",
+      "explanation": "Bacopa monnieri is often called Brahmi, although common-name usage can vary by region and species.",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://mpns.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q015",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Which plant is associated with the Ayurvedic name Arjuna?",
+      "options": [
+        "Terminalia arjuna",
+        "Terminalia bellirica",
+        "Terminalia chebula",
+        "Cinnamomum verum"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Terminalia arjuna",
+      "explanation": "Terminalia arjuna is the species commonly called Arjuna. Its traditional context should not be mistaken for a proven treatment recommendation.",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q016",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Why should the scientific name accompany a medicinal plant's common name?",
+      "options": [
+        "Common names are always unique worldwide",
+        "The same common name may refer to different species",
+        "Scientific names give a guaranteed dosage",
+        "It proves the product is authentic"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "The same common name may refer to different species",
+      "explanation": "Kew's medicinal plant name resources note that common names can be ambiguous and taxonomic identity needs to be checked.",
+      "source_urls": [
+        "https://mpns.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q017",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Which plant is known as Vasaka/Adhatoda in some Indian medicinal plant references?",
+      "options": [
+        "Justicia adhatoda",
+        "Panax ginseng",
+        "Clitoria ternatea",
+        "Vanilla planifolia"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Justicia adhatoda",
+      "explanation": "Justicia adhatoda, also known in older references as Adhatoda vasica, is commonly called Vasaka.",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q018",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "What is the safest interpretation of an herb's place in Ayurveda?",
+      "options": [
+        "It is guaranteed to cure the condition mentioned in old text",
+        "Its use is part of a traditional knowledge system, while modern safety and efficacy require separate evaluation",
+        "It can replace prescribed treatment",
+        "It never interacts with other products"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "Its use is part of a traditional knowledge system, while modern safety and efficacy require separate evaluation",
+      "explanation": "Traditional context should be presented respectfully but separately from evidence of effectiveness and product safety.",
+      "source_urls": [
+        "https://www.who.int/publications/i/item/9241545178",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q019",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Which plant is traditionally called Haritaki?",
+      "options": [
+        "Terminalia chebula",
+        "Garcinia indica",
+        "Cymbopogon citratus",
+        "Allium sativum"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Terminalia chebula",
+      "explanation": "Terminalia chebula is commonly known as Haritaki or Harad.",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q020",
+      "category": "Ayurveda & traditional knowledge",
+      "difficulty": "easy",
+      "question": "Which is a good VedaVerse content practice?",
+      "options": [
+        "Present every claim as proven",
+        "Show traditional uses, research evidence, limitations and safety notes separately",
+        "Remove all references",
+        "Suggest self-medication"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "Show traditional uses, research evidence, limitations and safety notes separately",
+      "explanation": "Separating traditions, evidence, uncertainty and safety helps visitors learn without being misled.",
+      "source_urls": [
+        "https://www.who.int/publications/i/item/9241545178",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q021",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Which part of the black pepper plant is used as the spice?",
+      "options": [
+        "Root",
+        "Fruit",
+        "Bark",
+        "Flower petal"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "Fruit",
+      "explanation": "Black pepper is made from fruits of Piper nigrum.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q022",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Which spice is the unopened flower bud of Syzygium aromaticum?",
+      "options": [
+        "Clove",
+        "Nutmeg",
+        "Cumin",
+        "Coriander"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Clove",
+      "explanation": "Cloves are dried unopened flower buds.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q023",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Saffron is collected from which part of Crocus sativus?",
+      "options": [
+        "Roots",
+        "Stigmas",
+        "Leaves",
+        "Seed coat"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "Stigmas",
+      "explanation": "Saffron consists of the dried red stigmas of Crocus sativus.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q024",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Nutmeg and mace come from…",
+      "options": [
+        "Two unrelated plants",
+        "Different parts of the fruit of Myristica fragrans",
+        "Two kinds of cinnamon bark",
+        "The root and leaves of ginger"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "Different parts of the fruit of Myristica fragrans",
+      "explanation": "Nutmeg is the seed kernel, while mace is the aril around it.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q025",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Which spice is derived from the bark of Cinnamomum verum?",
+      "options": [
+        "Ceylon cinnamon",
+        "Saffron",
+        "Pepper",
+        "Clove"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Ceylon cinnamon",
+      "explanation": "Ceylon cinnamon is produced from the bark of Cinnamomum verum.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q026",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Which spice comes from the rhizome of Zingiber officinale?",
+      "options": [
+        "Ginger",
+        "Cumin",
+        "Mustard",
+        "Star anise"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Ginger",
+      "explanation": "Ginger is the underground rhizome of Zingiber officinale.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q027",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Turmeric's botanical name is…",
+      "options": [
+        "Curcuma longa",
+        "Coriandrum sativum",
+        "Foeniculum vulgare",
+        "Elettaria cardamomum"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Curcuma longa",
+      "explanation": "Curcuma longa is turmeric; Kew describes its rhizomes as the source of the spice.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q028",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Which plant gives us green/small cardamom?",
+      "options": [
+        "Elettaria cardamomum",
+        "Piper longum",
+        "Illicium verum",
+        "Myristica fragrans"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Elettaria cardamomum",
+      "explanation": "Elettaria cardamomum is small cardamom, native to southwest India.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q029",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Which spice is commonly called 'malli' in Malayalam?",
+      "options": [
+        "Coriander",
+        "Clove",
+        "Nutmeg",
+        "Vanilla"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Coriander",
+      "explanation": "Malli commonly refers to coriander in Malayalam; leaves and dried fruits are used in cooking.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q030",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Which spice is known as 'jeerakam' in Malayalam?",
+      "options": [
+        "Cumin",
+        "Saffron",
+        "Star anise",
+        "Curry leaf"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Cumin",
+      "explanation": "Jeerakam is the common Malayalam name for cumin.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q031",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "The spice part commonly called a cinnamon stick is usually…",
+      "options": [
+        "Bark",
+        "Root",
+        "Seed",
+        "Flower"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Bark",
+      "explanation": "Cinnamon sticks are rolled pieces of inner bark.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q032",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Which spice comes from a pod of an orchid?",
+      "options": [
+        "Vanilla",
+        "Clove",
+        "Fenugreek",
+        "Pepper"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Vanilla",
+      "explanation": "Vanilla planifolia is an orchid whose cured fruit pods provide vanilla flavour.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q033",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Which spice comes from the fruit of Illicium verum?",
+      "options": [
+        "Star anise",
+        "Cumin",
+        "Cinnamon",
+        "Saffron"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Star anise",
+      "explanation": "Chinese star anise is the star-shaped fruit of Illicium verum.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q034",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Which leaf is commonly used to season Kerala curries and is called kariveppila?",
+      "options": [
+        "Curry leaf",
+        "Bay laurel",
+        "Parsley",
+        "Sage"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Curry leaf",
+      "explanation": "Kariveppila is curry leaf, commonly identified with Bergera koenigii (syn. Murraya koenigii).",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q035",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Which two culinary spices come from the same species, Myristica fragrans?",
+      "options": [
+        "Nutmeg and mace",
+        "Cumin and coriander",
+        "Ginger and turmeric",
+        "Cardamom and clove"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Nutmeg and mace",
+      "explanation": "Nutmeg is the seed kernel and mace is its surrounding aril.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q036",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Asafoetida used in cooking is primarily what type of plant product?",
+      "options": [
+        "Oleo-gum-resin",
+        "Flower stigma",
+        "Seed husk",
+        "Fruit pulp"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Oleo-gum-resin",
+      "explanation": "The Spices Board list describes asafoetida as an oleo-gum-resin.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q037",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Kokum used as a souring agent comes from which plant?",
+      "options": [
+        "Garcinia indica",
+        "Glycyrrhiza glabra",
+        "Aloe vera",
+        "Panax ginseng"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Garcinia indica",
+      "explanation": "Garcinia indica fruit rind is used as a souring ingredient in regional dishes.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q038",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Which spice is commonly called 'thippali' in Malayalam?",
+      "options": [
+        "Long pepper",
+        "Black pepper",
+        "Mustard",
+        "Dill"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Long pepper",
+      "explanation": "Thippali is long pepper, Piper longum.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf",
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q039",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Which one is a legume whose seeds are used as a spice and whose leaves are also eaten?",
+      "options": [
+        "Fenugreek",
+        "Saffron",
+        "Clove",
+        "Star anise"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Fenugreek",
+      "explanation": "Fenugreek (Trigonella foenum-graecum) is a legume used for both seeds and leaves.",
+      "source_urls": [
+        "https://www.indianspices.com/sites/default/files/spices%2520list%2520under%2520purview%2520of%2520spices%2520board.pdf"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q040",
+      "category": "Plants, herbs & spices",
+      "difficulty": "easy",
+      "question": "Why must culinary basil and holy basil/tulsi not automatically be treated as the same species?",
+      "options": [
+        "All plants have identical scientific names",
+        "They can refer to different species despite similar common names",
+        "They are fungi",
+        "Basil has no botanical name"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "They can refer to different species despite similar common names",
+      "explanation": "Sweet basil is commonly Ocimum basilicum; holy basil is commonly Ocimum tenuiflorum (often cited as O. sanctum). Common names can overlap.",
+      "source_urls": [
+        "https://mpns.science.kew.org/",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q041",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "What molecule carries most inherited genetic information in living organisms?",
+      "options": [
+        "DNA",
+        "Cellulose",
+        "Starch",
+        "Water"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "DNA",
+      "explanation": "DNA stores hereditary information in most organisms.",
+      "source_urls": [
+        "https://www.genome.gov/genetics-glossary"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q042",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "What does DNA stand for?",
+      "options": [
+        "Deoxyribonucleic acid",
+        "Dynamic nitrogen atom",
+        "Digital nucleic array",
+        "Dual ribose amino acid"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Deoxyribonucleic acid",
+      "explanation": "DNA stands for deoxyribonucleic acid.",
+      "source_urls": [
+        "https://www.genome.gov/genetics-glossary"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q043",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "Which molecule is commonly involved in carrying genetic instructions from DNA to protein-making machinery?",
+      "options": [
+        "RNA",
+        "Chlorophyll",
+        "Cellulose",
+        "Glycogen"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "RNA",
+      "explanation": "Messenger RNA carries coding information used during protein synthesis.",
+      "source_urls": [
+        "https://www.genome.gov/genetics-glossary"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q044",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "What is a genome?",
+      "options": [
+        "An organism's complete set of genetic material",
+        "A type of plant root",
+        "A laboratory coat",
+        "A food flavour"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "An organism's complete set of genetic material",
+      "explanation": "A genome is the complete set of genetic material for an organism or biological entity.",
+      "source_urls": [
+        "https://www.genome.gov/genetics-glossary"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q045",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "Bioinformatics combines biology with…",
+      "options": [
+        "Computing and data analysis",
+        "Carpentry only",
+        "Music theory only",
+        "Road engineering only"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Computing and data analysis",
+      "explanation": "Bioinformatics uses computational and statistical methods to analyse biological data.",
+      "source_urls": [
+        "https://www.genome.gov/genetics-glossary"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q046",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "Artificial intelligence is best described as…",
+      "options": [
+        "Computing methods that perform tasks associated with human-like intelligence",
+        "A plant nutrient",
+        "A type of microscope lens",
+        "A biological cell"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Computing methods that perform tasks associated with human-like intelligence",
+      "explanation": "AI refers broadly to computational systems that perform tasks such as pattern recognition, prediction or language processing.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q047",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "Machine learning is generally considered…",
+      "options": [
+        "A subset of AI that learns patterns from data",
+        "A type of plant family",
+        "Another name for DNA",
+        "A sterilisation chemical"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "A subset of AI that learns patterns from data",
+      "explanation": "Machine learning is a branch of AI that uses data to fit models or identify patterns.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q048",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "What is the basic structural unit of living organisms?",
+      "options": [
+        "Cell",
+        "Atom of gold",
+        "Spice seed",
+        "Cloud"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Cell",
+      "explanation": "Cells are the basic structural and functional units of living organisms.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q049",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "What is the main role of DNA sequencing?",
+      "options": [
+        "Determining the order of DNA bases",
+        "Measuring plant height only",
+        "Printing a label",
+        "Counting seeds without instruments"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Determining the order of DNA bases",
+      "explanation": "DNA sequencing determines the order of nucleotides in a DNA molecule.",
+      "source_urls": [
+        "https://www.genome.gov/genetics-glossary"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q050",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "Which set lists the four common DNA bases?",
+      "options": [
+        "A, C, G and T",
+        "A, B, C and D",
+        "H, O, N and S",
+        "X, Y, Z and W"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "A, C, G and T",
+      "explanation": "DNA uses adenine, cytosine, guanine and thymine.",
+      "source_urls": [
+        "https://www.genome.gov/genetics-glossary"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q051",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "Proteins are built from smaller units called…",
+      "options": [
+        "Amino acids",
+        "Starch grains",
+        "Cellulose fibres",
+        "Fat droplets only"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Amino acids",
+      "explanation": "Amino acids are linked to form proteins.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q052",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "What is an enzyme?",
+      "options": [
+        "A biological catalyst",
+        "A computer screen",
+        "A plant species",
+        "A type of vitamin only"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "A biological catalyst",
+      "explanation": "Enzymes speed up biochemical reactions without being consumed in the overall reaction.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q053",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "Which instrument is commonly used to see cells too small for the naked eye?",
+      "options": [
+        "Microscope",
+        "Thermometer",
+        "Compass",
+        "Barometer"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Microscope",
+      "explanation": "Microscopes make small structures such as cells visible at suitable magnification.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q054",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "What does PCR do in molecular biology?",
+      "options": [
+        "Amplifies selected DNA sequences",
+        "Turns DNA into a spice",
+        "Measures rainfall",
+        "Makes plants grow without light"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Amplifies selected DNA sequences",
+      "explanation": "Polymerase chain reaction makes many copies of a selected DNA region.",
+      "source_urls": [
+        "https://www.genome.gov/genetics-glossary"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q055",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "A biosensor is designed to…",
+      "options": [
+        "Detect a biological or chemical target and convert it into a measurable signal",
+        "Replace all laboratory workers",
+        "Grow a whole forest instantly",
+        "Store only photographs"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Detect a biological or chemical target and convert it into a measurable signal",
+      "explanation": "Biosensors use a recognition element and a transducer to detect a target and produce a measurable signal.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q056",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "What is the role of a cell membrane?",
+      "options": [
+        "It forms a boundary and helps regulate exchange with the environment",
+        "It stores all human memories",
+        "It is a plant's root",
+        "It is made only of wood"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "It forms a boundary and helps regulate exchange with the environment",
+      "explanation": "Cell membranes form selective boundaries around cells and regulate material exchange.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q057",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "Which is a microorganism?",
+      "options": [
+        "A bacterium",
+        "A mountain",
+        "A planet",
+        "A wooden desk"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "A bacterium",
+      "explanation": "Bacteria are microscopic single-celled organisms; different bacteria have different effects and uses.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q058",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "Why is a virus not classified as a typical free-living cell?",
+      "options": [
+        "It requires host-cell machinery to reproduce",
+        "It is always larger than a tree",
+        "It has no genetic material",
+        "It is a spice"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "It requires host-cell machinery to reproduce",
+      "explanation": "Viruses use host cells to reproduce and are not made of the same cellular structures as bacteria.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q059",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "What is fermentation commonly used for in food production?",
+      "options": [
+        "Microorganisms transform ingredients into products such as yoghurt or fermented vegetables",
+        "It removes every molecule from food",
+        "It converts all foods into plastic",
+        "It stops all biological activity permanently"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Microorganisms transform ingredients into products such as yoghurt or fermented vegetables",
+      "explanation": "Fermentation uses microbial activity to change foods, often affecting flavour, texture and preservation.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q060",
+      "category": "Biology, biotechnology & AI",
+      "difficulty": "easy",
+      "question": "Why can AI be useful in analysing biological datasets?",
+      "options": [
+        "It can help detect patterns in large datasets, but results need validation",
+        "It guarantees every scientific conclusion is correct",
+        "It removes the need for data quality",
+        "It proves a traditional treatment works automatically"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "It can help detect patterns in large datasets, but results need validation",
+      "explanation": "AI can support analysis and prediction, but methods, data quality, bias and results require expert validation.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q061",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "What does biodiversity refer to?",
+      "options": [
+        "Variety of life at genetic, species and ecosystem levels",
+        "Only the number of trees in one garden",
+        "Only ocean water",
+        "A type of chemical fertiliser"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Variety of life at genetic, species and ecosystem levels",
+      "explanation": "Biodiversity includes diversity within species, between species and across ecosystems.",
+      "source_urls": [
+        "https://www.cbd.int/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q062",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "What is a herbarium?",
+      "options": [
+        "A collection of preserved, documented plant specimens",
+        "A spice grinder",
+        "A greenhouse thermostat",
+        "A type of DNA base"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "A collection of preserved, documented plant specimens",
+      "explanation": "Herbaria preserve labelled plant specimens used in identification and research.",
+      "source_urls": [
+        "https://bsi.gov.in/page/hi/medicinal-plant-database"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q063",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "Why are scientific names useful in a plant database?",
+      "options": [
+        "They help distinguish species across languages and common-name systems",
+        "They tell the dose to take",
+        "They prove clinical effectiveness",
+        "They remove the need for identification"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "They help distinguish species across languages and common-name systems",
+      "explanation": "Scientific names support consistent identification, although taxonomy and synonyms still need review.",
+      "source_urls": [
+        "https://mpns.science.kew.org/",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q064",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "What is a pollinator?",
+      "options": [
+        "An organism that transfers pollen between flowers",
+        "A type of seed packet",
+        "A laboratory database",
+        "A spice export document"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "An organism that transfers pollen between flowers",
+      "explanation": "Pollinators such as bees and some birds or bats help transfer pollen in flowering plants.",
+      "source_urls": [
+        "https://www.cbd.int/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q065",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "Which is an example of ex-situ conservation?",
+      "options": [
+        "Maintaining seeds in a seed bank",
+        "Protecting a species only in its natural forest",
+        "Leaving a habitat without management",
+        "Removing all plant records"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Maintaining seeds in a seed bank",
+      "explanation": "Ex-situ conservation maintains components of biodiversity outside their natural habitats, such as in seed banks or botanical gardens.",
+      "source_urls": [
+        "https://www.cbd.int/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q066",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "Which is an example of in-situ conservation?",
+      "options": [
+        "Protecting a species in its natural habitat",
+        "Keeping a seed packet in a freezer only",
+        "Storing a pressed specimen only",
+        "Photographing a plant and discarding it"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Protecting a species in its natural habitat",
+      "explanation": "In-situ conservation protects species within their ecosystems and natural habitats.",
+      "source_urls": [
+        "https://www.cbd.int/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q067",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "What is an invasive alien species?",
+      "options": [
+        "A non-native species that establishes and causes or may cause harm",
+        "Any native medicinal plant",
+        "A plant with large leaves",
+        "A laboratory microscope"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "A non-native species that establishes and causes or may cause harm",
+      "explanation": "Invasive alien species can threaten biodiversity, ecosystem functioning or human interests.",
+      "source_urls": [
+        "https://www.cbd.int/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q068",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "What does sustainable harvesting aim to do?",
+      "options": [
+        "Collect resources in a way that allows populations and ecosystems to persist",
+        "Collect all plants at once",
+        "Remove seeds before they reproduce every time",
+        "Ignore the species' life cycle"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Collect resources in a way that allows populations and ecosystems to persist",
+      "explanation": "Sustainable harvesting considers regeneration, habitat impact and long-term availability.",
+      "source_urls": [
+        "https://www.cbd.int/",
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q069",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "Why should rare wild medicinal plants be sourced carefully?",
+      "options": [
+        "Overharvesting can threaten wild populations and habitats",
+        "Wild plants are always more effective",
+        "Rare status guarantees safety",
+        "Only rare plants have scientific names"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Overharvesting can threaten wild populations and habitats",
+      "explanation": "Demand and unsustainable collection can damage wild populations; traceable, cultivated sources may help reduce pressure.",
+      "source_urls": [
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder",
+        "https://www.cbd.int/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q070",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "What does a plant family represent in taxonomy?",
+      "options": [
+        "A grouping of related genera",
+        "A plant's market price",
+        "A medical dose",
+        "An AI software version"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "A grouping of related genera",
+      "explanation": "Plant families group related genera and help describe relationships among plants.",
+      "source_urls": [
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q071",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "Which part of a plant is commonly associated with seed dispersal?",
+      "options": [
+        "Fruit in many flowering plants",
+        "Only the root",
+        "Only the bark",
+        "The stem's xylem in every species"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Fruit in many flowering plants",
+      "explanation": "In flowering plants, fruits often protect seeds and help disperse them, though mechanisms vary widely.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q072",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "Which plant structure usually absorbs water and minerals from soil?",
+      "options": [
+        "Roots",
+        "Petals",
+        "Fruit skin",
+        "Flower stigma"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Roots",
+      "explanation": "Roots commonly anchor plants and absorb water and mineral nutrients.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q073",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "What is photosynthesis?",
+      "options": [
+        "A process using light energy to help make sugars from carbon dioxide and water",
+        "The breakdown of DNA by AI",
+        "A method for printing labels",
+        "The drying of spices only"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "A process using light energy to help make sugars from carbon dioxide and water",
+      "explanation": "Photosynthesis converts light energy into chemical energy; plants use carbon dioxide and water to produce sugars and release oxygen in oxygenic photosynthesis.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q074",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "Why is preserving a botanical voucher specimen valuable in research?",
+      "options": [
+        "It provides a documented physical reference for plant identity",
+        "It guarantees a medicinal claim is true",
+        "It replaces all future taxonomy",
+        "It makes a plant edible"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "It provides a documented physical reference for plant identity",
+      "explanation": "Voucher specimens allow later researchers to check which organism was studied.",
+      "source_urls": [
+        "https://bsi.gov.in/page/hi/medicinal-plant-database",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q075",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "What is a seed bank primarily used for?",
+      "options": [
+        "Storing seeds under controlled conditions for conservation and research",
+        "Storing quiz passwords",
+        "Producing all plant species in one day",
+        "Testing phone numbers"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Storing seeds under controlled conditions for conservation and research",
+      "explanation": "Seed banks preserve seed diversity for future conservation, research or restoration, depending on the species and storage method.",
+      "source_urls": [
+        "https://www.cbd.int/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q076",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "Why should a medicinal plant record include its plant part used?",
+      "options": [
+        "Different plant parts can have different chemistry and safety profiles",
+        "Every part always has the same effect",
+        "It replaces the scientific name",
+        "It guarantees the plant is sustainable"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Different plant parts can have different chemistry and safety profiles",
+      "explanation": "Part identity matters because leaves, roots, bark, fruit and seeds can differ in composition and risk.",
+      "source_urls": [
+        "https://www.who.int/publications/i/item/9241545178",
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q077",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "What is one reason biodiversity matters to agriculture?",
+      "options": [
+        "It supports genetic resources, pollination, soil function and resilience",
+        "It makes all crops identical",
+        "It eliminates pests in every case",
+        "It removes the need to conserve water"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "It supports genetic resources, pollination, soil function and resilience",
+      "explanation": "Biodiversity contributes to ecosystem services that support agricultural production and resilience.",
+      "source_urls": [
+        "https://www.cbd.int/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q078",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "What is a native species?",
+      "options": [
+        "A species that occurs naturally in a particular region",
+        "A species always imported from another continent",
+        "A genetically modified species only",
+        "A plant grown only indoors"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "A species that occurs naturally in a particular region",
+      "explanation": "Native species occur naturally in a region without being introduced there by people.",
+      "source_urls": [
+        "https://www.cbd.int/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q079",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "Why should the common name and scientific name both be displayed on VedaVerse?",
+      "options": [
+        "It is easier to explore in local language while keeping species identity clearer",
+        "The common name proves the right dose",
+        "The scientific name is always written in Malayalam",
+        "One of the names should be fake"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "It is easier to explore in local language while keeping species identity clearer",
+      "explanation": "Using both names helps visitors while reducing ambiguity caused by common names.",
+      "source_urls": [
+        "https://smpbkerala.in/herbal-data/",
+        "https://mpns.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q080",
+      "category": "Biodiversity, plants & sustainability",
+      "difficulty": "easy",
+      "question": "A plant's conservation status should be…",
+      "options": [
+        "Taken from a reliable, current source and shown with its source/date",
+        "Guessed from how attractive it looks",
+        "Assumed from its price",
+        "Copied from a different species"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Taken from a reliable, current source and shown with its source/date",
+      "explanation": "Conservation status needs a credible source and should match the exact species and assessment date.",
+      "source_urls": [
+        "https://www.cbd.int/",
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q081",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "Does 'natural' automatically mean a product is safe?",
+      "options": [
+        "Yes, all natural products are harmless",
+        "No; natural products can have side effects, interactions or toxins",
+        "Only rare plants are safe",
+        "Safety depends only on colour"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "No; natural products can have side effects, interactions or toxins",
+      "explanation": "Natural substances can be harmful, toxic, contaminated or interact with medicines; product and dose matter.",
+      "source_urls": [
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice",
+        "https://www.who.int/publications/i/item/9241545178"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q082",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "What does a peer-reviewed research paper generally mean?",
+      "options": [
+        "Other experts assessed the work before publication",
+        "The result is guaranteed to be true forever",
+        "The work has no limitations",
+        "The study was conducted by a plant"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Other experts assessed the work before publication",
+      "explanation": "Peer review is a quality-control step, not a guarantee that every finding is correct.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q083",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "What is a clinical study designed to investigate?",
+      "options": [
+        "Questions involving people, such as safety or effects of an intervention",
+        "Only plant taxonomy",
+        "Only the colour of a laboratory wall",
+        "Whether a common name is popular"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Questions involving people, such as safety or effects of an intervention",
+      "explanation": "Clinical studies involving people investigate health-related questions under defined protocols and oversight.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q084",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "If a compound changes cells in a laboratory dish, does that prove a plant cures a disease in people?",
+      "options": [
+        "Yes, it proves a cure",
+        "No; laboratory findings need further testing and do not establish clinical benefit",
+        "Only if the plant is green",
+        "Yes, if the result is posted online"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "No; laboratory findings need further testing and do not establish clinical benefit",
+      "explanation": "In-vitro results are early evidence and do not automatically translate into safe or effective treatment in humans.",
+      "source_urls": [
+        "https://www.who.int/publications/i/item/9241545178",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q085",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "Why should medicinal products be checked for interactions with prescribed medicines?",
+      "options": [
+        "Plants and supplements can change medicine effects or risks",
+        "They never interact",
+        "It is needed only for spices in food",
+        "It proves all medicines are unnecessary"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Plants and supplements can change medicine effects or risks",
+      "explanation": "Some herbal products affect drug metabolism, bleeding, blood pressure or other outcomes, so interactions need review.",
+      "source_urls": [
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice",
+        "https://medlineplus.gov/druginfo/herb_All.html"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q086",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "What should you do if a herbal product causes a severe or unexpected reaction?",
+      "options": [
+        "Keep taking more",
+        "Stop using it and seek appropriate medical advice promptly",
+        "Hide the label",
+        "Add another supplement"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "Stop using it and seek appropriate medical advice promptly",
+      "explanation": "Unexpected or severe reactions deserve prompt professional evaluation; emergencies require urgent care.",
+      "source_urls": [
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q087",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "Why are standardised names and quality checks important for herbs?",
+      "options": [
+        "They reduce confusion, substitution, contamination and variability",
+        "They make safety warnings unnecessary",
+        "They guarantee every product works",
+        "They replace testing"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "They reduce confusion, substitution, contamination and variability",
+      "explanation": "Correct identity and quality controls help reduce adulteration, contamination and variation in herbal products.",
+      "source_urls": [
+        "https://www.who.int/publications/i/item/9241545178",
+        "https://mpns.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q088",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "What should a quiz explanation do when evidence is uncertain?",
+      "options": [
+        "State uncertainty clearly and avoid overstating a claim",
+        "Invent a confident answer",
+        "Hide the sources",
+        "Say the result is guaranteed"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "State uncertainty clearly and avoid overstating a claim",
+      "explanation": "Good science communication explains the limits of the evidence rather than presenting uncertainty as certainty.",
+      "source_urls": [
+        "https://www.who.int/publications/i/item/9241545178"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q089",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "Which source is most appropriate for checking an accepted botanical name?",
+      "options": [
+        "A recognised botanical database such as Kew Plants of the World Online",
+        "A random social media comment",
+        "An advertisement",
+        "An anonymous copied message"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "A recognised botanical database such as Kew Plants of the World Online",
+      "explanation": "Kew's Plants of the World Online is a recognised resource for checking plant taxonomy and accepted names.",
+      "source_urls": [
+        "https://powo.science.kew.org/"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q090",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "What is the safest policy for a visitor who wants treatment advice from Arogyamithran?",
+      "options": [
+        "Give a diagnosis immediately",
+        "Explain it is educational and recommend a qualified healthcare professional",
+        "Recommend a strong herbal dose",
+        "Tell them to stop prescribed medicine"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "Explain it is educational and recommend a qualified healthcare professional",
+      "explanation": "Arogyamithran should be an educational guide, not a diagnosis or prescribing service.",
+      "source_urls": [
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice",
+        "https://www.who.int/publications/i/item/9241545178"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q091",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "Why should a plant record cite the source of its traditional-use description?",
+      "options": [
+        "It lets readers check the context and avoid unsourced claims",
+        "It makes the plant more potent",
+        "It means the source endorses every use",
+        "It removes the need for safety information"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "It lets readers check the context and avoid unsourced claims",
+      "explanation": "References help visitors and reviewers verify claims and distinguish documentation from endorsement.",
+      "source_urls": [
+        "https://www.who.int/publications/i/item/9241545178",
+        "https://echarak.ayush.gov.in/knowledge_resources?val=Map_Stackholder"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q092",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "What does the presence of a WHO medicinal-plant monograph mean?",
+      "options": [
+        "WHO has guaranteed that every use is effective",
+        "The monograph compiles information about a plant; it is not blanket endorsement of every use",
+        "The plant is harmless in any dose",
+        "The plant is legal everywhere"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "The monograph compiles information about a plant; it is not blanket endorsement of every use",
+      "explanation": "WHO describes its monographs as information on safety, efficacy and quality, not as automatic official endorsement of every medicinal use.",
+      "source_urls": [
+        "https://www.who.int/publications/i/item/9241545178"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q093",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "Why should a plant be identified by a qualified source before it is consumed?",
+      "options": [
+        "Similar-looking species may have different properties or may be toxic",
+        "Every plant in a forest is edible",
+        "Photos alone always prove safety",
+        "Plant identity never matters"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Similar-looking species may have different properties or may be toxic",
+      "explanation": "Lookalike plants may differ substantially in safety; reliable identification is essential.",
+      "source_urls": [
+        "https://mpns.science.kew.org/",
+        "https://bsi.gov.in/page/hi/medicinal-plant-database"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q094",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "Which is a responsible way to present turmeric research?",
+      "options": [
+        "Say turmeric cures all inflammation",
+        "Describe the specific research and limitations, and distinguish food use from supplements",
+        "Hide adverse-effect information",
+        "Assume concentrated extracts are identical to food"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "Describe the specific research and limitations, and distinguish food use from supplements",
+      "explanation": "NCCIH describes traditional uses and notes that research and supplement safety vary; claims should be specific and proportionate.",
+      "source_urls": [
+        "https://www.nccih.nih.gov/health/turmeric"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q095",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "Why should an herbal supplement's ingredients and label be checked?",
+      "options": [
+        "Products can vary in composition and may contain other ingredients or contaminants",
+        "Labels always prove the contents are correct",
+        "All supplements are chemically identical",
+        "It is only needed for fruits"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Products can vary in composition and may contain other ingredients or contaminants",
+      "explanation": "Quality and identity can vary, so transparent labels and reliable manufacturing sources matter.",
+      "source_urls": [
+        "https://www.who.int/publications/i/item/9241545178",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q096",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "What should the public leaderboard display?",
+      "options": [
+        "Visitor phone numbers",
+        "Only permitted display names and scores",
+        "Full private profile data",
+        "Medical information"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "Only permitted display names and scores",
+      "explanation": "Public rankings should minimise personal data and never expose phone numbers or unrelated private details.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q097",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "When should Arogyamithran claim that a score has been saved?",
+      "options": [
+        "Immediately after the visitor taps Submit, even if the server failed",
+        "Only after the application receives successful confirmation from persistence",
+        "Before the visitor answers",
+        "Whenever the character smiles"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "Only after the application receives successful confirmation from persistence",
+      "explanation": "The interface must report persistence honestly and show retry/error behaviour when saving fails.",
+      "source_urls": [],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q098",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "What is the best use of AI in a plant knowledge app?",
+      "options": [
+        "Help search and organise verified content while sources and limitations remain visible",
+        "Invent sources for missing facts",
+        "Replace botanical identification with guesses",
+        "Guarantee medical outcomes"
+      ],
+      "correct_option_index": 0,
+      "correct_answer": "Help search and organise verified content while sources and limitations remain visible",
+      "explanation": "AI can support information retrieval, but factual claims and plant identity still require reliable data and validation.",
+      "source_urls": [
+        "https://mpns.science.kew.org/",
+        "https://www.who.int/publications/i/item/9241545178"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q099",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "What should happen when a plant profile has not been reviewed?",
+      "options": [
+        "Publish it as medically proven",
+        "Mark it as awaiting review and avoid unsupported claims",
+        "Remove all safety notes",
+        "Invent a source"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "Mark it as awaiting review and avoid unsupported claims",
+      "explanation": "Review status should be visible internally, and unverified health claims should not be presented as established facts.",
+      "source_urls": [
+        "https://www.who.int/publications/i/item/9241545178",
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    },
+    {
+      "id": "Q100",
+      "category": "Evidence, safety & responsible use",
+      "difficulty": "easy",
+      "question": "Which is the best rule for essential oils in a visitor education app?",
+      "options": [
+        "Tell users to drink them directly",
+        "Explain they are concentrated products and not equivalent to the whole herb or food spice",
+        "Say every oil is safe for all ages",
+        "Give one universal dose"
+      ],
+      "correct_option_index": 1,
+      "correct_answer": "Explain they are concentrated products and not equivalent to the whole herb or food spice",
+      "explanation": "Essential oils are concentrated and have different exposure and safety profiles from culinary herbs; ingestion can be dangerous.",
+      "source_urls": [
+        "https://www.nccih.nih.gov/health/how-safe-is-this-product-or-practice"
+      ],
+      "status": "draft_review_required",
+      "language": "en"
+    }
+  ]
+}
