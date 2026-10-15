@@ -22,17 +22,21 @@ import VedaVerseDisclaimer from "./VedaVerseDisclaimer";
 interface VedaVerseCatalogProps {
   initialPlants?: PlantRecord[];
   isMl?: boolean;
+  initialQuery?: string;
+  initialCategory?: VedaVerseCategory | "all";
 }
 
 const ITEMS_PER_PAGE = 24;
 
 export default function VedaVerseCatalog({
   isMl = false,
+  initialQuery = "",
+  initialCategory = "all",
 }: VedaVerseCatalogProps) {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
   const [selectedCategory, setSelectedCategory] = useState<
     VedaVerseCategory | "all"
-  >("all");
+  >(initialCategory);
   const [currentPage, setCurrentPage] = useState(1);
   const [showAllAtOnce, setShowAllAtOnce] = useState(false);
 
