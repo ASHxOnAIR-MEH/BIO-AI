@@ -250,11 +250,47 @@ export function getPlantThumbnail(plant: PlantRecord): { src: string; alt: strin
   if (norm.includes("turmeric") || norm.includes("curcuma")) {
     return { src: "/assets/kiosk/questions/turmeric.jpg", alt: `${plant.common_name_en} (${plant.scientific_name})` };
   }
+
+  // Deterministic cycling based on numeric ID for diverse e-commerce visuals
+  const idNum = parseInt(plant.id.replace(/\D/g, ""), 10) || 0;
+
   if (plant.category === "Ayurvedic plant") {
-    return { src: "/assets/kiosk/categories/ayurvedic-plants.jpg", alt: `${plant.common_name_en} - Classical Ayurvedic Plant` };
+    const ayurvedicImages = [
+      "/assets/kiosk/categories/ayurvedic-plants.jpg",
+      "/images/bio_ayurveda.webp",
+      "/images/new_ayurveda.jpg",
+      "/assets/kiosk/categories/card_vedaverse.jpg",
+    ];
+    return {
+      src: ayurvedicImages[idNum % ayurvedicImages.length],
+      alt: `${plant.common_name_en} - Classical Ayurvedic Specimen`,
+    };
   }
+
   if (plant.category === "Medicinal plant") {
-    return { src: "/assets/kiosk/categories/medicinal-plants.jpg", alt: `${plant.common_name_en} - Medicinal Botanical Flora` };
+    const medicinalImages = [
+      "/assets/kiosk/categories/medicinal-plants.jpg",
+      "/images/new_biodiversity.jpg",
+      "/images/new_lifescience.jpg",
+      "/assets/kiosk/categories/card_vedaverse.jpg",
+    ];
+    return {
+      src: medicinalImages[idNum % medicinalImages.length],
+      alt: `${plant.common_name_en} - Medicinal Botanical Flora`,
+    };
   }
-  return { src: "/assets/kiosk/categories/spices.jpg", alt: `${plant.common_name_en} - Kerala Herb & Spice Heritage` };
+
+  // Culinary spice / herb
+  const spiceImages = [
+    "/assets/kiosk/categories/spices.jpg",
+    "/images/bio_spices.webp",
+    "/assets/kiosk/categories/card_vedaverse.jpg",
+    "/assets/kiosk/questions/pepper.jpg",
+    "/assets/kiosk/questions/turmeric.jpg",
+  ];
+  return {
+    src: spiceImages[idNum % spiceImages.length],
+    alt: `${plant.common_name_en} - Kerala Herb & Spice Heritage`,
+  };
 }
+

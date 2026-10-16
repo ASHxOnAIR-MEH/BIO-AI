@@ -83,9 +83,9 @@ export default function PlantMonographView({
         language={language}
         onLanguageChange={handleLanguageChange}
         showLanguageToggle={true}
-        backHref="/kiosk/vedaverse/library"
-        backLabel="Back to Library"
-        backLabelMl="ലൈബ്രറിയിലേക്ക്"
+        backHref="/kiosk/vedaverse"
+        backLabel="Back to Catalog"
+        backLabelMl="കാറ്റലോഗിലേക്ക്"
         currentStepBadge={`Specimen #${plant.id}`}
         currentStepBadgeMl={`സസ്യം #${plant.id}`}
       />
@@ -101,15 +101,7 @@ export default function PlantMonographView({
                 className="inline-flex items-center gap-1 text-[#244B3F]/70 hover:text-[#0B5D46] transition-colors"
               >
                 <Home className="w-3.5 h-3.5" />
-                <span>{isMl ? "വേദവേഴ്സ് ഹോം" : "VedaVerse"}</span>
-              </Link>
-              <span className="text-[#0B5D46]/30">/</span>
-              <Link
-                href="/kiosk/vedaverse/library"
-                className="inline-flex items-center gap-1 text-[#244B3F]/70 hover:text-[#0B5D46] transition-colors"
-              >
-                <BookOpen className="w-3.5 h-3.5" />
-                <span>{isMl ? "ലൈബ്രറി" : "Library"}</span>
+                <span>{isMl ? "വേദവേഴ്സ് കാറ്റലോഗ്" : "VedaVerse Catalog"}</span>
               </Link>
               <span className="text-[#0B5D46]/30">/</span>
               <span className="text-[#073B30] font-bold truncate max-w-[180px] sm:max-w-xs">
@@ -118,11 +110,11 @@ export default function PlantMonographView({
             </div>
 
             <Link
-              href="/kiosk/vedaverse/library"
+              href="/kiosk/vedaverse"
               className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white text-[#0B5D46] border border-[#0B5D46]/20 shadow-2xs hover:bg-[#F0F7F1] transition-all touch-manipulation active:scale-95"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
-              <span>{isMl ? "മുഴുവൻ സസ്യങ്ങൾ" : "Browse Library"}</span>
+              <span>{isMl ? "എല്ലാ ഉൽപ്പന്നങ്ങളും" : "All Products"}</span>
             </Link>
           </div>
 
@@ -470,22 +462,14 @@ export default function PlantMonographView({
             <div className="w-20 hidden sm:block" />
           )}
 
-          {/* Central Controls: Return to Library & Home */}
+          {/* Central Control: Return to Catalog */}
           <div className="flex items-center gap-2">
             <Link
-              href="/kiosk/vedaverse/library"
-              className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full bg-[#0B5D46] text-white text-xs sm:text-sm font-bold shadow-sm hover:bg-[#073B30] active:scale-95 transition-all touch-manipulation"
+              href="/kiosk/vedaverse"
+              className="inline-flex items-center gap-1.5 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#0B5D46] text-white text-xs sm:text-sm font-bold shadow-sm hover:bg-[#073B30] active:scale-95 transition-all touch-manipulation"
             >
               <BookOpen className="w-4 h-4" />
-              <span>{isMl ? "ലൈബ്രറി കാണുക" : "Browse Library"}</span>
-            </Link>
-
-            <Link
-              href="/kiosk/vedaverse"
-              className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-full bg-[#F0F7F1] text-[#0B5D46] border border-[#0B5D46]/20 text-xs sm:text-sm font-bold hover:bg-[#E5EBE5] active:scale-95 transition-all touch-manipulation"
-            >
-              <Home className="w-4 h-4" />
-              <span>{isMl ? "വേദവേഴ്സ് ഹോം" : "Home"}</span>
+              <span>{isMl ? "എല്ലാ ഉൽപ്പന്നങ്ങളും കാണുക" : "View All 100 Products"}</span>
             </Link>
           </div>
 
