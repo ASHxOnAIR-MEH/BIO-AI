@@ -240,57 +240,9 @@ export function getCategoryVisuals(category: VedaVerseCategory) {
 
 /** Returns plant thumbnail image and accessible alt text */
 export function getPlantThumbnail(plant: PlantRecord): { src: string; alt: string } {
-  const norm = plant.common_name_en.toLowerCase();
-  if (norm.includes("tulsi") || norm.includes("holy basil")) {
-    return { src: "/assets/kiosk/questions/tulsi.jpg", alt: `${plant.common_name_en} (${plant.scientific_name})` };
-  }
-  if (norm.includes("pepper") || norm.includes("black pepper")) {
-    return { src: "/assets/kiosk/questions/pepper.jpg", alt: `${plant.common_name_en} (${plant.scientific_name})` };
-  }
-  if (norm.includes("turmeric") || norm.includes("curcuma")) {
-    return { src: "/assets/kiosk/questions/turmeric.jpg", alt: `${plant.common_name_en} (${plant.scientific_name})` };
-  }
-
-  // Deterministic cycling based on numeric ID for diverse e-commerce visuals
-  const idNum = parseInt(plant.id.replace(/\D/g, ""), 10) || 0;
-
-  if (plant.category === "Ayurvedic plant") {
-    const ayurvedicImages = [
-      "/assets/kiosk/categories/ayurvedic-plants.jpg",
-      "/images/bio_ayurveda.webp",
-      "/images/new_ayurveda.jpg",
-      "/assets/kiosk/categories/card_vedaverse.jpg",
-    ];
-    return {
-      src: ayurvedicImages[idNum % ayurvedicImages.length],
-      alt: `${plant.common_name_en} - Classical Ayurvedic Specimen`,
-    };
-  }
-
-  if (plant.category === "Medicinal plant") {
-    const medicinalImages = [
-      "/assets/kiosk/categories/medicinal-plants.jpg",
-      "/images/new_biodiversity.jpg",
-      "/images/new_lifescience.jpg",
-      "/assets/kiosk/categories/card_vedaverse.jpg",
-    ];
-    return {
-      src: medicinalImages[idNum % medicinalImages.length],
-      alt: `${plant.common_name_en} - Medicinal Botanical Flora`,
-    };
-  }
-
-  // Culinary spice / herb
-  const spiceImages = [
-    "/assets/kiosk/categories/spices.jpg",
-    "/images/bio_spices.webp",
-    "/assets/kiosk/categories/card_vedaverse.jpg",
-    "/assets/kiosk/questions/pepper.jpg",
-    "/assets/kiosk/questions/turmeric.jpg",
-  ];
   return {
-    src: spiceImages[idNum % spiceImages.length],
-    alt: `${plant.common_name_en} - Kerala Herb & Spice Heritage`,
+    src: `/assets/kiosk/plants/${plant.id}.jpg`,
+    alt: `${plant.common_name_en} (${plant.scientific_name})`,
   };
 }
 
