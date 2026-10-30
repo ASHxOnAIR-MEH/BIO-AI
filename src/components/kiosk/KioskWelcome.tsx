@@ -14,32 +14,68 @@ export default function KioskWelcome({ language }: KioskWelcomeProps) {
   return (
     <section className="relative w-full overflow-hidden isolate min-h-[380px] sm:min-h-[440px] md:aspect-[16/9] flex flex-col justify-between">
       {/* ═══════════════════════════════════════════════════════════════════
-          CUSTOM 16:9 HERO BACKGROUND:
-          - Kerala Startup Mission Digital Hub Kochi building photograph
-          - Lush Kerala coconut palm trees framing the tropical sky
-          - Arogyamithran character welcoming visitors with tablet in kiosk size
+          1. KERALA STARTUP MISSION DIGITAL HUB KOCHI CAMPUS BACKGROUND
       ═══════════════════════════════════════════════════════════════════ */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
-          src="/assets/kiosk/backgrounds/hero_kiosk_custom.jpg"
-          alt="Bio-AI Centre of Excellence at Kerala Startup Mission Digital Hub Kochi with Arogyamithran and coconut palms"
+          src="/assets/kiosk/backgrounds/digital-hub.jpg"
+          alt="Kerala Startup Mission Digital Hub Kochi campus"
           fill
           priority
-          className="object-cover object-[78%_center] sm:object-center select-none"
+          className="object-cover object-center select-none"
           sizes="100vw"
         />
 
-        {/* Directional gradient: darker on left behind text, transparent on right so Arogyamithran and building shine */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#052A22]/90 via-[#052A22]/50 to-transparent max-w-[75%]" />
+        {/* Directional gradient: darker on left behind text */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#052A22]/95 via-[#052A22]/75 to-[#052A22]/30 max-w-[70%]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#052A22]/80 via-transparent to-transparent sm:hidden" />
 
         {/* Smooth fade to pale mint at bottom into the navigation cards section */}
         <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-b from-transparent to-[#F0F7F2]" />
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          HERO TEXT CONTENT (Left aligned, leaving right side clear for Arogyamithran)
+          2. CANONICAL AROGYAMITHRAN CHARACTER (Right Side)
+          - Identical source asset as Arogyamithran experience card (hero_mascot.jpg)
+          - Full body / object-contain object-bottom framing
+          - Soft botanical aura glow behind character
       ═══════════════════════════════════════════════════════════════════ */}
-      <div className="relative z-10 w-full pt-4 sm:pt-7 px-4 sm:px-7 pb-6 sm:pb-8 flex flex-col justify-center max-w-[62%] sm:max-w-[54%]">
+      <div className="absolute right-1 sm:right-4 md:right-8 bottom-0 top-3 sm:top-6 w-[42%] sm:w-[44%] max-w-[340px] flex items-end justify-center pointer-events-none z-10">
+        {/* Botanical aura glow behind character */}
+        <div
+          className="absolute inset-x-2 bottom-4 top-10 rounded-full blur-3xl opacity-40 pointer-events-none"
+          style={{
+            background: "radial-gradient(circle, rgba(85, 185, 106, 0.45) 0%, rgba(212, 175, 55, 0.25) 50%, transparent 70%)"
+          }}
+        />
+
+        {/* Floating/breathing motion */}
+        <motion.div
+          animate={{ y: [0, -6, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          className="relative w-full h-full max-h-[360px] sm:max-h-[420px] flex items-end justify-center"
+        >
+          <Image
+            src="/assets/kiosk/arogyamithran/hero_mascot.jpg"
+            alt="Arogyamithran welcoming guide with glowing tablet and Kasavu attire"
+            fill
+            priority
+            className="object-contain object-bottom drop-shadow-[0_12px_28px_rgba(5,42,34,0.35)] select-none"
+            sizes="(max-width: 640px) 180px, 320px"
+          />
+
+          {/* Active Status Beacon */}
+          <span className="absolute top-2 right-4 sm:right-6 flex h-3.5 w-3.5 z-20">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#55B96A] opacity-75" />
+            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#55B96A] border-2 border-white" />
+          </span>
+        </motion.div>
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          3. HERO TEXT CONTENT (Left aligned)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <div className="relative z-10 w-full pt-4 sm:pt-7 px-4 sm:px-7 pb-6 sm:pb-8 flex flex-col justify-center max-w-[60%] sm:max-w-[56%]">
         {/* Main title BIO-AI */}
         <motion.h1
           initial={{ opacity: 0, y: -8 }}
