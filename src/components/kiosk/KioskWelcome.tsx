@@ -56,7 +56,7 @@ export default function KioskWelcome({ language }: KioskWelcomeProps) {
           className="relative w-full h-full max-h-[360px] sm:max-h-[420px] flex items-end justify-center"
         >
           <Image
-            src="/assets/kiosk/arogyamithran/hero_mascot.jpg"
+            src="/assets/kiosk/arogyamithran/hero_mascot.png"
             alt="Arogyamithran welcoming guide with glowing tablet and Kasavu attire"
             fill
             priority
