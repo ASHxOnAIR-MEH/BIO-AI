@@ -107,9 +107,9 @@ export default function KioskInnovationsPage() {
             </p>
           </div>
 
-          {/* Arogyamithran Mascot in Reading / Analytics posture */}
+          {/* Arogyamithran Mascot in Reading / Analytics posture (enlarged & prominent) */}
           <div className="flex items-center gap-4 shrink-0">
-            <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border-2 border-[#0B5D46]/20 shadow-md bg-white shrink-0 hidden sm:block">
+            <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border-2 border-[#0B5D46]/20 shadow-md bg-white shrink-0 hidden lg:block">
               <Image
                 src={KIOSK_CATEGORY_ILLUSTRATIONS.innovations.path}
                 alt="Bio-AI Innovations"
@@ -119,7 +119,7 @@ export default function KioskInnovationsPage() {
             </div>
             <ArogyamithranMascot
               expression="reading_tablet"
-              size="sm"
+              size="md"
               language={language}
               showDialogue={false}
               priority

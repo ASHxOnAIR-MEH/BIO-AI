@@ -18,13 +18,33 @@ export const AROGYAMITHRAN_EXPRESSIONS: Record<string, KioskAssetItem> = {
   // Hero / master asset — canonical Arogyamithran identity
   hero: {
     id: "arogya-hero",
-    name: "Arogyamithran Hero",
-    path: "/assets/kiosk/arogyamithran/hero_mascot.jpg",
+    name: "Arogyamithran Hero Mascot",
+    path: "/assets/kiosk/arogyamithran/arogyamithran-transparent.png",
     category: "character",
-    purpose: "Primary hero mascot — Arogyamithran welcome screen, main character identity",
+    purpose: "Primary hero mascot — Arogyamithran welcome screen, main character identity with clean transparent background",
     altTextEn: "Arogyamithran, friendly 70-year-old Malayali grandfather with white beard, round golden spectacles, cream jubba, white mundu with Kasavu border, and a glowing Bio-AI tablet, waving warmly",
     altTextMl: "ആരോഗ്യമിത്രൻ - സസ്നേഹം കൈവീശി സ്വാഗതം ചെയ്യുന്ന ബയോ-എഐ കേരളീയ ഗൈഡ്",
-    aspectRatio: "3:4",
+    aspectRatio: "1:2",
+  },
+  transparent: {
+    id: "arogya-transparent",
+    name: "Arogyamithran Transparent Full Body",
+    path: "/assets/kiosk/arogyamithran/arogyamithran-transparent.png",
+    category: "character",
+    purpose: "Full-body transparent PNG mascot with tight cropping, Kasavu attire and glowing tablet",
+    altTextEn: "Arogyamithran, Kerala Bio-AI guide with golden spectacles and Kasavu mundu",
+    altTextMl: "ആരോഗ്യമിത്രൻ - പൂർണ്ണകായ രൂപം",
+    aspectRatio: "1:2",
+  },
+  avatar: {
+    id: "arogya-avatar",
+    name: "Arogyamithran Close-up Face Avatar",
+    path: "/assets/kiosk/arogyamithran/arogyamithran-avatar.png",
+    category: "character",
+    purpose: "Header, navbar and navigation badge face avatar with transparent background",
+    altTextEn: "Arogyamithran smiling face avatar with golden spectacles and silver beard",
+    altTextMl: "ആരോഗ്യമിത്രൻ - മുഖചിത്രം",
+    aspectRatio: "1:1",
   },
   welcoming: {
     id: "arogya-welcome",
@@ -231,9 +251,9 @@ export const KIOSK_CATEGORY_ILLUSTRATIONS = {
   arogyamithran: {
     id: "cat-arogyamithran",
     name: "Meet Arogyamithran",
-    path: "/assets/kiosk/categories/card_arogyamithran.jpg",
+    path: "/assets/kiosk/categories/card_arogyamithran.png",
     category: "category",
-    purpose: "Homepage navigation card: Meet Arogyamithran interactive journey",
+    purpose: "Homepage navigation card: Meet Arogyamithran interactive journey with Kerala Kasavu background and centered face",
   },
   vedaverse: {
     id: "cat-vedaverse",
@@ -288,6 +308,8 @@ export function getArogyamithranAsset(expression: string): KioskAssetItem {
     return AROGYAMITHRAN_EXPRESSIONS[normalized];
   }
   // Common aliases
+  if (normalized.includes("avatar") || normalized.includes("icon") || normalized.includes("badge")) return AROGYAMITHRAN_EXPRESSIONS.avatar;
+  if (normalized.includes("transparent") || normalized.includes("png")) return AROGYAMITHRAN_EXPRESSIONS.transparent;
   if (normalized.includes("hero") || normalized.includes("mascot")) return AROGYAMITHRAN_EXPRESSIONS.hero;
   if (normalized.includes("welcome")) return AROGYAMITHRAN_EXPRESSIONS.welcoming;
   if (normalized.includes("think")) return AROGYAMITHRAN_EXPRESSIONS.thinking;

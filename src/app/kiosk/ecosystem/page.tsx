@@ -243,9 +243,9 @@ export default function KioskEcosystemPage() {
             </p>
           </div>
 
-          {/* Arogyamithran Mascot in Welcoming Namaskaram posture */}
+          {/* Arogyamithran Mascot in Welcoming Namaskaram posture (enlarged & prominent) */}
           <div className="flex items-center gap-4 shrink-0">
-            <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border-2 border-[#0B5D46]/20 shadow-md bg-white shrink-0 hidden sm:block">
+            <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border-2 border-[#0B5D46]/20 shadow-md bg-white shrink-0 hidden lg:block">
               <Image
                 src={KIOSK_CATEGORY_ILLUSTRATIONS.ecosystem.path}
                 alt="Connect with Ecosystem"
@@ -255,7 +255,7 @@ export default function KioskEcosystemPage() {
             </div>
             <ArogyamithranMascot
               expression="namaskaram"
-              size="sm"
+              size="md"
               language={language}
               showDialogue={false}
               priority

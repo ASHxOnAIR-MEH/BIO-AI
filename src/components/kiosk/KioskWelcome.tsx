@@ -36,14 +36,14 @@ export default function KioskWelcome({ language }: KioskWelcomeProps) {
 
       {/* ═══════════════════════════════════════════════════════════════════
           2. CANONICAL AROGYAMITHRAN CHARACTER (Right Side)
-          - Identical source asset as Arogyamithran experience card (hero_mascot.jpg)
-          - Full body / object-contain object-bottom framing
+          - High-resolution transparent PNG with genuine alpha cutout
+          - Tightly cropped to eliminate dead padding, occupying 88-92% of height
           - Soft botanical aura glow behind character
       ═══════════════════════════════════════════════════════════════════ */}
-      <div className="absolute right-1 sm:right-4 md:right-8 bottom-0 top-3 sm:top-6 w-[42%] sm:w-[44%] max-w-[340px] flex items-end justify-center pointer-events-none z-10">
+      <div className="absolute right-1 sm:right-4 md:right-8 bottom-0 top-2 sm:top-4 w-[46%] sm:w-[48%] max-w-[380px] flex items-end justify-center pointer-events-none z-10">
         {/* Botanical aura glow behind character */}
         <div
-          className="absolute inset-x-2 bottom-4 top-10 rounded-full blur-3xl opacity-40 pointer-events-none"
+          className="absolute inset-x-2 bottom-4 top-8 rounded-full blur-3xl opacity-45 pointer-events-none"
           style={{
             background: "radial-gradient(circle, rgba(85, 185, 106, 0.45) 0%, rgba(212, 175, 55, 0.25) 50%, transparent 70%)"
           }}
@@ -53,19 +53,19 @@ export default function KioskWelcome({ language }: KioskWelcomeProps) {
         <motion.div
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="relative w-full h-full max-h-[360px] sm:max-h-[420px] flex items-end justify-center"
+          className="relative w-full h-full max-h-[390px] sm:max-h-[450px] flex items-end justify-center"
         >
           <Image
-            src="/assets/kiosk/arogyamithran/hero_mascot.png"
+            src="/assets/kiosk/arogyamithran/arogyamithran-transparent.png"
             alt="Arogyamithran welcoming guide with glowing tablet and Kasavu attire"
             fill
             priority
             className="object-contain object-bottom drop-shadow-[0_12px_28px_rgba(5,42,34,0.35)] select-none"
-            sizes="(max-width: 640px) 180px, 320px"
+            sizes="(max-width: 640px) 220px, 380px"
           />
 
           {/* Active Status Beacon */}
-          <span className="absolute top-2 right-4 sm:right-6 flex h-3.5 w-3.5 z-20">
+          <span className="absolute top-4 right-6 sm:right-8 flex h-3.5 w-3.5 z-20">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#55B96A] opacity-75" />
             <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#55B96A] border-2 border-white" />
           </span>

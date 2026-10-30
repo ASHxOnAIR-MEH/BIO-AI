@@ -46,49 +46,49 @@ export default function ArogyamithranMascot({
   const isMl = language === "ml";
   const asset = getArogyamithranAsset(expression);
 
-  // Size styling for avatar pedestal and character illustration
+  // Size styling for avatar pedestal and character illustration (enlarged 1.5-1.8x, ~88-92% frame fill)
   const getSizeStyles = () => {
     switch (size) {
       case "sm":
         return {
-          container: "w-28 h-36 sm:w-32 sm:h-40",
-          imgW: 128,
-          imgH: 160,
+          container: "w-36 h-48 sm:w-44 sm:h-56",
+          imgW: 176,
+          imgH: 224,
           rounded: "rounded-2xl",
         };
       case "md":
         return {
-          container: "w-44 h-56 sm:w-52 sm:h-64",
-          imgW: 208,
-          imgH: 260,
+          container: "w-52 h-68 sm:w-64 sm:h-80",
+          imgW: 256,
+          imgH: 320,
           rounded: "rounded-3xl",
         };
       case "lg":
         return {
-          container: "w-56 h-72 sm:w-64 sm:h-80 md:w-72 md:h-96",
-          imgW: 288,
-          imgH: 384,
+          container: "w-64 h-84 sm:w-80 sm:h-[400px] md:w-88 md:h-[440px]",
+          imgW: 352,
+          imgH: 440,
           rounded: "rounded-3xl",
         };
       case "xl":
         return {
-          container: "w-64 h-80 sm:w-80 sm:h-[420px] md:w-96 md:h-[480px]",
-          imgW: 384,
-          imgH: 480,
+          container: "w-72 h-96 sm:w-92 sm:h-[460px] md:w-[420px] md:h-[520px]",
+          imgW: 420,
+          imgH: 520,
           rounded: "rounded-[32px]",
         };
       case "hero":
         return {
-          container: "w-72 h-96 sm:w-96 sm:h-[480px] md:w-[420px] md:h-[540px]",
-          imgW: 420,
-          imgH: 540,
+          container: "w-80 h-[420px] sm:w-[420px] sm:h-[520px] md:w-[480px] md:h-[580px]",
+          imgW: 480,
+          imgH: 580,
           rounded: "rounded-[36px]",
         };
       default:
         return {
-          container: "w-48 h-60 sm:w-56 sm:h-72",
-          imgW: 224,
-          imgH: 288,
+          container: "w-52 h-68 sm:w-64 sm:h-80",
+          imgW: 256,
+          imgH: 320,
           rounded: "rounded-3xl",
         };
     }
@@ -186,14 +186,14 @@ export default function ArogyamithranMascot({
           <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-[#0B5D46] via-[#D4AF37] to-[#0B5D46] z-20" />
 
           {/* Master 3D-Cartoon Character Asset */}
-          <div className="relative w-full h-full flex items-end justify-center z-10 pt-2">
+          <div className="relative w-full h-full flex items-end justify-center z-10 pt-0.5">
             <Image
               src={asset.path}
               alt={isMl ? asset.altTextMl : asset.altTextEn}
               width={dim.imgW}
               height={dim.imgH}
               priority={priority}
-              className="w-auto h-full object-contain object-bottom drop-shadow-[0_10px_20px_rgba(7,59,48,0.2)] select-none pointer-events-none"
+              className="w-auto h-[92%] sm:h-[94%] object-contain object-bottom drop-shadow-[0_10px_20px_rgba(7,59,48,0.2)] select-none pointer-events-none"
             />
           </div>
 

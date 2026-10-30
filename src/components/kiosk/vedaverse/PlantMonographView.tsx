@@ -236,15 +236,15 @@ export default function PlantMonographView({
 
       {/* ─── MAIN MONOGRAPH BODY ───────────────────────────────────────────────── */}
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex-1 w-full space-y-6 sm:space-y-8">
-        {/* ─── Arogyamithran Botanical Mentor Guide Callout ──────────────────── */}
-        <section className="bg-gradient-to-r from-[#F0F7F1] via-white to-[#F0F7F1] rounded-2xl sm:rounded-3xl p-5 sm:p-6 border-2 border-[#55B96A]/30 shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-5">
-          <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-[#D4AF37]/50 shadow-md shrink-0 bg-[#073B30]">
+        {/* ─── Arogyamithran Botanical Mentor Guide Callout (Enlarged & Prominent) ─── */}
+        <section className="bg-gradient-to-r from-[#F0F7F1] via-white to-[#F0F7F1] rounded-2xl sm:rounded-3xl p-5 sm:p-6 border-2 border-[#55B96A]/30 shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-6">
+          <div className="relative w-32 h-40 sm:w-36 sm:h-48 md:w-40 md:h-52 rounded-2xl overflow-hidden border-2 border-[#D4AF37]/70 shadow-md shrink-0 bg-gradient-to-b from-[#F0F7F1] via-white to-[#FAFAF7] p-1">
             <Image
               src={mascotImg}
               alt="Arogyamithran Botanical Mentor"
               fill
-              className="object-cover object-top"
-              sizes="112px"
+              className="object-contain object-bottom"
+              sizes="160px"
             />
           </div>
           <div className="flex-1 space-y-2 text-center sm:text-left">

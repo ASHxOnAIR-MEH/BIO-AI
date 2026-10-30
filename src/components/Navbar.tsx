@@ -89,7 +89,21 @@ export default function Navbar() {
               <a href="#about" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">About</a>
               <a href="#opportunity" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Incubation</a>
               <a href="#contact" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Contact</a>
-              <Link href="/kiosk" className="text-sm font-semibold text-text-primary hover:text-bio-green transition-colors">Kiosk</Link>
+              <Link
+                href="/kiosk"
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B5D46]/10 hover:bg-[#0B5D46]/20 text-sm font-bold text-[#073B30] hover:text-[#0B5D46] transition-all border border-[#55B96A]/30 group"
+              >
+                <div className="relative w-5 h-5 rounded-full overflow-hidden bg-[#073B30] ring-1 ring-[#D4AF37] shrink-0">
+                  <Image
+                    src="/assets/kiosk/arogyamithran/arogyamithran-avatar.png"
+                    alt="Arogyamithran"
+                    fill
+                    className="object-cover object-[center_15%]"
+                    sizes="20px"
+                  />
+                </div>
+                <span>Kiosk</span>
+              </Link>
               <a
                 href="https://zfrmz.com/Ene770rEwgTw2cP7chBH"
                 target="_blank"

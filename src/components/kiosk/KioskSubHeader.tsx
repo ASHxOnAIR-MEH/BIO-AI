@@ -75,8 +75,25 @@ export default function KioskSubHeader({
           </div>
         </div>
 
-        {/* ─── RIGHT CONTROLS: STEP BADGE / BACK BUTTON ─────────────────── */}
-        <div className="flex items-center gap-2 shrink-0">
+        {/* ─── RIGHT CONTROLS: AROGYAMITHRAN AVATAR / STEP BADGE / BACK BUTTON ─── */}
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          {/* Arogyamithran Guide Avatar */}
+          <Link
+            href="/kiosk/arogyamithran/language"
+            className="flex items-center gap-1.5 p-0.5 rounded-full hover:bg-white/10 transition-colors"
+            title={isMl ? "ആരോഗ്യമിത്രൻ" : "Arogyamithran Guide"}
+          >
+            <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden bg-gradient-to-b from-[#0B5D46] to-[#073B30] ring-2 ring-[#D4AF37] shadow-xs shrink-0">
+              <Image
+                src="/assets/kiosk/arogyamithran/arogyamithran-avatar.png"
+                alt="Arogyamithran"
+                fill
+                className="object-cover object-[center_15%]"
+                sizes="32px"
+              />
+            </div>
+          </Link>
+
           {currentStepBadge && (
             <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-[11px] font-bold text-[#DDEFE3] border border-white/15">
               <span className="w-1.5 h-1.5 rounded-full bg-[#55B96A] animate-pulse" />
