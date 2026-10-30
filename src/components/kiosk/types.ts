@@ -54,9 +54,11 @@ export interface QuizBankDataset {
   description: string;
   scoring: {
     points_per_correct_answer: number;
+    points_per_wrong_answer?: number;
     max_questions_per_attempt: number;
     max_score: number;
     no_negative_marking: boolean;
+    score_floor?: number;
   };
   selection_policy: {
     questions_per_attempt: number;

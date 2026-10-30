@@ -283,7 +283,7 @@ export default function PersonalResultPage({ params }: PageProps) {
         </motion.div>
 
         {/* Arogyamithran Character Frame */}
-        <div className="w-full mb-6">
+        <div className="w-full mb-5">
           <ArogyamithranCharacterFrame
             compact={true}
             selectedLanguage={language}
@@ -291,6 +291,35 @@ export default function PersonalResultPage({ params }: PageProps) {
             dialogue={congratulatoryMessage}
           />
         </div>
+
+        {/* ═══ GOODIES COLLECTION BANNER (prominent) ═══ */}
+        <motion.div
+          initial={{ scale: 0.97, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.35 }}
+          className="w-full mb-6 rounded-3xl overflow-hidden border-2 border-amber-300 shadow-[0_6px_24px_rgba(217,119,6,0.15)]"
+        >
+          {/* Banner header */}
+          <div className="bg-gradient-to-r from-amber-500 to-yellow-500 px-4 py-2.5 text-center">
+            <p className="text-sm font-black text-white tracking-wide flex items-center justify-center gap-2">
+              <span>🎁</span>
+              <span>{isMl ? "ഗുഡീസ് ശേഖരിക്കൂ" : "Collect Your Goodies"}</span>
+            </p>
+          </div>
+          {/* Banner body */}
+          <div className="bg-gradient-to-b from-amber-50 to-yellow-50 px-5 py-4 text-center">
+            <p className={`text-sm font-bold text-[#92400E] leading-snug mb-2 ${isMl ? "font-malayalam" : ""}`}>
+              {isMl
+                ? "ഈ പേജ് ബയോ-എഐ സെന്റർ ഓഫ് എക്സലൻസ് ഡെസ്കിൽ കാണിക്കൂ"
+                : "Show this page at the Bio-AI Centre of Excellence desk"}
+            </p>
+            <p className={`text-xs text-[#78350F] font-medium leading-relaxed ${isMl ? "font-malayalam" : ""}`}>
+              {isMl
+                ? "ജീവനക്കാർ നിങ്ങളുടെ ഫലം പരിശോധിക്കുകയും അർഹമായ ഗുഡീസ് നൽകുകയും ചെയ്യും."
+                : "Staff will verify your result and hand over your eligible goodies."}
+            </p>
+          </div>
+        </motion.div>
 
         {/* Compact Question Review Accordion */}
         <div className="w-full mb-6">
@@ -339,7 +368,7 @@ export default function PersonalResultPage({ params }: PageProps) {
                           : "bg-red-100 text-red-800"
                       }`}
                     >
-                      {item.isCorrect ? "+10 pts" : "0 pts"}
+                      {item.isCorrect ? "+10 pts" : "−5 pts"}
                     </span>
                   </div>
 

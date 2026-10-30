@@ -37,18 +37,18 @@ function InstructionsContent() {
 
   const instructions = isMl
     ? [
-        { num: 1, text: "10 മൾട്ടിപ്പിൾ ചോയ്സ് ചോദ്യങ്ങൾ ഉണ്ടായിരിക്കും." },
-        { num: 2, text: "100 ചോദ്യങ്ങളുടെ ബയോ-എഐ ബാങ്കിൽ നിന്ന് റാൻഡമായി ചോദ്യങ്ങൾ തിരഞ്ഞെടുക്കപ്പെടുന്നു." },
-        { num: 3, text: "ഓരോ ശരിയുത്തരത്തിനും 10 പോയിന്റ് ലഭിക്കും." },
-        { num: 4, text: "സസ്യങ്ങൾ, സുഗന്ധവ്യഞ്ജനങ്ങൾ, ബയോടെക്നോളജി, എഐ എന്നിവയെക്കുറിച്ചുള്ള രസകരമായ വസ്തുതകൾ പഠിക്കാം." },
-        { num: 5, text: "അവസാനം നിങ്ങളുടെ സ്കോറും ക്യുആർ കോഡും ലഭിക്കും, ഫലം ഇമെയിലിൽ അയയ്ക്കും." },
+        { num: 1, text: "10 മൾട്ടിപ്പിൾ ചോയ്സ് ചോദ്യങ്ങൾ — ഓരോ ചോദ്യത്തിനും 60 സെക്കൻഡ് സമയം." },
+        { num: 2, text: "100 ചോദ്യങ്ങളുടെ ബയോ-എഐ ബാങ്കിൽ നിന്ന് ക്രമരഹിതമായി തിരഞ്ഞെടുക്കപ്പെടുന്നു." },
+        { num: 3, text: "ശരിയുത്തരത്തിന് +10 പോയിന്റ്; തെറ്റായ ഉത്തരത്തിന് −5 നെഗറ്റീവ് മാർക്കിംഗ് (കുറഞ്ഞ സ്കോർ 0)." },
+        { num: 4, text: "സസ്യങ്ങൾ, സുഗന്ധവ്യഞ്ജനങ്ങൾ, ബയോടെക്നോളജി, എഐ എന്നിവയെക്കുറിച്ചുള്ള വിജ്ഞാനം." },
+        { num: 5, text: "അവസാനം QR കോഡ് സ്കാൻ ചെയ്ത് ബയോ-എഐ ഡെസ്കിൽ കാണിച്ച് നിങ്ങളുടെ ഗുഡീസ് കൈപ്പറ്റുക!" },
       ]
     : [
-        { num: 1, text: "You will see 10 multiple-choice questions." },
-        { num: 2, text: "Questions are selected randomly from our 100-question Bio-AI bank." },
-        { num: 3, text: "Each correct answer gives you 10 points." },
-        { num: 4, text: "Try your best and learn interesting facts about plants, spices, biotechnology and AI." },
-        { num: 5, text: "At the end, you will get your score, a QR code and the result will be sent to your email." },
+        { num: 1, text: "10 multiple-choice questions with a 60-second countdown timer for each." },
+        { num: 2, text: "Questions are dynamically selected from our curated 100-question Bio-AI bank." },
+        { num: 3, text: "+10 points for each correct answer; −5 points for wrong answers (score floor at 0)." },
+        { num: 4, text: "Learn fascinating insights into plants, spices, biotechnology, and artificial intelligence." },
+        { num: 5, text: "Scan the result QR code with your phone and present it at the Bio-AI desk to collect goodies!" },
       ];
 
   const handleStartChallenge = async () => {
@@ -137,13 +137,13 @@ function InstructionsContent() {
             {/* Mascot and Speech Bubble Row matching Storyboard Screen 4 */}
             <div className="w-full flex items-center justify-center gap-3 sm:gap-4 mb-3 sm:mb-4">
               {/* Arogyamithran Pointing Pose */}
-              <div className="relative w-20 h-28 sm:w-28 sm:h-36 shrink-0 rounded-2xl overflow-hidden shadow-md border-2 border-white/60 bg-[#FAFAF7]">
+              <div className="relative w-20 h-28 sm:w-28 sm:h-36 shrink-0 rounded-2xl overflow-hidden shadow-md border-2 border-white/60 bg-[#FAFAF7] flex items-end justify-center">
                 <Image
                   src="/assets/kiosk/arogyamithran/pointing.jpg"
                   alt="Arogyamithran explaining the quiz rules"
                   fill
                   priority
-                  className="object-cover object-top"
+                  className="object-contain object-bottom select-none"
                   sizes="120px"
                 />
               </div>

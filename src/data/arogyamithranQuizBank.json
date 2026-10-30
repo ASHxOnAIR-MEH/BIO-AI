@@ -4,9 +4,11 @@
   "description": "100 source-linked English multiple-choice questions for a visitor quiz. Review wording and references before production. Ten unique questions should be selected server-side per attempt.",
   "scoring": {
     "points_per_correct_answer": 10,
+    "points_per_wrong_answer": -5,
     "max_questions_per_attempt": 10,
     "max_score": 100,
-    "no_negative_marking": true
+    "no_negative_marking": false,
+    "score_floor": 0
   },
   "selection_policy": {
     "questions_per_attempt": 10,

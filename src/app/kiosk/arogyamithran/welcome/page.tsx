@@ -68,7 +68,7 @@ function WelcomeContent() {
               initial={{ opacity: 0, scale: 0.92, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.45, ease: "easeOut" }}
-              className="relative w-52 h-64 sm:w-64 sm:h-76 md:w-72 md:h-84 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/90 bg-gradient-to-b from-[#F0F7F1] via-white to-[#FAFAF7] -mb-2 sm:-mb-3"
+              className="relative w-52 h-64 sm:w-64 sm:h-76 md:w-72 md:h-84 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/90 bg-gradient-to-b from-[#F0F7F1] via-white to-[#FAFAF7] -mb-2 sm:-mb-3 flex items-end justify-center"
             >
               <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-[#0B5D46] via-[#D4AF37] to-[#0B5D46] z-10" />
               <Image
@@ -76,9 +76,15 @@ function WelcomeContent() {
                 alt="Arogyamithran welcoming Bio-AI guide waving with glowing leaf tablet"
                 fill
                 priority
-                className="object-cover object-top select-none"
+                className="object-contain object-bottom select-none"
                 sizes="(max-width: 640px) 240px, 320px"
               />
+              {/* Active Status Beacon */}
+              <span className="absolute top-3.5 right-3.5 flex h-3.5 w-3.5 z-20">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#55B96A] opacity-75" />
+                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#55B96A] border-2 border-white" />
+              </span>
+              <div className="absolute inset-x-0 bottom-0 h-1 bg-[#0B5D46]/20 z-10" />
             </motion.div>
           </div>
 

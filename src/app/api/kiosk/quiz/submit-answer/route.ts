@@ -19,6 +19,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // -1 is a valid "timed-out / skipped" index — treated as wrong answer
+    if (selectedOptionIndex < -1 || selectedOptionIndex > 3) {
+      return NextResponse.json(
+        { success: false, message: "selectedOptionIndex must be between -1 and 3." },
+        { status: 400 }
+      );
+    }
+
     const response = submitQuizAnswer(
       attemptId,
       questionId,

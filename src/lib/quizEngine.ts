@@ -144,8 +144,8 @@ export function submitQuizAnswer(
     throw new Error("Question does not belong to this active quiz attempt.");
   }
 
-  if (selectedOptionIndex < 0 || selectedOptionIndex > 3) {
-    throw new Error("Selected option index must be between 0 and 3.");
+  if (selectedOptionIndex < -1 || selectedOptionIndex > 3) {
+    throw new Error("Selected option index must be between -1 and 3 (-1 = timed out).");
   }
 
   // Prevent duplicate submissions / double-taps
@@ -167,7 +167,9 @@ export function submitQuizAnswer(
   }
 
   const isCorrect = selectedOptionIndex === question.correct_option_index;
-  const awardedPoints = isCorrect ? 10 : 0;
+  // Scoring: +10 for correct, -5 for wrong, score cannot go below 0
+  const awardedPoints = isCorrect ? 10 : -5;
+  const scoreChange = isCorrect ? 10 : -5;
 
   attempt.answers[questionId] = {
     selectedOptionIndex,
@@ -176,7 +178,7 @@ export function submitQuizAnswer(
     answeredAt: new Date().toISOString(),
   };
 
-  attempt.totalScore += awardedPoints;
+  attempt.totalScore = Math.max(0, attempt.totalScore + scoreChange);
 
   const questionsAnswered = Object.keys(attempt.answers).length;
   if (questionsAnswered >= 10) {

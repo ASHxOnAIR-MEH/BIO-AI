@@ -15,6 +15,17 @@ export interface KioskAssetItem {
 }
 
 export const AROGYAMITHRAN_EXPRESSIONS: Record<string, KioskAssetItem> = {
+  // Hero / master asset — canonical Arogyamithran identity
+  hero: {
+    id: "arogya-hero",
+    name: "Arogyamithran Hero",
+    path: "/assets/kiosk/arogyamithran/hero_mascot.jpg",
+    category: "character",
+    purpose: "Primary hero mascot — Arogyamithran welcome screen, main character identity",
+    altTextEn: "Arogyamithran, friendly 70-year-old Malayali grandfather with white beard, round golden spectacles, cream jubba, white mundu with Kasavu border, and a glowing Bio-AI tablet, waving warmly",
+    altTextMl: "ആരോഗ്യമിത്രൻ - സസ്നേഹം കൈവീശി സ്വാഗതം ചെയ്യുന്ന ബയോ-എഐ കേരളീയ ഗൈഡ്",
+    aspectRatio: "3:4",
+  },
   welcoming: {
     id: "arogya-welcome",
     name: "Arogyamithran Welcoming",
@@ -277,6 +288,7 @@ export function getArogyamithranAsset(expression: string): KioskAssetItem {
     return AROGYAMITHRAN_EXPRESSIONS[normalized];
   }
   // Common aliases
+  if (normalized.includes("hero") || normalized.includes("mascot")) return AROGYAMITHRAN_EXPRESSIONS.hero;
   if (normalized.includes("welcome")) return AROGYAMITHRAN_EXPRESSIONS.welcoming;
   if (normalized.includes("think")) return AROGYAMITHRAN_EXPRESSIONS.thinking;
   if (normalized.includes("correct")) return AROGYAMITHRAN_EXPRESSIONS.correct;

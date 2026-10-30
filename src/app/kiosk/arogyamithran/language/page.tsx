@@ -79,7 +79,7 @@ export default function ArogyamithranLanguagePage() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4 }}
-              className="relative w-48 h-56 sm:w-56 sm:h-68 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/90 bg-gradient-to-b from-[#F0F7F1] via-white to-[#FAFAF7]"
+              className="relative w-48 h-56 sm:w-56 sm:h-68 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/90 bg-gradient-to-b from-[#F0F7F1] via-white to-[#FAFAF7] flex items-end justify-center"
             >
               <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-[#0B5D46] via-[#D4AF37] to-[#0B5D46] z-10" />
               <Image
@@ -87,9 +87,15 @@ export default function ArogyamithranLanguagePage() {
                 alt="Arogyamithran welcoming Bio-AI guide"
                 fill
                 priority
-                className="object-cover object-top select-none"
+                className="object-contain object-bottom select-none"
                 sizes="(max-width: 640px) 220px, 280px"
               />
+              {/* Active Status Beacon */}
+              <span className="absolute top-3.5 right-3.5 flex h-3.5 w-3.5 z-20">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#55B96A] opacity-75" />
+                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#55B96A] border-2 border-white" />
+              </span>
+              <div className="absolute inset-x-0 bottom-0 h-1 bg-[#0B5D46]/20 z-10" />
             </motion.div>
           </div>
 
