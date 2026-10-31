@@ -62,7 +62,7 @@ function WelcomeContent() {
             <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAF7]/60 via-[#FAFAF7]/80 to-[#FAFAF7]" />
           </div>
 
-          {/* Arogyamithran Character Illustration prominently standing above speech bubble */}
+          {/* VEDA Character Illustration prominently standing above speech bubble */}
           <div className="relative z-10 w-full flex-1 flex flex-col justify-end items-center min-h-[220px] sm:min-h-[280px] md:min-h-[320px] pt-2 pb-0">
             <motion.div
               initial={{ opacity: 0, scale: 0.92, y: 15 }}
@@ -72,11 +72,11 @@ function WelcomeContent() {
             >
               <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-[#0B5D46] via-[#D4AF37] to-[#0B5D46] z-10" />
               <Image
-                src="/assets/kiosk/arogyamithran/hero_mascot.jpg"
-                alt="Arogyamithran welcoming Bio-AI guide waving with glowing leaf tablet"
+                src="/images/veda/01-young-ayurveda-researcher-guide.jpg"
+                alt="VEDA welcoming Bio-AI research guide with glowing leaf tablet"
                 fill
                 priority
-                className="object-contain object-bottom select-none"
+                className="object-cover object-top select-none"
                 sizes="(max-width: 640px) 240px, 320px"
               />
               {/* Active Status Beacon */}
@@ -97,7 +97,7 @@ function WelcomeContent() {
           >
             {/* Speech Bubble Card with Pointer */}
             <div className="relative w-full bg-white rounded-3xl p-5 sm:p-6 shadow-xl border-2 border-[#0B5D46]/15 text-left">
-              {/* Pointer Triangle pointing upwards toward Arogyamithran */}
+              {/* Pointer Triangle pointing upwards toward VEDA */}
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-3 overflow-hidden">
                 <div className="w-4 h-4 bg-white border-t-2 border-l-2 border-[#0B5D46]/15 rotate-45 mx-auto translate-y-1" />
               </div>
@@ -109,8 +109,8 @@ function WelcomeContent() {
 
               <p className={`text-xs sm:text-sm text-[#244B3F] font-medium leading-relaxed ${isMl ? "font-malayalam" : ""}`}>
                 {isMl
-                  ? "ഞാൻ നിങ്ങളുടെ സുഹൃത്തായ ആരോഗ്യമിത്രൻ. ബയോടെക്നോളജി, ആയുർവേദം, പ്രകൃതി, ആധുനിക ശാസ്ത്രം എന്നിവയുടെ അത്ഭുതകരമായ ലോകം നമുക്ക് ഒരുമിച്ച് അടുത്തറിയാം!"
-                  : "I'm Arogyamithran, your friendly Bio-AI guide. Let's explore the amazing world of biotechnology, Ayurveda, nature and modern science together!"}
+                  ? "ഞാൻ നിങ്ങളുടെ സുഹൃത്തായ വേദ. ബയോടെക്നോളജി, ആയുർവേദം, പ്രകൃതി, ആധുനിക ശാസ്ത്രം എന്നിവയുടെ അത്ഭുതകരമായ ലോകം നമുക്ക് ഒരുമിച്ച് അടുത്തറിയാം!"
+                  : "I'm Veda, your young Ayurveda research guide. Let's explore the amazing world of biotechnology, Ayurveda, nature and modern science together!"}
               </p>
             </div>
 

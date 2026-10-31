@@ -34,8 +34,8 @@ function CompletedContent() {
   // Content specified in requirements
   const heading = isMl ? "രജിസ്ട്രേഷൻ പൂർത്തിയായി!" : "You're registered!";
   const subHeading = isMl
-    ? "Bio-AI Challenge-ൽ ആരോഗ്യ മിത്രൻ നിങ്ങളെ നയിക്കാൻ തയ്യാറാണ്."
-    : "Arogyamithran is ready to guide you through the Bio-AI Challenge.";
+    ? "Bio-AI Challenge-ൽ വേദ നിങ്ങളെ നയിക്കാൻ തയ്യാറാണ്."
+    : "Veda is ready to guide you through the Bio-AI Challenge.";
   const resultNotice = isMl
     ? "ചലഞ്ച് പൂർത്തിയാക്കിയ ശേഷം നിങ്ങളുടെ ഫലത്തിന്റെ QR ലിങ്ക് ഇമെയിൽ വഴി അയയ്ക്കുന്നതായിരിക്കും; ഈ സൗകര്യം പ്രവർത്തനക്ഷമമാക്കിയ ശേഷം മാത്രമേ ഇമെയിൽ അയയ്ക്കൂ."
     : "Your result QR link will be sent to the email address you provided after the challenge, once that feature is implemented and configured.";

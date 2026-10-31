@@ -136,11 +136,11 @@ function InstructionsContent() {
 
             {/* Mascot and Speech Bubble Row matching Storyboard Screen 4 */}
             <div className="w-full flex items-center justify-center gap-3 sm:gap-4 mb-3 sm:mb-4">
-              {/* Arogyamithran Pointing Pose */}
+              {/* VEDA Explaining Pose */}
               <div className="relative w-20 h-28 sm:w-28 sm:h-36 shrink-0 rounded-2xl overflow-hidden shadow-md border-2 border-white/60 bg-[#FAFAF7] flex items-end justify-center">
                 <Image
-                  src="/assets/kiosk/arogyamithran/pointing.jpg"
-                  alt="Arogyamithran explaining the quiz rules"
+                  src="/images/veda/veda-explaining.png"
+                  alt="VEDA explaining the quiz rules"
                   fill
                   priority
                   className="object-contain object-bottom select-none"
@@ -148,7 +148,7 @@ function InstructionsContent() {
                 />
               </div>
 
-              {/* Speech Bubble pointing to Arogyamithran */}
+              {/* Speech Bubble pointing to VEDA */}
               <div className="relative flex-1 bg-white rounded-2xl p-3.5 sm:p-4 shadow-lg border-2 border-[#0B5D46]/15">
                 <div className="absolute top-1/2 -left-2.5 -translate-y-1/2 w-3 h-3 bg-white border-b-2 border-l-2 border-[#0B5D46]/15 rotate-45" />
                 <p className={`text-xs sm:text-sm font-extrabold text-[#073B30] leading-snug ${isMl ? "font-malayalam" : ""}`}>

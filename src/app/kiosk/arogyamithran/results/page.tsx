@@ -221,11 +221,11 @@ function ResultsContent() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-amber-500/10 to-emerald-500/5 pointer-events-none" />
 
-                {/* Left: Arogyamithran Celebration Pose — object-contain, full figure */}
+                {/* Left: VEDA Celebration Pose — object-contain, full figure */}
                 <div className="relative w-24 h-32 sm:w-28 sm:h-36 shrink-0 rounded-2xl overflow-hidden shadow-md border-2 border-white/80 bg-[#F0F7F1] flex items-end justify-center">
                   <Image
-                    src="/assets/kiosk/arogyamithran/celebration.jpg"
-                    alt="Arogyamithran celebrating quiz completion"
+                    src="/images/veda/veda-celebrating.png"
+                    alt="VEDA celebrating quiz completion"
                     fill
                     priority
                     className="object-contain object-bottom"

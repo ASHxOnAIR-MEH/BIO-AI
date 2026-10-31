@@ -75,20 +75,20 @@ export default function KioskSubHeader({
           </div>
         </div>
 
-        {/* ─── RIGHT CONTROLS: AROGYAMITHRAN AVATAR / STEP BADGE / BACK BUTTON ─── */}
+        {/* ─── RIGHT CONTROLS: VEDA AVATAR / STEP BADGE / BACK BUTTON ─── */}
         <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
-          {/* Arogyamithran Guide Avatar */}
+          {/* VEDA Guide Avatar */}
           <Link
             href="/kiosk/arogyamithran/language"
             className="flex items-center gap-1.5 p-0.5 rounded-full hover:bg-white/10 transition-colors"
-            title={isMl ? "ആരോഗ്യമിത്രൻ" : "Arogyamithran Guide"}
+            title={isMl ? "വേദ" : "Veda Guide"}
           >
             <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden bg-gradient-to-b from-[#0B5D46] to-[#073B30] ring-2 ring-[#D4AF37] shadow-xs shrink-0">
               <Image
-                src="/assets/kiosk/arogyamithran/arogyamithran-avatar.png"
-                alt="Arogyamithran"
+                src="/images/veda/veda-avatar.png"
+                alt="Veda"
                 fill
-                className="object-cover object-[center_15%]"
+                className="object-cover object-center"
                 sizes="32px"
               />
             </div>

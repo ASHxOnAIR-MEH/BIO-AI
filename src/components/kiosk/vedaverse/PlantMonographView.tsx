@@ -73,8 +73,8 @@ export default function PlantMonographView({
   const isMl = language === "ml";
   const isSpice = plant.category === "Culinary spice / herb";
   const mascotImg = isSpice
-    ? "/assets/kiosk/arogyamithran/holding-spice.jpg"
-    : "/assets/kiosk/arogyamithran/holding-plant.jpg";
+    ? "/images/veda/02-spice-garden-researcher.jpg"
+    : "/images/veda/08-medicinal-plant-field-research.jpg";
 
   return (
     <div className="min-h-screen bg-[#FAFAF7] text-[#073B30] flex flex-col font-sans selection:bg-[#55B96A]/20">
@@ -236,14 +236,14 @@ export default function PlantMonographView({
 
       {/* ─── MAIN MONOGRAPH BODY ───────────────────────────────────────────────── */}
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex-1 w-full space-y-6 sm:space-y-8">
-        {/* ─── Arogyamithran Botanical Mentor Guide Callout (Enlarged & Prominent) ─── */}
+        {/* ─── VEDA Botanical Researcher Note Callout (Enlarged & Prominent) ─── */}
         <section className="bg-gradient-to-r from-[#F0F7F1] via-white to-[#F0F7F1] rounded-2xl sm:rounded-3xl p-5 sm:p-6 border-2 border-[#55B96A]/30 shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-6">
           <div className="relative w-32 h-40 sm:w-36 sm:h-48 md:w-40 md:h-52 rounded-2xl overflow-hidden border-2 border-[#D4AF37]/70 shadow-md shrink-0 bg-gradient-to-b from-[#F0F7F1] via-white to-[#FAFAF7] p-1">
             <Image
               src={mascotImg}
-              alt="Arogyamithran Botanical Mentor"
+              alt="VEDA - Botanical Field Researcher"
               fill
-              className="object-contain object-bottom"
+              className="object-cover object-top"
               sizes="160px"
             />
           </div>
@@ -251,7 +251,7 @@ export default function PlantMonographView({
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#073B30] text-xs font-bold">
               <Sparkles className="w-3.5 h-3.5 text-[#0B5D46]" />
               <span>
-                {isMl ? "ആരോഗ്യമിത്രന്റെ സസ്യ കുറിപ്പ്" : "Arogyamithran's Botanical Guide"}
+                {isMl ? "വേദയുടെ സസ്യ കുറിപ്പ്" : "Veda's Botanical Research Note"}
               </span>
             </div>
             <h3 className="text-base sm:text-lg font-bold text-[#073B30]">

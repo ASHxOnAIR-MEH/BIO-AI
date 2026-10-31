@@ -64,29 +64,29 @@ export default function KioskHeader({
           </div>
         </div>
 
-        {/* ─── RIGHT CONTROLS: AROGYAMITHRAN AVATAR & RETURN-TO-MAIN-WEBSITE ─── */}
+        {/* ─── RIGHT CONTROLS: VEDA AVATAR & RETURN-TO-MAIN-WEBSITE ─── */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          {/* Arogyamithran Guide Avatar Badge */}
+          {/* VEDA Guide Avatar Badge */}
           <Link
             href="/kiosk/arogyamithran/language"
             className="flex items-center gap-2 bg-gradient-to-r from-white/95 to-[#F0F7F1] hover:to-white border border-[#D4AF37]/50 rounded-full pl-1.5 pr-2.5 sm:pr-3 py-1 shadow-xs transition-all active:scale-95 group shrink-0"
-            title={isMl ? "ആരോഗ്യമിത്രനെ പരിചയപ്പെടൂ" : "Meet Arogyamithran AI Guide"}
+            title={isMl ? "വേദയെ പരിചയപ്പെടൂ" : "Meet VEDA Research Guide"}
           >
             <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden bg-gradient-to-b from-[#0B5D46] to-[#073B30] ring-2 ring-[#D4AF37] shadow-2xs shrink-0">
               <Image
-                src="/assets/kiosk/arogyamithran/arogyamithran-avatar.png"
-                alt="Arogyamithran Avatar"
+                src="/images/veda/veda-avatar.png"
+                alt="Veda"
                 fill
-                className="object-cover object-[center_15%] group-hover:scale-110 transition-transform duration-300"
-                sizes="36px"
+                className="object-cover object-center group-hover:scale-110 transition-transform duration-300"
+                sizes="(max-width: 640px) 32px, 36px"
               />
             </div>
-            <div className="hidden md:flex flex-col text-left">
-              <span className="text-[11px] font-bold text-[#073B30] leading-none">
-                {isMl ? "ആരോഗ്യമിത്രൻ" : "Arogyamithran"}
+            <div className="hidden md:flex flex-col text-left leading-none">
+              <span className="text-[11px] font-bold text-[#073B30] group-hover:text-[#0B5D46] transition-colors">
+                {isMl ? "വേദ" : "VEDA"}
               </span>
-              <span className="text-[9px] font-semibold text-[#0B5D46]/80 leading-tight">
-                {isMl ? "എഐ ഗൈഡ്" : "Bio-AI Guide"}
+              <span className="text-[9px] font-semibold text-[#0B5D46]/80 mt-0.5">
+                {isMl ? "ഗവേഷണ ഗൈഡ്" : "Research Guide"}
               </span>
             </div>
           </Link>

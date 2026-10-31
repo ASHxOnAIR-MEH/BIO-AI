@@ -145,8 +145,8 @@ export default function KioskInactivityMonitor({
           <div className="relative w-20 h-20 mx-auto mb-3">
             <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-2 border-[#0B5D46]/20 shadow-sm bg-[#F0F7F1]">
               <Image
-                src="/assets/kiosk/arogyamithran/neutral.jpg"
-                alt="Arogyamithran"
+                src="/images/veda/veda-avatar-circle.png"
+                alt="VEDA"
                 fill
                 className="object-cover object-top"
                 sizes="80px"

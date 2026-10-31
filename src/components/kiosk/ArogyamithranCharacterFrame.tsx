@@ -70,13 +70,13 @@ export default function ArogyamithranCharacterFrame({
         <div className="mt-3 max-w-sm px-2">
           <p className="text-xs font-bold text-[#073B30] leading-snug">
             {selectedLanguage === "ml"
-              ? "ആരോഗ്യമിത്രൻ · എഐ സസ്യശാസ്ത്ര ഗുരു"
-              : "Arogyamithran · AI Botanical Sage"}
+              ? "വേദ · ആയുർവേദ ഗവേഷകയും ഡിജിറ്റൽ പൈതൃക ഗൈഡും"
+              : "VEDA · Young Ayurveda Researcher & Digital Heritage Guide"}
           </p>
           <p className="text-[11px] text-[#244B3F]/75 mt-0.5 leading-relaxed">
             {selectedLanguage === "ml"
-              ? "സൗഹൃദപരമായ കേരളീയ ആയുർവേദ അറിവുകളുമായി നിങ്ങളെ സ്വാഗതം ചെയ്യുന്നു."
-              : "Your friendly Ayurvedic mentor and interactive guide."}
+              ? "ആയുർവേദ സസ്യശാസ്ത്ര വിജ്ഞാനത്തിലേക്കും ഇന്ററാക്ടീവ് പഠനത്തിലേക്കും സ്വാഗതം ചെയ്യുന്നു."
+              : "Your friendly Ayurvedic research guide and interactive learning companion."}
           </p>
         </div>
       )}

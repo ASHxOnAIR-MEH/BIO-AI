@@ -73,7 +73,7 @@ export default function ArogyamithranLanguagePage() {
             </motion.p>
           </div>
 
-          {/* Arogyamithran Center Mascot matching Screen 1 Storyboard */}
+          {/* VEDA Center Mascot matching Screen 1 Storyboard */}
           <div className="relative z-10 w-full flex-1 flex flex-col justify-center items-center py-2">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -83,11 +83,11 @@ export default function ArogyamithranLanguagePage() {
             >
               <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-[#0B5D46] via-[#D4AF37] to-[#0B5D46] z-10" />
               <Image
-                src="/assets/kiosk/arogyamithran/hero_mascot.jpg"
-                alt="Arogyamithran welcoming Bio-AI guide"
+                src="/images/veda/01-young-ayurveda-researcher-guide.jpg"
+                alt="VEDA - Young Ayurveda Researcher & Digital Heritage Guide"
                 fill
                 priority
-                className="object-contain object-bottom select-none"
+                className="object-cover object-top select-none"
                 sizes="(max-width: 640px) 220px, 280px"
               />
               {/* Active Status Beacon */}

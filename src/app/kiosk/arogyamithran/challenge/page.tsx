@@ -334,8 +334,8 @@ function ChallengeContent() {
               {/* Mascot + Timer + Speech Bubble */}
               <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 py-1">
                 <MascotFrame
-                  src="/assets/kiosk/arogyamithran/thinking.jpg"
-                  alt="Arogyamithran thinking about the question"
+                  src="/images/veda/veda-thinking.png"
+                  alt="VEDA thinking about the question"
                 />
 
                 <div className="flex flex-col gap-2 max-w-xs sm:max-w-sm">
@@ -495,10 +495,10 @@ function ChallengeContent() {
                   <Image
                     src={
                       feedback.isCorrect
-                        ? "/assets/kiosk/arogyamithran/correct-answer.jpg"
-                        : "/assets/kiosk/arogyamithran/encouraging.jpg"
+                        ? "/images/veda/veda-celebrating.png"
+                        : "/images/veda/veda-concerned.png"
                     }
-                    alt={feedback.isCorrect ? "Arogyamithran celebrating correct answer" : "Arogyamithran encouraging after wrong answer"}
+                    alt={feedback.isCorrect ? "VEDA celebrating correct answer" : "VEDA encouraging after wrong answer"}
                     fill
                     priority
                     className="object-contain object-bottom select-none pointer-events-none"

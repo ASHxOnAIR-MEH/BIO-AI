@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Sprout, FlaskConical, Users, UserCheck, ArrowRight } from "lucide-react";
+import { Sprout, Users, UserCheck, ArrowRight, Compass, Sparkles, BookOpen } from "lucide-react";
 import { KIOSK_CARDS } from "./kioskData";
 import { KioskCardId, KioskLanguage, KioskNavigationCard } from "./types";
 import { KIOSK_CATEGORY_ILLUSTRATIONS } from "@/lib/kioskAssets";
@@ -20,7 +20,7 @@ function CategoryIcon({ cardId }: { cardId: KioskCardId }) {
     case "vedaverse":
       return <Sprout className="w-5 h-5 sm:w-6 sm:h-6 text-white" strokeWidth={2.2} />;
     case "innovations":
-      return <FlaskConical className="w-5 h-5 sm:w-6 sm:h-6 text-white" strokeWidth={2.2} />;
+      return <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-white" strokeWidth={2.2} />;
     case "ecosystem":
       return <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" strokeWidth={2.2} />;
     default:
@@ -38,7 +38,7 @@ export default function KioskCardGrid({ language }: KioskCardGridProps) {
       case "vedaverse":
         return "/kiosk/vedaverse";
       case "innovations":
-        return "/kiosk/innovations";
+        return "/kiosk/ayurveda-through-the-ages";
       case "ecosystem":
         return "/kiosk/ecosystem";
       default:
@@ -90,7 +90,7 @@ export default function KioskCardGrid({ language }: KioskCardGridProps) {
                   className="w-full h-full bg-white rounded-3xl border-2 border-[#0B5D46]/15 hover:border-[#55B96A] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group active:scale-[0.985] touch-manipulation focus:outline-none focus:ring-4 focus:ring-[#55B96A]/30 overflow-hidden"
                   aria-label={`${title} - ${subtitle}`}
                 >
-                  {/* Card Top: 16:9 High-Fidelity 3D Cartoon Artwork */}
+                  {/* Card Top: 16:9 High-Fidelity Artwork */}
                   <div className="relative w-full aspect-[16/9] bg-[#F0F7F1] overflow-hidden">
                     <Image
                       src={artworkPath}
@@ -141,6 +141,39 @@ export default function KioskCardGrid({ language }: KioskCardGridProps) {
               </motion.div>
             );
           })}
+        </div>
+
+        {/* ─── FEATURED MUSEUM JOURNEY BANNER: AYURVEDA THROUGH THE AGES ─── */}
+        <div className="mt-4 sm:mt-6">
+          <Link
+            href="/kiosk/ayurveda-through-the-ages"
+            className="w-full bg-gradient-to-r from-[#072820] via-[#0A382C] to-[#072820] text-[#FAF7EE] rounded-3xl p-5 sm:p-6 border-2 border-[#D4AF37]/50 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col sm:flex-row items-center justify-between gap-4 group active:scale-[0.99] touch-manipulation focus:outline-none focus:ring-4 focus:ring-[#D4AF37]/30"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-[#D4AF37] to-[#C5A028] p-0.5 flex items-center justify-center shrink-0 shadow-sm text-[#072820]">
+                <Compass className="w-6 h-6 sm:w-7 sm:h-7" />
+              </div>
+              <div className="text-left">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#D4AF37]/20 text-[#D4AF37] text-[10px] font-bold uppercase tracking-wider mb-1">
+                  <Sparkles className="w-3 h-3 text-[#D4AF37]" />
+                  <span>{isMl ? "പ്രത്യേക മ്യൂസിയം അനുഭവം" : "Featured Museum Experience"}</span>
+                </div>
+                <h3 className="text-lg sm:text-xl font-serif font-bold text-white group-hover:text-[#F4DE97] transition-colors leading-snug">
+                  {isMl ? "ആയുർവേദം യുഗങ്ങളിലൂടെ — ചരിത്ര യാത്ര" : "Ayurveda Through the Ages"}
+                </h3>
+                <p className="text-xs sm:text-sm text-white/80 line-clamp-1">
+                  {isMl
+                    ? "വേദകാലം മുതൽ അഷ്ടവൈദ്യ പാരമ്പര്യവും ബയോ-എഐയും വരെയുള്ള ചരിത്രത്തിലൂടെയുള്ള ഇന്ററാക്ടീവ് യാത്ര."
+                    : "Journey across 3,500 years: Vedic origins, Charaka & Sushruta codices, and Kerala's Ashtavaidya heritage."}
+                </p>
+              </div>
+            </div>
+
+            <div className="shrink-0 flex items-center gap-2 text-xs font-bold text-[#D4AF37] bg-white/10 px-4 py-2 rounded-full border border-white/15 group-hover:bg-[#D4AF37] group-hover:text-[#072820] transition-all">
+              <span>{isMl ? "യാത്ര ആരംഭിക്കൂ" : "Begin Journey"}</span>
+              <ArrowRight className="w-4 h-4" />
+            </div>
+          </Link>
         </div>
       </div>
     </section>

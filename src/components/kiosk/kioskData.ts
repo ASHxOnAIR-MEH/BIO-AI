@@ -3,21 +3,21 @@ import { KioskNavigationCard } from "./types";
 export const KIOSK_CARDS: KioskNavigationCard[] = [
   {
     id: "arogyamithran",
-    title: "Meet Arogyamithran",
-    titleMl: "ആരോഗ്യമിത്രനെ പരിചയപ്പെടൂ",
-    subtitle: "AI Guide & Quiz Experience",
-    subtitleMl: "എഐ ഗൈഡും ക്വിസ് അനുഭവവും",
+    title: "Meet VEDA",
+    titleMl: "വേദയെ പരിചയപ്പെടൂ",
+    subtitle: "Your Young Ayurveda Research Guide",
+    subtitleMl: "നിങ്ങളുടെ ആയുർവേദ ഗവേഷണ ഗൈഡ്",
     description:
-      "Meet your friendly Bio-AI guide and take the 10-question knowledge challenge.",
+      "Discover Ayurveda, explore medicinal plants and enjoy interactive knowledge challenges with Veda.",
     descriptionMl:
-      "നിങ്ങളുടെ സൗഹൃദപരമായ ബയോ-എഐ ഗൈഡിനെ കണ്ട് 10 ചോദ്യങ്ങളുള്ള വിജ്ഞാന ചലഞ്ചിൽ പങ്കെടുക്കൂ.",
+      "വേദയോടൊപ്പം ആയുർവേദവും ഔഷധസസ്യങ്ങളും പര്യവേക്ഷണം ചെയ്ത് ക്വിസ് ചലഞ്ചിൽ പങ്കെടുക്കൂ.",
     badge: "Interactive Quiz Experience",
     badgeMl: "ഇന്ററാക്ടീവ് ക്വിസ്",
-    iconName: "botanical-sage",
+    iconName: "user-round",
     accentColor: "#0B5D46",
     features: [
       "Dynamic 10-question Bio-AI challenge drawn from verified question bank",
-      "Adaptive feedback with Arogyamithran cartoon expressions",
+      "Adaptive feedback with Veda's research-grounded expressions",
       "Bilingual commentary in English & Malayalam",
       "Instant certificate score, email delivery and scannable QR souvenir"
     ],
@@ -39,6 +39,7 @@ export const KIOSK_CARDS: KioskNavigationCard[] = [
     iconName: "dna-plant",
     accentColor: "#55B96A",
     features: [
+      "Spice Quest: The Six Secrets of Ayurveda interactive 6-level puzzle game",
       "25 Classical Ayurvedic Rasayana plants",
       "25 Therapeutic medicinal plant monographs",
       "50 Kerala & global culinary spices and herbs",
@@ -49,26 +50,26 @@ export const KIOSK_CARDS: KioskNavigationCard[] = [
   },
   {
     id: "innovations",
-    title: "Explore Bio-AI Innovations",
-    titleMl: "ബയോ-എഐ നവീകരണങ്ങൾ",
-    subtitle: "Research & Technology Showcase",
-    subtitleMl: "ഗവേഷണവും സാങ്കേതിക മുന്നേറ്റങ്ങളും",
+    title: "Ayurveda Through the Ages",
+    titleMl: "ആയുർവേദം യുഗങ്ങളിലൂടെ",
+    subtitle: "Indian Medical History & Classical Texts",
+    subtitleMl: "ഭാരതീയ വൈദ്യ ചരിത്രവും പ്രാചീന ഗ്രന്ഥങ്ങളും",
     description:
-      "Discover verified technologies, research and applications connecting biology and artificial intelligence.",
+      "Travel through the history of Ayurveda, explore ancient Indian medical texts, discover legendary scholars and experience Kerala's Ashtavaidya heritage.",
     descriptionMl:
-      "ജീവശാസ്ത്രത്തെയും നിർമ്മിതബുദ്ധിയെയും ബന്ധിപ്പിക്കുന്ന ശാസ്ത്രീയ സാങ്കേതികവിദ്യകളും ഗവേഷണങ്ങളും കണ്ടെത്തൂ.",
-    badge: "Innovations Showcase",
-    badgeMl: "നൂതന സാങ്കേതികവിദ്യകൾ",
-    iconName: "biotech-nodes",
-    accentColor: "#073B30",
+      "ആയുർവേദത്തിന്റെ ചരിത്രത്തിലൂടെ സഞ്ചരിക്കൂ, പ്രാചീന ഗ്രന്ഥങ്ങളും പ്രഗത്ഭ ആചാര്യന്മാരെയും അഷ്ടവൈദ്യ പാരമ്പര്യവും കണ്ടെത്തൂ.",
+    badge: "Digital History Museum",
+    badgeMl: "ചരിത്ര മ്യൂസിയം",
+    iconName: "book-open",
+    accentColor: "#D4AF37",
     features: [
-      "Interactive directory of incubated Bio-AI startups",
-      "High-impact Kerala-led research papers and patents",
-      "Interactive spice genomics and crop-resilience maps",
-      "Live hardware prototype demos and video reels"
+      "Chronological journey across 6 historical medical epochs",
+      "Interactive 8-branch Ashtanga Ayurveda knowledge wheel",
+      "Interactive parchment map of 8 ancient Indian universities",
+      "Deep dive into Kerala's 8 Ashtavaidya lineages and Gurukula apprenticeship"
     ],
-    status: "coming_soon",
-    phase: "Huddle Global Showcase"
+    status: "ready",
+    phase: "Interactive Historical Exhibition"
   },
   {
     id: "ecosystem",
