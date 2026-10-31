@@ -227,14 +227,14 @@ export const KIOSK_CATEGORY_ILLUSTRATIONS = {
   arogyamithran: {
     id: "cat-arogyamithran",
     name: "Meet VEDA",
-    path: "/images/veda/01-young-ayurveda-researcher-guide.jpg",
+    path: "/images/veda/card-meet-veda.jpg",
     category: "category",
     purpose: "Homepage navigation card: Meet VEDA, young Ayurveda research guide",
   },
   vedaverse: {
     id: "cat-vedaverse",
     name: "VedaVerse Flora Library",
-    path: "/images/veda/02-spice-garden-researcher.jpg",
+    path: "/images/veda/card-vedaverse.jpg",
     category: "category",
     purpose: "Homepage navigation card: VedaVerse 100 plant and spice repository",
   },
@@ -248,7 +248,7 @@ export const KIOSK_CATEGORY_ILLUSTRATIONS = {
   ecosystem: {
     id: "cat-ecosystem",
     name: "Connect with the Ecosystem",
-    path: "/images/veda/04-ayurveda-research-collaboration.jpg",
+    path: "/images/veda/card-ecosystem.jpg",
     category: "category",
     purpose: "Homepage navigation card: KSUM & Digital Hub innovation community and research collaboration",
   },
