@@ -198,8 +198,11 @@
   },
   {
     "pageNumber": 26,
-    "status": "missing",
-    "filename": "page-26.png"
+    "status": "present",
+    "filename": "page-26.png",
+    "webp": "page-26.webp",
+    "dimensions": "1024x1536",
+    "aspectRatio": "1.50"
   },
   {
     "pageNumber": 27,
