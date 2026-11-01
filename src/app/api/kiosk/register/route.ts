@@ -35,23 +35,21 @@ export async function POST(req: NextRequest) {
       errors.mobile = "Please enter a valid 10-digit mobile number.";
     }
 
-    // 3. Email Address Validation (Required)
+    // 3. Email Address Validation (Optional)
     const email = (body.email || "").trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-    if (!email) {
-      errors.email = "Email address is required.";
-    } else if (!emailRegex.test(email)) {
-      errors.email = "Please enter a valid email address.";
+    if (email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      if (!emailRegex.test(email)) {
+        errors.email = "Please enter a valid email address.";
+      }
     }
 
     // 4. Designation & Organisation (Optional, sanitized)
     const designation = (body.designation || "").trim().slice(0, 100);
     const organisation = (body.organisation || "").trim().slice(0, 100);
 
-    // 5. Consent Validation (Strictly Required)
-    if (body.consent !== true) {
-      errors.consent = "Consent is required to continue.";
-    }
+    // 5. Consent Validation (Default implied consent for kiosk challenge)
+    const consent = body.consent !== false;
 
     // Return validation errors if any
     if (Object.keys(errors).length > 0) {
@@ -77,7 +75,7 @@ export async function POST(req: NextRequest) {
       email,
       designation,
       organisation,
-      consent: true,
+      consent,
       language: body.language === "ml" ? "ml" : "en",
       registeredAt: new Date().toISOString(),
     });

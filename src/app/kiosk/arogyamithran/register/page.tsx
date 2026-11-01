@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowLeft, User, Phone, Mail, Award, Building2, AlertCircle } from "lucide-react";
+import { ArrowLeft, User, Phone, AlertCircle } from "lucide-react";
 import KioskSubHeader from "@/components/kiosk/KioskSubHeader";
 import PrivacyNoticeModal from "@/components/kiosk/PrivacyNoticeModal";
 import { useArogyamithranLanguage } from "@/components/kiosk/ArogyamithranContext";
@@ -14,19 +14,11 @@ import { KioskLanguage } from "@/components/kiosk/types";
 interface FormState {
   fullName: string;
   mobile: string;
-  email: string;
-  designation: string;
-  organisation: string;
-  consentPrivacy: boolean;
-  consentChallenge: boolean;
 }
 
 interface FormErrors {
   fullName?: string;
   mobile?: string;
-  email?: string;
-  consentPrivacy?: string;
-  consentChallenge?: string;
   general?: string;
 }
 
@@ -54,18 +46,13 @@ function RegisterContent() {
   const [formData, setFormData] = useState<FormState>({
     fullName: "",
     mobile: "",
-    email: "",
-    designation: "",
-    organisation: "",
-    consentPrivacy: false,
-    consentChallenge: false,
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
-  const handleChange = (field: keyof FormState, value: string | boolean) => {
+  const handleChange = (field: keyof FormState, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
     if (errors[field as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
@@ -89,21 +76,6 @@ function RegisterContent() {
       newErrors.mobile = isMl ? "സാധുവായ 10 അക്ക മൊബൈൽ നമ്പർ നൽകുക." : "Enter a valid 10-digit Indian mobile.";
     }
 
-    const email = formData.email.trim();
-    if (!email) {
-      newErrors.email = isMl ? "ഇമെയിൽ വിലാസം നൽകുക." : "Email address is required.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = isMl ? "സാധുവായ ഇമെയിൽ നൽകുക." : "Enter a valid email address.";
-    }
-
-    if (!formData.consentPrivacy) {
-      newErrors.consentPrivacy = isMl ? "സമ്മതം നൽകേണ്ടതുണ്ട്." : "You must agree to the privacy notice.";
-    }
-
-    if (!formData.consentChallenge) {
-      newErrors.consentChallenge = isMl ? "സമ്മതം നൽകേണ്ടതുണ്ട്." : "Please confirm your consent.";
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -123,10 +95,7 @@ function RegisterContent() {
         body: JSON.stringify({
           fullName: formData.fullName.trim(),
           mobile: formData.mobile.trim().replace(/\D/g, ""),
-          email: formData.email.trim().toLowerCase(),
-          designation: formData.designation.trim() || undefined,
-          organisation: formData.organisation.trim() || undefined,
-          consent: formData.consentPrivacy && formData.consentChallenge,
+          consent: true,
           language: activeLang,
         }),
       });
@@ -212,17 +181,17 @@ function RegisterContent() {
               </motion.div>
             )}
 
-            {/* Registration Form Card matching Storyboard */}
+            {/* Registration Form Card */}
             <motion.form
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               onSubmit={handleSubmit}
-              className="w-full bg-white rounded-3xl p-5 sm:p-6 shadow-xl border-2 border-[#0B5D46]/15 flex flex-col gap-3.5"
+              className="w-full bg-white rounded-3xl p-6 sm:p-7 shadow-xl border-2 border-[#0B5D46]/15 flex flex-col gap-4"
             >
               {/* Field 1: Full Name */}
               <div>
-                <label className="block text-[11px] sm:text-xs font-bold text-[#073B30] mb-1 flex items-center gap-1.5">
-                  <User className="w-3.5 h-3.5 text-[#55B96A]" />
+                <label className="block text-xs sm:text-sm font-bold text-[#073B30] mb-1.5 flex items-center gap-1.5">
+                  <User className="w-4 h-4 text-[#55B96A]" />
                   <span>{isMl ? "പൂർണ്ണനാമം *" : "Full Name *"}</span>
                 </label>
                 <input
@@ -230,26 +199,27 @@ function RegisterContent() {
                   value={formData.fullName}
                   onChange={(e) => handleChange("fullName", e.target.value)}
                   placeholder={isMl ? "നിങ്ങളുടെ പൂർണ്ണനാമം" : "Your full name"}
-                  className={`w-full h-11 px-3.5 rounded-xl border text-sm font-medium transition-all outline-none ${
+                  className={`w-full h-12 px-4 rounded-xl border text-sm sm:text-base font-medium transition-all outline-none ${
                     errors.fullName
                       ? "border-red-400 bg-red-50/30 ring-2 ring-red-200"
                       : "border-gray-200 focus:border-[#55B96A] focus:ring-2 focus:ring-[#55B96A]/20"
                   }`}
                   disabled={isSubmitting}
+                  autoFocus
                 />
                 {errors.fullName && (
-                  <p className="text-[11px] text-red-500 font-semibold mt-0.5">{errors.fullName}</p>
+                  <p className="text-[11px] text-red-500 font-semibold mt-1">{errors.fullName}</p>
                 )}
               </div>
 
               {/* Field 2: Mobile Number */}
               <div>
-                <label className="block text-[11px] sm:text-xs font-bold text-[#073B30] mb-1 flex items-center gap-1.5">
-                  <Phone className="w-3.5 h-3.5 text-[#55B96A]" />
+                <label className="block text-xs sm:text-sm font-bold text-[#073B30] mb-1.5 flex items-center gap-1.5">
+                  <Phone className="w-4 h-4 text-[#55B96A]" />
                   <span>{isMl ? "മൊബൈൽ നമ്പർ *" : "Mobile Number *"}</span>
                 </label>
                 <div className="flex gap-2">
-                  <div className="h-11 px-3 rounded-xl border border-gray-200 bg-gray-50 flex items-center gap-1 text-xs font-bold text-gray-700 shrink-0">
+                  <div className="h-12 px-3.5 rounded-xl border border-gray-200 bg-gray-50 flex items-center gap-1 text-sm font-bold text-gray-700 shrink-0">
                     <span>+91</span>
                     <span className="text-[10px] text-gray-400">▼</span>
                   </div>
@@ -259,7 +229,7 @@ function RegisterContent() {
                     value={formData.mobile}
                     onChange={(e) => handleChange("mobile", e.target.value)}
                     placeholder="98765 43210"
-                    className={`flex-1 h-11 px-3.5 rounded-xl border text-sm font-medium transition-all outline-none ${
+                    className={`flex-1 h-12 px-4 rounded-xl border text-sm sm:text-base font-medium transition-all outline-none ${
                       errors.mobile
                         ? "border-red-400 bg-red-50/30 ring-2 ring-red-200"
                         : "border-gray-200 focus:border-[#55B96A] focus:ring-2 focus:ring-[#55B96A]/20"
@@ -268,126 +238,7 @@ function RegisterContent() {
                   />
                 </div>
                 {errors.mobile && (
-                  <p className="text-[11px] text-red-500 font-semibold mt-0.5">{errors.mobile}</p>
-                )}
-              </div>
-
-              {/* Field 3: Email Address */}
-              <div>
-                <label className="block text-[11px] sm:text-xs font-bold text-[#073B30] mb-1 flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-[#55B96A]" />
-                  <span>{isMl ? "ഇമെയിൽ വിലാസം *" : "Email Address *"}</span>
-                </label>
-                <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => handleChange("email", e.target.value)}
-                  placeholder="yourname@example.com"
-                  className={`w-full h-11 px-3.5 rounded-xl border text-sm font-medium transition-all outline-none ${
-                    errors.email
-                      ? "border-red-400 bg-red-50/30 ring-2 ring-red-200"
-                      : "border-gray-200 focus:border-[#55B96A] focus:ring-2 focus:ring-[#55B96A]/20"
-                  }`}
-                  disabled={isSubmitting}
-                />
-                {errors.email && (
-                  <p className="text-[11px] text-red-500 font-semibold mt-0.5">{errors.email}</p>
-                )}
-              </div>
-
-              {/* Field 4: Designation (Optional) */}
-              <div>
-                <label className="block text-[11px] sm:text-xs font-bold text-[#073B30] mb-1 flex items-center gap-1.5">
-                  <Award className="w-3.5 h-3.5 text-gray-400" />
-                  <span>{isMl ? "പദവി (ഐച്ഛികം)" : "Designation"}</span>
-                </label>
-                <input
-                  type="text"
-                  value={formData.designation}
-                  onChange={(e) => handleChange("designation", e.target.value)}
-                  placeholder={isMl ? "നിങ്ങളുടെ പദവി (ഐച്ഛികം)" : "Your designation (optional)"}
-                  className="w-full h-11 px-3.5 rounded-xl border border-gray-200 focus:border-[#55B96A] focus:ring-2 focus:ring-[#55B96A]/20 text-sm font-medium transition-all outline-none"
-                  disabled={isSubmitting}
-                />
-              </div>
-
-              {/* Field 5: Organisation (Optional) */}
-              <div>
-                <label className="block text-[11px] sm:text-xs font-bold text-[#073B30] mb-1 flex items-center gap-1.5">
-                  <Building2 className="w-3.5 h-3.5 text-gray-400" />
-                  <span>{isMl ? "സ്ഥാപനം (ഐച്ഛികം)" : "Organisation"}</span>
-                </label>
-                <input
-                  type="text"
-                  value={formData.organisation}
-                  onChange={(e) => handleChange("organisation", e.target.value)}
-                  placeholder={isMl ? "നിങ്ങളുടെ സ്ഥാപനം (ഐച്ഛികം)" : "Your organisation (optional)"}
-                  className="w-full h-11 px-3.5 rounded-xl border border-gray-200 focus:border-[#55B96A] focus:ring-2 focus:ring-[#55B96A]/20 text-sm font-medium transition-all outline-none"
-                  disabled={isSubmitting}
-                />
-              </div>
-
-              {/* Checkbox 1: Privacy notice & Email result */}
-              <div className="pt-1">
-                <label className="flex items-start gap-2.5 cursor-pointer touch-manipulation">
-                  <input
-                    type="checkbox"
-                    checked={formData.consentPrivacy}
-                    onChange={(e) => handleChange("consentPrivacy", e.target.checked)}
-                    className="mt-0.5 w-4 h-4 rounded text-[#0B5D46] focus:ring-[#55B96A] accent-[#0B5D46] shrink-0"
-                    disabled={isSubmitting}
-                  />
-                  <span className={`text-[11px] sm:text-xs text-[#244B3F] font-medium leading-relaxed ${isMl ? "font-malayalam" : ""}`}>
-                    {isMl ? (
-                      <>
-                        ഞാൻ{" "}
-                        <button
-                          type="button"
-                          onClick={() => setIsPrivacyModalOpen(true)}
-                          className="text-[#0B5D46] underline font-bold"
-                        >
-                          സ്വകാര്യതാ നയം
-                        </button>{" "}
-                        വായിച്ചു സമ്മതിക്കുന്നു. ഫലം ഇമെയിലിൽ സ്വീകരിക്കാൻ സമ്മതിക്കുന്നു.
-                      </>
-                    ) : (
-                      <>
-                        I agree to the{" "}
-                        <button
-                          type="button"
-                          onClick={() => setIsPrivacyModalOpen(true)}
-                          className="text-[#0B5D46] underline font-bold"
-                        >
-                          privacy notice
-                        </button>{" "}
-                        and consent to receive my quiz result via email.
-                      </>
-                    )}
-                  </span>
-                </label>
-                {errors.consentPrivacy && (
-                  <p className="text-[11px] text-red-500 font-semibold mt-0.5 pl-6">{errors.consentPrivacy}</p>
-                )}
-              </div>
-
-              {/* Checkbox 2: Limited Purpose */}
-              <div>
-                <label className="flex items-start gap-2.5 cursor-pointer touch-manipulation">
-                  <input
-                    type="checkbox"
-                    checked={formData.consentChallenge}
-                    onChange={(e) => handleChange("consentChallenge", e.target.checked)}
-                    className="mt-0.5 w-4 h-4 rounded text-[#0B5D46] focus:ring-[#55B96A] accent-[#0B5D46] shrink-0"
-                    disabled={isSubmitting}
-                  />
-                  <span className={`text-[11px] sm:text-xs text-[#244B3F] font-medium leading-relaxed ${isMl ? "font-malayalam" : ""}`}>
-                    {isMl
-                      ? "എന്റെ വിവരങ്ങൾ ഈ ബയോ-എഐ ചലഞ്ചിനായി മാത്രം ഉപയോഗിക്കുമെന്ന് ഞാൻ മനസ്സിലാക്കുന്നു."
-                      : "I understand that my information will be used only for this Bio-AI Challenge."}
-                  </span>
-                </label>
-                {errors.consentChallenge && (
-                  <p className="text-[11px] text-red-500 font-semibold mt-0.5 pl-6">{errors.consentChallenge}</p>
+                  <p className="text-[11px] text-red-500 font-semibold mt-1">{errors.mobile}</p>
                 )}
               </div>
 
@@ -397,7 +248,7 @@ function RegisterContent() {
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={isSubmitting}
-                className="w-full min-h-[50px] sm:min-h-[54px] mt-2 rounded-2xl bg-gradient-to-r from-[#073B30] to-[#0B5D46] hover:from-[#0B5D46] hover:to-[#55B96A] text-[#FAFAF7] font-black text-base sm:text-lg shadow-lg border border-white/20 flex items-center justify-center gap-2 touch-manipulation active:scale-95 transition-all disabled:opacity-60"
+                className="w-full min-h-[52px] sm:min-h-[56px] mt-2 rounded-2xl bg-gradient-to-r from-[#073B30] to-[#0B5D46] hover:from-[#0B5D46] hover:to-[#55B96A] text-[#FAFAF7] font-black text-base sm:text-lg shadow-lg border border-white/20 flex items-center justify-center gap-2 touch-manipulation active:scale-95 transition-all disabled:opacity-60 cursor-pointer"
               >
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">
@@ -413,6 +264,33 @@ function RegisterContent() {
                   </>
                 )}
               </motion.button>
+
+              {/* Subtle privacy note */}
+              <p className="text-[11px] text-center text-[#244B3F]/70 font-medium pt-1">
+                {isMl ? (
+                  <>
+                    വിവരങ്ങൾ ബയോ-എഐ ചലഞ്ചിനായി മാത്രം ഉപയോഗിക്കും.{" "}
+                    <button
+                      type="button"
+                      onClick={() => setIsPrivacyModalOpen(true)}
+                      className="text-[#0B5D46] underline font-semibold hover:text-[#55B96A]"
+                    >
+                      സ്വകാര്യതാ നയം
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    Your details will only be used for this Bio-AI Challenge.{" "}
+                    <button
+                      type="button"
+                      onClick={() => setIsPrivacyModalOpen(true)}
+                      className="text-[#0B5D46] underline font-semibold hover:text-[#55B96A]"
+                    >
+                      Privacy Notice
+                    </button>
+                  </>
+                )}
+              </p>
             </motion.form>
 
             {/* Back to Home Button */}

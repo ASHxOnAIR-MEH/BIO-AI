@@ -150,7 +150,7 @@ export interface EmailDeliveryInfo {
 export interface VisitorRegistrationRecord {
   registrationId: string;
   fullName: string;
-  email: string;
+  email?: string;
   mobile: string;
   designation?: string;
   organisation?: string;

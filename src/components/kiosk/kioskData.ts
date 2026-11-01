@@ -50,26 +50,26 @@ export const KIOSK_CARDS: KioskNavigationCard[] = [
   },
   {
     id: "innovations",
-    title: "Ayurveda Through the Ages",
-    titleMl: "ആയുർവേദം യുഗങ്ങളിലൂടെ",
-    subtitle: "Indian Medical History & Classical Texts",
-    subtitleMl: "ഭാരതീയ വൈദ്യ ചരിത്രവും പ്രാചീന ഗ്രന്ഥങ്ങളും",
+    title: "VEDA – The Lost Leaves",
+    titleMl: "വേദ – ദ ലോസ്റ്റ് ലീവ്സ്",
+    subtitle: "An Interactive Illustrated Journey Through the History of Ayurveda",
+    subtitleMl: "ആയുർവേദ ചരിത്രത്തിലൂടെ ഒരു സചിത്ര ഇന്ററാക്ടീവ് യാത്ര",
     description:
-      "Travel through the history of Ayurveda, explore ancient Indian medical texts, discover legendary scholars and experience Kerala's Ashtavaidya heritage.",
+      "Join Veda on a journey through ancient Indian medical texts, legendary scholars, and the history of Ayurveda across 30 illustrated manga pages.",
     descriptionMl:
-      "ആയുർവേദത്തിന്റെ ചരിത്രത്തിലൂടെ സഞ്ചരിക്കൂ, പ്രാചീന ഗ്രന്ഥങ്ങളും പ്രഗത്ഭ ആചാര്യന്മാരെയും അഷ്ടവൈദ്യ പാരമ്പര്യവും കണ്ടെത്തൂ.",
-    badge: "Digital History Museum",
-    badgeMl: "ചരിത്ര മ്യൂസിയം",
+      "പ്രാചീന ഭാരതീയ വൈദ്യഗ്രന്ഥങ്ങളിലൂടെ, പ്രഗത്ഭ ആചാര്യന്മാരിലൂടെ, 30 ചിത്രകഥ പേജുകളിലൂടെ ആയുർവേദ ചരിത്രം അന്വേഷിക്കൂ.",
+    badge: "Interactive Storybook",
+    badgeMl: "ഇന്ററാക്ടീവ് കഥാപുസ്തകം",
     iconName: "book-open",
     accentColor: "#D4AF37",
     features: [
-      "Chronological journey across 6 historical medical epochs",
-      "Interactive 8-branch Ashtanga Ayurveda knowledge wheel",
-      "Interactive parchment map of 8 ancient Indian universities",
-      "Deep dive into Kerala's 8 Ashtavaidya lineages and Gurukula apprenticeship"
+      "30 illustrated manga-style pages",
+      "One complete Ayurveda historical adventure",
+      "Interactive digital reading experience",
+      "Volume One – Beyond the Eight Paths"
     ],
     status: "ready",
-    phase: "Interactive Historical Exhibition"
+    phase: "Interactive Storybook · 30 Pages"
   },
   {
     id: "ecosystem",

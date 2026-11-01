@@ -12,7 +12,7 @@ export default function KioskWelcome({ language }: KioskWelcomeProps) {
   const isMl = language === "ml";
 
   return (
-    <section className="relative w-full overflow-hidden isolate min-h-[380px] sm:min-h-[440px] md:aspect-[16/9] flex flex-col justify-between">
+    <section className="relative w-full overflow-hidden isolate min-h-[320px] sm:min-h-[380px] flex flex-col justify-between">
       {/* ═══════════════════════════════════════════════════════════════════
           1. KERALA STARTUP MISSION DIGITAL HUB KOCHI CAMPUS BACKGROUND
       ═══════════════════════════════════════════════════════════════════ */}
@@ -26,8 +26,8 @@ export default function KioskWelcome({ language }: KioskWelcomeProps) {
           sizes="100vw"
         />
 
-        {/* Directional gradient: darker on left behind text */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#052A22]/95 via-[#052A22]/75 to-[#052A22]/30 max-w-[70%]" />
+        {/* Directional gradient: smooth readability across background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#052A22]/95 via-[#052A22]/80 to-[#052A22]/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#052A22]/80 via-transparent to-transparent sm:hidden" />
 
         {/* Smooth fade to pale mint at bottom into the navigation cards section */}
@@ -35,55 +35,9 @@ export default function KioskWelcome({ language }: KioskWelcomeProps) {
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          2. VEDA — YOUNG AYURVEDA RESEARCHER (Right Side)
-          - Master portrait holding glowing Bio-AI holographic tablet
-          - Arched frame with soft botanical aura glow
+          2. HERO TEXT CONTENT (Left aligned)
       ═══════════════════════════════════════════════════════════════════ */}
-      <div className="absolute right-1 sm:right-4 md:right-8 bottom-2 sm:bottom-4 top-2 sm:top-4 w-[46%] sm:w-[48%] max-w-[380px] flex items-end justify-center pointer-events-none z-10">
-        {/* Botanical aura glow behind character */}
-        <div
-          className="absolute inset-x-2 bottom-4 top-8 rounded-full blur-3xl opacity-50 pointer-events-none"
-          style={{
-            background: "radial-gradient(circle, rgba(85, 185, 106, 0.5) 0%, rgba(212, 175, 55, 0.3) 50%, transparent 70%)"
-          }}
-        />
-
-        {/* Floating/breathing motion */}
-        <motion.div
-          animate={{ y: [0, -6, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="relative w-full h-full max-h-[390px] sm:max-h-[450px] flex items-end justify-center"
-        >
-          <div className="relative w-full h-[90%] rounded-3xl overflow-hidden border-2 border-[#55B96A]/40 shadow-[0_16px_40px_rgba(5,42,34,0.45)]">
-            <Image
-              src="/images/veda/01-young-ayurveda-researcher-guide.jpg"
-              alt="Veda, Young Ayurveda Researcher and Digital Heritage Guide with glowing Bio-AI tablet"
-              fill
-              priority
-              className="object-cover object-center select-none"
-              sizes="(max-width: 640px) 240px, 380px"
-            />
-            {/* Soft inner vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#052A22]/70 via-transparent to-transparent" />
-            <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-white/95">
-              <span className="text-[11px] sm:text-xs font-bold tracking-wide uppercase bg-[#052A22]/80 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/20">
-                VEDA • {isMl ? "ഗവേഷണ ഗൈഡ്" : "Research Guide"}
-              </span>
-            </div>
-          </div>
-
-          {/* Active Status Beacon */}
-          <span className="absolute top-2 right-4 sm:right-6 flex h-3.5 w-3.5 z-20">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#55B96A] opacity-75" />
-            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#55B96A] border-2 border-white" />
-          </span>
-        </motion.div>
-      </div>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          3. HERO TEXT CONTENT (Left aligned)
-      ═══════════════════════════════════════════════════════════════════ */}
-      <div className="relative z-10 w-full pt-4 sm:pt-7 px-4 sm:px-7 pb-6 sm:pb-8 flex flex-col justify-center max-w-[60%] sm:max-w-[56%]">
+      <div className="relative z-10 w-full pt-6 sm:pt-10 px-5 sm:px-8 pb-8 sm:pb-10 flex flex-col justify-center max-w-xl sm:max-w-2xl">
         {/* Main title BIO-AI */}
         <motion.h1
           initial={{ opacity: 0, y: -8 }}

@@ -403,7 +403,7 @@ export async function finalizeAndPersistResult(
 
   let emailDelivery: EmailDeliveryInfo = {
     status: "not-configured",
-    recipientEmailMasked: visitor
+    recipientEmailMasked: visitor?.email
       ? visitor.email.replace(/(.{1})(.*)(@.*)/, "$1***$3")
       : "visitor@***",
     attemptsCount: 0,

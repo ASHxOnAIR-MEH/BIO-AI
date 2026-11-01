@@ -109,17 +109,8 @@ export default function Navbar() {
               </div>
               <Link
                 href="/kiosk"
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B5D46]/10 hover:bg-[#0B5D46]/20 text-sm font-bold text-[#073B30] hover:text-[#0B5D46] transition-all border border-[#55B96A]/30 group"
+                className="inline-flex items-center px-3 py-1 rounded-full bg-[#0B5D46]/10 hover:bg-[#0B5D46]/20 text-sm font-bold text-[#073B30] hover:text-[#0B5D46] transition-all border border-[#55B96A]/30 group"
               >
-                <div className="relative w-5 h-5 rounded-full overflow-hidden bg-[#073B30] ring-1 ring-[#D4AF37] shrink-0">
-                  <Image
-                    src="/images/veda/veda-avatar.png"
-                    alt="Veda"
-                    fill
-                    className="object-cover object-center"
-                    sizes="20px"
-                  />
-                </div>
                 <span>Kiosk</span>
               </Link>
               <a
