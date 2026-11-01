@@ -41,7 +41,7 @@ export default function ArogyamithranCharacterFrame({
   else if (expression === "final") mascotExpr = "final";
   else if (expression === "encouraging") mascotExpr = "encouraging";
   else if (expression === "talking") mascotExpr = "explaining";
-  else if (expression === "listening") mascotExpr = "thinking";
+  else if (expression === "listening") mascotExpr = "attentive";
   else if (expression === "namaskaram") mascotExpr = "namaskaram";
   else if (expression === "holding_plant") mascotExpr = "holding_plant";
   else if (expression === "holding_spice") mascotExpr = "holding_spice";

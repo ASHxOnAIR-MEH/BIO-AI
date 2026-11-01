@@ -18,7 +18,7 @@ export const VEDA_EXPRESSIONS: Record<string, KioskAssetItem> = {
   hero: {
     id: "veda-hero",
     name: "Veda Hero Guide",
-    path: "/images/veda/01-young-ayurveda-researcher-guide.jpg",
+    path: "/images/veda/meet-veda-high-quality.jpg",
     category: "character",
     purpose: "Primary hero guide — Veda with glowing holographic tablet and laboratory coat",
     altTextEn: "Veda, young Indian Ayurveda researcher with lab coat and glowing Bio-AI leaf tablet",
@@ -115,6 +115,16 @@ export const VEDA_EXPRESSIONS: Record<string, KioskAssetItem> = {
     altTextMl: "വേദ - ശാന്തവും പ്രൊഫഷണലുമായ ഗവേഷണ ഭാവം",
     aspectRatio: "1:1",
   },
+  attentive: {
+    id: "veda-attentive",
+    name: "Veda Attentive",
+    path: "/images/veda/veda-attentive.png",
+    category: "character",
+    purpose: "Attentive, listening researcher pose",
+    altTextEn: "Veda listening attentively",
+    altTextMl: "വേദ - ശ്രദ്ധയോടെ വിവരങ്ങൾ സ്വീകരിക്കുന്നു",
+    aspectRatio: "1:1",
+  },
 };
 
 export const AROGYAMITHRAN_EXPRESSIONS: Record<string, KioskAssetItem> = {
@@ -130,36 +140,9 @@ export const AROGYAMITHRAN_EXPRESSIONS: Record<string, KioskAssetItem> = {
   encouraging: VEDA_EXPRESSIONS.concerned,
   final: VEDA_EXPRESSIONS.celebrating,
   celebration: VEDA_EXPRESSIONS.celebrating,
-  holding_plant: {
-    id: "veda-plant",
-    name: "Veda Holding Medicinal Plant",
-    path: "/images/veda/02-spice-garden-researcher.jpg",
-    category: "character",
-    purpose: "VedaVerse flora library and botanical wisdom",
-    altTextEn: "Veda examining fresh medicinal herbs and spices",
-    altTextMl: "വേദ - ഔഷധസസ്യങ്ങൾ പരിശോധിക്കുന്നു",
-    aspectRatio: "16:9",
-  },
-  holding_spice: {
-    id: "veda-spice",
-    name: "Veda with Kerala Spices",
-    path: "/images/veda/02-spice-garden-researcher.jpg",
-    category: "character",
-    purpose: "Spice heritage, cardamom, pepper, turmeric",
-    altTextEn: "Veda examining authentic Kerala spices",
-    altTextMl: "വേദ - കേരളീയ സുഗന്ധവ്യഞ്ജനങ്ങൾ പരിശോധിക്കുന്നു",
-    aspectRatio: "16:9",
-  },
-  reading_tablet: {
-    id: "veda-tablet",
-    name: "Veda Reviewing Holographic Data",
-    path: "/images/veda/01-young-ayurveda-researcher-guide.jpg",
-    category: "character",
-    purpose: "Bio-AI Innovations, digital botanical analysis",
-    altTextEn: "Veda analyzing Bio-AI data on glowing tablet",
-    altTextMl: "വേദ - ഡിജിറ്റൽ ബയോ-ഡാറ്റ പരിശോധിക്കുന്നു",
-    aspectRatio: "16:9",
-  },
+  holding_plant: VEDA_EXPRESSIONS.curious,
+  holding_spice: VEDA_EXPRESSIONS.curious,
+  reading_tablet: VEDA_EXPRESSIONS.thinking,
   pointing: VEDA_EXPRESSIONS.explaining,
   neutral: VEDA_EXPRESSIONS.neutral,
 };
@@ -291,6 +274,8 @@ export function getVedaAsset(expression: string): KioskAssetItem {
   if (normalized.includes("curious")) return VEDA_EXPRESSIONS.curious;
   if (normalized.includes("celeb") || normalized.includes("final")) return VEDA_EXPRESSIONS.celebrating;
   if (normalized.includes("concern") || normalized.includes("wrong") || normalized.includes("encourage")) return VEDA_EXPRESSIONS.concerned;
+  if (normalized.includes("attentive") || normalized.includes("listen")) return VEDA_EXPRESSIONS.attentive;
+  if (normalized.includes("neutral") || normalized.includes("calm")) return VEDA_EXPRESSIONS.neutral;
   return VEDA_EXPRESSIONS.welcome;
 }
 

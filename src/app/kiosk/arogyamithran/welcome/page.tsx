@@ -72,11 +72,11 @@ function WelcomeContent() {
             >
               <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-[#0B5D46] via-[#D4AF37] to-[#0B5D46] z-10" />
               <Image
-                src="/images/veda/01-young-ayurveda-researcher-guide.jpg"
-                alt="VEDA welcoming Bio-AI research guide with glowing leaf tablet"
+                src="/images/veda/veda-explaining.png"
+                alt="VEDA - Young Ayurveda Researcher Guide"
                 fill
                 priority
-                className="object-cover object-top select-none"
+                className="object-contain object-bottom select-none"
                 sizes="(max-width: 640px) 240px, 320px"
               />
               {/* Active Status Beacon */}

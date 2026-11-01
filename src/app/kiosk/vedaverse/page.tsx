@@ -169,8 +169,8 @@ export default function VedaVersePage() {
               {/* VEDA Avatar */}
               <div className="relative w-16 h-20 sm:w-20 sm:h-24 rounded-2xl bg-gradient-to-b from-[#F0F7F1]/20 to-white/5 border border-[#D4AF37]/40 p-1 flex items-end justify-center shrink-0 shadow-md">
                 <Image
-                  src="/images/veda/veda-welcome.png"
-                  alt="Veda Guide"
+                  src="/images/veda/veda-curious.png"
+                  alt="VEDA - Botanical Curiosity Guide"
                   width={80}
                   height={96}
                   className="object-contain max-h-full drop-shadow-md select-none group-hover:scale-105 transition-transform"

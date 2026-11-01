@@ -12,6 +12,7 @@ export type VedaExpression =
   | "curious"
   | "celebrating"
   | "concerned"
+  | "attentive"
   // Common aliases for quiz compatibility
   | "correct"
   | "incorrect"
@@ -59,7 +60,7 @@ export default function VedaGuide({
       case "namaskaram":
         return {
           path: "/images/veda/veda-welcome.png",
-          fullScene: "/images/veda/01-young-ayurveda-researcher-guide.jpg",
+          fullScene: "/images/veda/veda-welcome.png",
           dotBg: "bg-[#55B96A]",
           labelEn: "Research Guide",
           labelMl: "ഗവേഷണ ഗൈഡ്",
@@ -69,7 +70,7 @@ export default function VedaGuide({
       case "correct":
         return {
           path: "/images/veda/veda-happy.png",
-          fullScene: "/images/veda/02-spice-garden-researcher.jpg",
+          fullScene: "/images/veda/veda-happy.png",
           dotBg: "bg-[#55B96A]",
           labelEn: "Correct Insight!",
           labelMl: "ശരിയുത്തരം!",
@@ -78,7 +79,7 @@ export default function VedaGuide({
       case "thinking":
         return {
           path: "/images/veda/veda-thinking.png",
-          fullScene: "/images/veda/03-classical-manuscript-researcher.jpg",
+          fullScene: "/images/veda/veda-thinking.png",
           dotBg: "bg-[#0B5D46]",
           labelEn: "Analyzing Sources",
           labelMl: "വിവരങ്ങൾ പരിശോധിക്കുന്നു",
@@ -87,7 +88,7 @@ export default function VedaGuide({
       case "explaining":
         return {
           path: "/images/veda/veda-explaining.png",
-          fullScene: "/images/veda/03-classical-manuscript-researcher.jpg",
+          fullScene: "/images/veda/veda-explaining.png",
           dotBg: "bg-[#0B5D46]",
           labelEn: "Explaining Discovery",
           labelMl: "വിശദീകരിക്കുന്നു",
@@ -96,7 +97,7 @@ export default function VedaGuide({
       case "curious":
         return {
           path: "/images/veda/veda-curious.png",
-          fullScene: "/images/veda/08-medicinal-plant-field-research.jpg",
+          fullScene: "/images/veda/veda-curious.png",
           dotBg: "bg-[#D4AF37]",
           labelEn: "Botanical Curiosity",
           labelMl: "സസ്യകൗതുകം",
@@ -106,7 +107,7 @@ export default function VedaGuide({
       case "final":
         return {
           path: "/images/veda/veda-celebrating.png",
-          fullScene: "/images/veda/05-heritage-journey.jpg",
+          fullScene: "/images/veda/veda-celebrating.png",
           dotBg: "bg-[#D4AF37]",
           labelEn: "Milestone Achieved!",
           labelMl: "വിജയകരമായ നേട്ടം!",
@@ -117,17 +118,26 @@ export default function VedaGuide({
       case "encouraging":
         return {
           path: "/images/veda/veda-concerned.png",
-          fullScene: "/images/veda/09-ayurveda-laboratory-research.jpg",
+          fullScene: "/images/veda/veda-concerned.png",
           dotBg: "bg-[#D97706]",
           labelEn: "Evidence Analysis",
           labelMl: "തെളിവുകൾ പുനഃപരിശോധിക്കുക",
           aura: "rgba(217, 119, 6, 0.4)",
         };
+      case "attentive":
+        return {
+          path: "/images/veda/veda-attentive.png",
+          fullScene: "/images/veda/veda-attentive.png",
+          dotBg: "bg-[#0B5D46]",
+          labelEn: "Attentive Listener",
+          labelMl: "ശ്രദ്ധയോടെ കേൾക്കുന്നു",
+          aura: "rgba(11, 93, 70, 0.4)",
+        };
       case "neutral":
       default:
         return {
           path: "/images/veda/veda-neutral.png",
-          fullScene: "/images/veda/01-young-ayurveda-researcher-guide.jpg",
+          fullScene: "/images/veda/veda-neutral.png",
           dotBg: "bg-[#55B96A]",
           labelEn: "Ayurveda Researcher",
           labelMl: "ആയുർവേദ ഗവേഷക",
@@ -137,7 +147,7 @@ export default function VedaGuide({
   };
 
   const exp = getExpressionData();
-  const assetPath = image || exp.fullScene;
+  const assetPath = image || exp.path;
 
   // Frame dimension styling
   const getSizeStyles = () => {

@@ -224,8 +224,16 @@ function ResultsContent() {
                 {/* Left: VEDA Celebration Pose — object-contain, full figure */}
                 <div className="relative w-24 h-32 sm:w-28 sm:h-36 shrink-0 rounded-2xl overflow-hidden shadow-md border-2 border-white/80 bg-[#F0F7F1] flex items-end justify-center">
                   <Image
-                    src="/images/veda/veda-celebrating.png"
-                    alt="VEDA celebrating quiz completion"
+                    src={
+                      result.totalScore >= 60
+                        ? "/images/veda/veda-celebrating.png"
+                        : "/images/veda/veda-neutral.png"
+                    }
+                    alt={
+                      result.totalScore >= 60
+                        ? "VEDA celebrating quiz completion"
+                        : "VEDA encouraging with friendly guidance"
+                    }
                     fill
                     priority
                     className="object-contain object-bottom"

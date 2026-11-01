@@ -495,10 +495,10 @@ function ChallengeContent() {
                   <Image
                     src={
                       feedback.isCorrect
-                        ? "/images/veda/veda-celebrating.png"
+                        ? "/images/veda/veda-happy.png"
                         : "/images/veda/veda-concerned.png"
                     }
-                    alt={feedback.isCorrect ? "VEDA celebrating correct answer" : "VEDA encouraging after wrong answer"}
+                    alt={feedback.isCorrect ? "VEDA delighted with correct answer" : "VEDA encouraging after wrong answer"}
                     fill
                     priority
                     className="object-contain object-bottom select-none pointer-events-none"
