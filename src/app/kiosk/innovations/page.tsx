@@ -129,7 +129,7 @@ export default function KioskInnovationsPage() {
       </section>
 
       {/* ─── SEARCH & FILTER CONTROLS ─────────────────────────────────── */}
-      <div className="sticky top-[73px] z-30 bg-[#FAFAF7]/95 backdrop-blur-md border-b border-[#0B5D46]/10 px-4 sm:px-8 py-3.5">
+      <div className="relative z-30 bg-[#FAFAF7]/95 backdrop-blur-md border-b border-[#0B5D46]/10 px-4 sm:px-8 py-3.5">
         <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4">
           {/* Search Box */}
           <div className="relative w-full md:w-80 lg:w-96">

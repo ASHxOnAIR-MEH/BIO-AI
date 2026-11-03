@@ -1,4 +1,7 @@
-import type { Metadata } from "next";
+import styles from "./kiosk.module.css";
+import type { Metadata, Viewport } from "next";
+
+export const viewport: Viewport = { width: "device-width", initialScale: 1, interactiveWidget: "resizes-content" };
 
 export const metadata: Metadata = {
   title: "Touchscreen Kiosk | Bio-AI Centre of Excellence | KSUM",
@@ -16,7 +19,7 @@ export default function KioskLayout({
 }) {
   return (
     <ArogyamithranProvider>
-      <div className="min-h-screen bg-[#FAFAF7] text-[#132E27] flex flex-col font-sans selection:bg-[#55B96A]/25 selection:text-[#073B30]">
+      <div className={`${styles.shell} min-h-screen bg-[#FAFAF7] text-[#132E27] flex flex-col font-sans selection:bg-[#55B96A]/25 selection:text-[#073B30]`}>
         {children}
         <KioskInactivityMonitor />
       </div>

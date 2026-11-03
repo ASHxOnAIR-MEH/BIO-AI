@@ -33,7 +33,7 @@ export default function KioskPage() {
       {/* ─── MAIN PORTRAIT KIOSK CANVAS (1080x1920 Reference) ─────────────── */}
       <main
         id="kiosk-portrait-canvas"
-        className="w-full max-w-[820px] min-h-screen flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.18)] overflow-x-hidden bg-[#F0F7F2]"
+        className="w-full max-w-[1080px] min-h-screen flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.18)] overflow-x-hidden bg-[#F0F7F2]"
       >
 
         {/* ─── 1. INSTITUTIONAL HEADER (KSUM | Kerala IT | Huddle Global) ──── */}

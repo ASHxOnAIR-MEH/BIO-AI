@@ -69,8 +69,22 @@ interface ServerQuizAttempt {
   completedAt?: string;
 }
 
-// Global in-memory storage (singleton across server requests)
-const globalAttempts = new Map<string, ServerQuizAttempt>();
+// Route bundles and development reloads must share the same process-local store.
+// This fallback is not durable across restarts or multiple server instances.
+const quizGlobal = globalThis as typeof globalThis & {
+  bioAiQuizStore?: {
+    attempts: Map<string, ServerQuizAttempt>;
+    visitors: Map<string, VisitorRegistrationRecord>;
+    results: Map<string, SavedQuizResultRecord>;
+    tokens: Map<string, string>;
+    attemptResults: Map<string, string>;
+  };
+};
+const quizStore: NonNullable<typeof quizGlobal.bioAiQuizStore> = quizGlobal.bioAiQuizStore ??= {
+  attempts: new Map(), visitors: new Map(), results: new Map(),
+  tokens: new Map(), attemptResults: new Map(),
+};
+const globalAttempts = quizStore.attempts;
 
 /**
  * Initializes a new quiz attempt with 10 randomly selected distinct questions.
@@ -135,10 +149,6 @@ export function submitQuizAnswer(
     throw new Error("Active quiz attempt not found or has expired.");
   }
 
-  if (attempt.isCompleted) {
-    throw new Error("This quiz attempt has already been completed.");
-  }
-
   const question = attempt.selectedQuestions.find((q) => q.id === questionId);
   if (!question) {
     throw new Error("Question does not belong to this active quiz attempt.");
@@ -164,6 +174,10 @@ export function submitQuizAnswer(
       totalQuestions: 10,
       message: "Answer already submitted for this question.",
     };
+  }
+
+  if (attempt.isCompleted) {
+    throw new Error("This quiz attempt has already been completed.");
   }
 
   const isCorrect = selectedOptionIndex === question.correct_option_index;
@@ -312,10 +326,10 @@ export function getOngoingAttemptState(attemptId: string): {
 
 // ─── Step 5: Visitor Registry, Result Persistence, QR & Tokens ──────────────
 
-const globalVisitors = new Map<string, VisitorRegistrationRecord>();
-const globalSavedResults = new Map<string, SavedQuizResultRecord>();
-const tokenToResultMap = new Map<string, string>();
-const attemptToResultMap = new Map<string, string>();
+const globalVisitors = quizStore.visitors;
+const globalSavedResults = quizStore.results;
+const tokenToResultMap = quizStore.tokens;
+const attemptToResultMap = quizStore.attemptResults;
 
 export function saveVisitorRegistration(record: VisitorRegistrationRecord): void {
   globalVisitors.set(record.registrationId, record);

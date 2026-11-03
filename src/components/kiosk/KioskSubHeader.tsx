@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { KioskLanguage } from "./types";
-import { KIOSK_BRANDING } from "@/lib/kioskAssets";
+import KioskBranding from "./KioskBranding";
 
 interface KioskSubHeaderProps {
   language?: KioskLanguage;
@@ -30,72 +29,14 @@ export default function KioskSubHeader({
   const isMl = language === "ml";
 
   return (
-    <header className="w-full bg-[#073B30]/95 backdrop-blur-md border-b border-[#0B5D46]/30 sticky top-0 z-40 shadow-sm transition-colors">
-      <div className="max-w-[820px] mx-auto px-3 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-4">
-        {/* ─── DEDICATED INSTITUTIONAL BRANDING PILL (KSUM | Kerala IT | Huddle Global) ─── */}
-        <div className="flex items-center gap-2 sm:gap-3 bg-white rounded-full px-3 sm:px-4 py-1 sm:py-1.5 border border-white/20 shadow-xs">
-          {/* 1. Official Kerala Startup Mission (KSUM) Logo */}
-          <div className="flex items-center shrink-0">
-            <Image
-              src={KIOSK_BRANDING.ksum.path}
-              alt={isMl ? KIOSK_BRANDING.ksum.altTextMl : KIOSK_BRANDING.ksum.altTextEn}
-              width={140}
-              height={45}
-              priority
-              className="h-5 sm:h-7 w-auto object-contain select-none"
-            />
-          </div>
+    <header className="kiosk-header w-full bg-[#073B30]/95 backdrop-blur-md border-b border-[#0B5D46]/30 sticky top-0 z-40 shadow-sm transition-colors">
+      <div className="kiosk-header-inner">
+        <KioskBranding language={language} />
 
-          <div className="h-4 sm:h-5 w-px bg-gray-200 shrink-0" />
-
-          {/* 2. Official Kerala IT Logo */}
-          <div className="flex items-center shrink-0">
-            <Image
-              src={KIOSK_BRANDING.keralaIt.path}
-              alt={isMl ? KIOSK_BRANDING.keralaIt.altTextMl : KIOSK_BRANDING.keralaIt.altTextEn}
-              width={130}
-              height={40}
-              priority
-              className="h-4.5 sm:h-6 w-auto object-contain select-none"
-            />
-          </div>
-
-          <div className="h-4 sm:h-5 w-px bg-gray-200 shrink-0" />
-
-          {/* 3. Official Huddle Global Logo */}
-          <div className="flex items-center shrink-0">
-            <Image
-              src={KIOSK_BRANDING.huddleGlobal.path}
-              alt={isMl ? KIOSK_BRANDING.huddleGlobal.altTextMl : KIOSK_BRANDING.huddleGlobal.altTextEn}
-              width={120}
-              height={40}
-              priority
-              className="h-5 sm:h-7 w-auto object-contain select-none"
-            />
-          </div>
-        </div>
-
-        {/* ─── RIGHT CONTROLS: VEDA AVATAR / STEP BADGE / BACK BUTTON ─── */}
-        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
-          {/* VEDA Guide Avatar */}
-          <Link
-            href="/kiosk/arogyamithran/language"
-            className="flex items-center gap-1.5 p-0.5 rounded-full hover:bg-white/10 transition-colors"
-            title={isMl ? "വേദ" : "Veda Guide"}
-          >
-            <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden bg-gradient-to-b from-[#0B5D46] to-[#073B30] ring-2 ring-[#D4AF37] shadow-xs shrink-0">
-              <Image
-                src="/images/veda/veda-avatar.png"
-                alt="Veda"
-                fill
-                className="object-cover object-center"
-                sizes="32px"
-              />
-            </div>
-          </Link>
-
+        {/* ─── RIGHT CONTROLS: STEP BADGE / BACK BUTTON ─── */}
+        <div className="kiosk-header-controls">
           {currentStepBadge && (
-            <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-[11px] font-bold text-[#DDEFE3] border border-white/15">
+            <div className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-[11px] font-bold text-[#DDEFE3] border border-white/15">
               <span className="w-1.5 h-1.5 rounded-full bg-[#55B96A] animate-pulse" />
               <span>{isMl ? (currentStepBadgeMl || currentStepBadge) : currentStepBadge}</span>
             </div>

@@ -37,7 +37,7 @@ function WelcomeContent() {
 
   return (
     <div className="min-h-screen w-full bg-[#F0F7F2] text-[#132E27] relative flex flex-col justify-between items-center selection:bg-[#55B96A]/25 overflow-x-hidden">
-      <main className="w-full max-w-[820px] min-h-screen flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.18)] overflow-hidden bg-[#F0F7F2]">
+      <main className="w-full max-w-[1080px] min-h-screen flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.18)] overflow-hidden bg-[#F0F7F2]">
         {/* 1. Header with official KSUM | Kerala IT | Huddle Global branding */}
         <KioskSubHeader
           language={activeLang}
@@ -115,7 +115,7 @@ function WelcomeContent() {
             </div>
 
             {/* 4 Feature Badges (Learn, Play, Discover, Innovate) */}
-            <div className="w-full grid grid-cols-4 gap-2 sm:gap-3">
+            <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
               {/* Learn */}
               <div className="bg-white/95 rounded-2xl p-2.5 sm:p-3 border border-[#0B5D46]/15 shadow-sm flex flex-col items-center justify-center text-center">
                 <div className="w-8 h-8 rounded-full bg-emerald-50 text-[#0B5D46] flex items-center justify-center mb-1">

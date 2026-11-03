@@ -1,14 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { KioskLanguage, VedaVerseCategory } from "@/components/kiosk/types";
 import { getAllPlants, getCategoriesWithCounts } from "@/lib/vedaverseEngine";
 import PlantCard from "@/components/kiosk/vedaverse/PlantCard";
 import KioskSubHeader from "@/components/kiosk/KioskSubHeader";
 import KioskFooter from "@/components/kiosk/KioskFooter";
-import { Gamepad2, ArrowRight } from "lucide-react";
 
 export default function VedaVersePage() {
   const [language, setLanguage] = useState<KioskLanguage>(() => {
@@ -96,7 +93,7 @@ export default function VedaVersePage() {
       />
 
       {/* ─── FLIPKART-STYLE STORE TOP BAR ──────────────────────────────────────── */}
-      <div className="bg-white border-b border-gray-200 sticky top-14 sm:top-16 z-30 shadow-xs">
+      <div className="bg-white border-b border-gray-200 relative z-30 shadow-xs">
         <div className="max-w-[1440px] mx-auto px-3 sm:px-6 py-3 sm:py-4">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
             <div>
@@ -155,53 +152,6 @@ export default function VedaVersePage() {
 
       {/* ─── FLIPKART PRODUCT LISTING GRID ─────────────────────────────────────── */}
       <main className="max-w-[1440px] mx-auto px-3 sm:px-6 py-4 sm:py-6 flex-1 w-full">
-        {/* ─── FEATURED SPICE QUEST INTERACTIVE GAME BANNER ───────────────────── */}
-        <div className="mb-6">
-          <Link
-            href="/kiosk/vedaverse/spice-quest"
-            className="w-full bg-gradient-to-r from-[#072820] via-[#0A382C] to-[#041D16] text-[#FAF7EE] rounded-3xl p-5 sm:p-7 border-2 border-[#D4AF37]/60 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col md:flex-row items-center justify-between gap-5 group active:scale-[0.99] touch-manipulation focus:outline-none focus:ring-4 focus:ring-[#D4AF37]/30 relative overflow-hidden"
-          >
-            {/* Ambient Background Glow */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-[#D4AF37]/15 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#10B981]/15 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="flex items-center gap-4 sm:gap-6 relative z-10">
-              {/* VEDA Avatar */}
-              <div className="relative w-16 h-20 sm:w-20 sm:h-24 rounded-2xl bg-gradient-to-b from-[#F0F7F1]/20 to-white/5 border border-[#D4AF37]/40 p-1 flex items-end justify-center shrink-0 shadow-md">
-                <Image
-                  src="/images/veda/veda-curious.png"
-                  alt="VEDA - Botanical Curiosity Guide"
-                  width={80}
-                  height={96}
-                  className="object-contain max-h-full drop-shadow-md select-none group-hover:scale-105 transition-transform"
-                />
-              </div>
-
-              {/* Banner Text */}
-              <div className="text-left">
-                <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#D4AF37]/20 text-[#D4AF37] text-[10px] sm:text-xs font-black uppercase tracking-wider mb-1.5 border border-[#D4AF37]/30">
-                  <Gamepad2 className="w-3.5 h-3.5 text-[#F59E0B]" />
-                  <span>{isMl ? "ഇന്ററാക്ടീവ് പസിൽ ഗെയിം" : "Interactive Puzzle Game"}</span>
-                </div>
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif font-black text-white group-hover:text-[#F4DE97] transition-colors leading-tight">
-                  SPICE QUEST – {isMl ? "ആയുർവേദത്തിലെ ആറ് രഹസ്യങ്ങൾ" : "The Six Secrets of Ayurveda"}
-                </h2>
-                <p className="text-xs sm:text-sm text-white/80 line-clamp-2 mt-1 max-w-2xl leading-relaxed">
-                  {isMl
-                    ? "6 ലെവലുകളിലൂടെ കേരളീയ സുഗന്ധവ്യഞ്ജനങ്ങളെ തിരിച്ചറിയുക, സസ്യഭാഗങ്ങൾ പൊരുത്തപ്പെടുത്തുക, മെമ്മറി ഗ്രിഡ് ജയിക്കുക, സംസ്കൃത നാമങ്ങളും ജിഗ്‌സോ പസിലും വെളിപ്പെടുത്തുക!"
-                    : "Solve 6 progressive challenges: identify mysterious spices, match botanical organs, conquer the 3x4 memory grid, match classical Sanskrit codices, assemble the jigsaw puzzle, and face the Grand Master!"}
-                </p>
-              </div>
-            </div>
-
-            {/* Action Button */}
-            <div className="shrink-0 flex items-center gap-2.5 text-xs sm:text-sm font-black text-[#072820] bg-gradient-to-r from-[#D4AF37] to-[#F59E0B] px-6 py-3.5 rounded-full shadow-lg group-hover:brightness-110 transition-all relative z-10">
-              <span>{isMl ? "കളിക്കൂ" : "PLAY SPICE QUEST"}</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </div>
-          </Link>
-        </div>
-
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5">
           {filteredPlants.map((plant) => (
             <PlantCard key={plant.id} plant={plant} isMl={isMl} />

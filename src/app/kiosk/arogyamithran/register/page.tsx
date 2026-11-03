@@ -121,7 +121,7 @@ function RegisterContent() {
 
   return (
     <div className="min-h-screen w-full bg-[#F0F7F2] text-[#132E27] relative flex flex-col justify-between items-center selection:bg-[#55B96A]/25 overflow-x-hidden">
-      <main className="w-full max-w-[820px] min-h-screen flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.18)] overflow-hidden bg-[#F0F7F2]">
+      <main className="w-full max-w-[1080px] min-h-screen flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.18)] overflow-hidden bg-[#F0F7F2]">
         {/* 1. Header with official KSUM | Kerala IT | Huddle Global branding */}
         <KioskSubHeader
           language={activeLang}
@@ -205,7 +205,6 @@ function RegisterContent() {
                       : "border-gray-200 focus:border-[#55B96A] focus:ring-2 focus:ring-[#55B96A]/20"
                   }`}
                   disabled={isSubmitting}
-                  autoFocus
                 />
                 {errors.fullName && (
                   <p className="text-[11px] text-red-500 font-semibold mt-1">{errors.fullName}</p>
@@ -225,11 +224,13 @@ function RegisterContent() {
                   </div>
                   <input
                     type="tel"
+                    inputMode="numeric"
+                    autoComplete="tel-national"
                     maxLength={10}
                     value={formData.mobile}
                     onChange={(e) => handleChange("mobile", e.target.value)}
                     placeholder="98765 43210"
-                    className={`flex-1 h-12 px-4 rounded-xl border text-sm sm:text-base font-medium transition-all outline-none ${
+                    className={`flex-1 min-w-0 w-full h-14 px-4 rounded-xl border text-sm sm:text-base font-medium transition-all outline-none ${
                       errors.mobile
                         ? "border-red-400 bg-red-50/30 ring-2 ring-red-200"
                         : "border-gray-200 focus:border-[#55B96A] focus:ring-2 focus:ring-[#55B96A]/20"

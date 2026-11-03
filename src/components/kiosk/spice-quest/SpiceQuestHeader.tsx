@@ -22,7 +22,7 @@ export default function SpiceQuestHeader() {
 
   return (
     <header className="sticky top-0 z-40 w-full bg-[#072820]/95 backdrop-blur-md border-b border-[#D4AF37]/30 text-[#FAF7EE] shadow-lg">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between gap-2 sm:gap-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3.5 flex flex-wrap items-center justify-between gap-3">
         {/* Left: Back / Exit Navigation */}
         <div className="flex items-center gap-2">
           {state.currentView !== "landing" ? (
@@ -64,7 +64,7 @@ export default function SpiceQuestHeader() {
           </Link>
 
           {/* Title Branding */}
-          <div className="hidden md:flex flex-col ml-1">
+          <div className="hidden xl:flex flex-col ml-1">
             <div className="flex items-center gap-1.5">
               <span className="text-[#D4AF37] font-black text-xs uppercase tracking-wider">
                 Spice Quest
@@ -78,7 +78,7 @@ export default function SpiceQuestHeader() {
         </div>
 
         {/* Center: 6 Level Indicators */}
-        <div className="flex items-center gap-1 sm:gap-1.5">
+        <div className="kiosk-level-nav flex flex-wrap items-center justify-center gap-2">
           {SPICE_QUEST_LEVELS.map((lvl) => {
             const progress = state.levels[lvl.levelNumber];
             const isCompleted = progress.status === "completed";

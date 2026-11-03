@@ -26,8 +26,8 @@ export default function ArogyamithranLanguagePage() {
 
   return (
     <div className="min-h-screen w-full bg-[#F0F7F2] text-[#132E27] relative flex flex-col justify-between items-center selection:bg-[#55B96A]/25 overflow-x-hidden">
-      {/* ── MAIN KIOSK CONTAINER (max-w-[820px] portrait kiosk reference) ── */}
-      <main className="w-full max-w-[820px] min-h-screen flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.18)] overflow-hidden bg-[#F0F7F2]">
+      {/* ── MAIN KIOSK CONTAINER (max-w-[1080px] portrait kiosk reference) ── */}
+      <main className="w-full max-w-[1080px] min-h-screen flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.18)] overflow-hidden bg-[#F0F7F2]">
         {/* 1. Header with official KSUM | Kerala IT | Huddle Global branding */}
         <KioskSubHeader
           language={selected || "en"}

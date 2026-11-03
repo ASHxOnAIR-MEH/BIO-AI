@@ -128,6 +128,7 @@ function ChallengeContent() {
   const [timeLeft, setTimeLeft] = useState(QUESTION_TIME_LIMIT);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const submittedByTimerRef = useRef(false);
+  const submissionInFlight = useRef(false);
 
   // Load questions on mount
   useEffect(() => {
@@ -172,12 +173,13 @@ function ChallengeContent() {
   // Submit answer handler
   const handleSubmitAnswer = useCallback(
     async (optionIndex: number | null, isTimedOut = false) => {
-      if (isSubmitting) return;
+      if (submissionInFlight.current || feedback !== null) return;
       const finalOption = optionIndex ?? -1;
       const currentQ = questions[currentIndex];
       if (!currentQ) return;
       if (isTimedOut && feedback !== null) return;
 
+      submissionInFlight.current = true;
       setIsSubmitting(true);
       setErrorMessage(null);
 
@@ -192,54 +194,39 @@ function ChallengeContent() {
           }),
         });
         const data = await response.json();
-        if (!response.ok || !data.success) throw new Error(data.error || "Failed to submit answer.");
+        if (!response.ok || !data.success) throw new Error(data.message || data.error || "Failed to submit answer.");
         setFeedback(data);
         setScore(data.currentScore);
         if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
       } catch (err: unknown) {
         setErrorMessage(err instanceof Error ? err.message : "Submission error.");
       } finally {
+        submissionInFlight.current = false;
         setIsSubmitting(false);
       }
     },
-    [isSubmitting, questions, currentIndex, feedback, attemptId]
+    [questions, currentIndex, feedback, attemptId]
   );
 
-  // Start/reset countdown timer for each new question
+  // Keep state updates pure: timeout submission runs in an effect, not an updater.
   useEffect(() => {
-    if (loading || !questions.length || feedback !== null) return;
-
-    if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
-    submittedByTimerRef.current = false;
-
+    if (loading || !questions.length || feedback !== null || isSubmitting || timeLeft <= 0) return;
     timerRef.current = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
-          clearInterval(timerRef.current!);
-          timerRef.current = null;
-          if (!submittedByTimerRef.current) {
-            submittedByTimerRef.current = true;
-            handleSubmitAnswer(null, true);
-          }
-          return 0;
-        }
-        return prev - 1;
-      });
+      setTimeLeft((previous) => Math.max(0, previous - 1));
     }, 1000);
-
     return () => {
-      if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIndex, loading, questions.length]);
-
-  // Stop timer when feedback shown
-  useEffect(() => {
-    if (feedback !== null && timerRef.current) {
-      clearInterval(timerRef.current);
+      if (timerRef.current) clearInterval(timerRef.current);
       timerRef.current = null;
+    };
+  }, [loading, questions.length, feedback, isSubmitting, timeLeft]);
+
+  useEffect(() => {
+    if (timeLeft === 0 && !loading && !isSubmitting && !feedback &&
+        questions.length && !submittedByTimerRef.current) {
+      submittedByTimerRef.current = true;
+      void handleSubmitAnswer(null, true);
     }
-  }, [feedback]);
+  }, [timeLeft, loading, isSubmitting, feedback, questions.length, handleSubmitAnswer]);
 
   // Next question handler
   const handleNextQuestion = () => {
@@ -248,6 +235,7 @@ function ChallengeContent() {
       setSelectedOption(null);
       setFeedback(null);
       setErrorMessage(null);
+      submittedByTimerRef.current = false;
       setTimeLeft(QUESTION_TIME_LIMIT);
     } else {
       router.push(
@@ -262,7 +250,7 @@ function ChallengeContent() {
 
   return (
     <div className="min-h-screen w-full bg-[#F0F7F2] text-[#132E27] relative flex flex-col justify-between items-center selection:bg-[#55B96A]/25 overflow-x-hidden">
-      <main className="w-full max-w-[820px] min-h-screen flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.18)] overflow-hidden bg-[#F0F7F2]">
+      <main className="w-full max-w-[1080px] min-h-screen flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.18)] overflow-hidden bg-[#F0F7F2]">
         <KioskSubHeader
           language={activeLang}
           backHref="/kiosk"
@@ -422,14 +410,19 @@ function ChallengeContent() {
                     })}
                   </div>
 
+                  {errorMessage && (
+                    <div role="alert" className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-800">
+                      {errorMessage}
+                    </div>
+                  )}
                   <motion.button
                     type="button"
                     whileHover={{ scale: selectedOption !== null ? 1.01 : 1 }}
                     whileTap={{ scale: selectedOption !== null ? 0.98 : 1 }}
-                    onClick={() => handleSubmitAnswer(selectedOption)}
-                    disabled={selectedOption === null || isSubmitting}
+                    onClick={() => handleSubmitAnswer(timeLeft === 0 ? null : selectedOption)}
+                    disabled={(selectedOption === null && timeLeft > 0) || isSubmitting}
                     className={`w-full min-h-[48px] mt-1 rounded-2xl font-black text-sm shadow-lg transition-all touch-manipulation flex items-center justify-center gap-2 ${
-                      selectedOption !== null && !isSubmitting
+                      (selectedOption !== null || timeLeft === 0) && !isSubmitting
                         ? "bg-gradient-to-r from-[#073B30] to-[#0B5D46] hover:from-[#0B5D46] hover:to-[#55B96A] text-[#FAFAF7] border border-white/20 active:scale-95"
                         : "bg-gray-200 text-gray-400 cursor-not-allowed border border-transparent shadow-none"
                     }`}
@@ -439,7 +432,7 @@ function ChallengeContent() {
                     ) : (
                       <>
                         <span className={isMl ? "font-malayalam" : ""}>
-                          {isMl ? "ഉത്തരം സമർപ്പിക്കുക" : "Submit Answer"}
+                          {errorMessage ? (isMl ? "വീണ്ടും ശ്രമിക്കുക" : "Retry Submission") : (isMl ? "ഉത്തരം സമർപ്പിക്കുക" : "Submit Answer")}
                         </span>
                         <span className="text-lg">→</span>
                       </>

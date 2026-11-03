@@ -130,17 +130,17 @@ export default function KioskCardGrid({ language }: KioskCardGridProps) {
 
                         {/* Text Group */}
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-base sm:text-lg font-black text-[#073B30] tracking-tight leading-snug group-hover:text-[#0B5D46] transition-colors truncate">
+                          <h3 className="text-base sm:text-lg font-black text-[#073B30] tracking-tight leading-snug group-hover:text-[#0B5D46] transition-colors break-words">
                             {title}
                           </h3>
-                          <p className="text-[11px] sm:text-xs font-semibold text-[#55B96A] tracking-tight truncate">
+                          <p className="text-[11px] sm:text-xs font-semibold text-[#55B96A] tracking-tight break-words">
                             {subtitle}
                           </p>
                         </div>
                       </div>
 
                       {/* Description */}
-                      <p className="text-[11px] sm:text-xs text-[#244B3F]/90 leading-relaxed line-clamp-2 sm:line-clamp-3 font-normal">
+                      <p className="text-sm sm:text-base text-[#244B3F]/90 leading-relaxed line-clamp-2 sm:line-clamp-3 font-normal">
                         {description}
                       </p>
                     </div>

@@ -35,7 +35,7 @@ export default function KioskFooter({
         </div>
       </div>
 
-      <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <div className="max-w-[1440px] mx-auto flex flex-col xl:flex-row items-center justify-between gap-3 text-center sm:text-left">
         {/* Core Slogan matching reference image */}
         <div className="flex flex-col items-center sm:items-start">
           <p className="text-[11px] sm:text-xs md:text-sm font-extrabold tracking-widest text-[#FAFAF7] uppercase">

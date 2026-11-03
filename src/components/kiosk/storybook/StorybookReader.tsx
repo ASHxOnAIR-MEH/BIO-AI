@@ -639,7 +639,7 @@ export default function StorybookReader() {
     <div className="min-h-screen flex flex-col bg-[#071912] text-white overflow-hidden select-none">
       {/* ── Top Bar ── */}
       {mode !== "cover" && (
-        <header className="flex items-center justify-between px-3 sm:px-6 py-2.5 bg-[#04120D] border-b border-white/10 shrink-0 z-30">
+        <header className="flex flex-wrap gap-3 items-center justify-between px-3 sm:px-6 py-2.5 bg-[#04120D] border-b border-white/10 shrink-0 z-30">
           {/* Left: Back + Book Identity */}
           <div className="flex items-center gap-3">
             <Link
@@ -661,7 +661,7 @@ export default function StorybookReader() {
           </div>
 
           {/* Center: Current Chapter & Leaf Name */}
-          <div className="hidden md:flex flex-col items-center max-w-sm truncate text-center">
+          <div className="hidden xl:flex flex-col items-center max-w-sm truncate text-center">
             <span className="text-[10px] font-mono font-bold text-[#D4AF37] uppercase tracking-wider">
               {activePageData?.chapter}
             </span>

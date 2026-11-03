@@ -200,7 +200,7 @@ export default function VedaGuide({
   const dim = getSizeStyles();
 
   return (
-    <div className={`relative flex flex-col items-center text-center ${className}`}>
+    <div className={`veda-guide relative min-w-0 max-w-full flex flex-col items-center text-center ${className}`}>
       {/* Botanical aura glow behind character */}
       <div
         className="absolute inset-0 pointer-events-none -z-10 rounded-full blur-3xl opacity-40 transition-colors duration-500"
@@ -210,29 +210,21 @@ export default function VedaGuide({
       />
 
       {/* ─── VEDA RESEARCHER CHARACTER CARD FRAME ───────────────────────── */}
-      <motion.div
-        animate={{ y: [0, -5, 0] }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="relative group cursor-default"
-      >
+      <div className="relative group cursor-default max-w-full">
         <div
-          className={`relative ${dim.container} ${dim.rounded} overflow-hidden bg-gradient-to-b from-[#F0F7F1]/90 via-white to-[#FAFAF7] border-2 border-[#0B5D46]/25 shadow-[0_18px_45px_rgba(7,59,48,0.15)] flex flex-col items-center justify-end p-1 transition-all duration-300 group-hover:shadow-[0_22px_55px_rgba(11,93,70,0.22)]`}
+          className={`veda-frame relative max-w-full ${dim.container} ${dim.rounded} overflow-hidden bg-gradient-to-b from-[#F0F7F1]/90 via-white to-[#FAFAF7] border-2 border-[#0B5D46]/25 shadow-[0_18px_45px_rgba(7,59,48,0.15)] flex flex-col items-center justify-end p-1 transition-all duration-300 group-hover:shadow-[0_22px_55px_rgba(11,93,70,0.22)]`}
         >
           {/* Header Botanical Gold & Emerald Accent */}
           <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-[#0B5D46] via-[#D4AF37] to-[#0B5D46] z-20" />
 
           {/* VEDA Researcher Artwork */}
-          <div className="relative w-full h-full flex items-center justify-center z-10 overflow-hidden rounded-2xl">
+          <div className="veda-artwork relative w-full h-full flex items-center justify-center z-10 overflow-hidden rounded-2xl">
             <Image
               src={assetPath}
               alt="Veda, Young Ayurveda Researcher & Digital Heritage Guide"
               fill
               priority={priority}
-              className="object-cover object-center drop-shadow-sm select-none pointer-events-none group-hover:scale-105 transition-transform duration-500"
+              className="object-contain object-center drop-shadow-sm select-none pointer-events-none group-hover:scale-105 transition-transform duration-500"
               sizes="(max-width: 640px) 256px, 480px"
             />
           </div>
@@ -254,7 +246,7 @@ export default function VedaGuide({
             VEDA • {isMl ? exp.labelMl : exp.labelEn}
           </span>
         </div>
-      </motion.div>
+      </div>
 
       {/* ─── SPEECH BUBBLE / DIALOGUE CARD ─────────────────────────────── */}
       {showDialogue && dialogue && (
