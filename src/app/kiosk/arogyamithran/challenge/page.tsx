@@ -1,5 +1,7 @@
 "use client";
 
+import { quizFetch } from "@/lib/quizFetch";
+
 import { Suspense, useEffect, useState, useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -138,7 +140,7 @@ function ChallengeContent() {
     async function loadAttempt() {
       try {
         setLoading(true);
-        const res = await fetch(
+        const res = await quizFetch(
           `/api/kiosk/quiz/result?attemptId=${encodeURIComponent(attemptId)}&action=recover`
         );
         const data = await res.json();
@@ -184,7 +186,7 @@ function ChallengeContent() {
       setErrorMessage(null);
 
       try {
-        const response = await fetch("/api/kiosk/quiz/submit-answer", {
+        const response = await quizFetch("/api/kiosk/quiz/submit-answer", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -428,7 +430,7 @@ function ChallengeContent() {
                     }`}
                   >
                     {isSubmitting ? (
-                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <span role="status">{isMl ? "സമർപ്പിക്കുന്നു…" : "Submitting answer…"}</span>
                     ) : (
                       <>
                         <span className={isMl ? "font-malayalam" : ""}>

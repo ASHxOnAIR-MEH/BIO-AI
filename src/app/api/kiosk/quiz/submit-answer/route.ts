@@ -1,3 +1,4 @@
+import { recoverQuizCookie, attachQuizCookie } from "@/lib/quizSessionCookie";
 import { NextRequest, NextResponse } from "next/server";
 import { submitQuizAnswer } from "@/lib/quizEngine";
 
@@ -6,9 +7,9 @@ export async function POST(req: NextRequest) {
     const body = await req.json().catch(() => ({}));
     const attemptId = (body.attemptId || "").trim();
     const questionId = (body.questionId || "").trim();
-    const selectedOptionIndex = Number(body.selectedOptionIndex);
+    const selectedOptionIndex = body.selectedOptionIndex;
 
-    if (!attemptId || !questionId || isNaN(selectedOptionIndex)) {
+    if (!attemptId || !questionId || !Number.isInteger(selectedOptionIndex)) {
       return NextResponse.json(
         {
           success: false,
@@ -27,16 +28,17 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    recoverQuizCookie(req, attemptId);
     const response = submitQuizAnswer(
       attemptId,
       questionId,
       selectedOptionIndex
     );
 
-    return NextResponse.json({
+    return attachQuizCookie(NextResponse.json({
       result: response,
       ...response,
-    });
+    }), attemptId);
   } catch (error: unknown) {
     const message =
       error instanceof Error

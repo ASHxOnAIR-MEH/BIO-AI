@@ -1,5 +1,4 @@
-import { randomBytes } from "node:crypto";
-import QRCode from "qrcode";
+import { sealQuizToken, openQuizToken } from "./quizToken";
 import quizBankJson from "@/data/arogyamithranQuizBank.json";
 import {
   QuizBankDataset,
@@ -86,6 +85,69 @@ const quizStore: NonNullable<typeof quizGlobal.bioAiQuizStore> = quizGlobal.bioA
 };
 const globalAttempts = quizStore.attempts;
 
+// Compact encrypted snapshots contain question IDs and choices, never answer keys or PII.
+interface QuizSnapshot {
+  id: string;
+  reg: string;
+  lang: KioskLanguage;
+  ids: string[];
+  choices: (number | null)[];
+  created: string;
+  completed?: string;
+}
+
+function snapshot(attempt: ServerQuizAttempt): QuizSnapshot {
+  return {
+    id: attempt.attemptId, reg: attempt.registrationId, lang: attempt.language,
+    ids: attempt.selectedQuestions.map(q => q.id),
+    choices: attempt.selectedQuestions.map(q => attempt.answers[q.id]?.selectedOptionIndex ?? null),
+    created: attempt.createdAt, completed: attempt.completedAt,
+  };
+}
+
+function restoreSnapshot(data: QuizSnapshot): ServerQuizAttempt {
+  const bank = getValidQuestionBank();
+  if (!data || !Array.isArray(data.ids) || data.ids.length !== 10 || new Set(data.ids).size !== 10 ||
+      !Array.isArray(data.choices) || data.choices.length !== 10 ||
+      data.choices.some(n => n !== null && (!Number.isInteger(n) || n < -1 || n > 3))) {
+    throw new Error("Invalid quiz session. Please start a new challenge.");
+  }
+  const selectedQuestions = data.ids.map(id => {
+    const question = bank.find(q => q.id === id);
+    if (!question) throw new Error("The quiz has been updated. Please start a new challenge.");
+    return question;
+  });
+  const attempt: ServerQuizAttempt = {
+    attemptId: data.id, registrationId: data.reg, language: data.lang,
+    selectedQuestions, answers: {}, totalScore: 0, isCompleted: false,
+    createdAt: data.created, completedAt: data.completed,
+  };
+  selectedQuestions.forEach((q, i) => {
+    const selected = data.choices[i];
+    if (selected === null) return;
+    const isCorrect = selected === q.correct_option_index;
+    const awardedPoints = isCorrect ? 10 : -5;
+    attempt.answers[q.id] = { selectedOptionIndex: selected, isCorrect, awardedPoints, answeredAt: data.completed || data.created };
+    attempt.totalScore = Math.max(0, attempt.totalScore + awardedPoints);
+  });
+  attempt.isCompleted = Object.keys(attempt.answers).length === 10;
+  globalAttempts.set(attempt.attemptId, attempt);
+  return attempt;
+}
+
+export function exportQuizSession(attemptId: string): string {
+  const attempt = globalAttempts.get(attemptId);
+  if (!attempt) throw new Error("Quiz attempt not found.");
+  return sealQuizToken(snapshot(attempt), "session", Date.parse(attempt.createdAt) + 2 * 60 * 60 * 1000);
+}
+
+export function restoreQuizSession(token: string | undefined, attemptId: string): void {
+  if (!token) throw new Error("Your quiz session is missing. Please start a new challenge.");
+  const data = openQuizToken<QuizSnapshot>(token, "session");
+  if (data.id !== attemptId) throw new Error("A different challenge is active. Please start a new challenge.");
+  restoreSnapshot(data);
+}
+
 /**
  * Initializes a new quiz attempt with 10 randomly selected distinct questions.
  */
@@ -154,7 +216,7 @@ export function submitQuizAnswer(
     throw new Error("Question does not belong to this active quiz attempt.");
   }
 
-  if (selectedOptionIndex < -1 || selectedOptionIndex > 3) {
+  if (!Number.isInteger(selectedOptionIndex) || selectedOptionIndex < -1 || selectedOptionIndex > 3) {
     throw new Error("Selected option index must be between -1 and 3 (-1 = timed out).");
   }
 
@@ -180,6 +242,8 @@ export function submitQuizAnswer(
     throw new Error("This quiz attempt has already been completed.");
   }
 
+  const nextQuestion = attempt.selectedQuestions.find(q => !attempt.answers[q.id]);
+  if (nextQuestion?.id !== questionId) throw new Error("Please answer the current question first.");
   const isCorrect = selectedOptionIndex === question.correct_option_index;
   // Scoring: +10 for correct, -5 for wrong, score cannot go below 0
   const awardedPoints = isCorrect ? 10 : -5;
@@ -390,7 +454,8 @@ export async function finalizeAndPersistResult(
   )}`;
 
   // Cryptographically secure opaque access token (unpredictable)
-  const accessToken = randomBytes(24).toString("base64url");
+  if (!attempt.isCompleted) throw new Error("Please answer all ten questions before viewing your result.");
+  const accessToken = sealQuizToken({ ...snapshot(attempt), reg: "" }, "result", Date.now() + 30 * 24 * 60 * 60 * 1000);
 
   // Determine canonical origin
   const origin = (
@@ -402,6 +467,7 @@ export async function finalizeAndPersistResult(
   const resultUrl = `${origin}/kiosk/result/${accessToken}`;
 
   // High-contrast, scannable QR Code data URL (PNG)
+  const { default: QRCode } = await import("qrcode");
   const qrCodeDataUrl = await QRCode.toDataURL(resultUrl, {
     margin: 2,
     width: 320,
@@ -472,6 +538,18 @@ export function getPublicResultByToken(
   token: string
 ): PublicResultViewData | null {
   if (!token) return null;
+  if (token.startsWith("v1.")) {
+    try {
+      const attempt = restoreSnapshot(openQuizToken<QuizSnapshot>(token, "result"));
+      if (!attempt.isCompleted) return null;
+      const result = getQuizAttemptResult(attempt.attemptId);
+      return { resultId: `RES-${attempt.attemptId}`, totalScore: result.totalScore,
+        maxScore: result.maxScore, correctCount: result.correctCount,
+        incorrectCount: result.incorrectCount, totalQuestions: result.totalQuestions,
+        accuracyPercentage: result.accuracyPercentage, language: result.language,
+        completedAt: result.completedAt, review: result.review, isRevoked: false };
+    } catch { return null; }
+  }
   const resultId = tokenToResultMap.get(token);
   if (!resultId) return null;
   const record = globalSavedResults.get(resultId);

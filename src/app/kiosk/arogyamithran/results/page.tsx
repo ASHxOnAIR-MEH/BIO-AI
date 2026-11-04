@@ -1,5 +1,7 @@
 "use client";
 
+import { quizFetch } from "@/lib/quizFetch";
+
 import { Suspense, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -114,7 +116,7 @@ function ResultsContent() {
     async function fetchResult() {
       try {
         setLoading(true);
-        const res = await fetch(
+        const res = await quizFetch(
           `/api/kiosk/quiz/result?attemptId=${encodeURIComponent(attemptId)}`
         );
         const data = await res.json();

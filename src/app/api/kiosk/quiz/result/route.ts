@@ -1,3 +1,4 @@
+import { recoverQuizCookie } from "@/lib/quizSessionCookie";
 import { NextRequest, NextResponse } from "next/server";
 import { finalizeAndPersistResult, getOngoingAttemptState } from "@/lib/quizEngine";
 
@@ -13,6 +14,8 @@ export async function GET(req: NextRequest) {
         { status: 400 }
       );
     }
+
+    recoverQuizCookie(req, attemptId);
 
     if (action === "recover") {
       const state = getOngoingAttemptState(attemptId);

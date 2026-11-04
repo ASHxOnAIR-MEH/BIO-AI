@@ -11,7 +11,7 @@ export interface EcosystemEnquiryBody {
   language?: string;
 }
 
-export const VALID_ECOSYSTEM_CATEGORIES = [
+const VALID_ECOSYSTEM_CATEGORIES = [
   "research_collaboration",
   "startup_incubation",
   "industry_partnerships",

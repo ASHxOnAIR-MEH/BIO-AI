@@ -1,3 +1,4 @@
+import { attachQuizCookie } from "@/lib/quizSessionCookie";
 import { NextRequest, NextResponse } from "next/server";
 import { startQuizAttempt } from "@/lib/quizEngine";
 import { KioskLanguage } from "@/components/kiosk/types";
@@ -19,13 +20,13 @@ export async function POST(req: NextRequest) {
       language
     );
 
-    return NextResponse.json({
+    return attachQuizCookie(NextResponse.json({
       success: true,
       attemptId,
       totalQuestions: questions.length,
       questions,
       language,
-    });
+    }), attemptId);
   } catch (error: unknown) {
     const message =
       error instanceof Error ? error.message : "Failed to initialize quiz.";

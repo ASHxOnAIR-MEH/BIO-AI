@@ -1,5 +1,7 @@
 "use client";
 
+import { quizFetch } from "@/lib/quizFetch";
+
 import { Suspense, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -56,7 +58,7 @@ function InstructionsContent() {
     setErrorMessage(null);
 
     try {
-      const response = await fetch("/api/kiosk/quiz/start", {
+      const response = await quizFetch("/api/kiosk/quiz/start", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
