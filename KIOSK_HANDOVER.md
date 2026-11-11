@@ -154,3 +154,4 @@ The codebase is pushed to two repositories with different root behaviors:
    - Provide `NEXT_PUBLIC_SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in Vercel to sync leaderboard scores; currently runs seamlessly with memory fallbacks.
 4. **Preserve Main Website Isolation:**
    - Do NOT modify the main website (`src/components/Navbar.tsx`, `Hero.tsx`, `About.tsx`) when working on Kiosk screens to keep the institutional government logos pristine.
+

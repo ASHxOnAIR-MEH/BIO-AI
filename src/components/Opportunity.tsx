@@ -69,43 +69,68 @@ export default function Opportunity() {
           ))}
         </div>
 
-        {/* ── CALL FOR BIO-AI INCUBATION — STATUS STRIP (CURRENTLY CLOSED) ──────── */}
+        {/* ── CALL FOR BIO-AI INCUBATION — STATUS STRIP (OPEN) ──────────────────── */}
         <motion.div
           id="incubation-call"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
-          className="bg-primary border border-blue-bright/30 rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:px-9 text-white shadow-xl relative overflow-hidden scroll-mt-24 sm:scroll-mt-32"
+          className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl relative scroll-mt-24 sm:scroll-mt-32"
           style={{
-            background: "linear-gradient(90deg, #0A2164 0%, #0F2D80 50%, #0A2164 100%)",
+            background: "linear-gradient(135deg, #073B30 0%, #0B5D46 45%, #0a4a37 100%)",
           }}
         >
-          {/* Subtle accent glow */}
-          <div className="absolute -right-12 -top-12 w-48 h-48 bg-blue-bright/15 rounded-full blur-2xl pointer-events-none" />
+          {/* Decorative glows */}
+          <div className="absolute -right-16 -top-16 w-72 h-72 bg-green-400/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -left-10 -bottom-10 w-48 h-48 bg-emerald-300/8 rounded-full blur-2xl pointer-events-none" />
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-5 text-center md:text-left relative z-10">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start md:items-center gap-3.5 sm:gap-5">
-              <span className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-red-500/20 text-red-300 border border-red-400/35">
-                <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
-                CLOSED
+          <div className="relative z-10 p-6 sm:p-8 lg:p-10">
+            {/* Top row — badge + deadline */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-green-500/20 text-green-300 border border-green-400/35">
+                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                NOW OPEN
               </span>
-              <div>
-                <h3 className="text-base sm:text-lg lg:text-xl font-heading font-semibold text-white tracking-tight">
-                  CALL FOR BIO-AI INCUBATION IS CURRENTLY <span className="text-red-400 font-bold">CLOSED</span>
-                </h3>
-                <p className="text-xs sm:text-sm text-white/75 mt-1">
-                  Applications for the current cohort are closed. Join our community to get notified for upcoming rounds and challenges.
-                </p>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-400/15 border border-amber-400/30">
+                <svg className="w-3.5 h-3.5 text-amber-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                <span className="text-[11px] sm:text-xs font-bold text-amber-200 uppercase tracking-wider">
+                  Deadline: 30 November 2026
+                </span>
               </div>
             </div>
 
-            <a
-              href="#community"
-              className="shrink-0 inline-flex items-center justify-center px-6 py-2.5 text-xs sm:text-sm font-semibold text-white bg-blue-bright/25 hover:bg-blue-bright border border-blue-bright/50 hover:border-blue-bright rounded-full transition-all shadow-sm active:scale-95 touch-manipulation min-h-[44px]"
-            >
-              Join Community for Updates ↓
-            </a>
+            {/* Main content */}
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 lg:gap-10">
+              <div className="flex-1">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-heading font-bold text-white tracking-tight mb-3 leading-tight">
+                  BIO-AI INCUBATION APPLICATIONS{" "}
+                  <span className="text-green-400">ARE NOW OPEN</span>
+                </h3>
+                <p className="text-sm sm:text-base text-white/75 leading-relaxed max-w-2xl">
+                  Applications are open for the current Bio-AI incubation cohort. Submit your application before the deadline and become part of the Bio-AI innovation ecosystem.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0 w-full sm:w-auto lg:w-auto">
+                <a
+                  href="https://zfrmz.com/Ene770rEwgTw2cP7chBH"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-bold text-white bg-green-500 hover:bg-green-400 rounded-full transition-all shadow-lg shadow-green-900/30 active:scale-95 touch-manipulation min-h-[48px] whitespace-nowrap"
+                >
+                  Apply for Incubation →
+                </a>
+                <a
+                  href="#community"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-white/80 hover:text-white bg-white/8 hover:bg-white/15 border border-white/20 rounded-full transition-all active:scale-95 touch-manipulation min-h-[48px] whitespace-nowrap"
+                >
+                  Join Community ↓
+                </a>
+              </div>
+            </div>
           </div>
         </motion.div>
 

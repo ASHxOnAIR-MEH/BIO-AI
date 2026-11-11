@@ -18,3 +18,4 @@ export default function KioskAutoRedirect() {
 
   return null;
 }
+
