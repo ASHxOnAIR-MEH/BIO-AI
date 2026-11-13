@@ -136,10 +136,10 @@ import VedaGuide from "@/components/kiosk/VedaGuide";
 The codebase is pushed to two repositories with different root behaviors:
 1. **`ASHxOnAIR-MEH/BIO-AI`:** The official marketing site. Root `/` serves the Bio-AI CoE landing page with MeitY, IndiaAI, Digital India, KSUM, and Kerala IT logos.
 2. **`ASHxOnAIR-MEH/kikos-bio-ai-`:** The dedicated kiosk deployment.
-   - Handled via 3 layers:
-     - **`src/middleware.ts`:** Detects domain containing `kiko`/`kiosk` or `VERCEL_GIT_REPO_SLUG="kikos-bio-ai-"` and redirects `/` to `/kiosk`.
-     - **`next.config.ts`:** Configures build-time redirects for kiosk slugs.
-     - **`src/components/kiosk/KioskAutoRedirect.tsx`:** Client-side fallback redirect on `kiko*` domains.
+   - Handled by:
+     - **`next.config.ts`:** `redirects()` sends `/` to `/kiosk` (307) when `KIOSK_MODE` or `NEXT_PUBLIC_IS_KIOSK` is `"true"`, or `VERCEL_GIT_REPO_SLUG` / `VERCEL_URL` contains `kiko`/`kiosk`. This is evaluated at **build time** (the config is serialized into the build), so set these env vars before `next build`; setting them only at runtime has no effect.
+     - **`src/components/kiosk/KioskAutoRedirect.tsx`:** Client-side fallback redirect on `kiko*` domains. Note: this component is not currently rendered by any layout or page, so it is inactive until mounted.
+   - There is intentionally no `middleware.ts` / `proxy.ts`: a former `src/middleware.ts` duplicated the env-var check above and never ran ahead of it (config redirects run before Proxy), so it was removed when Next 16 deprecated the `middleware` convention.
 
 ---
 
