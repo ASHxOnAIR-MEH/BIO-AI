@@ -9,6 +9,9 @@ const isKioskDeployment =
   Boolean(process.env.VERCEL_URL?.toLowerCase().includes("kiosk"));
 
 const nextConfig: NextConfig = {
+  // Emits a self-contained server in .next/standalone for the Docker image.
+  // Vercel ignores this setting, so Vercel deployments are unaffected.
+  output: "standalone",
   async redirects() {
     if (isKioskDeployment) {
       return [
